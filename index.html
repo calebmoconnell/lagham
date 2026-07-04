@@ -83,7 +83,7 @@
     <article>
         <div id="item">Loading data...</div>
     </article>
-
+    
     <nav>
         <ul>
             <li><h6>Navigation</h6></li>
@@ -142,14 +142,15 @@
             items.forEach(obj => {
                 // Capitalize category safely for the breadcrumb trail
                 const displayCategory = obj.category ? obj.category.charAt(0).toUpperCase() + obj.category.slice(1) : "";
+                
                 // Get the unique entry code identifier (e.g., '1') from the ref
                 const entryId = obj.ref ? obj.ref.split('/').pop() : "";
 
                 htmlContent += `
                     <p>
                         <a href='#'>${obj.subject || 'Archive'}</a> / 
-                        <a href='#'>${obj.date ? obj.date.year : ''}</a> / 
                         <a href='#'>${displayCategory}</a> / 
+                        <a href='#'>${obj.date ? obj.date.year : ''}</a> / 
                         ${entryId}
                     </p>
                     <h1><i class='fa fa-file-text-o'></i> ${obj.title}</h1>
@@ -172,5 +173,6 @@
 <footer>
     <p>Created by Caleb O'Connell; <i> last updated 4th July ᴀ.ᴅ. 2026</i></p>
 </footer>
+
 </body>
 </html>
