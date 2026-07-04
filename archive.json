@@ -2,8 +2,11 @@
   "Browse": {
     "Village": {},
     "Sc": {
+      "ref": "Sc",
       "G": {
+        "ref": "Sc/G",
         "Misc": {
+          "ref": "Sc/G/Misc",
           "NOT": {
             "subject": "Lagham",
             "category": "Miscellaneous",
@@ -24,6 +27,7 @@
         },
         "News": {
           "1982": {
+            "ref": "Sc/G/News/1982",
             "JAN": {
               "subject": "Lagham",
               "category": "Newsletter",
@@ -58,7 +62,8 @@
               "format": "Document",
               "scan": 0
             }
-          }
+          },
+          "ref": "Sc/G/News"
         },
         "Prog": {
           "1987": {
@@ -77,7 +82,8 @@
             "extent": "2 Pages",
             "format": "Document",
             "scan": 0
-          }
+          },
+          "ref": "Sc/G/Prog"
         },
         "HIS": {
           "1": {
@@ -130,14 +136,15 @@
             "extent": "52 Pages",
             "format": "Document",
             "scan": "0"
-          }
+          },
+          "ref": "Sc/G/HIS"
         },
         "MIN": {
           "1986": {
             "JUN": {
               "subject": "Lagham",
               "category": "Minutes",
-              "ref": "Sc/G/MIN/1986/1",
+              "ref": "Sc/G/MIN/1986/JUN",
               "condition": "Water damaged.",
               "date": {
                 "day": "10",
@@ -151,12 +158,15 @@
               "format": "Document",
               "scan": "0"
             }
-          }
+          },
+          "ref": "Sc/G/MIN"
         }
       },
       "D": {
+        "ref": "Sc/D",
         "NEWS": {
           "1977": {
+            "ref": "Sc/D/NEWS/1977",
             "APR": {
               "subject": "District",
               "category": "Newsletter",
@@ -210,6 +220,7 @@
             }
           },
           "1978": {
+            "ref": "Sc/D/NEWS/1978",
             "JAN": {
               "subject": "District",
               "category": "Newsletter",
@@ -263,6 +274,7 @@
             }
           },
           "1979": {
+            "ref": "Sc/D/NEWS/1979",
             "JAN": {
               "subject": "District",
               "category": "Newsletter",
@@ -331,12 +343,15 @@
               "transcription": 0,
               "scan": 0
             }
-          }
+          },
+          "ref": "Sc/D/NEWS"
         }
       },
       "C": {
+        "ref": "Sc/C",
         "NEWS": {
           "1977": {
+            "ref": "Sc/C/NEWS/1977",
             "APR": {
               "subject": "County",
               "category": "Newsletter",
@@ -407,6 +422,7 @@
             }
           },
           "1978": {
+            "ref": "Sc/C/NEWS/1978",
             "JAN": {
               "subject": "County",
               "category": "Newsletter",
@@ -460,6 +476,7 @@
             }
           },
           "1979": {
+            "ref": "Sc/C/NEWS/1979",
             "JAN": {
               "subject": "County",
               "category": "Newsletter",
@@ -615,6 +632,7 @@
             }
           },
           "1980": {
+            "ref": "Sc/C/NEWS/1980",
             "JAN": {
               "subject": "County",
               "category": "Newsletter",
@@ -787,6 +805,7 @@
             }
           },
           "1986": {
+            "ref": "Sc/C/NEWS/1986",
             "SEP": {
               "subject": "County",
               "category": "Newsletter",
@@ -804,7 +823,8 @@
               "format": "Document",
               "scan": 0
             }
-          }
+          },
+          "ref": "Sc/C/NEWS"
         }
       }
     }
