@@ -228,11 +228,15 @@
             if (isArchiveItem) {
                 let html = `<div class="record-view">`;
                 for (const [key, value] of Object.entries(data)) {
-                    // Hide metadata from the actual record display (ADDED 'ref' HERE)
-                    if (key === 'category' || key === 'folder_title' || key === 'ref') continue; 
+                    
+                    // Hide metadata and the subject variable from the actual record display
+                    if (key === 'category' || key === 'folder_title' || key === 'ref' || key === 'subject') continue; 
                     
                     // Hide transcription or scan if their value is exactly "0" (or number 0)
                     if ((key === 'transcription' || key === 'scan') && String(value) === "0") continue;
+                    
+                    // Hide date variables if they return empty values
+                    if (key.toLowerCase().includes('date') && (!value || String(value).trim() === '')) continue;
                     
                     html += `<div class="record-field">
                         <strong>${key}:</strong> <span>${value}</span>
@@ -252,7 +256,7 @@
             html += `<div class="item-list">`;
 
             for (const [key, childNode] of Object.entries(data)) {
-                // ADDED 'ref' HERE: Skip metadata keys so they aren't rendered as clickable folders/items
+                // Skip metadata keys so they aren't rendered as clickable folders/items
                 if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
 
                 const childPath = currentPathString ? `${currentPathString}/${key}` : key;
