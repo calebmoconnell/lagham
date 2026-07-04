@@ -2,8 +2,10 @@
   "Browse": {
     "Village": {},
     "Sc": {
+      "folder_title": "Scouting",
       "ref": "Sc",
       "G": {
+        "folder_title": "Group Records",
         "ref": "Sc/G",
         "Misc": {
           "ref": "Sc/G/Misc",
@@ -163,6 +165,7 @@
         }
       },
       "D": {
+        "folder_title": "District Records",
         "ref": "Sc/D",
         "NEWS": {
           "1977": {
@@ -349,6 +352,7 @@
       },
       "C": {
         "ref": "Sc/C",
+        "folder_title": "District Records",
         "NEWS": {
           "1977": {
             "ref": "Sc/C/NEWS/1977",
