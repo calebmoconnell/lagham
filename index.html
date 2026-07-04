@@ -76,7 +76,6 @@
             align-items: center;
             padding: 15px 20px;
             border-bottom: 1px solid var(--border-color);
-            text-decoration: none;
             color: inherit;
             transition: background-color 0.2s;
         }
@@ -86,7 +85,7 @@
         }
 
         .list-item:hover {
-            background-color: #f4f7f6;
+            background-color: #fcfcfc;
         }
 
         .list-item .icon {
@@ -102,11 +101,23 @@
             margin-right: 15px;
             font-size: 0.95em;
             flex-shrink: 0;
+            /* Added padding to separate it slightly from the clickable link */
+            padding-right: 10px; 
+        }
+
+        /* New styles for making ONLY the title clickable */
+        .item-title-link {
+            text-decoration: none;
+            color: var(--link-color);
+        }
+
+        .item-title-link:hover {
+            text-decoration: underline;
         }
 
         .list-item .item-title {
-            color: var(--text-color);
             font-size: 1.05em;
+            color: var(--link-color);
         }
 
         /* Archive Item (File) View */
@@ -209,12 +220,9 @@
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
             
-            // Check if the current level is an archive item (file)
-            // We define an archive item as an object containing a 'category' key
             const isArchiveItem = data && typeof data === 'object' && 'category' in data;
             
             if (isArchiveItem) {
-                // Render the Record View (Hide the 'category' field per instructions)
                 let html = `<div class="record-view">`;
                 for (const [key, value] of Object.entries(data)) {
                     if (key === 'category' || key === 'folder_title') continue; 
@@ -228,10 +236,8 @@
                 return;
             }
 
-            // Otherwise, it is a Folder Layer
             let html = '';
             
-            // Optional: Display the folder_title as an H2 header for the current view
             if (data.folder_title) {
                 html += `<h2 class="layer-header">${data.folder_title}</h2>`;
             }
@@ -239,15 +245,13 @@
             html += `<div class="item-list">`;
 
             for (const [key, childNode] of Object.entries(data)) {
-                // Skip metadata keys so they don't appear as clickable folders
                 if (key === 'folder_title' || key === 'category') continue;
 
                 const childPath = currentPathString ? `${currentPathString}/${key}` : key;
                 
                 let icon = '📁';
-                let displayTitle = key; // Fallback to raw key
+                let displayTitle = key; 
 
-                // Determine whether child is a Folder or an Archive Item (File)
                 if (childNode && typeof childNode === 'object') {
                     if ('category' in childNode) {
                         icon = '📄';
@@ -258,13 +262,15 @@
                     }
                 }
                 
-                // Construct the requested format: [icon] [full ref] [bold category/title]
+                // Construct format: Icon | Ref Path (Not clickable) | Title (Clickable)
                 html += `
-                    <a href="?ref=${encodeURIComponent(childPath)}" class="list-item">
+                    <div class="list-item">
                         <span class="icon">${icon}</span>
                         <span class="ref-path">${childPath}</span>
-                        <strong class="item-title">${displayTitle}</strong>
-                    </a>
+                        <a href="?ref=${encodeURIComponent(childPath)}" class="item-title-link">
+                            <strong class="item-title">${displayTitle}</strong>
+                        </a>
+                    </div>
                 `;
             }
 
