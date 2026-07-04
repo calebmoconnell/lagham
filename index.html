@@ -22,7 +22,7 @@
             color: var(--text-color);
         }
 
-        /* Navigation Bar Styles */
+        /* Navigation Bar */
         #navbar {
             background-color: var(--nav-bg);
             padding: 15px 20px;
@@ -55,56 +55,85 @@
             padding: 0 20px;
         }
 
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .layer-header {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* List Layout for Folders/Items */
+        .item-list {
             background: white;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border-radius: 8px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        th, td {
-            padding: 15px;
-            text-align: left;
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
             border-bottom: 1px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s;
         }
 
-        th {
-            background-color: #f1f4f6;
-            font-weight: 600;
-            color: #555;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-
-        tr:last-child td {
+        .list-item:last-child {
             border-bottom: none;
         }
 
-        tr:hover {
-            background-color: #fcfcfc;
+        .list-item:hover {
+            background-color: #f4f7f6;
         }
 
-        /* Links and Buttons */
-        .btn-link {
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-block;
+        .list-item .icon {
+            font-size: 1.4em;
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
         }
 
-        .btn-link:hover {
-            text-decoration: underline;
+        .list-item .ref-path {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: #666;
+            margin-right: 15px;
+            font-size: 0.95em;
+            flex-shrink: 0;
         }
 
-        .leaf-node {
+        .list-item .item-title {
+            color: var(--text-color);
+            font-size: 1.05em;
+        }
+
+        /* Archive Item (File) View */
+        .record-view {
             background: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            font-size: 1.1em;
+        }
+
+        .record-field {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .record-field:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .record-field strong {
+            display: inline-block;
+            width: 150px;
+            color: #555;
+            text-transform: capitalize;
         }
 
         .error {
@@ -129,15 +158,12 @@
     <script>
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
 
-        // Initialize the application
         async function init() {
             try {
-                // Fetch the JSON payload
                 const response = await fetch(DATA_URL);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const fullData = await response.json();
                 
-                // Get the 'ref' parameter from the URL
                 const urlParams = new URLSearchParams(window.location.search);
                 const currentRef = urlParams.get('ref') || '';
                 
@@ -148,13 +174,10 @@
             }
         }
 
-        // Process the path and render UI
         function renderPage(fullData, ref) {
-            // Split the ref path (e.g. "Sc/G/News" -> ["Sc", "G", "News"])
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
-            // Traverse the JSON object based on the path
             for (let key of path) {
                 if (currentData && typeof currentData === 'object' && key in currentData) {
                     currentData = currentData[key];
@@ -166,10 +189,9 @@
             }
             
             renderBreadcrumbs(path);
-            renderTable(currentData, path);
+            renderLayer(currentData, path);
         }
 
-        // Generate breadcrumb links for the navigation bar
         function renderBreadcrumbs(path) {
             const nav = document.getElementById('breadcrumbs');
             let html = `<a href="?ref=">Archive Root</a>`;
@@ -183,50 +205,73 @@
             nav.innerHTML = html;
         }
 
-        // Generate the table or final text value
-        function renderTable(data, path) {
+        function renderLayer(data, path) {
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
             
-            // If the current data is a primitive (string, number, etc.), just display it
-            if (typeof data !== 'object' || data === null) {
-                content.innerHTML = `<div class="leaf-node"><strong>Value:</strong> <br><br>${data}</div>`;
+            // Check if the current level is an archive item (file)
+            // We define an archive item as an object containing a 'category' key
+            const isArchiveItem = data && typeof data === 'object' && 'category' in data;
+            
+            if (isArchiveItem) {
+                // Render the Record View (Hide the 'category' field per instructions)
+                let html = `<div class="record-view">`;
+                for (const [key, value] of Object.entries(data)) {
+                    if (key === 'category' || key === 'folder_title') continue; 
+                    
+                    html += `<div class="record-field">
+                        <strong>${key}:</strong> <span>${value}</span>
+                    </div>`;
+                }
+                html += `</div>`;
+                content.innerHTML = html;
                 return;
             }
 
-            // Otherwise, it's an object/array. Build a table.
-            let html = `<table>
-                <thead>
-                    <tr>
-                        <th>Reference / Key</th>
-                        <th>Contents</th>
-                    </tr>
-                </thead>
-                <tbody>`;
-
-            for (const [key, value] of Object.entries(data)) {
-                let displayValue;
-                
-                // If the value inside this key is another layer of objects/arrays, make it a navigable link
-                if (typeof value === 'object' && value !== null) {
-                    const nextPath = currentPathString ? `${currentPathString}/${key}` : key;
-                    displayValue = `<a href="?ref=${encodeURIComponent(nextPath)}" class="btn-link">Browse Layer →</a>`;
-                } else {
-                    // If it's a direct value, show the value directly in the table
-                    displayValue = value;
-                }
-                
-                html += `<tr>
-                    <td style="font-weight: 500;">${key}</td>
-                    <td>${displayValue}</td>
-                </tr>`;
+            // Otherwise, it is a Folder Layer
+            let html = '';
+            
+            // Optional: Display the folder_title as an H2 header for the current view
+            if (data.folder_title) {
+                html += `<h2 class="layer-header">${data.folder_title}</h2>`;
             }
 
-            html += `</tbody></table>`;
+            html += `<div class="item-list">`;
+
+            for (const [key, childNode] of Object.entries(data)) {
+                // Skip metadata keys so they don't appear as clickable folders
+                if (key === 'folder_title' || key === 'category') continue;
+
+                const childPath = currentPathString ? `${currentPathString}/${key}` : key;
+                
+                let icon = '📁';
+                let displayTitle = key; // Fallback to raw key
+
+                // Determine whether child is a Folder or an Archive Item (File)
+                if (childNode && typeof childNode === 'object') {
+                    if ('category' in childNode) {
+                        icon = '📄';
+                        displayTitle = childNode.category;
+                    } else if ('folder_title' in childNode) {
+                        icon = '📁';
+                        displayTitle = childNode.folder_title;
+                    }
+                }
+                
+                // Construct the requested format: [icon] [full ref] [bold category/title]
+                html += `
+                    <a href="?ref=${encodeURIComponent(childPath)}" class="list-item">
+                        <span class="icon">${icon}</span>
+                        <span class="ref-path">${childPath}</span>
+                        <strong class="item-title">${displayTitle}</strong>
+                    </a>
+                `;
+            }
+
+            html += `</div>`;
             content.innerHTML = html;
         }
 
-        // Run when the window loads
         window.onload = init;
     </script>
 </body>
