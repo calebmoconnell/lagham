@@ -6,7 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
+    .catbutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Consistent space between icon and text */
+
+  /* Visual styling */
+  padding: 12px 24px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Ensures the icon sizes match the button text perfectly */
+.catbutton i {
+  font-size: 18px; 
+  line-height: 1;
+}
+
         table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
         td, th { border: 0px solid white; text-align: left; padding: 8px; border-bottom: 1px solid black; }
         h1 { font-size: 30px; font-weight: bold; margin-top: 20px; }
@@ -111,7 +133,13 @@
                         <tr><td><b>Description</b></td><td>${obj.description}</td></tr>
                         <tr><td><b>Date</b></td><td>${obj.date ? `${obj.date.day}.${obj.date.month}.${obj.date.year}` : 'N/A'}</td></tr>
                         <tr><td><b>Extent</b></td><td>${obj.extent}</td></tr>
-                    </table>
+                    </table><button class="catbutton">
+  <i class="fa fa-envelope-o"></i> Email catalogue entry
+</button>
+
+<button class="catbutton">
+  <i class="fa fa-print"></i> Print catalogue entry
+</button>
                 `;
             });
             document.getElementById("item").innerHTML = htmlContent;
