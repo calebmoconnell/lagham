@@ -139,6 +139,14 @@
             });
         }
 
+        // Function to process manual reference lookups
+        function searchReference() {
+            const refValue = document.getElementById('lname').value.trim();
+            if (refValue) {
+                window.location.search = `?ref=${encodeURIComponent(refValue)}`;
+            }
+        }
+
         fetch(dataUrl)
         .then(response => {
             if (!response.ok) {
@@ -154,7 +162,12 @@
             const matchedItems = allItems.filter(item => item.ref === targetRef);
 
             if (!targetRef) {
-                document.getElementById("item").innerHTML = "<p>No reference specified in the URL. Please add a ?ref= query parameter.</p>";
+                document.getElementById("item").innerHTML = `
+                    <h6>Welcome to the catalogue of 1st Lagham Scout Group's Archives</h6>
+                    <p>If you now the reference of the record you're looking for, enter it in the box below to go directly to it.</p>
+                    <input type="text" id="lname" name="lname"> <input type="submit" value="Go to record &#8594;" onclick="searchReference()">
+                    <p>Otherwise, browse all records <a href="">here</a>.</p>
+                `;
                 return;
             }
 
@@ -174,7 +187,7 @@
 
                 htmlContent += `
                     <p style="margin-bottom: 24px;">
-                        <a href="#" onclick="backToPrevious(); return false;">← Back to previous page</a>
+                        <a href="#" onclick="backToPrevious(); return false;" style="text-decoration: none;">← Back to previous page</a>
                     </p>
                     <p>
                         <a href='#'>Browse</a> / <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='#'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
@@ -186,7 +199,7 @@
                         <tr><td><b>Date</b></td><td>${obj.date ? `${obj.date.day}.${obj.date.month}.${obj.date.year}` : 'N/A'}</td></tr>
                         <tr><td><b>Extent</b></td><td>${obj.extent}</td></tr>
                     </table></br>
-                    
+                     
                     <button class="catbutton" onclick="copyPermalink('${escapedRef}', this)">
                         <i class="fa fa-link"></i> Copy permalink
                     </button>
