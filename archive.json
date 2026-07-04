@@ -1,17 +1,21 @@
-{"Obj1": {
-  "group":"Lagham",
-  "category":"minutes",
-  "ref":"L/1986/MIN/1",
-  "condition":"fragile",
-  "date": {
-  "dayofweek":"Monday",
-  "day":"10",
-  "month":"6",
-  "year":"1986",
-  "time":"2015"
-  },
-  "title":"Minutes of 1st Lagham (Godstone) Scout Group Executive Meeting",
-  "description":"Minutes of a meeting of the 1st Lagham Executive Committee held on 10th June 1986.",
-  "transcription":"0",
-  "extent":"4 pages plus attached note"
-}}
+{
+"L": {
+    "MIN": {
+        "1986": {
+            "1": {
+                  "subject":"Lagham",
+                  "category":"minutes",
+                  "ref":"L/MIN/1986/1",
+                  "condition":"fragile",
+                  "date": {
+                    "day":"10",
+                    "month":"06",
+                    "year":"1986"
+                  },
+                  "title":"Minutes of 1st Lagham (Godstone) Scout Group Executive Meeting",
+                  "description":"Minutes of a meeting of the 1st Lagham Executive Committee held on 10th June 1986.",
+                  "transcription":"0",
+                  "extent":"4 pages plus attached note",
+                  "format":"document",
+                  "scan":"0"
+}}}}}
