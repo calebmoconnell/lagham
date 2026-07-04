@@ -1,6 +1,8 @@
 {
   "Browse": {
-    "Village": {},
+    "V": {
+      "folder_title": "Village Records"
+    },
     "Sc": {
       "folder_title": "Scouting",
       "ref": "Sc",
