@@ -4,30 +4,29 @@
     <title>1st Lagham (Godstone) Scout Group Archives</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-    .catbutton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px; /* Consistent space between icon and text */
+        .catbutton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Consistent space between icon and text */
 
-  /* Visual styling */
-  padding: 12px 24px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-}
+            /* Visual styling */
+            padding: 12px 24px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
 
-/* Ensures the icon sizes match the button text perfectly */
-.catbutton i {
-  font-size: 18px; 
-  line-height: 1;
-}
+        /* Ensures the icon sizes match the button text perfectly */
+        .catbutton i {
+            font-size: 18px; 
+            line-height: 1;
+        }
 
         table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
         td, th { border: 0px solid white; text-align: left; padding: 8px; border-bottom: 1px solid black; }
@@ -41,6 +40,12 @@
         nav ul { list-style-type: none; padding: 0; }
         section::after { content: ""; display: table; clear: both; }
         footer { padding: 20px; text-align: center; border-top: 1px solid #ccc; margin-top: 20px; }
+        
+        /* Search elements styling */
+        #fname { padding: 6px 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; }
+        #searchSubmit { padding: 6px 12px; font-size: 16px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background-color: #f0f0f0; }
+        #searchSubmit:hover { background-color: #e0e0e0; }
+
         @media (max-width: 600px) { nav, article { width: 100%; float: none; } }
 
         /* Print styles: Hide everything except the article layout content */
@@ -111,66 +116,87 @@
             window.print();
         }
 
-        fetch(dataUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok " + response.statusText);
+        // Function to handle reference form submission
+        function navigateToRecord() {
+            const refValue = document.getElementById("fname").value.trim();
+            if (refValue) {
+                window.location.search = `?ref=${encodeURIComponent(refValue)}`;
             }
-            return response.json();
-        })
-        .then(data => {
-            // Recursively flatten the nested structure to find all items
-            const allItems = extractItems(data);
-            
-            // 2. Filter down to the specific item requested via the URL parameter
-            // If no ref is provided in the URL, it defaults to showing nothing or a notice.
-            const matchedItems = allItems.filter(item => item.ref === targetRef);
+        }
 
-            if (!targetRef) {
-                document.getElementById("item").innerHTML = "<p>No reference specified in the URL. Please add a ?ref= query parameter.</p>";
-                return;
+        // Catch enter key on input field
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                navigateToRecord();
             }
+        }
 
-            if (matchedItems.length === 0) {
-                document.getElementById("item").innerHTML = `<p>No archive records found matching reference: <b>${targetRef}</b></p>`;
-                return;
-            }
+        // If no reference is provided, instantly update the placeholder layout without waiting for a fetch
+        if (!targetRef) {
+            document.getElementById("item").innerHTML = `
+                <h6>Welcome to the 1st Lagham Scouts archives catalogue</h6>
+                <p>If you know the reference of the record you're looking for, enter it in the box below to go straight to it.</p>
+                <input type="text" id="fname" name="fname" onkeypress="handleKeyPress(event)"> 
+                <input type="submit" id="searchSubmit" value="Go to record &#8594;" onclick="navigateToRecord()">
+                <p>Otherwise, browse all records <a href="#">here</a>.</p>
+                <p>If you can't find what you're looking for, please <a href="#">get in contact</a>.</p>
+            `;
+        } else {
+            fetch(dataUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok " + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Recursively flatten the nested structure to find all items
+                const allItems = extractItems(data);
+                
+                // Filter down to the specific item requested via the URL parameter
+                const matchedItems = allItems.filter(item => item.ref === targetRef);
 
-            let htmlContent = "";
-            matchedItems.forEach(obj => {
-                const displayCategory = obj.category ? obj.category.charAt(0).toUpperCase() + obj.category.slice(1) : "";
-                const entryId = obj.ref ? obj.ref.split('/').pop() : "";
+                if (matchedItems.length === 0) {
+                    document.getElementById("item").innerHTML = `<p>No archive records found matching reference: <b>${targetRef}</b></p>`;
+                    return;
+                }
 
-                // Escape quotes safely for inline JS triggers
-                const escapedTitle = obj.title.replace(/'/g, "\\'");
+                let htmlContent = "";
+                matchedItems.forEach(obj => {
+                    const displayCategory = obj.category ? obj.category.charAt(0).toUpperCase() + obj.category.slice(1) : "";
+                    const entryId = obj.ref ? obj.ref.split('/').pop() : "";
 
-                htmlContent += `
-                    <p>
-                        <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='#'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
-                    </p>
-                    <h1><i class='fa fa-file-text-o'></i> ${obj.title}</h1>
-                    <table>
-                        <tr><td><b>Reference Number</b></td><td>${obj.ref}</td></tr>
-                        <tr><td><b>Description</b></td><td>${obj.description}</td></tr>
-                        <tr><td><b>Date</b></td><td>${obj.date ? `${obj.date.day}.${obj.date.month}.${obj.date.year}` : 'N/A'}</td></tr>
-                        <tr><td><b>Extent</b></td><td>${obj.extent}</td></tr>
-                    </table></br>
-                    
-                    <button class="catbutton" onclick="emailEntry('${escapedTitle}')">
-                        <i class="fa fa-envelope-o"></i> Email catalogue entry
-                    </button>
+                    // Escape quotes safely for inline JS triggers
+                    const escapedTitle = obj.title.replace(/'/g, "\\'");
 
-                    <button class="catbutton" onclick="printEntry()">
-                        <i class="fa fa-print"></i> Print catalogue entry
-                    </button>
-                `;
+                    htmlContent += `
+                        <p>
+                            <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='#'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
+                        </p>
+                        <h1><i class='fa fa-file-text-o'></i> ${obj.title}</h1>
+                        <table>
+                            <tr><td><b>Reference Number</b></td><td>${obj.ref}</td></tr>
+                            <tr><td><b>Description</b></td><td>${obj.description}</td></tr>
+                            <tr><td><b>Date</b></td><td>${obj.date ? `${obj.date.day}.${obj.date.month}.${obj.date.year}` : 'N/A'}</td></tr>
+                            <tr><td><b>Extent</b></td><td>${obj.extent}</td></tr>
+                        </table></br>
+                        
+                        <button class="catbutton" onclick="emailEntry('${escapedTitle}')">
+                            <i class="fa fa-envelope-o"></i> Email catalogue entry
+                        </button>
+
+                        <button class="catbutton" onclick="printEntry()">
+                            <i class="fa fa-print"></i> Print catalogue entry
+                        </button>
+                    `;
+                });
+                document.getElementById("item").innerHTML = htmlContent;
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+                document.getElementById("item").innerHTML = "<p>Error loading archive data.</p>";
             });
-            document.getElementById("item").innerHTML = htmlContent;
-        })
-        .catch(error => {
-            console.error("Error fetching data:", error);
-            document.getElementById("item").innerHTML = "<p>Error loading archive data.</p>";
-        });
+        }
     </script>
 
     <footer>
