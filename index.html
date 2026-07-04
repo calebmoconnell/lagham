@@ -31,6 +31,14 @@
         line-height: 1;
     }
 
+    /* Tree View Styles */
+    .tree-root { list-style-type: none; padding-left: 0; margin-top: 15px; }
+    .tree-node { list-style-type: none; margin-left: 20px; margin-top: 6px; }
+    .folder-link { text-decoration: none; font-weight: bold; color: #333; display: inline-block; padding: 4px 0; }
+    .folder-link:hover { color: #0056b3; }
+    .toggle-icon { display: inline-block; width: 15px; font-family: monospace; }
+    .file-item { margin-left: 24px; padding: 4px 0; }
+
     table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
     td, th { border: 0px solid white; text-align: left; padding: 8px; border-bottom: 1px solid black; }
     h1 { font-size: 30px; font-weight: bold; margin-top: 20px; }
@@ -124,7 +132,6 @@
         }
 
         function copyPermalink(ref, button) {
-            // Updated permalink generator to match the active host or default to GitHub Pages
             const baseUrl = window.location.origin + window.location.pathname;
             const permalink = `${baseUrl}?ref=${encodeURIComponent(ref)}`;
             navigator.clipboard.writeText(permalink).then(() => {
@@ -147,6 +154,52 @@
             }
         }
 
+        // --- NEW: Interactive Tree View Logic --- //
+        window.toggleVisibility = function(event, element) {
+            event.preventDefault();
+            const nextUl = element.nextElementSibling;
+            const icon = element.querySelector('.toggle-icon');
+            if (nextUl && nextUl.tagName === 'UL') {
+                if (nextUl.style.display === 'none') {
+                    nextUl.style.display = 'block';
+                    if (icon) icon.innerHTML = '&#9662;'; // Down arrow
+                } else {
+                    nextUl.style.display = 'none';
+                    if (icon) icon.innerHTML = '&#9656;'; // Right arrow
+                }
+            }
+        };
+
+        function buildTreeHTML(node, keyName) {
+            if (node && typeof node === 'object') {
+                if (node.hasOwnProperty('ref') && node.hasOwnProperty('title')) {
+                    // It's a leaf node (individual file/record)
+                    return `<li class="tree-node file-item">
+                                <i class="fa fa-file-text-o" style="color: #777; margin-right: 5px;"></i>
+                                <strong><a href="?ref=${encodeURIComponent(node.ref)}">${node.ref}</a></strong>: 
+                                ${node.title} <i style="color: #555;">(${node.date && node.date.year ? node.date.year : 'Date Unknown'})</i>
+                            </li>`;
+                } else {
+                    // It's a directory/category node
+                    const displayName = keyName.charAt(0).toUpperCase() + keyName.slice(1);
+                    let html = `<li class="tree-node">
+                        <a href="#" class="folder-link" onclick="toggleVisibility(event, this)">
+                            <span class="toggle-icon">&#9656;</span> <i class="fa fa-folder-o" style="color: #e8b01e; margin-right: 5px;"></i> ${displayName}
+                        </a>
+                        <ul style="display: none; padding-left: 0; border-left: 1px dashed #ccc; margin-left: 7px;">`;
+                    for (let key in node) {
+                        if (node.hasOwnProperty(key)) {
+                            html += buildTreeHTML(node[key], key);
+                        }
+                    }
+                    html += `</ul></li>`;
+                    return html;
+                }
+            }
+            return '';
+        }
+        // ---------------------------------------- //
+
         fetch(dataUrl)
         .then(response => {
             if (!response.ok) {
@@ -155,30 +208,28 @@
             return response.json();
         })
         .then(data => {
-            // Recursively flatten the nested structure to find all items
+            // Recursively flatten the nested structure to find all items for searches/filters
             const allItems = extractItems(data);
             
-            // LOGIC 1: Browse All Records Page
+            // LOGIC 1: Browse All Records Page (Now an interactive Tree View)
             if (targetBrowse === "all") {
                 let htmlContent = `
                     <p style="margin-bottom: 24px;">
                         <a href="?" style="text-decoration: none;">← Back to Home</a>
                     </p>
-                    <h1>Browse All Archive Records</h1>
-                    <ul style="line-height: 1.8;">
+                    <h1>Browse Archive Hierarchy</h1>
+                    <ul class="tree-root" style="line-height: 1.8;">
                 `;
                 
-                if (allItems.length === 0) {
+                if (Object.keys(data).length === 0) {
                     htmlContent += `<li>No records found.</li>`;
                 } else {
-                    allItems.forEach(obj => {
-                        htmlContent += `
-                            <li>
-                                <strong><a href="?ref=${encodeURIComponent(obj.ref)}">${obj.ref}</a></strong>: 
-                                ${obj.title} <i>(${obj.date ? obj.date.year : 'Date Unknown'})</i>
-                            </li>
-                        `;
-                    });
+                    // Start building the tree from the root of the JSON
+                    for (let key in data) {
+                        if (data.hasOwnProperty(key)) {
+                            htmlContent += buildTreeHTML(data[key], key);
+                        }
+                    }
                 }
                 
                 htmlContent += `</ul>`;
@@ -327,7 +378,7 @@
     </script>
 
     <footer>
-        <p>Created by Caleb O_Connell; <i> last updated 4th July ᴀ.ᴅ. 2026</i></p>
+        <p>Created by Caleb O'Connell; <i> last updated 4th July ᴀ.ᴅ. 2026</i></p>
     </footer>
 </body>
 </html>
