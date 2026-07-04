@@ -42,6 +42,12 @@
         section::after { content: ""; display: table; clear: both; }
         footer { padding: 20px; text-align: center; border-top: 1px solid #ccc; margin-top: 20px; }
         @media (max-width: 600px) { nav, article { width: 100%; float: none; } }
+
+        /* Print styles: Hide everything except the article layout content */
+        @media print {
+            body, article { padding: 0; margin: 0; width: 100%; float: none; }
+            header, nav, footer, .catbutton { display: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -93,6 +99,17 @@
             return results;
         }
 
+        // Functions to process buttons safely
+        function emailEntry(title) {
+            const subject = `${title} (1st Lagham Scout Group Archives)`;
+            const body = `View this catalogue entry here: ${window.location.href}`;
+            window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function printEntry() {
+            window.print();
+        }
+
         fetch(dataUrl)
         .then(response => {
             if (!response.ok) {
@@ -123,6 +140,9 @@
                 const displayCategory = obj.category ? obj.category.charAt(0).toUpperCase() + obj.category.slice(1) : "";
                 const entryId = obj.ref ? obj.ref.split('/').pop() : "";
 
+                // Escape quotes safely for inline JS triggers
+                const escapedTitle = obj.title.replace(/'/g, "\\'");
+
                 htmlContent += `
                     <p>
                         <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='#'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
@@ -133,13 +153,15 @@
                         <tr><td><b>Description</b></td><td>${obj.description}</td></tr>
                         <tr><td><b>Date</b></td><td>${obj.date ? `${obj.date.day}.${obj.date.month}.${obj.date.year}` : 'N/A'}</td></tr>
                         <tr><td><b>Extent</b></td><td>${obj.extent}</td></tr>
-                    </table></br><button class="catbutton">
-  <i class="fa fa-envelope-o"></i> Email catalogue entry
-</button>
+                    </table></br>
+                    
+                    <button class="catbutton" onclick="emailEntry('${escapedTitle}')">
+                        <i class="fa fa-envelope-o"></i> Email catalogue entry
+                    </button>
 
-<button class="catbutton">
-  <i class="fa fa-print"></i> Print catalogue entry
-</button>
+                    <button class="catbutton" onclick="printEntry()">
+                        <i class="fa fa-print"></i> Print catalogue entry
+                    </button>
                 `;
             });
             document.getElementById("item").innerHTML = htmlContent;
