@@ -37,11 +37,7 @@
               "category": "Newsletter",
               "ref": "Sc/G/News/1982/JAN",
               "condition": "Water damaged; stapled; torn",
-              "date": {
-                "day": "",
-                "month": "01",
-                "year": 1982
-              },
+              "date": "01/1982",
               "title": "Lagham News",
               "description": "1st Lagham Newsletter for January 1982.",
               "transcription": 0,
