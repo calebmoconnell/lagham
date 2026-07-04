@@ -4,7 +4,7 @@
     "Sc": {
       "G": {
         "Misc": {
-          "LET": {
+          "NOT": {
             "subject": "Lagham",
             "category": "Miscellaneous",
             "ref": "Sc/G/Misc/NOT",
