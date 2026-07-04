@@ -1,31 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 30px;
-        }
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-        td, th {
-            border: 0px solid white;
-            text-align: left;
-            padding: 8px;
-            border-bottom: 1px solid black;
-        }
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    td, th {
+        border: 0px solid white;
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid black;
+    }
         
-        h1 {
-            font-size: 30px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-    </style>
+    h1 {
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    
+    h6 {
+      font-size:18px;
+      margin-bottom: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Style the header */
+    header {
+      padding: 30px;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    /* Fixed Layout: Article floats left, Nav floats right */
+    article {
+      float: left;
+      padding: 20px;
+      width: 70%;
+    }
+
+    nav {
+      float: right;
+      width: 30%;
+      padding: 20px;
+    }
+
+    /* Style the list inside the menu */
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    /* Clear floats after the columns so the footer doesn't overlap */
+    section::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Style the footer */
+    footer {
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #ccc;
+      margin-top: 20px;
+    }
+
+    /* Responsive layout - stacks columns on mobile devices */
+    @media (max-width: 600px) {
+      nav, article {
+        width: 100%;
+        float: none;
+      }
+    }
+</style>
 </head>
 <body>
 
-<div id="demo">Loading data...</div>
+<header>
+  <h2>1st Lagham (Godstone) Scout Group Archives</h2>
+</header>
+
+<section>
+  <article>
+    <div id="item">Loading data...</div>
+  </article>
+
+  <nav>
+    <ul>
+      <li><h6>Navigation</h6></li>
+      <li style="text-indent: 10%;"><a href="#">Home</a></li>                    
+      <li style="text-indent: 10%;"><a href="#">Contact</a></li>
+      <li style="text-indent: 10%;"><a href="#">Development Updates</a></li>
+    </ul>
+    
+    <h6>1st Lagham Scout Group</h6>
+    <p>1st Lagham (Godstone) Scout Group was founded in 1936 in the village of South Godstone, Surrey, which was known before the arrival of the railways and "Godstone" station as Lagham. Initially known as 2nd Godstone, the Group's name was changed to assert its independence from Godstone. This is reflected in the Group motto: <i>Nulli Secundus</i>. </p>
+    <p>This page was set up to catalogue the records and archives of the Group, which cover the scouting County (Surrey) and District (East Surrey), the Group itself and the village of South Godstone.</p>
+    <p>Records are being gradually added; please see the <i>Development Updates</i> section for further information.</p>
+  </nav>
+</section>
 
 <script>
 const url = "https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json";
@@ -39,12 +129,9 @@ fetch(url)
     })
     .then(data => {
         let htmlContent = "";
-
-        // Convert data into an array if it's a single object or a dictionary of objects
         const items = Array.isArray(data) ? data : Object.values(data);
 
         items.forEach(item => {
-            // Handle cases where the item might be wrapped inside a parent key (like "ObjOne")
             const obj = item.ObjOne ? item.ObjOne : item;
 
             htmlContent += `
@@ -58,13 +145,17 @@ fetch(url)
             `;
         });
 
-        document.getElementById("demo").innerHTML = htmlContent;
+        document.getElementById("item").innerHTML = htmlContent;
     })
     .catch(error => {
         console.error("Error fetching data:", error);
-        document.getElementById("demo").innerHTML = "<p>Error loading archive data.</p>";
+        document.getElementById("item").innerHTML = "<p>Error loading archive data.</p>";
     });
 </script>
+
+<footer>
+  <p>Created by Caleb O'Connell; <i> last updated 4th July ᴀ.ᴅ. 2026</i></p>
+</footer>
 
 </body>
 </html>
