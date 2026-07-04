@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        td, th {
+            border: 0px solid white;
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid black;
+        }
+        
+        h1 {
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo">Loading data...</div>
+
+<script>
+const url = "https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json";
+
+fetch(url)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        let htmlContent = "";
+
+        // Convert data into an array if it's a single object or a dictionary of objects
+        const items = Array.isArray(data) ? data : Object.values(data);
+
+        items.forEach(item => {
+            // Handle cases where the item might be wrapped inside a parent key (like "ObjOne")
+            const obj = item.ObjOne ? item.ObjOne : item;
+
+            htmlContent += `
+                <h1><i class='fa fa-file-text-o'></i> ${obj.title}</h1>
+                <table>
+                    <tr><td><b>Reference Number</b></td><td>${obj.ref}</td></tr>
+                    <tr><td><b>Description</b></td><td>${obj.description}</td></tr>
+                    <tr><td><b>Date</b></td><td>${obj.date.day}.${obj.date.month}.${obj.date.year}</td></tr>
+                    <tr><td><b>Extent</b></td><td>${obj.extent}</td></tr>
+                </table>
+            `;
+        });
+
+        document.getElementById("demo").innerHTML = htmlContent;
+    })
+    .catch(error => {
+        console.error("Error fetching data:", error);
+        document.getElementById("demo").innerHTML = "<p>Error loading archive data.</p>";
+    });
+</script>
+
+</body>
+</html>
