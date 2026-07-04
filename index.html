@@ -51,7 +51,7 @@
     /* Print styles: Hide everything except the article layout content */
     @media print {
         body, article { padding: 0; margin: 0; width: 100%; float: none; }
-        header, nav, footer, .catbutton, .no-print { display: none !important; }
+        header, nav, footer, .catbutton { display: none !important; }
     }
     </style>
 </head>
@@ -84,9 +84,10 @@
     <script>
         const dataUrl = "https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json";
 
-        // 1. Get the 'ref' parameter from the current page's URL
+        // 1. Get the parameters from the current page's URL
         const urlParams = new URLSearchParams(window.location.search);
         const targetRef = urlParams.get('ref'); 
+        const targetYear = urlParams.get('year');
 
         // Helper function to recursively find archive entry objects within the nested JSON
         function extractItems(node) {
@@ -158,8 +159,65 @@
             // Recursively flatten the nested structure to find all items
             const allItems = extractItems(data);
             
-            // 2. Filter down to the specific item requested via the URL parameter
-            const matchedItems = allItems.filter(item => item.ref === targetRef);
+            // Check if year page is requested, otherwise check ref page, otherwise home page
+            if (targetYear === "1986") {
+                const matchedItems = allItems.filter(item => item.date && String(item.date.year) === "1986");
+
+                if (matchedItems.length === 0) {
+                    document.getElementById("item").innerHTML = `
+                        <p style="margin-bottom: 24px;">
+                            <a href="#" onclick="backToPrevious(); return false;" style="text-decoration: none;">← Back to previous page</a>
+                        </p>
+                        <p>No archive records found matching year: <b>1986</b></p>
+                    `;
+                    return;
+                }
+
+                let htmlContent = `
+                    <p style="margin-bottom: 24px;">
+                        <a href="#" onclick="backToPrevious(); return false;" style="text-decoration: none;">← Back to previous page</a>
+                    </p>
+                    <p>
+                        <a href='#'>Browse</a> / 1986
+                    </p>
+                    <h1>1986</h1>
+                `;
+
+                matchedItems.forEach(obj => {
+                    const displayCategory = obj.category ? obj.category.charAt(0).toUpperCase() + obj.category.slice(1) : "";
+                    const entryId = obj.ref ? obj.ref.split('/').pop() : "";
+                    const escapedTitle = obj.title.replace(/'/g, "\\'");
+                    const escapedRef = obj.ref.replace(/'/g, "\\'");
+
+                    htmlContent += `
+                        <h3 style="margin-top: 40px;"><i class='fa fa-file-text-o'></i> ${obj.title}</h3>
+                        <p>
+                            <a href='#'>Browse</a> / <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='?year=1986'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
+                        </p>
+                        <table>
+                            <tr><td><b>Reference Number</b></td><td>${obj.ref}</td></tr>
+                            <tr><td><b>Description</b></td><td>${obj.description}</td></tr>
+                            <tr><td><b>Date</b></td><td>${obj.date ? `${obj.date.day}.${obj.date.month}.${obj.date.year}` : 'N/A'}</td></tr>
+                            <tr><td><b>Extent</b></td><td>${obj.extent}</td></tr>
+                        </table></br>
+                         
+                        <button class="catbutton" onclick="copyPermalink('${escapedRef}', this)">
+                            <i class="fa fa-link"></i> Copy permalink
+                        </button>
+
+                        <button class="catbutton" onclick="emailEntry('${escapedTitle}')">
+                            <i class="fa fa-envelope-o"></i> Email record
+                        </button>
+
+                        <button class="catbutton" onclick="printEntry()">
+                            <i class="fa fa-print"></i> Print record
+                        </button>
+                        <hr style="border: 0; border-top: 1px dashed #ccc; margin-top: 30px;">
+                    `;
+                });
+                document.getElementById("item").innerHTML = htmlContent;
+                return;
+            }
 
             if (!targetRef) {
                 document.getElementById("item").innerHTML = `
@@ -170,6 +228,8 @@
                 `;
                 return;
             }
+
+            const matchedItems = allItems.filter(item => item.ref === targetRef);
 
             if (matchedItems.length === 0) {
                 document.getElementById("item").innerHTML = `<p>No archive records found matching reference: <b>${targetRef}</b></p>`;
@@ -186,11 +246,11 @@
                 const escapedRef = obj.ref.replace(/'/g, "\\'");
 
                 htmlContent += `
-                    <p class="no-print" style="margin-bottom: 24px;">
+                    <p style="margin-bottom: 24px;">
                         <a href="#" onclick="backToPrevious(); return false;" style="text-decoration: none;">← Back to previous page</a>
                     </p>
                     <p>
-                        <a href='#'>Browse</a> / <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='#'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
+                        <a href='#'>Browse</a> / <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='?year=${obj.date ? obj.date.year : ''}'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
                     </p>
                     <h1><i class='fa fa-file-text-o'></i> ${obj.title}</h1>
                     <table>
