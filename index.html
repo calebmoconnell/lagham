@@ -101,11 +101,9 @@
             margin-right: 15px;
             font-size: 0.95em;
             flex-shrink: 0;
-            /* Added padding to separate it slightly from the clickable link */
             padding-right: 10px; 
         }
 
-        /* New styles for making ONLY the title clickable */
         .item-title-link {
             text-decoration: none;
             color: var(--link-color);
@@ -210,6 +208,10 @@
             
             for (let i = 0; i < path.length; i++) {
                 accumulatedPath += (i === 0 ? '' : '/') + path[i];
+                
+                // Do not render the word "Browse" in the visual breadcrumb trail
+                if (path[i] === 'Browse') continue;
+
                 html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${path[i]}</a>`;
             }
             
@@ -220,12 +222,17 @@
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
             
-            const isArchiveItem = data && typeof data === 'object' && 'category' in data;
+            // Check if the current level is an archive item (file)
+            const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
             if (isArchiveItem) {
                 let html = `<div class="record-view">`;
                 for (const [key, value] of Object.entries(data)) {
+                    // Hide metadata from the actual record display
                     if (key === 'category' || key === 'folder_title') continue; 
+                    
+                    // NEW: Hide transcription or scan if their value is exactly "0" (or number 0)
+                    if ((key === 'transcription' || key === 'scan') && String(value) === "0") continue;
                     
                     html += `<div class="record-field">
                         <strong>${key}:</strong> <span>${value}</span>
@@ -253,20 +260,26 @@
                 let displayTitle = key; 
 
                 if (childNode && typeof childNode === 'object') {
-                    if ('category' in childNode) {
+                    // If it's a file, prioritize 'title', then fallback to 'category'
+                    if ('category' in childNode || 'title' in childNode) {
                         icon = '📄';
-                        displayTitle = childNode.category;
-                    } else if ('folder_title' in childNode) {
+                        displayTitle = childNode.title || childNode.category || key;
+                    } 
+                    // If it's a folder, use 'folder_title'
+                    else if ('folder_title' in childNode) {
                         icon = '📁';
                         displayTitle = childNode.folder_title;
                     }
                 }
                 
-                // Construct format: Icon | Ref Path (Not clickable) | Title (Clickable)
+                // Strip "Browse" from the plain-text path for display purposes
+                const displayChildPath = childPath.split('/').filter(segment => segment !== 'Browse').join('/');
+
+                // Construct format: Icon | Ref Path (Filtered & Not clickable) | Title (Clickable)
                 html += `
                     <div class="list-item">
                         <span class="icon">${icon}</span>
-                        <span class="ref-path">${childPath}</span>
+                        <span class="ref-path">${displayChildPath}</span>
                         <a href="?ref=${encodeURIComponent(childPath)}" class="item-title-link">
                             <strong class="item-title">${displayTitle}</strong>
                         </a>
