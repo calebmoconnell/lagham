@@ -112,6 +112,15 @@
             window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
+        // Added back function logic
+        function backToPrevious() {
+            if (document.referrer.includes(window.location.hostname)) {
+                window.history.back();
+            } else {
+                window.location.href = '?';
+            }
+        }
+
         function printEntry() {
             window.print();
         }
@@ -164,12 +173,12 @@
                 const escapedRef = obj.ref.replace(/'/g, "\\'");
 
                 htmlContent += `
-                    <p style="margin-bottom: 5px;">
-                        <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='#'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
+                    <p style="margin-bottom: 24px;">
+                        <a href="#" onclick="backToPrevious(); return false;">← Back to previous page</a>
                     </p>
-                    <div style="margin-bottom: 15px;">
-                        <a href="javascript:history.back()" style="text-decoration: none;">&#8592; Back to previous page</a>
-                    </div>
+                    <p>
+                        <a href='#'>Browse</a> / <a href='#'>${obj.subject || 'Archive'}</a> / <a href='#'>${displayCategory}</a> / <a href='#'>${obj.date ? obj.date.year : ''}</a> / ${entryId}
+                    </p>
                     <h1><i class='fa fa-file-text-o'></i> ${obj.title}</h1>
                     <table>
                         <tr><td><b>Reference Number</b></td><td>${obj.ref}</td></tr>
