@@ -51,7 +51,7 @@
     /* Print styles: Hide everything except the article layout content */
     @media print {
         body, article { padding: 0; margin: 0; width: 100%; float: none; }
-        header, nav, footer, .catbutton { display: none !important; }
+        header, nav, footer, .catbutton, .no-print { display: none !important; }
     }
     </style>
 </head>
@@ -186,7 +186,7 @@
                 const escapedRef = obj.ref.replace(/'/g, "\\'");
 
                 htmlContent += `
-                    <p style="margin-bottom: 24px;">
+                    <p class="no-print" style="margin-bottom: 24px;">
                         <a href="#" onclick="backToPrevious(); return false;" style="text-decoration: none;">← Back to previous page</a>
                     </p>
                     <p>
