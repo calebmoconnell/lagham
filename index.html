@@ -66,7 +66,6 @@
             border-radius: 8px;
             box-sizing: border-box;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            /* Borders removed as requested */
         }
 
         /* Sidebar Styling */
@@ -78,7 +77,6 @@
             box-sizing: border-box;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             height: fit-content;
-            /* Borders removed as requested */
         }
 
         .sidebar h3 {
@@ -500,7 +498,8 @@
             
             let html = `<h1>Development Updates</h1>`;
             
-            html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Whenever new records are added or updates are made to the site, a note will be placed here.</p>`;
+            /* Added font-style: italic here */
+            html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; font-style: italic;">Whenever new records are added or updates are made to the site, a note will be placed here.</p>`;
             
             html += `
                 <div style="margin-top: 30px;">
@@ -660,7 +659,7 @@
                 let displayTitle = key; 
 
                 if (childNode && typeof childNode === 'object') {
-                    if ('category' in childNode || 'title' in childNode) {
+                    if ('category' in data || 'title' in childNode) {
                         icon = '<i class="fa fa-file-text-o" style="color: black; font-size: 1.4em;"></i>';
                         displayTitle = childNode.title || childNode.category || key;
                     } 
