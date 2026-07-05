@@ -13,14 +13,14 @@
 
     <style>
         :root {
-            --bg-color: #f4f7f6;
+            --bg-color: #ffffff; /* Updated to white */
             --text-color: #333;
-            --link-color: #114b76; /* Updated Link Color */
+            --link-color: #114b76;
             --header-footer-bg: #ffffff;
         }
 
         body {
-            font-family: 'PT Serif', serif; /* Updated Font Family */
+            font-family: 'PT Serif', serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
@@ -66,6 +66,7 @@
             border-radius: 8px;
             box-sizing: border-box;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border: 1px solid #eee; /* Added a subtle border so it doesn't vanish against the white background */
         }
 
         /* Sidebar Styling */
@@ -77,6 +78,7 @@
             box-sizing: border-box;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             height: fit-content;
+            border: 1px solid #eee; /* Added a subtle border so it doesn't vanish against the white background */
         }
 
         .sidebar h3 {
@@ -226,7 +228,6 @@
             font-family: inherit;
         }
 
-        /* Updated Button Styling */
         .ref-search-container button {
             padding: 10px 20px;
             background-color: white;
@@ -319,6 +320,10 @@
                 box-shadow: none;
                 margin: 0;
                 padding: 0;
+                border: none;
+            }
+            aside.sidebar {
+                border: none;
             }
             #breadcrumbs {
                 display: none;
