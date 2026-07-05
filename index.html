@@ -332,7 +332,7 @@
         </main>
 
         <aside class="sidebar no-print">
-            <h3><i class="fa fa-compass"></i> Navigation</h3>
+            <h3>Navigation</h3>
             <ul>
                 <li><a href="?ref=">Home</a></li>
                 <li><a href="?ref=Browse">Browse Catalogue</a></li>
@@ -340,12 +340,12 @@
                 <li><a href="?ref=Development-Updates">Development Updates</a></li>
             </ul>
             
-            <h3 style="margin-top: 25px;"><i class="fa fa-bookmark"></i> 1st Lagham Scout Group</h3>
+            <h3 style="margin-top: 25px;">1st Lagham Scout Group</h3>
             <p>1st Lagham (Godstone) Scout Group was founded in 1936 in the village of South Godstone, Surrey, which was known before the arrival of the railways as Lagham. Initially known as 2nd Godstone, the Group's name was changed to assert its independence from Godstone. This is reflected in the Group motto: Nulli Secundus.</p>
             <p>This page was set up to catalogue the records and archives of the Group, which cover the scouting County (Surrey) and District (East Surrey), the Group itself and the village of South Godstone.</p>
             <p>Records are being gradually added; please see the Development Updates section for further information.</p>
             
-            <h3 style="margin-top: 25px;"><i class="fa fa-globe"></i> Group Website</h3>
+            <h3 style="margin-top: 25px;">Group Website</h3>
             <p>For further information about the Group's current activities, please see the main website:</p>
             <p style="margin-bottom: 0;"><a href="https://www.1stlaghamscouts.org.uk/" target="_blank" style="word-break: break-all;">https://www.1stlaghamscouts.org.uk/</a></p>
         </aside>
@@ -377,6 +377,7 @@
             }
         }
 
+        // Recursively gathers all paths pointing directly to individual items (leaves)
         function getAllItemPaths(node, currentPath = '') {
             let paths = [];
             if (node && typeof node === 'object') {
@@ -393,6 +394,7 @@
             return paths;
         }
 
+        // Triggers navigation to a randomly selected record
         function goToRandomRecord() {
             if (allItemPaths.length > 0) {
                 const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
@@ -400,6 +402,7 @@
             }
         }
 
+        // Handles the Direct Reference input search box
         function goToDirectRef() {
             const inputField = document.getElementById('directRefInput');
             if (inputField && inputField.value.trim() !== "") {
