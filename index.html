@@ -381,6 +381,14 @@
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
         let allItemPaths = []; 
 
+        // Helper function: Strictly encodes strings so they don't break inline HTML attributes (like single quotes)
+        function safeEncode(str) {
+            if (!str) return "";
+            return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
+                return '%' + c.charCodeAt(0).toString(16);
+            });
+        }
+
         // Function to handle opening transcriptions dynamically in a new tab
         function openTranscription(encodedTitle, encodedRef, encodedText) {
             const title = decodeURIComponent(encodedTitle);
@@ -714,10 +722,11 @@
                         </tr>`;
 
                 if (data.transcription !== undefined && data.transcription !== null && data.transcription !== 0 && data.transcription !== "0") {
-                    // We encode the strings to prevent them from breaking our onclick syntax
-                    const encodedText = encodeURIComponent(data.transcription);
-                    const encodedTitle = encodeURIComponent(title);
-                    const encodedRef = encodeURIComponent(refNumber);
+                    
+                    // NEW: Pass the strings through safeEncode to escape single quotes, parentheses, etc.
+                    const encodedText = safeEncode(data.transcription);
+                    const encodedTitle = safeEncode(title);
+                    const encodedRef = safeEncode(refNumber);
                     
                     html += `
                         <tr>
