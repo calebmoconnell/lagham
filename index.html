@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1st Lagham (Godstone) Scout Group Archives</title>
+    <title>1st Lagham (Godstone) Scout Group_Archives</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -23,7 +23,7 @@
             color: var(--text-color);
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Ensures footer stays at bottom */
+            min-height: 100vh;
         }
 
         /* Header Styling */
@@ -32,7 +32,7 @@
             color: var(--text-color);
             padding: 20px 30px;
             text-align: center;
-            border-bottom: 1px solid #eee; /* Changed from box-shadow to match footer */
+            border-bottom: 1px solid #eee;
         }
 
         header .site-title {
@@ -44,15 +44,14 @@
 
         /* Main Content Container */
         main {
-            flex: 1; /* Pushes footer to the bottom */
+            flex: 1;
             width: 100%;
             max-width: 1000px;
             margin: 30px auto;
             background: white;
             padding: 30px;
             border-radius: 8px;
-            box-sizing: border-box; /* Prevents overflow with padding */
-            /* Removed box-shadow */
+            box-sizing: border-box;
         }
 
         /* Footer Styling */
@@ -90,7 +89,7 @@
             font-size: 0.9em;
         }
 
-        /* Headers - Ensuring 100% Consistency */
+        /* Headers */
         h1 {
             color: #2c3e50;
             font-size: 1.8em;
@@ -173,7 +172,7 @@
             font-family: inherit;
             display: inline-flex;
             align-items: center;
-            min-width: 160px; /* Helps prevent button resizing when text changes */
+            min-width: 160px;
             justify-content: center;
         }
 
@@ -198,7 +197,7 @@
             color: #155724;
         }
 
-        /* Print Styles - Hides buttons, breadcrumbs, and shadow during printing */
+        /* Print Styles */
         @media print {
             .no-print {
                 display: none !important;
@@ -230,7 +229,7 @@
     </main>
 
     <footer class="no-print">
-        <p>Created by Caleb O'Connell; <i>last updated 5th July ᴀ.ᴅ. 2026</i></p>
+        <p>Created by Caleb O'Connell; last updated 5th July ᴀ.ᴅ. 2026</p>
     </footer>
 
     <script>
@@ -272,7 +271,7 @@
 
         function renderBreadcrumbs(path) {
             const nav = document.getElementById('breadcrumbs');
-            let html = `<a href="?ref=">Archive Root</a>`;
+            let html = `<a href="?ref=">Home</a>`;
             let accumulatedPath = '';
             
             for (let i = 0; i < path.length; i++) {
@@ -290,11 +289,9 @@
             navigator.clipboard.writeText(text).then(() => {
                 const originalHtml = btnElement.innerHTML;
                 
-                // Change button appearance to show success
                 btnElement.innerHTML = '<i class="fa fa-check"></i> Link copied!';
                 btnElement.classList.add('success-state');
                 
-                // Revert back after 2 seconds
                 setTimeout(() => {
                     btnElement.innerHTML = originalHtml;
                     btnElement.classList.remove('success-state');
@@ -313,6 +310,23 @@
         function renderLayer(data, path) {
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
+
+            // 1. Render Welcome Screen for Root Path
+            if (currentPathString === '') {
+                let html = `<h1><i class='fa fa-institution'></i> Welcome</h1>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">Welcome to the digital archives of the 1st Lagham (Godstone) Scout Group. This repository contains historical documents, photographs, records, and artifacts detailing our group's rich history. Please click below to begin browsing our catalogue.</p>`;
+                
+                html += `
+                    <div class="action-buttons no-print" style="border-top: none; padding-top: 10px; margin-top: 20px;">
+                        <button onclick="window.location.href='?ref=Browse'" style="background-color: var(--link-color); color: white; border: 1px solid #2980b9;">
+                            <i class="fa fa-folder-open" style="color: white;"></i> Browse Archives
+                        </button>
+                    </div>
+                `;
+                
+                content.innerHTML = html;
+                return;
+            }
             
             // Build the permalink specific to the exact JSON ref if available, else fallback to current string
             let referenceParam = data.ref ? `Browse/${data.ref}` : currentPathString;
@@ -333,7 +347,7 @@
 
             const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
-            // 1. Render Archive Item View
+            // 2. Render Archive Item View
             if (isArchiveItem) {
                 const title = data.title || data.category || 'Untitled Document';
                 const refNumber = data.ref || currentPathString;
@@ -401,14 +415,13 @@
                 return;
             }
 
-            // 2. Render Folder View
+            // 3. Render Folder View
             
             // Determine Consistent Header for Folders
             let displayHeader = 'Archive Root';
             let headerIcon = 'fa-archive';
 
             if (currentPathString !== '') {
-                // Fallback to the last segment of the path if a specific folder_title isn't provided
                 displayHeader = data.folder_title || path[path.length - 1];
                 headerIcon = 'fa-folder-open-o';
             }
