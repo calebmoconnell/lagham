@@ -4,7 +4,7 @@
       "folder_title": "Village Records"
     },
     "Sc": {
-      "folder_title": "Scouting",
+      "folder_title": "Scouting Records",
       "ref": "Sc",
       "G": {
         "folder_title": "Group Records",
@@ -77,11 +77,12 @@
             "format": "Document",
             "scan": 0
           },
-          "folder_title": "Group and Section Programmes",
+          "folder_title": "Group and Section Activity Programmes",
           "ref": "Sc/G/Prog"
         },
         "HIS": {
           "1": {
+            "folder_title": "File containing a history of the Group and associated Jubilee Programme",
             "ref": "Sc/G/HIS/1",
             "Hist": {
               "subject": "Lagham",
