@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1st Lagham (Godstone) Scout Group Archives</title>
+    <title>1st Lagham (Godstone) Scout Group_Archives</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -437,6 +437,9 @@
             font-family: inherit;
             transition: background-color 0.2s, color 0.2s;
         }
+        .header-controls a i, .header-controls button i {
+            margin-right: 8px;
+        }
         .header-controls a:hover, .header-controls button:hover {
             background-color: #114b76;
             color: white;
@@ -444,7 +447,7 @@
         .doc-container {
             max-width: 800px;
             margin: 40px auto;
-            padding: 0 40px; /* Large invisible margins */
+            padding: 0 40px;
         }
         .doc-title {
             font-size: 1.5em;
@@ -463,7 +466,7 @@
             margin-bottom: 30px;
         }
         .doc-content {
-            white-space: pre-wrap; /* Preserves formatting exactly as written in the JSON */
+            white-space: pre-wrap;
             line-height: 1.6;
         }
         @media print {
@@ -478,11 +481,11 @@
 </head>
 <body>
     <div class="header-controls no-print">
-        <a href="javascript:void(0)" onclick="window.close()"><i class="fa fa-arrow-left"></i> Back to record</a>
-        <button onclick="window.print()"><i class="fa fa-print"></i> Print transcription</button>
+        <a href="javascript:void(0)" onclick="window.close()"><i class="fa fa-arrow-left"></i>Back to record</a>
+        <button onclick="window.print()"><i class="fa fa-print"></i>Print transcription</button>
     </div>
     <div class="doc-container">
-        <div class="doc-title">transcription of ${title} (${ref})</div>
+        <div class="doc-title">Transcription of ${title} (${ref})</div>
         <div class="doc-subtitle">Obvious typographical errors have been corrected; poor punctuation has been retained.</div>
         <hr>
         <div class="doc-content">${text}</div>
@@ -723,7 +726,6 @@
 
                 if (data.transcription !== undefined && data.transcription !== null && data.transcription !== 0 && data.transcription !== "0") {
                     
-                    // NEW: Pass the strings through safeEncode to escape single quotes, parentheses, etc.
                     const encodedText = safeEncode(data.transcription);
                     const encodedTitle = safeEncode(title);
                     const encodedRef = safeEncode(refNumber);
