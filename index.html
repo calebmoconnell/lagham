@@ -291,6 +291,11 @@
             color: white;
         }
 
+        /* Print visibility defaults */
+        .print-only {
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 850px) {
             .page-container {
@@ -305,6 +310,12 @@
         @media print {
             .no-print {
                 display: none !important;
+            }
+            .screen-only {
+                display: none !important;
+            }
+            .print-only {
+                display: inline !important;
             }
             body {
                 background-color: white;
@@ -610,9 +621,12 @@
                         <tr>
                             <td><b>Scan</b></td>
                             <td>
-                                <a href="/lagham/files/documents/${data.scan}" target="_blank" class="item-title-link">
-                                    view PDF <i class="fa fa-external-link"></i>
-                                </a>
+                                <span class="screen-only">
+                                    <a href="/lagham/files/documents/${data.scan}" target="_blank" class="item-title-link">
+                                        view PDF <i class="fa fa-external-link"></i>
+                                    </a>
+                                </span>
+                                <span class="print-only">PDF available</span>
                             </td>
                         </tr>`;
                 }
