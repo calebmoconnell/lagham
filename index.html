@@ -55,36 +55,48 @@
         main {
             max-width: 1000px;
             margin: 30px auto;
-            padding: 25px;
+            padding: 0 20px;
             background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 30px;
             border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
+        /* Headers */
         h1 {
             color: #2c3e50;
-            font-size: 24px;
+            font-size: 1.8em;
             margin-top: 0;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        h1 i {
+            color: #555;
+            margin-right: 10px;
         }
 
-        /* Requested Table Layout Styling */
+        /* Table Layouts */
         table {
             border-collapse: collapse;
             width: 100%;
             margin-bottom: 30px;
         }
-        
+
         td, th {
             border: 0px solid white;
             text-align: left;
             padding: 12px 8px;
             border-bottom: 1px solid black;
+            vertical-align: top;
         }
 
+        th {
+            color: #555;
+            font-weight: 600;
+        }
+
+        /* Links and text styling */
         .item-title-link {
             text-decoration: none;
             color: var(--link-color);
@@ -92,6 +104,12 @@
 
         .item-title-link:hover {
             text-decoration: underline;
+        }
+
+        .ref-path-text {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: #666;
+            font-size: 0.95em;
         }
 
         .error {
@@ -172,76 +190,88 @@
             
             const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
-            // 1. ARCHIVE ITEM VIEW
+            // Render Archive Item View
             if (isArchiveItem) {
-                const title = data.title || data.category || 'Untitled Record';
-                const refNum = data.ref || currentPathString || '';
-                const location = data.location || '';
-                const description = data.description || '';
-                const date = data.date || '';
-                const format = data.format || '';
-                const extent = data.extent || '';
-                const condition = data.condition || '';
+                const title = data.title || data.category || 'Untitled Document';
+                
+                // Fallback to the path structure if a direct "ref" string isn't provided in the json
+                const refNumber = data.ref || currentPathString;
 
-                let html = `
-                    <h1><i class='fa fa-file-text-o'></i> ${title}</h1>
-                    <table>
-                      <tr>
-                        <td style="width: 200px;"><b>Reference Number</b></td>
-                        <td>${refNum}</td>
-                      </tr>
-                      <tr>
-                        <td><b>Location</b></td>
-                        <td>${location}</td>
-                      </tr>
-                      <tr>
-                        <td><b>Description</b></td>
-                        <td>${description}</td>
-                      </tr>
-                      <tr>
-                        <td><b>Date</b></td>
-                        <td>${date}</td>
-                      </tr>
-                      <tr>
-                        <td><b>Format</b></td>
-                        <td>${format}</td>
-                      </tr>
-                      <tr>
-                        <td><b>Extent</b></td>
-                        <td>${extent}</td>
-                      </tr>
-                      <tr>
-                        <td><b>Condition</b></td>
-                        <td>${condition}</td>
-                      </tr>
-                    </table>
-                `;
+                let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
+                
+                html += `
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="width: 200px;"><b>Reference Number</b></td>
+                            <td class="ref-path-text">${refNumber}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Location</b></td>
+                            <td>${data.location || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td>${data.description || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Date</b></td>
+                            <td>${data.date || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Format</b></td>
+                            <td>${data.format || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Extent</b></td>
+                            <td>${data.extent || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Condition</b></td>
+                            <td>${data.condition || ''}</td>
+                        </tr>
+                    </tbody>
+                </table>`;
+                
                 content.innerHTML = html;
                 return;
             }
 
-            // 2. FOLDER VIEW (Updated to match the clean table style)
+            // Render Folder View
             let html = '';
-            const folderTitle = data.folder_title || 'Archive Root';
             
-            html += `<h1><i class="fa fa-folder-open-o"></i> ${folderTitle}</h1>`;
-            html += `<table>`;
+            if (data.folder_title) {
+                html += `<h1><i class='fa fa-folder-open-o'></i> ${data.folder_title}</h1>`;
+            } else if (currentPathString === '') {
+                html += `<h1><i class='fa fa-archive'></i> Archive Root</h1>`;
+            }
+
+            html += `
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50px; text-align: center;"></th>
+                        <th style="width: 250px;">Reference Number</th>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody>`;
 
             for (const [key, childNode] of Object.entries(data)) {
                 if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
 
                 const childPath = currentPathString ? `${currentPathString}/${key}` : key;
                 
-                let icon = '<i class="fa fa-folder"></i>';
+                let icon = '<i class="fa fa-folder" style="color: #555; font-size: 1.4em;"></i>';
                 let displayTitle = key; 
 
                 if (childNode && typeof childNode === 'object') {
                     if ('category' in childNode || 'title' in childNode) {
-                        icon = '<i class="fa fa-file-text-o"></i>';
+                        icon = '<i class="fa fa-file-text-o" style="color: #555; font-size: 1.4em;"></i>';
                         displayTitle = childNode.title || childNode.category || key;
                     } 
                     else if ('folder_title' in childNode) {
-                        icon = '<i class="fa fa-folder"></i>';
+                        icon = '<i class="fa fa-folder" style="color: #555; font-size: 1.4em;"></i>';
                         displayTitle = childNode.folder_title;
                     }
                 }
@@ -250,10 +280,8 @@
 
                 html += `
                     <tr>
-                        <td style="width: 40px; text-align: center; color: #555;">${icon}</td>
-                        <td style="width: 200px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color: #666;">
-                            ${displayChildPath}
-                        </td>
+                        <td style="text-align: center;">${icon}</td>
+                        <td class="ref-path-text">${displayChildPath}</td>
                         <td>
                             <a href="?ref=${encodeURIComponent(childPath)}" class="item-title-link">
                                 <strong>${displayTitle}</strong>
@@ -263,7 +291,7 @@
                 `;
             }
 
-            html += `</table>`;
+            html += `</tbody></table>`;
             content.innerHTML = html;
         }
 
