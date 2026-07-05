@@ -1,297 +1,728 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lagham Archive Browser</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --nav-bg: #2c3e50;
-            --nav-text: #ecf0f1;
-            --link-color: #3498db;
-            --border-color: #ddd;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        /* Navigation Bar */
-        #navbar {
-            background-color: var(--nav-bg);
-            padding: 15px 20px;
-            color: var(--nav-text);
-            font-size: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        #navbar a {
-            color: var(--nav-text);
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: background-color 0.2s;
-        }
-
-        #navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        #navbar .separator {
-            margin: 0 5px;
-            opacity: 0.7;
-        }
-
-        /* Main Content Container */
-        main {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .layer-header {
-            margin-bottom: 20px;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        /* List Layout for Folders/Items */
-        .item-list {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .list-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
-            color: inherit;
-            transition: background-color 0.2s;
-        }
-
-        .list-item:last-child {
-            border-bottom: none;
-        }
-
-        .list-item:hover {
-            background-color: #fcfcfc;
-        }
-
-        .list-item .icon {
-            font-size: 1.4em;
-            margin-right: 15px;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .list-item .ref-path {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            color: #666;
-            margin-right: 15px;
-            font-size: 0.95em;
-            flex-shrink: 0;
-            padding-right: 10px; 
-        }
-
-        .item-title-link {
-            text-decoration: none;
-            color: var(--link-color);
-        }
-
-        .item-title-link:hover {
-            text-decoration: underline;
-        }
-
-        .list-item .item-title {
-            font-size: 1.05em;
-            color: var(--link-color);
-        }
-
-        /* Archive Item (File) View */
-        .record-view {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .record-field {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .record-field:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .record-field strong {
-            display: inline-block;
-            width: 150px;
-            color: #555;
-            text-transform: capitalize;
-        }
-
-        .error {
-            color: #e74c3c;
-            background: #fdf0ed;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #fadbd8;
-        }
-    </style>
-</head>
-<body>
-
-    <nav id="navbar">
-        <span id="breadcrumbs">Loading navigation...</span>
-    </nav>
-
-    <main>
-        <div id="content">Loading data...</div>
-    </main>
-
-    <script>
-        const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
-
-        async function init() {
-            try {
-                const response = await fetch(DATA_URL);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const fullData = await response.json();
-                
-                const urlParams = new URLSearchParams(window.location.search);
-                const currentRef = urlParams.get('ref') || '';
-                
-                renderPage(fullData, currentRef);
-            } catch (error) {
-                document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
-                document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
+{
+  "Browse": {
+    "folder_title": "1st Lagham (Godstone) Scout Group Archives",
+    "Sc": {
+      "folder_title": "Scouting Records",
+      "ref": "Sc",
+      "G": {
+        "folder_title": "Group Records",
+        "ref": "Sc/G",
+        "Misc": {
+          "folder_title": "Miscellaneous Records",
+          "ref": "Sc/G/Misc",
+          "NOT": {
+            "subject": "Lagham",
+            "category": "Miscellaneous",
+            "ref": "Sc/G/Misc/NOT",
+            "location": "Lagham H.Q.",
+            "condition": "Water damaged",
+            "date": "",
+            "title": "1st Lagham Notepaper.",
+            "description": "Group notepaper with heading consisting of Scout logo, Group name and HQ address.",
+            "transcription": "0",
+            "extent": "3 pages",
+            "format": "Document",
+            "scan": "0"
+          }
+        },
+        "News": {
+          "1981": {
+            "MAY": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1981/MAY",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged",
+              "date": "05/1981",
+              "title": "Lagham News [May 1981]",
+              "description": "1st Lagham Newsletter for May 1981.",
+              "transcription": 0,
+              "extent": "6 Pages",
+              "format": "Document",
+              "scan": 0
             }
+          },
+          "1982": {
+            "ref": "Sc/G/News/1982",
+            "JAN": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1982/JAN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled; torn",
+              "date": "01/1982",
+              "title": "Lagham News [January 1982]",
+              "description": "1st Lagham Newsletter for January 1982.",
+              "transcription": 0,
+              "extent": "4 Pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "APR": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1982/APR",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled",
+              "date": "04/1982",
+              "title": "Lagham News [April 1982]",
+              "description": "1st Lagham Newsletter for April 1982.",
+              "transcription": 0,
+              "extent": "4 Pages",
+              "format": "Document",
+              "scan": 0
+            }
+          },
+          "folder_title": "1st Lagham newsletters",
+          "ref": "Sc/G/News"
+        },
+        "Prog": {
+          "1987": {
+            "subject": "Lagham",
+            "category": "Programme",
+            "ref": "Sc/G/Prog/1987",
+            "location": "Lagham H.Q.",
+            "condition": "Badly water damaged; tears to paper",
+            "date": 1987,
+            "title": "A 1987 Programme",
+            "description": "A badly damaged programme entitled 19th [illegible] 1987.",
+            "transcription": 0,
+            "extent": "2 Pages",
+            "format": "Document",
+            "scan": 0
+          },
+          "folder_title": "Group and Section Activity Programmes",
+          "ref": "Sc/G/Prog"
+        },
+        "HIS": {
+          "1": {
+            "folder_title": "Folder containing a history of the Group and associated Jubilee Programme",
+            "ref": "Sc/G/HIS/1",
+            "Hist": {
+              "subject": "Lagham",
+              "category": "History",
+              "ref": "Sc/G/HIS/1/Hist",
+              "location": "Lagham H.Q.",
+              "condition": "Good",
+              "date": 1986,
+              "title": "The Lagham Scout Group: The First Half Century, 1936 - 1986",
+              "description": "A History of the Group's first 50 years, compiled by Gordon F. Bush. File includes a copy of the Jubilee Show (see Sc/G/HIS/1/Prog)",
+              "transcription": "0",
+              "extent": "52 Pages",
+              "format": "Document",
+              "scan": "0"
+            },
+            "Prog": {
+              "subject": "Lagham",
+              "category": "Programme",
+              "ref": "Sc/G/HIS/1/Prog",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged.",
+              "date": "13/11/1986 - 15/11/1986",
+              "title": "1st Lagham (Godstone) Scout Group Jubilee Gang Show [Programme]",
+              "description": "The programme for a Jubilee Gang Show put on by the Group over three days in November 1986",
+              "transcription": "0",
+              "extent": "4 pages",
+              "format": "Document",
+              "scan": "0"
+            }
+          },
+          "2": {
+            "subject": "Lagham",
+            "category": "History",
+            "ref": "Sc/G/HIS/2",
+            "location": "Lagham H.Q.",
+            "condition": "Some water damage",
+            "date": 1986,
+            "title": "The Lagham Scout Group: The First Half Century, 1936 - 1986 [Master Copy]",
+            "description": "A History of the Group's first 50 years, compiled by Gordon F. Bush. Master Copy.",
+            "transcription": "0",
+            "extent": "52 Pages",
+            "format": "Document",
+            "scan": "0"
+          },
+          "folder_title": "Group History",
+          "ref": "Sc/G/HIS"
+        },
+        "MIN": {
+          "1986": {
+            "JUN": {
+              "subject": "Lagham",
+              "category": "Minutes",
+              "ref": "Sc/G/MIN/1986/JUN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged.",
+              "date": "10/06/1986",
+              "title": "Minutes of 1st Lagham (Godstone) Scout Group Executive Meeting",
+              "description": "Minutes of a meeting of the 1st Lagham Executive Committee held on 10th June 1986.",
+              "transcription": "0",
+              "extent": "4 pages plus attached note",
+              "format": "Document",
+              "scan": "0"
+            }
+          },
+          "folder_title": "Minutes",
+          "ref": "Sc/G/MIN"
         }
-
-        function renderPage(fullData, ref) {
-            const path = ref.split('/').filter(Boolean);
-            let currentData = fullData;
-            
-            for (let key of path) {
-                if (currentData && typeof currentData === 'object' && key in currentData) {
-                    currentData = currentData[key];
-                } else {
-                    document.getElementById('content').innerHTML = `<p class="error">Data path not found: <strong>${ref}</strong></p>`;
-                    renderBreadcrumbs(path);
-                    return;
-                }
+      },
+      "D": {
+        "folder_title": "District Records",
+        "ref": "Sc/D",
+        "NEWS": {
+          "1977": {
+            "ref": "Sc/D/NEWS/1977",
+            "APR": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1977/APR",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "date": "04/1977",
+              "title": "East Surrey District Newsletter - April 1977",
+              "description": "East Surrey District Newsletter for April 1977.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "JUN": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1977/JUN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "date": "06/1977",
+              "title": "East Surrey District Newsletter - June 1977",
+              "description": "East Surrey District Newsletter for June 1977.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "DEC": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1977/DEC",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper",
+              "date": "12/1977",
+              "title": "East Surrey District Newsletter - December 1977",
+              "description": "East Surrey District Newsletter for December 1977.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": 0
             }
-            
-            renderBreadcrumbs(path);
-            renderLayer(currentData, path);
+          },
+          "1978": {
+            "ref": "Sc/D/NEWS/1978",
+            "JAN": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1978/JAN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper",
+              "date": "01/1978",
+              "title": "East Surrey District Newsletter - January 1978",
+              "description": "East Surrey District Newsletter for January 1978.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "FEB": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1978/FEB",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper",
+              "date": "02/1978",
+              "title": "East Surrey District Newsletter - February 1978",
+              "description": "East Surrey District Newsletter for February 1978.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "NOV": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1978/NOV",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "date": "11/1978",
+              "title": "East Surrey District Newsletter - November 1978",
+              "description": "East Surrey District Newsletter for November 1978.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": 0
+            }
+          },
+          "1979": {
+            "ref": "Sc/D/NEWS/1979",
+            "JAN": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1979/JAN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "date": "01/1979",
+              "title": "East Surrey District Newsletter - January 1979",
+              "description": "East Surrey District Newsletter for January 1979.",
+              "extent": "2 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": 0
+            },
+            "FEB": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1979/FEB",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "date": "02/1979",
+              "title": "East Surrey District Newsletter - February 1979",
+              "description": "East Surrey District Newsletter for February 1979.",
+              "extent": "2 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": 0
+            },
+            "APR": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1979/APR",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "date": "04/1979",
+              "title": "East Surrey District Newsletter - April 1979",
+              "description": "East Surrey District Newsletter for April 1979.",
+              "extent": "2 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": 0
+            },
+            "MAY": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1979/MAY",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "date": "05/1979",
+              "title": "East Surrey District Newsletter - May 1979",
+              "description": "East Surrey District Newsletter for May 1979.",
+              "extent": "2 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": 0
+            }
+          },
+          "folder_title": "District Newsletters",
+          "ref": "Sc/D/NEWS"
         }
-
-        function renderBreadcrumbs(path) {
-            const nav = document.getElementById('breadcrumbs');
-            let html = `<a href="?ref=">Archive Root</a>`;
-            let accumulatedPath = '';
-            
-            for (let i = 0; i < path.length; i++) {
-                accumulatedPath += (i === 0 ? '' : '/') + path[i];
-                
-                if (path[i] === 'Browse') continue;
-
-                html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${path[i]}</a>`;
+      },
+      "C": {
+        "ref": "Sc/C",
+        "folder_title": "County Records",
+        "NEWS": {
+          "1977": {
+            "ref": "Sc/C/NEWS/1977",
+            "APR": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1977/APR",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "04/1977",
+              "title": "Surrey Scout [May 1977]",
+              "description": "Surrey Scouting newsletter for April 1977. No. 361.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "MAY": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1977/MAY",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "05/1977",
+              "title": "Surrey Scout [May 1977]",
+              "description": "Surrey Scouting newsletter for May 1977. No. 362.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "JUN": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1977/JUN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; damage to paper",
+              "date": "06/1977",
+              "title": "Surrey Scout [June 1977]",
+              "description": "Surrey Scouting newsletter for June 1977. No. 363.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "DEC": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1977/DEC",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "12/1977",
+              "title": "Surrey Scout [December 1977]",
+              "description": "Surrey Scouting newsletter for December 1977. No. 368.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
             }
-            
-            nav.innerHTML = html;
+          },
+          "1978": {
+            "ref": "Sc/C/NEWS/1978",
+            "JAN": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1978/JAN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "01/1978",
+              "title": "Surrey Scout [January 1978]",
+              "description": "Surrey Scouting newsletter for January 1978. No. 369.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "FEB": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1978/FEB",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "02/1978",
+              "title": "Surrey Scout [February 1978]",
+              "description": "Surrey Scouting newsletter for February 1978. No. 370.",
+              "transcription": 0,
+              "extent": "4 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "NOV": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1978/NOV",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "11/1978",
+              "title": "Surrey Scout [November 1978]",
+              "description": "Surrey Scouting newsletter for November 1978. No. 378.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            }
+          },
+          "1979": {
+            "ref": "Sc/C/NEWS/1979",
+            "JAN": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/JAN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "01/1979",
+              "title": "Surrey Scout [January 1979]",
+              "description": "Surrey Scouting newsletter for January 1979. No. 380.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "APR": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/APR",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "04/1979",
+              "title": "Surrey Scout [April 1979]",
+              "description": "Surrey Scouting newsletter for April 1979. No. 383.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "MAY": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/MAY",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "05/1979",
+              "title": "Surrey Scout [May 1979]",
+              "description": "Surrey Scouting newsletter for May 1979. No. 384.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "JUN": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/JUN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "06/1979",
+              "title": "Surrey Scout [June 1979]",
+              "description": "Surrey Scouting newsletter for June 1979. No. 385.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "JUL": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/JUL",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "07/1979 - 08/1979",
+              "title": "Surrey Scout [July/August 1979]",
+              "description": "Surrey Scouting newsletter for July and August 1979. No. 386.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "SEP": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/SEP",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "09/1979",
+              "title": "Surrey Scout [September 1979]",
+              "description": "Surrey Scouting newsletter for September 1979. No. 387.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "OCT": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/OCT",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "10/1979",
+              "title": "Surrey Scout [October 1979]",
+              "description": "Surrey Scouting newsletter for October 1979. No. 388.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "NOV": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/NOV",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "11/1979",
+              "title": "Surrey Scout [November 1979]",
+              "description": "Surrey Scouting newsletter for November 1979. No. 389.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "DEC": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1979/DEC",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "12/1979",
+              "title": "Surrey Scout [December 1979]",
+              "description": "Surrey Scouting newsletter for December 1979. No. 390.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            }
+          },
+          "1980": {
+            "ref": "Sc/C/NEWS/1980",
+            "JAN": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/JAN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "01/1980",
+              "title": "Surrey Scout [January 1980]",
+              "description": "Surrey Scouting newsletter for January 1980. No. 391.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "FEB": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/FEB",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "02/1980",
+              "title": "Surrey Scout [February 1980]",
+              "description": "Surrey Scouting newsletter for February 1980. No. 392.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "MAR": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/MAR",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "03/1980",
+              "title": "Surrey Scout [March 1980]",
+              "description": "Surrey Scouting newsletter for March 1980. No. 393.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "APR": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/APR",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "04/1980",
+              "title": "Surrey Scout [April 1980]",
+              "description": "Surrey Scouting newsletter for April 1980. No. 394.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "MAY": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/MAY",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "05/1980",
+              "title": "Surrey Scout [May 1980]",
+              "description": "Surrey Scouting newsletter for May 1980. No. 395.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "JUN": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/JUN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "06/1980",
+              "title": "Surrey Scout [June 1980]",
+              "description": "Surrey Scouting newsletter for June 1980; includes the 1980 Census. No. 396.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "JUL": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/JUL",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "07/1980 - 08/1980",
+              "title": "Surrey Scout [July/August 1980]",
+              "description": "Surrey Scouting newsletter for July and August 1980. No. 397.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "SEP": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/SEP",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "09/1980",
+              "title": "Surrey Scout [September 1980]",
+              "description": "Surrey Scouting newsletter for September 1980. No. 398.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "OCT": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/OCT",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "10/1980",
+              "title": "Surrey Scout [October 1980]",
+              "description": "Surrey Scouting newsletter for October 1980. No. 399.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            },
+            "NOV": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1980/NOV",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched",
+              "date": "11/1980",
+              "title": "Surrey Scout [November 1980]",
+              "description": "Surrey Scouting newsletter for November 1980. No. 400.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            }
+          },
+          "1986": {
+            "ref": "Sc/C/NEWS/1986",
+            "SEP": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1986/SEP",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged",
+              "date": "09/1986",
+              "title": "Surrey Scout [September 1986]",
+              "description": "Surrey Scouting newsletter for September 1986. No. 464.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": 0
+            }
+          },
+          "folder_title": "County Newsletters",
+          "ref": "Sc/C/NEWS"
         }
-
-        function renderLayer(data, path) {
-            const content = document.getElementById('content');
-            const currentPathString = path.join('/');
-            
-            const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
-            
-            if (isArchiveItem) {
-                let html = `<div class="record-view">`;
-                for (const [key, value] of Object.entries(data)) {
-                    
-                    // Fixed: Removed 'key === 'ref'' from the skip list to show it on items
-                    if (key === 'category' || key === 'folder_title' || key === 'subject') continue; 
-                    
-                    if ((key === 'transcription' || key === 'scan') && String(value) === "0") continue;
-                    
-                    if (key.toLowerCase().includes('date') && (!value || String(value).trim() === '')) continue;
-                    
-                    html += `<div class="record-field">
-                        <strong>${key}:</strong> <span>${value}</span>
-                    </div>`;
-                }
-                html += `</div>`;
-                content.innerHTML = html;
-                return;
-            }
-
-            let html = '';
-            
-            if (data.folder_title) {
-                html += `<h2 class="layer-header">${data.folder_title}</h2>`;
-            }
-
-            html += `<div class="item-list">`;
-
-            for (const [key, childNode] of Object.entries(data)) {
-                // Keep 'ref' skipped here so it does not appear in folder listings
-                if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
-
-                const childPath = currentPathString ? `${currentPathString}/${key}` : key;
-                
-                let icon = '<i class="fa-solid fa-folder"></i>';
-                let displayTitle = key; 
-
-                if (childNode && typeof childNode === 'object') {
-                    if ('category' in childNode || 'title' in childNode) {
-                        icon = '<i class="fa-solid fa-file"></i>';
-                        displayTitle = childNode.title || childNode.category || key;
-                    } 
-                    else if ('folder_title' in childNode) {
-                        icon = '<i class="fa-solid fa-folder"></i>';
-                        displayTitle = childNode.folder_title;
-                    }
-                }
-                
-                const displayChildPath = childPath.split('/').filter(segment => segment !== 'Browse').join('/');
-
-                html += `
-                    <div class="list-item">
-                        <span class="icon">${icon}</span>
-                        <span class="ref-path">${displayChildPath}</span>
-                        <a href="?ref=${encodeURIComponent(childPath)}" class="item-title-link">
-                            <strong class="item-title">${displayTitle}</strong>
-                        </a>
-                    </div>
-                `;
-            }
-
-            html += `</div>`;
-            content.innerHTML = html;
-        }
-
-        window.onload = init;
-    </script>
-</body>
-</html>
+      }
+    }
+  }
+}
