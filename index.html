@@ -381,6 +381,111 @@
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
         let allItemPaths = []; 
 
+        // Function to handle opening transcriptions dynamically in a new tab
+        function openTranscription(encodedTitle, encodedRef, encodedText) {
+            const title = decodeURIComponent(encodedTitle);
+            const ref = decodeURIComponent(encodedRef);
+            const text = decodeURIComponent(encodedText);
+
+            const win = window.open('', '_blank');
+            if (!win) {
+                alert('Please allow popups for this website to view transcriptions.');
+                return;
+            }
+
+            const docHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transcription - ${ref}</title>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+        }
+        .header-controls {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .header-controls a, .header-controls button {
+            padding: 10px 16px;
+            font-size: 0.95em;
+            background-color: white;
+            color: #114b76;
+            border: 1px solid #114b76;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin: 0 10px;
+            font-family: inherit;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .header-controls a:hover, .header-controls button:hover {
+            background-color: #114b76;
+            color: white;
+        }
+        .doc-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 40px; /* Large invisible margins */
+        }
+        .doc-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+        .doc-subtitle {
+            font-style: italic;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+        .doc-content {
+            white-space: pre-wrap; /* Preserves formatting exactly as written in the JSON */
+            line-height: 1.6;
+        }
+        @media print {
+            .header-controls { display: none !important; }
+            .doc-container {
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-controls no-print">
+        <a href="javascript:void(0)" onclick="window.close()"><i class="fa fa-arrow-left"></i> Back to record</a>
+        <button onclick="window.print()"><i class="fa fa-print"></i> Print transcription</button>
+    </div>
+    <div class="doc-container">
+        <div class="doc-title">transcription of ${title} (${ref})</div>
+        <div class="doc-subtitle">Obvious typographical errors have been corrected; poor punctuation has been retained.</div>
+        <hr>
+        <div class="doc-content">${text}</div>
+    </div>
+</body>
+</html>`;
+            win.document.open();
+            win.document.write(docHtml);
+            win.document.close();
+        }
+
         async function init() {
             try {
                 const response = await fetch(DATA_URL);
@@ -609,10 +714,22 @@
                         </tr>`;
 
                 if (data.transcription !== undefined && data.transcription !== null && data.transcription !== 0 && data.transcription !== "0") {
+                    // We encode the strings to prevent them from breaking our onclick syntax
+                    const encodedText = encodeURIComponent(data.transcription);
+                    const encodedTitle = encodeURIComponent(title);
+                    const encodedRef = encodeURIComponent(refNumber);
+                    
                     html += `
                         <tr>
                             <td><b>Transcription</b></td>
-                            <td>${data.transcription}</td>
+                            <td>
+                                <span class="screen-only">
+                                    <a href="javascript:void(0)" onclick="openTranscription('${encodedTitle}', '${encodedRef}', '${encodedText}')" class="item-title-link">
+                                        view transcription <i class="fa fa-external-link"></i>
+                                    </a>
+                                </span>
+                                <span class="print-only">Transcription available</span>
+                            </td>
                         </tr>`;
                 }
 
