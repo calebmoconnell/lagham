@@ -9,7 +9,7 @@
 
     <style>
         :root {
-            --bg-color: #f4f7f6; /* slightly tinted to let the white panels pop */
+            --bg-color: #f4f7f6;
             --text-color: #333;
             --link-color: #3498db;
             --header-footer-bg: #ffffff;
@@ -371,8 +371,13 @@
         function goToDirectRef() {
             const inputField = document.getElementById('directRefInput');
             if (inputField && inputField.value.trim() !== "") {
-                // Ensure proper encoding of the path
-                const path = inputField.value.trim();
+                let path = inputField.value.trim();
+                
+                // Automatically prepend 'Browse/' if the user didn't type it
+                if (!path.startsWith('Browse/') && path !== 'Browse') {
+                    path = 'Browse/' + path;
+                }
+                
                 window.location.href = `?ref=${encodeURIComponent(path)}`;
             }
         }
@@ -439,7 +444,7 @@
 
             // 1. Render Welcome Screen for Root Path
             if (currentPathString === '') {
-                let html = `<h1><i class='fa fa-institution'></i> Welcome to 1st Lagham (Godstone) Scout Group’s Archives</h1>`;
+                let html = `<h1>Welcome to 1st Lagham (Godstone) Scout Group Archives</h1>`;
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">The archives cover the activities of the Scout Association at local, District and County levels, as well as news and events in the wider village of South Godstone, since the local Scout Group was founded in 1936.</p>`;
                 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444; margin-top: 25px;">If you know the reference of the record you’re looking for, enter it below to go directly to it.</p>`;
@@ -447,7 +452,7 @@
                 // New Input Box for Direct Reference Lookup
                 html += `
                     <div class="ref-search-container no-print">
-                        <input type="text" id="directRefInput" placeholder="e.g. Browse/Photos/1936" onkeydown="if(event.key === 'Enter') goToDirectRef()">
+                        <input type="text" id="directRefInput" placeholder="e.g. Sc/G/HIS/1/Hist" onkeydown="if(event.key === 'Enter') goToDirectRef()">
                         <button onclick="goToDirectRef()"><i class="fa fa-search" style="margin-right: 5px;"></i> Go</button>
                     </div>
                 `;
