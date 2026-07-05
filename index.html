@@ -209,7 +209,6 @@
             for (let i = 0; i < path.length; i++) {
                 accumulatedPath += (i === 0 ? '' : '/') + path[i];
                 
-                // Do not render the word "Browse" in the visual breadcrumb trail
                 if (path[i] === 'Browse') continue;
 
                 html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${path[i]}</a>`;
@@ -222,20 +221,17 @@
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
             
-            // Check if the current level is an archive item (file)
             const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
             if (isArchiveItem) {
                 let html = `<div class="record-view">`;
                 for (const [key, value] of Object.entries(data)) {
                     
-                    // Hide metadata and the subject variable from the actual record display
-                    if (key === 'category' || key === 'folder_title' || key === 'ref' || key === 'subject') continue; 
+                    // Fixed: Removed 'key === 'ref'' from the skip list to show it on items
+                    if (key === 'category' || key === 'folder_title' || key === 'subject') continue; 
                     
-                    // Hide transcription or scan if their value is exactly "0" (or number 0)
                     if ((key === 'transcription' || key === 'scan') && String(value) === "0") continue;
                     
-                    // Hide date variables if they return empty values
                     if (key.toLowerCase().includes('date') && (!value || String(value).trim() === '')) continue;
                     
                     html += `<div class="record-field">
@@ -256,7 +252,7 @@
             html += `<div class="item-list">`;
 
             for (const [key, childNode] of Object.entries(data)) {
-                // Skip metadata keys so they aren't rendered as clickable folders/items
+                // Keep 'ref' skipped here so it does not appear in folder listings
                 if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
 
                 const childPath = currentPathString ? `${currentPathString}/${key}` : key;
@@ -265,22 +261,18 @@
                 let displayTitle = key; 
 
                 if (childNode && typeof childNode === 'object') {
-                    // If it's a file, prioritize 'title', then fallback to 'category'
                     if ('category' in childNode || 'title' in childNode) {
                         icon = '📄';
                         displayTitle = childNode.title || childNode.category || key;
                     } 
-                    // If it's a folder, use 'folder_title'
                     else if ('folder_title' in childNode) {
                         icon = '📁';
                         displayTitle = childNode.folder_title;
                     }
                 }
                 
-                // Strip "Browse" from the plain-text path for display purposes
                 const displayChildPath = childPath.split('/').filter(segment => segment !== 'Browse').join('/');
 
-                // Construct format: Icon | Ref Path (Filtered & Not clickable) | Title (Clickable)
                 html += `
                     <div class="list-item">
                         <span class="icon">${icon}</span>
