@@ -615,7 +615,11 @@
                     html += `
                         <tr>
                             <td><b>Scan</b></td>
-                            <td>${data.scan}</td>
+                            <td>
+                                <a href="/files/documents/${data.scan}" target="_blank" class="item-title-link">
+                                    view PDF <i class="fa fa-external-link"></i>
+                                </a>
+                            </td>
                         </tr>`;
                 }
 
