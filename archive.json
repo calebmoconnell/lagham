@@ -27,6 +27,8 @@
         },
         "News": {
           "1981": {
+            "folder_title": 1981,
+            "ref": "Sc/G/News/1981",
             "MAY": {
               "subject": "Lagham",
               "category": "Newsletter",
@@ -43,6 +45,7 @@
             }
           },
           "1982": {
+            "folder_title": 1982,
             "ref": "Sc/G/News/1982",
             "JAN": {
               "subject": "Lagham",
@@ -170,6 +173,7 @@
         "ref": "Sc/D",
         "NEWS": {
           "1977": {
+            "folder_title": 1977,
             "ref": "Sc/D/NEWS/1977",
             "APR": {
               "subject": "District",
@@ -215,6 +219,7 @@
             }
           },
           "1978": {
+            "folder_title": 1978,
             "ref": "Sc/D/NEWS/1978",
             "JAN": {
               "subject": "District",
@@ -260,6 +265,7 @@
             }
           },
           "1979": {
+            "folder_title": 1979,
             "ref": "Sc/D/NEWS/1979",
             "JAN": {
               "subject": "District",
@@ -327,6 +333,7 @@
         "folder_title": "County Records",
         "NEWS": {
           "1977": {
+            "folder_title": 1977,
             "ref": "Sc/C/NEWS/1977",
             "APR": {
               "subject": "County",
@@ -386,6 +393,7 @@
             }
           },
           "1978": {
+            "folder_title": 1978,
             "ref": "Sc/C/NEWS/1978",
             "JAN": {
               "subject": "County",
@@ -431,6 +439,7 @@
             }
           },
           "1979": {
+            "folder_title": 1979,
             "ref": "Sc/C/NEWS/1979",
             "JAN": {
               "subject": "County",
@@ -560,6 +569,7 @@
             }
           },
           "1980": {
+            "folder_title": 1980,
             "ref": "Sc/C/NEWS/1980",
             "JAN": {
               "subject": "County",
@@ -703,6 +713,7 @@
             }
           },
           "1986": {
+            "folder_title": 1986,
             "ref": "Sc/C/NEWS/1986",
             "SEP": {
               "subject": "County",
