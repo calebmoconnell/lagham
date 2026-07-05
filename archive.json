@@ -344,10 +344,10 @@
               "date": "04/1977",
               "title": "Surrey Scout [April 1977]",
               "description": "Surrey Scouting newsletter for April 1977. No. 361.",
-              "transcription": "test of transcription",
+              "transcription": 0,
               "extent": "6 pages",
               "format": "Document",
-              "scan": "test if scan"
+              "scan": 0
             },
             "MAY": {
               "subject": "County",
