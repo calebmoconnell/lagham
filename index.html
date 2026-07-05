@@ -332,15 +332,22 @@
         </main>
 
         <aside class="sidebar no-print">
-            <h3><i class="fa fa-info-circle"></i> About the Archives</h3>
-            <p>This repository contains historical documents, photographs, records, and artifacts detailing the rich history of the 1st Lagham (Godstone) Scout Group since its founding.</p>
-            
-            <h3 style="margin-top: 25px;"><i class="fa fa-link"></i> Quick Links</h3>
+            <h3><i class="fa fa-compass"></i> Navigation</h3>
             <ul>
-                <li><a href="?ref=">Archive Home</a></li>
-                <li><a href="?ref=Browse">Browse Full Catalogue</a></li>
+                <li><a href="?ref=">Home</a></li>
+                <li><a href="?ref=Browse">Browse Catalogue</a></li>
+                <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
                 <li><a href="?ref=Development-Updates">Development Updates</a></li>
             </ul>
+            
+            <h3 style="margin-top: 25px;"><i class="fa fa-bookmark"></i> 1st Lagham Scout Group</h3>
+            <p>1st Lagham (Godstone) Scout Group was founded in 1936 in the village of South Godstone, Surrey, which was known before the arrival of the railways as Lagham. Initially known as 2nd Godstone, the Group's name was changed to assert its independence from Godstone. This is reflected in the Group motto: Nulli Secundus.</p>
+            <p>This page was set up to catalogue the records and archives of the Group, which cover the scouting County (Surrey) and District (East Surrey), the Group itself and the village of South Godstone.</p>
+            <p>Records are being gradually added; please see the Development Updates section for further information.</p>
+            
+            <h3 style="margin-top: 25px;"><i class="fa fa-globe"></i> Group Website</h3>
+            <p>For further information about the Group's current activities, please see the main website:</p>
+            <p style="margin-bottom: 0;"><a href="https://www.1stlaghamscouts.org.uk/" target="_blank" style="word-break: break-all;">https://www.1stlaghamscouts.org.uk/</a></p>
         </aside>
     </div>
 
@@ -350,7 +357,7 @@
 
     <script>
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
-        let allItemPaths = []; // Global array to store all reachable record paths
+        let allItemPaths = []; 
 
         async function init() {
             try {
@@ -358,7 +365,6 @@
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const fullData = await response.json();
                 
-                // Index all definitive catalog item paths for the random item feature
                 allItemPaths = getAllItemPaths(fullData);
                 
                 const urlParams = new URLSearchParams(window.location.search);
@@ -371,7 +377,6 @@
             }
         }
 
-        // Recursively gathers all paths pointing directly to individual items (leaves)
         function getAllItemPaths(node, currentPath = '') {
             let paths = [];
             if (node && typeof node === 'object') {
@@ -388,7 +393,6 @@
             return paths;
         }
 
-        // Triggers navigation to a randomly selected record
         function goToRandomRecord() {
             if (allItemPaths.length > 0) {
                 const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
@@ -396,13 +400,11 @@
             }
         }
 
-        // Handles the Direct Reference input search box
         function goToDirectRef() {
             const inputField = document.getElementById('directRefInput');
             if (inputField && inputField.value.trim() !== "") {
                 let path = inputField.value.trim();
                 
-                // Automatically prepend 'Browse/' if the user didn't type it
                 if (!path.startsWith('Browse/') && path !== 'Browse') {
                     path = 'Browse/' + path;
                 }
@@ -471,14 +473,12 @@
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
 
-            // 1. Render Welcome Screen for Root Path
             if (currentPathString === '') {
                 let html = `<h1>Welcome to 1st Lagham (Godstone) Scout Group Archives</h1>`;
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">The archives cover the activities of the Scout Association at local, District and County levels, as well as news and events in the wider village of South Godstone, since the local Scout Group was founded in 1936.</p>`;
                 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444; margin-top: 25px;">If you know the reference of the record you’re looking for, enter it below to go directly to it.</p>`;
                 
-                // Form Input for Direct Reference Lookup with updated placeholder
                 html += `
                     <div class="ref-search-container no-print">
                         <input type="text" id="directRefInput" placeholder="e.g. Sc/G/HIS/1/Hist" onkeydown="if(event.key === 'Enter') goToDirectRef()">
@@ -486,7 +486,6 @@
                     </div>
                 `;
 
-                // Combined string statement with requested random record selection routing
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500;">browse the archives</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500;">go to a random record</a>.</p>`;
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">Further records are being added from time to time; to see a list of updates and additions to the site please see the <a href="?ref=Development-Updates" style="color: var(--link-color); font-weight: 500;">Development Updates page</a>.</p>`;
@@ -495,12 +494,10 @@
                 return;
             }
             
-            // Build the permalink specific to the exact JSON ref if available, else fallback to current string
             let referenceParam = data.ref ? `Browse/${data.ref}` : currentPathString;
-            referenceParam = referenceParam.replace('Browse/Browse/', 'Browse/'); // Cleanup just in case
+            referenceParam = referenceParam.replace('Browse/Browse/', 'Browse/'); 
             const permalink = `https://calebmoconnell.github.io/lagham/?ref=${referenceParam}`;
 
-            // Helper function to generate the bottom action buttons
             const getActionButtonsHtml = (title) => {
                 const mailtoHref = `mailto:?subject=${encodeURIComponent("Catalogue Entry: " + title)}&body=${encodeURIComponent("View this catalogue entry: " + permalink)}`;
                 return `
@@ -514,7 +511,6 @@
 
             const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
-            // 2. Render Archive Item View
             if (isArchiveItem) {
                 const title = data.title || data.category || 'Untitled Document';
                 const refNumber = data.ref || currentPathString;
@@ -553,7 +549,6 @@
                             <td>${data.condition || ''}</td>
                         </tr>`;
 
-                // Conditionally add Transcription
                 if (data.transcription !== undefined && data.transcription !== null && data.transcription !== 0 && data.transcription !== "0") {
                     html += `
                         <tr>
@@ -562,7 +557,6 @@
                         </tr>`;
                 }
 
-                // Conditionally add Scan
                 if (data.scan !== undefined && data.scan !== null && data.scan !== 0 && data.scan !== "0") {
                     html += `
                         <tr>
@@ -575,16 +569,12 @@
                     </tbody>
                 </table>`;
                 
-                // Append action buttons
                 html += getActionButtonsHtml(title);
                 
                 content.innerHTML = html;
                 return;
             }
 
-            // 3. Render Folder View
-            
-            // Determine Consistent Header for Folders
             let displayHeader = 'Archive Root';
             let headerIcon = 'fa-archive';
 
@@ -595,7 +585,6 @@
 
             let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
 
-            // Build Folder Table
             html += `
             <table>
                 <thead>
@@ -643,7 +632,6 @@
 
             html += `</tbody></table>`;
             
-            // Append action buttons
             html += getActionButtonsHtml(displayHeader);
 
             content.innerHTML = html;
