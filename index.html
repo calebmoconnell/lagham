@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lagham Archive Browser</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
         :root {
@@ -96,6 +96,7 @@
             margin-right: 15px;
             min-width: 30px;
             text-align: center;
+            color: #555; /* Slightly muted color for classic icons */
         }
 
         .list-item .ref-path {
@@ -230,7 +231,6 @@
                 let html = `<div class="record-view">`;
                 for (const [key, value] of Object.entries(data)) {
                     
-                    // Fixed: Removed 'key === 'ref'' from the skip list to show it on items
                     if (key === 'category' || key === 'folder_title' || key === 'subject') continue; 
                     
                     if ((key === 'transcription' || key === 'scan') && String(value) === "0") continue;
@@ -255,21 +255,21 @@
             html += `<div class="item-list">`;
 
             for (const [key, childNode] of Object.entries(data)) {
-                // Keep 'ref' skipped here so it does not appear in folder listings
                 if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
 
                 const childPath = currentPathString ? `${currentPathString}/${key}` : key;
                 
-                let icon = '<i class="fa-solid fa-folder"></i>';
+                // Using classic Font Awesome 4 icons
+                let icon = '<i class="fa fa-folder"></i>';
                 let displayTitle = key; 
 
                 if (childNode && typeof childNode === 'object') {
                     if ('category' in childNode || 'title' in childNode) {
-                        icon = '<i class="fa-solid fa-file"></i>';
+                        icon = '<i class="fa fa-file-text-o"></i>';
                         displayTitle = childNode.title || childNode.category || key;
                     } 
                     else if ('folder_title' in childNode) {
-                        icon = '<i class="fa-solid fa-folder"></i>';
+                        icon = '<i class="fa fa-folder"></i>';
                         displayTitle = childNode.folder_title;
                     }
                 }
