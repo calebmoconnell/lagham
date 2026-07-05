@@ -347,7 +347,7 @@
               "transcription": "test of transcription",
               "extent": "6 pages",
               "format": "Document",
-              "scan": 0
+              "scan": "test if scan"
             },
             "MAY": {
               "subject": "County",
