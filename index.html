@@ -221,7 +221,27 @@
                         <tr>
                             <td><b>Condition</b></td>
                             <td>${data.condition || ''}</td>
-                        </tr>
+                        </tr>`;
+
+                // Conditionally add Transcription
+                if (data.transcription !== undefined && data.transcription !== null && data.transcription !== 0 && data.transcription !== "0") {
+                    html += `
+                        <tr>
+                            <td><b>Transcription</b></td>
+                            <td>${data.transcription}</td>
+                        </tr>`;
+                }
+
+                // Conditionally add Scan
+                if (data.scan !== undefined && data.scan !== null && data.scan !== 0 && data.scan !== "0") {
+                    html += `
+                        <tr>
+                            <td><b>Scan</b></td>
+                            <td>${data.scan}</td>
+                        </tr>`;
+                }
+
+                html += `
                     </tbody>
                 </table>`;
                 
