@@ -8,8 +8,6 @@
         :root {
             --bg-color: #f8f9fa;
             --text-color: #333;
-            --nav-bg: #2c3e50;
-            --nav-text: #ecf0f1;
             --link-color: #3498db;
             --border-color: #ddd;
         }
@@ -22,36 +20,32 @@
             color: var(--text-color);
         }
 
-        /* Navigation Bar */
+        /* Simplified Text-Based Navigation Bar */
         #navbar {
-            background-color: var(--nav-bg);
-            padding: 15px 20px;
-            color: var(--nav-text);
+            padding: 20px;
             font-size: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         #navbar a {
-            color: var(--nav-text);
+            color: var(--link-color);
             text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: background-color 0.2s;
+            transition: color 0.2s;
         }
 
         #navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: underline;
         }
 
         #navbar .separator {
-            margin: 0 5px;
+            margin: 0 8px;
+            color: #666;
             opacity: 0.7;
         }
 
         /* Main Content Container */
         main {
             max-width: 1000px;
-            margin: 30px auto;
+            margin: 10px auto 30px;
             padding: 0 20px;
         }
 
@@ -121,28 +115,38 @@
         /* Archive Item (File) View */
         .record-view {
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .record-field {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+        .record-title {
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 2em;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .record-field:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+        .record-table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .record-field strong {
-            display: inline-block;
+        .record-table th, 
+        .record-table td {
+            text-align: left;
+            padding: 15px 10px;
+            border-bottom: 1px solid black;
+            vertical-align: top;
+        }
+
+        .record-table th {
             width: 150px;
             color: #555;
-            text-transform: capitalize;
+            font-weight: 600;
         }
 
         .error {
@@ -221,24 +225,57 @@
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
             
+            // Check if the current level is an archive item (file)
             const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
             if (isArchiveItem) {
+                const itemTitle = data.title || data.category || data.folder_title || "Archive Item";
+                
                 let html = `<div class="record-view">`;
+                html += `<h1 class="record-title">📄 ${itemTitle}</h1>`;
+                html += `<table class="record-table"><tbody>`;
+                
+                // Define the explicit order for specific fields
+                const orderedKeys = ['ref', 'description', 'date', 'extent', 'format', 'condition'];
+                
+                // Helper function to render a table row
+                const renderRow = (label, value) => {
+                    return `
+                        <tr>
+                            <th>${label}</th>
+                            <td>${value}</td>
+                        </tr>
+                    `;
+                };
+
+                // 1. Render explicitly requested keys first
+                for (const key of orderedKeys) {
+                    if (data[key] !== undefined && data[key] !== null && String(data[key]).trim() !== '') {
+                        let label = key === 'ref' ? 'Ref Number' : key.charAt(0).toUpperCase() + key.slice(1);
+                        html += renderRow(label, data[key]);
+                    }
+                }
+
+                // 2. Render any remaining keys that shouldn't be skipped
                 for (const [key, value] of Object.entries(data)) {
+                    // Skip keys we already rendered
+                    if (orderedKeys.includes(key)) continue; 
                     
-                    // Fixed: Removed 'key === 'ref'' from the skip list to show it on items
-                    if (key === 'category' || key === 'folder_title' || key === 'subject') continue; 
+                    // Skip specific metadata
+                    if (key === 'title' || key === 'category' || key === 'folder_title' || key === 'subject') continue; 
                     
+                    // Skip empty/zero conditions
                     if ((key === 'transcription' || key === 'scan') && String(value) === "0") continue;
-                    
                     if (key.toLowerCase().includes('date') && (!value || String(value).trim() === '')) continue;
                     
-                    html += `<div class="record-field">
-                        <strong>${key}:</strong> <span>${value}</span>
-                    </div>`;
+                    // Format the label neatly for any unexpected keys
+                    let label = key.replace(/_/g, ' ');
+                    label = label.charAt(0).toUpperCase() + label.slice(1);
+                    
+                    html += renderRow(label, value);
                 }
-                html += `</div>`;
+
+                html += `</tbody></table></div>`;
                 content.innerHTML = html;
                 return;
             }
