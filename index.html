@@ -14,7 +14,6 @@
             --nav-bg: #2c3e50;
             --nav-text: #ecf0f1;
             --link-color: #3498db;
-            --border-color: #ddd;
         }
 
         body {
@@ -62,13 +61,14 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        /* Headers */
+        /* Headers - Ensuring 100% Consistency */
         h1 {
             color: #2c3e50;
             font-size: 1.8em;
             margin-top: 0;
             margin-bottom: 25px;
             font-weight: 600;
+            line-height: 1.2;
         }
         
         h1 i {
@@ -94,12 +94,14 @@
         th {
             color: #555;
             font-weight: 600;
+            font-size: 1em;
         }
 
         /* Links and text styling */
         .item-title-link {
             text-decoration: none;
             color: var(--link-color);
+            font-size: 1em;
         }
 
         .item-title-link:hover {
@@ -190,11 +192,9 @@
             
             const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
-            // Render Archive Item View
+            // 1. Render Archive Item View
             if (isArchiveItem) {
                 const title = data.title || data.category || 'Untitled Document';
-                
-                // Fallback to the path structure if a direct "ref" string isn't provided in the json
                 const refNumber = data.ref || currentPathString;
 
                 let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
@@ -237,15 +237,21 @@
                 return;
             }
 
-            // Render Folder View
-            let html = '';
+            // 2. Render Folder View
             
-            if (data.folder_title) {
-                html += `<h1><i class='fa fa-folder-open-o'></i> ${data.folder_title}</h1>`;
-            } else if (currentPathString === '') {
-                html += `<h1><i class='fa fa-archive'></i> Archive Root</h1>`;
+            // Determine Consistent Header for Folders
+            let displayHeader = 'Archive Root';
+            let headerIcon = 'fa-archive';
+
+            if (currentPathString !== '') {
+                // Fallback to the last segment of the path if a specific folder_title isn't provided
+                displayHeader = data.folder_title || path[path.length - 1];
+                headerIcon = 'fa-folder-open-o';
             }
 
+            let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
+
+            // Build Folder Table
             html += `
             <table>
                 <thead>
