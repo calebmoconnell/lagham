@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1st Lagham (Godstone) ScoutGroupArchives</title>
+    <title>1st Lagham (Godstone) Scout Group_Archives</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -350,12 +350,16 @@
 
     <script>
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
+        let allItemPaths = []; // Global array to store all reachable record paths
 
         async function init() {
             try {
                 const response = await fetch(DATA_URL);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const fullData = await response.json();
+                
+                // Index all definitive catalog item paths for the random item feature
+                allItemPaths = getAllItemPaths(fullData);
                 
                 const urlParams = new URLSearchParams(window.location.search);
                 const currentRef = urlParams.get('ref') || '';
@@ -364,6 +368,31 @@
             } catch (error) {
                 document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
                 document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
+            }
+        }
+
+        // Recursively gathers all paths pointing directly to individual items (leaves)
+        function getAllItemPaths(node, currentPath = '') {
+            let paths = [];
+            if (node && typeof node === 'object') {
+                if ('category' in node || 'title' in node) {
+                    paths.push(currentPath);
+                } else {
+                    for (const [key, value] of Object.entries(node)) {
+                        if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+                        const nextPath = currentPath ? `${currentPath}/${key}` : key;
+                        paths = paths.concat(getAllItemPaths(value, nextPath));
+                    }
+                }
+            }
+            return paths;
+        }
+
+        // Triggers navigation to a randomly selected record
+        function goToRandomRecord() {
+            if (allItemPaths.length > 0) {
+                const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
+                window.location.href = `?ref=${encodeURIComponent(randomPath)}`;
             }
         }
 
@@ -449,7 +478,7 @@
                 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444; margin-top: 25px;">If you know the reference of the record you’re looking for, enter it below to go directly to it.</p>`;
                 
-                // New Input Box for Direct Reference Lookup
+                // Form Input for Direct Reference Lookup with updated placeholder
                 html += `
                     <div class="ref-search-container no-print">
                         <input type="text" id="directRefInput" placeholder="e.g. Sc/G/HIS/1/Hist" onkeydown="if(event.key === 'Enter') goToDirectRef()">
@@ -457,7 +486,8 @@
                     </div>
                 `;
 
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500;">browse the archives</a>.</p>`;
+                // Combined string statement with requested random record selection routing
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500;">browse the archives</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500;">go to a random record</a>.</p>`;
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">Further records are being added from time to time; to see a list of updates and additions to the site please see the <a href="?ref=Development-Updates" style="color: var(--link-color); font-weight: 500;">Development Updates page</a>.</p>`;
                 
