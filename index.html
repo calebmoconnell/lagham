@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1st Lagham (Godstone) ScoutGroupArchives</title>
+    <title>1st Lagham (Godstone) Scout Group_Archives</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -11,12 +15,12 @@
         :root {
             --bg-color: #f4f7f6;
             --text-color: #333;
-            --link-color: #3498db;
+            --link-color: #114b76; /* Updated Link Color */
             --header-footer-bg: #ffffff;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'PT Serif', serif; /* Updated Font Family */
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
@@ -38,7 +42,7 @@
         header .site-title {
             margin: 0;
             font-size: 1.5em;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.5px;
         }
 
@@ -135,7 +139,7 @@
 
         #breadcrumbs a:hover {
             text-decoration: underline;
-            color: #2980b9;
+            color: var(--link-color);
         }
 
         #breadcrumbs .separator {
@@ -150,7 +154,7 @@
             font-size: 1.8em;
             margin-top: 0;
             margin-bottom: 25px;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.2;
         }
         
@@ -176,7 +180,7 @@
 
         th {
             color: #555;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1em;
         }
 
@@ -222,19 +226,22 @@
             font-family: inherit;
         }
 
+        /* Updated Button Styling */
         .ref-search-container button {
             padding: 10px 20px;
-            background-color: var(--link-color);
-            color: white;
-            border: none;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
             border-radius: 4px;
             cursor: pointer;
             font-size: 1em;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, color 0.2s;
+            font-family: inherit;
         }
 
         .ref-search-container button:hover {
-            background-color: #2980b9;
+            background-color: var(--link-color);
+            color: white;
         }
 
         /* Action Buttons Styling */
@@ -250,12 +257,12 @@
         .action-buttons button {
             padding: 10px 16px;
             font-size: 0.95em;
-            color: #333;
-            background-color: #f8f9fa;
-            border: 1px solid #ccc;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+            transition: background-color 0.2s, color 0.2s;
             font-family: inherit;
             display: inline-flex;
             align-items: center;
@@ -265,23 +272,23 @@
 
         .action-buttons button i {
             margin-right: 8px;
-            color: #555;
+            color: inherit;
             transition: color 0.2s;
         }
 
         .action-buttons button:hover {
-            background-color: #e2e6ea;
-            border-color: #bbb;
+            background-color: var(--link-color);
+            color: white;
         }
         
         .action-buttons button.success-state {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            color: #155724;
+            background-color: var(--link-color);
+            border-color: var(--link-color);
+            color: white;
         }
         
         .action-buttons button.success-state i {
-            color: #155724;
+            color: white;
         }
 
         /* Responsive */
@@ -487,7 +494,7 @@
             
             let html = `<h1>Development Updates</h1>`;
             
-            html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">This page logs the updates, record additions, and technical changes made to the digital archives.</p>`;
+            html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">Whenever new records are added or updates are made to the site, a note will be placed here.</p>`;
             
             html += `
                 <div style="margin-top: 30px;">
