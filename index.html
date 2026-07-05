@@ -9,7 +9,7 @@
 
     <style>
         :root {
-            --bg-color: #ffffff;
+            --bg-color: #f4f7f6; /* slightly tinted to let the white panels pop */
             --text-color: #333;
             --link-color: #3498db;
             --header-footer-bg: #ffffff;
@@ -42,16 +42,71 @@
             letter-spacing: 0.5px;
         }
 
-        /* Main Content Container */
-        main {
-            flex: 1;
+        /* Layout Container for Main and Sidebar */
+        .page-container {
+            display: flex;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 30px auto;
+            gap: 25px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            flex: 1;
+        }
+
+        /* Main Content Container */
+        main.main-content {
+            flex: 1;
             background: white;
             padding: 30px;
             border-radius: 8px;
             box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        /* Sidebar Styling */
+        aside.sidebar {
+            width: 320px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.2em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .sidebar p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
         }
 
         /* Footer Styling */
@@ -150,6 +205,38 @@
             border: 1px solid #fadbd8;
         }
 
+        /* Search Box styling */
+        .ref-search-container {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0 25px 0;
+        }
+
+        .ref-search-container input {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+            max-width: 300px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        .ref-search-container button {
+            padding: 10px 20px;
+            background-color: var(--link-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .ref-search-container button:hover {
+            background-color: #2980b9;
+        }
+
         /* Action Buttons Styling */
         .action-buttons {
             margin-top: 40px;
@@ -197,6 +284,16 @@
             color: #155724;
         }
 
+        /* Responsive */
+        @media (max-width: 850px) {
+            .page-container {
+                flex-direction: column;
+            }
+            aside.sidebar {
+                width: 100%;
+            }
+        }
+
         /* Print Styles */
         @media print {
             .no-print {
@@ -205,11 +302,16 @@
             body {
                 background-color: white;
             }
-            main {
-                box-shadow: none;
+            .page-container {
+                display: block;
                 margin: 0;
                 padding: 0;
                 max-width: 100%;
+            }
+            main.main-content {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
             }
             #breadcrumbs {
                 display: none;
@@ -223,10 +325,24 @@
         <div class="site-title">1st Lagham (Godstone) Scout Group Archives</div>
     </header>
 
-    <main>
-        <div id="breadcrumbs">Loading navigation...</div>
-        <div id="content">Loading data...</div>
-    </main>
+    <div class="page-container">
+        <main class="main-content">
+            <div id="breadcrumbs">Loading navigation...</div>
+            <div id="content">Loading data...</div>
+        </main>
+
+        <aside class="sidebar no-print">
+            <h3><i class="fa fa-info-circle"></i> About the Archives</h3>
+            <p>This repository contains historical documents, photographs, records, and artifacts detailing the rich history of the 1st Lagham (Godstone) Scout Group since its founding.</p>
+            
+            <h3 style="margin-top: 25px;"><i class="fa fa-link"></i> Quick Links</h3>
+            <ul>
+                <li><a href="?ref=">Archive Home</a></li>
+                <li><a href="?ref=Browse">Browse Full Catalogue</a></li>
+                <li><a href="?ref=Development-Updates">Development Updates</a></li>
+            </ul>
+        </aside>
+    </div>
 
     <footer class="no-print">
         <p>Created by Caleb O'Connell; last updated 5th July ᴀ.ᴅ. 2026</p>
@@ -248,6 +364,16 @@
             } catch (error) {
                 document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
                 document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
+            }
+        }
+
+        // Handles the Direct Reference input search box
+        function goToDirectRef() {
+            const inputField = document.getElementById('directRefInput');
+            if (inputField && inputField.value.trim() !== "") {
+                // Ensure proper encoding of the path
+                const path = inputField.value.trim();
+                window.location.href = `?ref=${encodeURIComponent(path)}`;
             }
         }
 
@@ -313,16 +439,22 @@
 
             // 1. Render Welcome Screen for Root Path
             if (currentPathString === '') {
-                let html = `<h1><i class='fa fa-institution'></i> Welcome</h1>`;
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">Welcome to the digital archives of the 1st Lagham (Godstone) Scout Group. This repository contains historical documents, photographs, records, and artifacts detailing our group's rich history. Please click below to begin browsing our catalogue.</p>`;
+                let html = `<h1><i class='fa fa-institution'></i> Welcome to 1st Lagham (Godstone) Scout Group’s Archives</h1>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">The archives cover the activities of the Scout Association at local, District and County levels, as well as news and events in the wider village of South Godstone, since the local Scout Group was founded in 1936.</p>`;
                 
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444; margin-top: 25px;">If you know the reference of the record you’re looking for, enter it below to go directly to it.</p>`;
+                
+                // New Input Box for Direct Reference Lookup
                 html += `
-                    <div class="action-buttons no-print" style="border-top: none; padding-top: 10px; margin-top: 20px;">
-                        <button onclick="window.location.href='?ref=Browse'" style="background-color: var(--link-color); color: white; border: 1px solid #2980b9;">
-                            <i class="fa fa-folder-open" style="color: white;"></i> Browse Archives
-                        </button>
+                    <div class="ref-search-container no-print">
+                        <input type="text" id="directRefInput" placeholder="e.g. Browse/Photos/1936" onkeydown="if(event.key === 'Enter') goToDirectRef()">
+                        <button onclick="goToDirectRef()"><i class="fa fa-search" style="margin-right: 5px;"></i> Go</button>
                     </div>
                 `;
+
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500;">browse the archives</a>.</p>`;
+
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">Further records are being added from time to time; to see a list of updates and additions to the site please see the <a href="?ref=Development-Updates" style="color: var(--link-color); font-weight: 500;">Development Updates page</a>.</p>`;
                 
                 content.innerHTML = html;
                 return;
