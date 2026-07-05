@@ -498,24 +498,18 @@
             
             let html = `<h1>Development Updates</h1>`;
             
-            /* Added font-style: italic here */
             html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; font-style: italic;">Whenever new records are added or updates are made to the site, a note will be placed here.</p>`;
             
             html += `
                 <div style="margin-top: 30px;">
                     <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; color: black;">5th July 2026</h3>
                     <ul style="line-height: 1.6; color: black; font-size: 1.05em;">
-                        <li style="margin-bottom: 8px;">Added a dedicated <i>Development Updates</i> page to track project changes.</li>
-                        <li style="margin-bottom: 8px;">Updated styling across the side panel, including removing header icons and adding italics.</li>
-                        <li style="margin-bottom: 8px;">Formatted welcome message links for better readability.</li>
-                    </ul>
-                    
-                    <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; color: black; margin-top: 35px;">Initial Release</h3>
-                    <ul style="line-height: 1.6; color: black; font-size: 1.05em;">
-                        <li style="margin-bottom: 8px;">Launched the 1st Lagham (Godstone) Scout Group digital archive catalogue.</li>
-                        <li style="margin-bottom: 8px;">Implemented dynamic loading of archive structure directly from GitHub JSON data.</li>
-                        <li style="margin-bottom: 8px;">Added "Random Record" and "Direct Reference" search functionalities to assist navigation.</li>
-                        <li style="margin-bottom: 8px;">Integrated Print, Email, and Permalink options to make sharing individual records easier.</li>
+                        <li style="margin-bottom: 8px;">Added PDF mapping logic for scanned items</li>
+                        <li style="margin-bottom: 8px;">Added PDF scan for <span title="Click for more information" onclick="const list = document.getElementById('scanned-items-list-1'); list.style.display = list.style.display === 'none' ? 'block' : 'none';" style="cursor: pointer; color: var(--link-color); font-weight: bold; text-decoration: underline;">1</span> item.
+                            <ul id="scanned-items-list-1" style="display: none; margin-top: 5px; list-style-type: circle;">
+                                <li>Sc/G/News/1981/MAY [title "Lagham News [May 1981]"]</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             `;
@@ -616,7 +610,7 @@
                         <tr>
                             <td><b>Scan</b></td>
                             <td>
-                                <a href="/files/documents/${data.scan}" target="_blank" class="item-title-link">
+                                <a href="/lagham/files/documents/${data.scan}" target="_blank" class="item-title-link">
                                     view PDF <i class="fa fa-external-link"></i>
                                 </a>
                             </td>
