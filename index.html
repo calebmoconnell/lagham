@@ -417,6 +417,13 @@
         }
 
         function renderPage(fullData, ref) {
+            // Check for the specific Development Updates page
+            if (ref === 'Development-Updates') {
+                renderBreadcrumbs(['Development-Updates']);
+                renderDevelopmentUpdates();
+                return;
+            }
+
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
@@ -444,7 +451,10 @@
                 
                 if (path[i] === 'Browse') continue;
 
-                html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${path[i]}</a>`;
+                // Format "Development-Updates" beautifully for the display text
+                let displayName = path[i] === 'Development-Updates' ? 'Development Updates' : path[i];
+
+                html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${displayName}</a>`;
             }
             
             nav.innerHTML = html;
@@ -470,6 +480,35 @@
                     btnElement.innerHTML = originalHtml;
                 }, 2000);
             });
+        }
+
+        function renderDevelopmentUpdates() {
+            const content = document.getElementById('content');
+            
+            let html = `<h1>Development Updates</h1>`;
+            
+            html += `<p style="line-height: 1.6; font-size: 1.05em; color: #444;">This page logs the updates, record additions, and technical changes made to the digital archives.</p>`;
+            
+            html += `
+                <div style="margin-top: 30px;">
+                    <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; color: #2c3e50;">5th July 2026</h3>
+                    <ul style="line-height: 1.6; color: #444; font-size: 1.05em;">
+                        <li style="margin-bottom: 8px;">Added a dedicated <i>Development Updates</i> page to track project changes.</li>
+                        <li style="margin-bottom: 8px;">Updated styling across the side panel, including removing header icons and adding italics.</li>
+                        <li style="margin-bottom: 8px;">Formatted welcome message links for better readability.</li>
+                    </ul>
+                    
+                    <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; color: #2c3e50; margin-top: 35px;">Initial Release</h3>
+                    <ul style="line-height: 1.6; color: #444; font-size: 1.05em;">
+                        <li style="margin-bottom: 8px;">Launched the 1st Lagham (Godstone) Scout Group digital archive catalogue.</li>
+                        <li style="margin-bottom: 8px;">Implemented dynamic loading of archive structure directly from GitHub JSON data.</li>
+                        <li style="margin-bottom: 8px;">Added "Random Record" and "Direct Reference" search functionalities to assist navigation.</li>
+                        <li style="margin-bottom: 8px;">Integrated Print, Email, and Permalink options to make sharing individual records easier.</li>
+                    </ul>
+                </div>
+            `;
+            
+            content.innerHTML = html;
         }
 
         function renderLayer(data, path) {
