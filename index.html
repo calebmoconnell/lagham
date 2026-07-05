@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1st Lagham (Godstone) Scout Group</title>
+    <title>Lagham Archive Browser</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -12,6 +12,7 @@
             --bg-color: #f8f9fa;
             --text-color: #333;
             --link-color: #3498db;
+            --header-footer-bg: #2c3e50;
         }
 
         body {
@@ -20,16 +21,48 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures footer stays at bottom */
+        }
+
+        /* Header Styling */
+        header {
+            background-color: var(--header-footer-bg);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header .site-title {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         /* Main Content Container */
         main {
+            flex: 1; /* Pushes footer to the bottom */
+            width: 100%;
             max-width: 1000px;
             margin: 30px auto;
             background: white;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-sizing: border-box; /* Prevents overflow with padding */
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px 30px;
+            font-size: 0.9em;
+            margin-top: auto;
         }
 
         /* Breadcrumb Text Links */
@@ -186,10 +219,18 @@
 </head>
 <body>
 
+    <header class="no-print">
+        <div class="site-title"><i class="fa fa-archive"></i> Lagham Archive Browser</div>
+    </header>
+
     <main>
         <div id="breadcrumbs">Loading navigation...</div>
         <div id="content">Loading data...</div>
     </main>
+
+    <footer class="no-print">
+        <p>&copy; 2026 Lagham Archive. All rights reserved.</p>
+    </footer>
 
     <script>
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
