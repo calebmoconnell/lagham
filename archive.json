@@ -50,11 +50,7 @@
               "category": "Newsletter",
               "ref": "Sc/G/News/1982/APR",
               "condition": "Water damaged; stapled",
-              "date": {
-                "day": "",
-                "month": "04",
-                "year": 1982
-              },
+              "date": "04/1982",
               "title": "Lagham News",
               "description": "1st Lagham Newsletter for April 1982.",
               "transcription": 0,
@@ -71,11 +67,7 @@
             "category": "Programme",
             "ref": "Sc/G/Prog/1987",
             "condition": "Badly water damaged; tears to paper",
-            "date": {
-              "day": "",
-              "month": "",
-              "year": 1980
-            },
+            "date": 1987,
             "title": "A 1987 Programme",
             "description": "A badly damaged programme entitled 19th [illegible] 1987.",
             "transcription": 0,
@@ -87,31 +79,26 @@
         },
         "HIS": {
           "1": {
-            "subject": "Lagham",
-            "category": "History",
             "ref": "Sc/G/HIS/1",
-            "condition": "Good",
-            "date": {
-              "day": "",
-              "month": "",
-              "year": "1986"
+            "Hist": {
+              "subject": "Lagham",
+              "category": "History",
+              "ref": "Sc/G/HIS/1/Hist",
+              "condition": "Good",
+              "date": 1986,
+              "title": "The Lagham Scout Group: The First Half Century, 1936 - 1986",
+              "description": "A History of the Group's first 50 years, compiled by Gordon F. Bush. File includes a copy of the Jubilee Show (see Sc/G/HIS/1/Prog)",
+              "transcription": "0",
+              "extent": "52 Pages",
+              "format": "Document",
+              "scan": "0"
             },
-            "title": "The Lagham Scout Group: The First Half Century, 1936 - 1986",
-            "description": "A History of the Group's first 50 years, compiled by Gordon F. Bush. File includes a copy of the Jubilee Show (see Sc/G/HIS/1/Prog)",
-            "transcription": "0",
-            "extent": "52 Pages",
-            "format": "Document",
-            "scan": "0",
             "Prog": {
               "subject": "Lagham",
               "category": "Programme",
               "ref": "Sc/G/HIS/1/Prog",
               "condition": "Water damaged.",
-              "date": {
-                "day": "13-15",
-                "month": 11,
-                "year": "1986"
-              },
+              "date": "13/11/1986 - 15/11/1986",
               "title": "1st Lagham (Godstone) Scout Group Jubilee Gang Show [Programme]",
               "description": "The programme for a Jubilee Gang Show put on by the Group over three days in November 1986",
               "transcription": "0",
@@ -125,11 +112,7 @@
             "category": "History",
             "ref": "Sc/G/HIS/2",
             "condition": "Some water damage",
-            "date": {
-              "day": "",
-              "month": "",
-              "year": "1986"
-            },
+            "date": 1986,
             "title": "The Lagham Scout Group: The First Half Century, 1936 - 1986 [Master Copy]",
             "description": "A History of the Group's first 50 years, compiled by Gordon F. Bush. Master Copy.",
             "transcription": "0",
@@ -146,11 +129,7 @@
               "category": "Minutes",
               "ref": "Sc/G/MIN/1986/JUN",
               "condition": "Water damaged.",
-              "date": {
-                "day": "10",
-                "month": "06",
-                "year": "1986"
-              },
+              "date": "10/06/1986",
               "title": "Minutes of 1st Lagham (Godstone) Scout Group Executive Meeting",
               "description": "Minutes of a meeting of the 1st Lagham Executive Committee held on 10th June 1986.",
               "transcription": "0",
@@ -173,11 +152,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1977/APR",
               "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": {
-                "day": "",
-                "month": "04",
-                "year": 1977
-              },
+              "date": "04/1977",
               "title": "East Surrey District Newsletter - April 1977",
               "description": "East Surrey District Newsletter for April 1977.",
               "transcription": 0,
@@ -190,11 +165,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1977/JUN",
               "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": {
-                "day": "",
-                "month": "06",
-                "year": 1977
-              },
+              "date": "06/1977",
               "title": "East Surrey District Newsletter - June 1977",
               "description": "East Surrey District Newsletter for June 1977.",
               "transcription": 0,
@@ -207,11 +178,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1977/DEC",
               "condition": "Water damaged; hole-punched; fragile paper",
-              "date": {
-                "day": "",
-                "month": 12,
-                "year": 1977
-              },
+              "date": "12/1977",
               "title": "East Surrey District Newsletter - December 1977",
               "description": "East Surrey District Newsletter for December 1977.",
               "transcription": 0,
@@ -227,11 +194,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1978/JAN",
               "condition": "Water damaged; hole-punched; fragile paper",
-              "date": {
-                "day": "",
-                "month": "01",
-                "year": 1978
-              },
+              "date": "01/1978",
               "title": "East Surrey District Newsletter - January 1978",
               "description": "East Surrey District Newsletter for January 1978.",
               "transcription": 0,
@@ -244,11 +207,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1978/FEB",
               "condition": "Water damaged; hole-punched; fragile paper",
-              "date": {
-                "day": "",
-                "month": "02",
-                "year": 1978
-              },
+              "date": "02/1978",
               "title": "East Surrey District Newsletter - February 1978",
               "description": "East Surrey District Newsletter for February 1978.",
               "transcription": 0,
@@ -261,11 +220,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1978/NOV",
               "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": {
-                "day": "",
-                "month": 11,
-                "year": 1978
-              },
+              "date": "11/1978",
               "title": "East Surrey District Newsletter - November 1978",
               "description": "East Surrey District Newsletter for November 1978.",
               "transcription": 0,
@@ -281,11 +236,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1979/JAN",
               "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": {
-                "day": "",
-                "month": "01",
-                "year": 1979
-              },
+              "date": "01/1979",
               "title": "East Surrey District Newsletter - January 1979",
               "description": "East Surrey District Newsletter for January 1979.",
               "extent": "2 pages",
@@ -298,11 +249,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1979/FEB",
               "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": {
-                "day": "",
-                "month": "02",
-                "year": 1979
-              },
+              "date": "02/1979",
               "title": "East Surrey District Newsletter - February 1979",
               "description": "East Surrey District Newsletter for February 1979.",
               "extent": "2 pages",
@@ -315,11 +262,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1979/APR",
               "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": {
-                "day": "",
-                "month": "04",
-                "year": 1979
-              },
+              "date": "04/1979",
               "title": "East Surrey District Newsletter - April 1979",
               "description": "East Surrey District Newsletter for April 1979.",
               "extent": "2 pages",
@@ -332,11 +275,7 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1979/MAY",
               "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": {
-                "day": "",
-                "month": "04",
-                "year": 1979
-              },
+              "date": "05/1979",
               "title": "East Surrey District Newsletter - May 1979",
               "description": "East Surrey District Newsletter for May 1979.",
               "extent": "2 pages",
@@ -359,11 +298,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1977/APR",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "04",
-                "year": 1977
-              },
+              "date": "04/1977",
               "title": "Surrey Scout [May 1977]",
               "description": "Surrey Scouting newsletter for April 1977. No. 361.",
               "transcription": 0,
@@ -376,11 +311,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1977/MAY",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "05",
-                "year": 1977
-              },
+              "date": "05/1977",
               "title": "Surrey Scout [May 1977]",
               "description": "Surrey Scouting newsletter for May 1977. No. 362.",
               "transcription": 0,
@@ -393,11 +324,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1977/JUN",
               "condition": "Water damaged; hole-punched; damage to paper",
-              "date": {
-                "day": "",
-                "month": "06",
-                "year": 1977
-              },
+              "date": "06/1977",
               "title": "Surrey Scout [June 1977]",
               "description": "Surrey Scouting newsletter for June 1977. No. 363.",
               "transcription": 0,
@@ -410,11 +337,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1977/DEC",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": 12,
-                "year": 1977
-              },
+              "date": "12/1977",
               "title": "Surrey Scout [December 1977]",
               "description": "Surrey Scouting newsletter for December 1977. No. 368.",
               "transcription": 0,
@@ -430,11 +353,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1978/JAN",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "01",
-                "year": 1978
-              },
+              "date": "01/1978",
               "title": "Surrey Scout [January 1978]",
               "description": "Surrey Scouting newsletter for January 1978. No. 369.",
               "transcription": 0,
@@ -447,11 +366,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1978/FEB",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "02",
-                "year": 1978
-              },
+              "date": "02/1978",
               "title": "Surrey Scout [February 1978]",
               "description": "Surrey Scouting newsletter for February 1978. No. 370.",
               "transcription": 0,
@@ -464,11 +379,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1978/NOV",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": 11,
-                "year": 1978
-              },
+              "date": "11/1978",
               "title": "Surrey Scout [November 1978]",
               "description": "Surrey Scouting newsletter for November 1978. No. 378.",
               "transcription": 0,
@@ -484,11 +395,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/JAN",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "01",
-                "year": 1979
-              },
+              "date": "01/1979",
               "title": "Surrey Scout [January 1979]",
               "description": "Surrey Scouting newsletter for January 1979. No. 380.",
               "transcription": 0,
@@ -501,11 +408,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/APR",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "04",
-                "year": 1979
-              },
+              "date": "04/1979",
               "title": "Surrey Scout [April 1979]",
               "description": "Surrey Scouting newsletter for April 1979. No. 383.",
               "transcription": 0,
@@ -518,11 +421,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/MAY",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "05",
-                "year": 1979
-              },
+              "date": "05/1979",
               "title": "Surrey Scout [May 1979]",
               "description": "Surrey Scouting newsletter for May 1979. No. 384.",
               "transcription": 0,
@@ -535,11 +434,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/JUN",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "06",
-                "year": 1979
-              },
+              "date": "06/1979",
               "title": "Surrey Scout [June 1979]",
               "description": "Surrey Scouting newsletter for June 1979. No. 385.",
               "transcription": 0,
@@ -552,11 +447,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/JUL",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "07-08",
-                "year": 1979
-              },
+              "date": "07/1979 - 08/1979",
               "title": "Surrey Scout [July/August 1979]",
               "description": "Surrey Scouting newsletter for July and August 1979. No. 386.",
               "transcription": 0,
@@ -569,11 +460,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/SEP",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "09",
-                "year": 1979
-              },
+              "date": "09/1979",
               "title": "Surrey Scout [September 1979]",
               "description": "Surrey Scouting newsletter for September 1979. No. 387.",
               "transcription": 0,
@@ -586,11 +473,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/OCT",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": 10,
-                "year": 1979
-              },
+              "date": "10/1979",
               "title": "Surrey Scout [October 1979]",
               "description": "Surrey Scouting newsletter for October 1979. No. 388.",
               "transcription": 0,
@@ -603,11 +486,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/NOV",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": 11,
-                "year": 1979
-              },
+              "date": "11/1979",
               "title": "Surrey Scout [November 1979]",
               "description": "Surrey Scouting newsletter for November 1979. No. 389.",
               "transcription": 0,
@@ -620,11 +499,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1979/DEC",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": 12,
-                "year": 1979
-              },
+              "date": "12/1979",
               "title": "Surrey Scout [December 1979]",
               "description": "Surrey Scouting newsletter for December 1979. No. 390.",
               "transcription": 0,
@@ -640,11 +515,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/JAN",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "01",
-                "year": 1980
-              },
+              "date": "01/1980",
               "title": "Surrey Scout [January 1980]",
               "description": "Surrey Scouting newsletter for January 1980. No. 391.",
               "transcription": 0,
@@ -657,11 +528,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/FEB",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "02",
-                "year": 1980
-              },
+              "date": "02/1980",
               "title": "Surrey Scout [February 1980]",
               "description": "Surrey Scouting newsletter for February 1980. No. 392.",
               "transcription": 0,
@@ -674,11 +541,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/MAR",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "03",
-                "year": 1980
-              },
+              "date": "03/1980",
               "title": "Surrey Scout [March 1980]",
               "description": "Surrey Scouting newsletter for March 1980. No. 393.",
               "transcription": 0,
@@ -691,11 +554,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/APR",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "04",
-                "year": 1980
-              },
+              "date": "04/1980",
               "title": "Surrey Scout [April 1980]",
               "description": "Surrey Scouting newsletter for April 1980. No. 394.",
               "transcription": 0,
@@ -708,11 +567,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/MAY",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "05",
-                "year": 1980
-              },
+              "date": "05/1980",
               "title": "Surrey Scout [May 1980]",
               "description": "Surrey Scouting newsletter for May 1980. No. 395.",
               "transcription": 0,
@@ -725,11 +580,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/JUN",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "06",
-                "year": 1980
-              },
+              "date": "06/1980",
               "title": "Surrey Scout [June 1980]",
               "description": "Surrey Scouting newsletter for June 1980; includes the 1980 Census. No. 396.",
               "transcription": 0,
@@ -742,11 +593,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/JUL",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "07-08",
-                "year": 1980
-              },
+              "date": "07/1980 - 08/1980",
               "title": "Surrey Scout [July/August 1980]",
               "description": "Surrey Scouting newsletter for July and August 1980. No. 397.",
               "transcription": 0,
@@ -759,11 +606,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/SEP",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": "09",
-                "year": 1980
-              },
+              "date": "09/1980",
               "title": "Surrey Scout [September 1980]",
               "description": "Surrey Scouting newsletter for September 1980. No. 398.",
               "transcription": 0,
@@ -776,11 +619,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/OCT",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": 10,
-                "year": 1980
-              },
+              "date": "10/1980",
               "title": "Surrey Scout [October 1980]",
               "description": "Surrey Scouting newsletter for October 1980. No. 399.",
               "transcription": 0,
@@ -793,11 +632,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1980/NOV",
               "condition": "Water damaged; hole-punched",
-              "date": {
-                "day": "",
-                "month": 11,
-                "year": 1980
-              },
+              "date": "11/1980",
               "title": "Surrey Scout [November 1980]",
               "description": "Surrey Scouting newsletter for November 1980. No. 400.",
               "transcription": 0,
@@ -813,11 +648,7 @@
               "category": "Newsletter",
               "ref": "Sc/C/NEWS/1986/SEP",
               "condition": "Water damaged",
-              "date": {
-                "day": "",
-                "month": "09",
-                "year": 1986
-              },
+              "date": "09/1986",
               "title": "Surrey Scout [September 1986]",
               "description": "Surrey Scouting newsletter for September 1986. No. 464.",
               "transcription": 0,
