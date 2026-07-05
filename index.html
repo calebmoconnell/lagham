@@ -55,57 +55,34 @@
         main {
             max-width: 1000px;
             margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .layer-header {
-            margin-bottom: 20px;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        /* List Layout for Folders/Items */
-        .item-list {
+            padding: 25px;
             background: white;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
         }
 
-        .list-item {
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
-            color: inherit;
-            transition: background-color 0.2s;
+            gap: 12px;
         }
 
-        .list-item:last-child {
-            border-bottom: none;
+        /* Requested Table Layout Styling */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 30px;
         }
-
-        .list-item:hover {
-            background-color: #fcfcfc;
-        }
-
-        .list-item .icon {
-            font-size: 1.4em;
-            margin-right: 15px;
-            min-width: 30px;
-            text-align: center;
-            color: #555; /* Slightly muted color for classic icons */
-        }
-
-        .list-item .ref-path {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            color: #666;
-            margin-right: 15px;
-            font-size: 0.95em;
-            flex-shrink: 0;
-            padding-right: 10px; 
+        
+        td, th {
+            border: 0px solid white;
+            text-align: left;
+            padding: 12px 8px;
+            border-bottom: 1px solid black;
         }
 
         .item-title-link {
@@ -115,38 +92,6 @@
 
         .item-title-link:hover {
             text-decoration: underline;
-        }
-
-        .list-item .item-title {
-            font-size: 1.05em;
-            color: var(--link-color);
-        }
-
-        /* Archive Item (File) View */
-        .record-view {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .record-field {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .record-field:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .record-field strong {
-            display: inline-block;
-            width: 150px;
-            color: #555;
-            text-transform: capitalize;
         }
 
         .error {
@@ -227,39 +172,66 @@
             
             const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
+            // 1. ARCHIVE ITEM VIEW
             if (isArchiveItem) {
-                let html = `<div class="record-view">`;
-                for (const [key, value] of Object.entries(data)) {
-                    
-                    if (key === 'category' || key === 'folder_title' || key === 'subject') continue; 
-                    
-                    if ((key === 'transcription' || key === 'scan') && String(value) === "0") continue;
-                    
-                    if (key.toLowerCase().includes('date') && (!value || String(value).trim() === '')) continue;
-                    
-                    html += `<div class="record-field">
-                        <strong>${key}:</strong> <span>${value}</span>
-                    </div>`;
-                }
-                html += `</div>`;
+                const title = data.title || data.category || 'Untitled Record';
+                const refNum = data.ref || currentPathString || '';
+                const location = data.location || '';
+                const description = data.description || '';
+                const date = data.date || '';
+                const format = data.format || '';
+                const extent = data.extent || '';
+                const condition = data.condition || '';
+
+                let html = `
+                    <h1><i class='fa fa-file-text-o'></i> ${title}</h1>
+                    <table>
+                      <tr>
+                        <td style="width: 200px;"><b>Reference Number</b></td>
+                        <td>${refNum}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Location</b></td>
+                        <td>${location}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Description</b></td>
+                        <td>${description}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Date</b></td>
+                        <td>${date}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Format</b></td>
+                        <td>${format}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Extent</b></td>
+                        <td>${extent}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Condition</b></td>
+                        <td>${condition}</td>
+                      </tr>
+                    </table>
+                `;
                 content.innerHTML = html;
                 return;
             }
 
+            // 2. FOLDER VIEW (Updated to match the clean table style)
             let html = '';
+            const folderTitle = data.folder_title || 'Archive Root';
             
-            if (data.folder_title) {
-                html += `<h2 class="layer-header">${data.folder_title}</h2>`;
-            }
-
-            html += `<div class="item-list">`;
+            html += `<h1><i class="fa fa-folder-open-o"></i> ${folderTitle}</h1>`;
+            html += `<table>`;
 
             for (const [key, childNode] of Object.entries(data)) {
                 if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
 
                 const childPath = currentPathString ? `${currentPathString}/${key}` : key;
                 
-                // Using classic Font Awesome 4 icons
                 let icon = '<i class="fa fa-folder"></i>';
                 let displayTitle = key; 
 
@@ -277,17 +249,21 @@
                 const displayChildPath = childPath.split('/').filter(segment => segment !== 'Browse').join('/');
 
                 html += `
-                    <div class="list-item">
-                        <span class="icon">${icon}</span>
-                        <span class="ref-path">${displayChildPath}</span>
-                        <a href="?ref=${encodeURIComponent(childPath)}" class="item-title-link">
-                            <strong class="item-title">${displayTitle}</strong>
-                        </a>
-                    </div>
+                    <tr>
+                        <td style="width: 40px; text-align: center; color: #555;">${icon}</td>
+                        <td style="width: 200px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color: #666;">
+                            ${displayChildPath}
+                        </td>
+                        <td>
+                            <a href="?ref=${encodeURIComponent(childPath)}" class="item-title-link">
+                                <strong>${displayTitle}</strong>
+                            </a>
+                        </td>
+                    </tr>
                 `;
             }
 
-            html += `</div>`;
+            html += `</table>`;
             content.innerHTML = html;
         }
 
