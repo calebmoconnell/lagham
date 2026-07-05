@@ -27,6 +27,21 @@
           }
         },
         "News": {
+          "1981": {
+            "MAY": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1981/MAY",
+              "condition": "Water damaged",
+              "date": "05/1981",
+              "title": "Lagham News",
+              "description": "1st Lagham Newsletter for May 1981.",
+              "transcription": 0,
+              "extent": "4 Pages",
+              "format": "Document",
+              "scan": 0
+            }
+          },
           "1982": {
             "ref": "Sc/G/News/1982",
             "JAN": {
