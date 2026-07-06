@@ -551,6 +551,7 @@
 
         function renderPage(fullData, ref) {
             if (ref === 'Changelog') {
+                document.title = "Changelog - 1st Lagham (Godstone) Scout Group Archives";
                 renderBreadcrumbs(['Changelog']);
                 renderChangelog();
                 return;
@@ -648,6 +649,7 @@
             const currentPathString = path.join('/');
 
             if (currentPathString === '') {
+                document.title = "1st Lagham (Godstone) Scout Group Archives";
                 let html = `<h1>Welcome to 1st Lagham (Godstone) Scout Group Archives</h1>`;
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">The archives cover the activities of the Scout Association at local, District and County levels, as well as news and events in the wider village of South Godstone, since the local Scout Group was founded in 1936.</p>`;
                 
@@ -688,6 +690,9 @@
             if (isArchiveItem) {
                 const title = data.title || data.category || 'Untitled Document';
                 const refNumber = data.ref || currentPathString;
+
+                // Update document tab title for record entries
+                document.title = `${title} (${refNumber}) - 1st Lagham (Godstone) Scout Group Archives`;
 
                 let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
                 
@@ -775,6 +780,12 @@
                 displayHeader = data.folder_title || path[path.length - 1];
                 headerIcon = 'fa-folder-open-o';
             }
+
+            // Calculate clean folder reference matching layout logic
+            const folderRef = currentPathString.split('/').filter(segment => segment !== 'Browse').join('/') || 'Browse';
+            
+            // Update document tab title for folders
+            document.title = `Folder: ${displayHeader} (${folderRef}) - 1st Lagham (Godstone) Scout Group Archives`;
 
             let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
 
