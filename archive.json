@@ -195,6 +195,26 @@
               "scan": "Sc_G_News_1982_OCT.pdf"
             }
           },
+          "1987": {
+            "folder_title": 1987,
+            "ref": "Sc/G/News/1987",
+            "SEP": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1987/SEP",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled; torn",
+              "date": "09/1987",
+              "title": "Lagham News [September 1987]",
+              "description": "1st Lagham Newsletter for September 1987.",
+              "transcription": 0,
+              "extent": "8 Pages",
+              "format": "Document",
+              "scan": "Sc_G_News_1987_SEP.pdf"
+            }
+          },
+          "folder_title (copy)": "1st Lagham newsletters",
+          "ref (copy)": "Sc/G/News",
           "folder_title": "1st Lagham newsletters",
           "ref": "Sc/G/News"
         },
