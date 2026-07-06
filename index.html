@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1st Lagham (Godstone) Scout Group Archives</title>
     
+    <link rel="icon" type="image/png" href="/files/images/site-images/favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -374,7 +376,7 @@
     </div>
 
     <footer class="no-print">
-        <p>Created by Caleb O'Connell; last updated 5th July ᴀ.ᴅ. 2026</p>
+        <p>Created by Caleb O'Connell; last updated 6th July ᴀ.ᴅ. 2026</p>
     </footer>
 
     <script>
@@ -446,7 +448,7 @@
             max-width: 800px;
             margin: 40px auto;
             padding: 0 40px;
-        }
+            }
         .doc-title {
             font-size: 1.5em;
             font-weight: bold;
@@ -623,6 +625,18 @@
             
             html += `
                 <div style="margin-top: 30px;">
+                    <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; color: black;">6th July 2026</h3>
+                    <ul style="line-height: 1.6; color: black; font-size: 1.05em;">
+                        <li style="margin-bottom: 8px;">Added favicon. The icon is adapted from Sc/G/Misc/NOT ( 1st Lagham Notepaper.)</li>
+                        <li style="margin-bottom: 8px;">Added PDF scan for <span title="click for list of altered records" onclick="const list = document.getElementById('scanned-items-list-2'); list.style.display = list.style.display === 'none' ? 'block' : 'none';" style="cursor: pointer; color: var(--link-color); font-weight: bold; text-decoration: underline;">2</span> items.
+                            <ul id="scanned-items-list-2" style="display: none; margin-top: 5px; list-style-type: circle;">
+                                <li>Sc/G/Misc/NOT (1st Lagham Notepaper)</li>
+                                <li>Sc/G/News/1981/APR ( Lagham News [April 1981])</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-top: 30px;">
                     <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; color: black;">5th July 2026</h3>
                     <ul style="line-height: 1.6; color: black; font-size: 1.05em;">
                         <li style="margin-bottom: 8px;">Added transcription view logic</li>
@@ -664,7 +678,7 @@
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
 
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time; to see a list of updates and additions to the site please see the <a href="?ref=Changelog" style="color: var(--link-color); font-weight: 500; font-style: italic;">Changelog page</a>.</p>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time; to see a list of updates and additions to the site please see the <a href="?ref=Changelog" style="color: var(--link-color); font-weight: 500; font-style: italic;">Changelog</a>.</p>`;
                 
                 content.innerHTML = html;
                 return;
