@@ -29,6 +29,36 @@
           "1981": {
             "folder_title": 1981,
             "ref": "Sc/G/News/1981",
+            "FEB": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1981/FEB",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled",
+              "date": "02/1981",
+              "title": "Lagham News [February 1981]",
+              "description": "1st Lagham Newsletter for March 1981. Issue No. 1.",
+              "transcription": 0,
+              "extent": "6 Pages",
+              "format": "Document",
+              "scan": "Sc_G_News_1981_FEB.pdf",
+              "w": ""
+            },
+            "MAR": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1981/MAR",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled",
+              "date": "03/1981",
+              "title": "Lagham News [March 1981]",
+              "description": "1st Lagham Newsletter for March 1981. Issue No. 2.",
+              "transcription": 0,
+              "extent": "6 Pages",
+              "format": "Document",
+              "scan": "Sc_G_News_1981_MAR.pdf",
+              "w": ""
+            },
             "APR": {
               "subject": "Lagham",
               "category": "Newsletter",
@@ -102,7 +132,7 @@
               "transcription": 0,
               "extent": "6 Pages",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc/G/News/1982/OCT.pdf"
             }
           },
           "folder_title": "1st Lagham newsletters",
