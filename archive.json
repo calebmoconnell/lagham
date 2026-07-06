@@ -87,6 +87,36 @@
               "extent": "6 Pages",
               "format": "Document",
               "scan": "Sc_G_News_1981_MAY.pdf"
+            },
+            "JUN": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1981/JUN",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled",
+              "date": "06/1981",
+              "title": "Lagham News No. 5 [June 1981]",
+              "description": "1st Lagham Newsletter for June 1981. Issue No. 5 [the document was mistakenly printed as \"No. 13.\"].",
+              "transcription": 0,
+              "extent": "4 Pages",
+              "format": "Document",
+              "scan": "Sc_G_News_1981_JUN.pdf",
+              "w": ""
+            },
+            "JUL": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1981/JUL",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled",
+              "date": "07/1981",
+              "title": "Lagham News No. 6 [July 1981]",
+              "description": "1st Lagham Newsletter for July 1981. Issue No. 6.",
+              "transcription": 0,
+              "extent": "6 Pages",
+              "format": "Document",
+              "scan": "Sc_G_News_1981_JUL.pdf",
+              "w": ""
             }
           },
           "1982": {
@@ -128,7 +158,7 @@
               "condition": "Water damaged; formerly stapled; severely damaged with large tears",
               "date": "10/1982",
               "title": "Lagham News [October 1982]",
-              "description": "1st Lagham Newsletter for October 1982. Includes discussion about starting a Beaver colony.",
+              "description": "1st Lagham Newsletter for October 1982. Includes discussion about starting a Beaver colony. The PDF contains an additional page containing part of the missing text from page 1.",
               "transcription": 0,
               "extent": "6 Pages",
               "format": "Document",
