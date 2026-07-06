@@ -730,11 +730,11 @@
                     </tbody>
                 </table>`;
                 
-                // Formulate target mailto reference dynamic link
+                // Formulate target mailto reference dynamic link with italic formatting style applied
                 const improvementMailto = `mailto:?subject=${encodeURIComponent("Suggested improvement to record " + refNumber)}`;
                 html += `
                     <div style="margin-top: 15px; margin-bottom: 25px;" class="no-print">
-                        <a href="${improvementMailto}" class="item-title-link">Suggest an improvement to this record</a>
+                        <a href="${improvementMailto}" class="item-title-link" style="font-style: italic;">Suggest an improvement to this record</a>
                     </div>
                 `;
                 
