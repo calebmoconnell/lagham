@@ -360,6 +360,7 @@
             <ul>
                 <li><a href="?ref=">Home</a></li>
                 <li><a href="?ref=Browse">Browse Catalogue</a></li>
+                <li><a href="?ref=Search">Search Catalogue</a></li>
                 <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
             </ul>
             
@@ -505,8 +506,9 @@
                 
                 const urlParams = new URLSearchParams(window.location.search);
                 const currentRef = urlParams.get('ref') || '';
+                const searchQuery = urlParams.get('q') || '';
                 
-                renderPage(fullData, currentRef);
+                renderPage(fullData, currentRef, searchQuery);
             } catch (error) {
                 document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
                 document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
@@ -529,6 +531,23 @@
             return paths;
         }
 
+        // Recursively compiles record items strictly ignoring administrative structure folders
+        function getAllRecords(node, currentPath = '') {
+            let records = [];
+            if (node && typeof node === 'object') {
+                if ('category' in node || 'title' in node) {
+                    records.push({ path: currentPath, details: node });
+                } else {
+                    for (const [key, value] of Object.entries(node)) {
+                        if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+                        const nextPath = currentPath ? `${currentPath}/${key}` : key;
+                        records = records.concat(getAllRecords(value, nextPath));
+                    }
+                }
+            }
+            return records;
+        }
+
         function goToRandomRecord() {
             if (allItemPaths.length > 0) {
                 const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
@@ -549,7 +568,13 @@
             }
         }
 
-        function renderPage(fullData, ref) {
+        function renderPage(fullData, ref, searchQuery = '') {
+            if (ref.toLowerCase() === 'search') {
+                renderBreadcrumbs(['Search']);
+                renderSearchPage(fullData, searchQuery);
+                return;
+            }
+
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
@@ -607,6 +632,92 @@
             });
         }
 
+        function renderSearchPage(fullData, query) {
+            document.title = "Search Catalogue - 1st Lagham (Godstone) Scout Group Archives";
+            const content = document.getElementById('content');
+            
+            let html = `<h1><i class="fa fa-search"></i> Search Catalogue</h1>`;
+            html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Search for archive records by title, description, reference number, or date terms.</p>`;
+            
+            html += `
+                <div class="ref-search-container no-print">
+                    <input type="text" id="catalogueSearchInput" placeholder="Enter search terms..." value="${query.replace(/"/g, '&quot;')}" onkeydown="if(event.key === 'Enter') triggerCatalogueSearch()">
+                    <button onclick="triggerCatalogueSearch()">Search <i class="fa fa-arrow-right" style="margin-left: 5px;"></i></button>
+                </div>
+                <div id="searchResultsContainer"></div>
+            `;
+            
+            content.innerHTML = html;
+
+            window.triggerCatalogueSearch = function() {
+                const inputVal = document.getElementById('catalogueSearchInput').value.trim();
+                window.location.href = `?ref=Search&q=${encodeURIComponent(inputVal)}`;
+            };
+
+            if (query.trim() !== "") {
+                performCatalogueSearch(fullData, query.trim());
+            }
+        }
+
+        function performCatalogueSearch(fullData, query) {
+            const container = document.getElementById('searchResultsContainer');
+            const records = getAllRecords(fullData);
+            const lowerQuery = query.toLowerCase();
+
+            const matches = records.filter(item => {
+                const title = (item.details.title || item.details.category || '').toLowerCase();
+                const description = (item.details.description || '').toLowerCase();
+                const refNum = (item.details.ref || item.path).toLowerCase();
+                const date = (item.details.date || '').toLowerCase();
+                const location = (item.details.location || '').toLowerCase();
+
+                return title.includes(lowerQuery) || 
+                       description.includes(lowerQuery) || 
+                       refNum.includes(lowerQuery) || 
+                       date.includes(lowerQuery) ||
+                       location.includes(lowerQuery);
+            });
+
+            if (matches.length === 0) {
+                container.innerHTML = `<p style="margin-top: 20px;">No records found matching "<strong>${query}</strong>".</p>`;
+                return;
+            }
+
+            let html = `
+                <h3 style="margin-top: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Results Found (${matches.length})</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 50px; text-align: center;"></th>
+                            <th style="width: 250px;">Reference Number</th>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            matches.forEach(item => {
+                const displayTitle = item.details.title || item.details.category || item.path.split('/').pop();
+                const displayChildPath = item.path.split('/').filter(segment => segment !== 'Browse').join('/');
+
+                html += `
+                    <tr>
+                        <td style="text-align: center;"><i class="fa fa-file-text-o" style="color: black; font-size: 1.4em;"></i></td>
+                        <td class="ref-path-text">${displayChildPath}</td>
+                        <td>
+                            <a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">
+                                <strong>${displayTitle}</strong>
+                            </a>
+                            ${item.details.description ? `<br><span style="font-size: 0.9em; color: #444;">${item.details.description}</span>` : ''}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
         function renderLayer(data, path) {
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
@@ -625,7 +736,7 @@
                     </div>
                 `;
 
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=Search" style="color: var(--link-color); font-weight: 500; font-style: italic;">search</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time.</p>`;
                 
