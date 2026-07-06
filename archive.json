@@ -117,6 +117,36 @@
               "format": "Document",
               "scan": "Sc_G_News_1981_JUL.pdf",
               "w": ""
+            },
+            "OCT": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1981/OCT",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled",
+              "date": "10/1981",
+              "title": "Lagham News No. 9 [October 1981]",
+              "description": "1st Lagham Newsletter for October 1981. Issue No. 9.",
+              "transcription": 0,
+              "extent": "8 Pages",
+              "format": "Document",
+              "scan": "Sc_G_News_1981_OCT.pdf",
+              "w": ""
+            },
+            "DEC": {
+              "subject": "Lagham",
+              "category": "Newsletter",
+              "ref": "Sc/G/News/1981/DEC",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; stapled",
+              "date": "12/1981",
+              "title": "Lagham News [December 1981]",
+              "description": "1st Lagham Newsletter for December 1981 [the document was originally mistakenly printed as \"No. 9.\"].",
+              "transcription": 0,
+              "extent": "8 Pages",
+              "format": "Document",
+              "scan": "Sc_G_News_1981_DEC.pdf",
+              "w": ""
             }
           },
           "1982": {
