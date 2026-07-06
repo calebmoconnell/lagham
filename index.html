@@ -335,7 +335,7 @@
                 border: none;
             }
             aside.sidebar {
-                display: none !important;
+                border: none;
             }
             #breadcrumbs {
                 display: none;
@@ -360,7 +360,6 @@
             <ul>
                 <li><a href="?ref=">Home</a></li>
                 <li><a href="?ref=Browse">Browse Catalogue</a></li>
-                <li><a href="?ref=Search">Search Catalogue</a></li>
                 <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
             </ul>
             
@@ -408,17 +407,74 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        body { font-family: 'PT Serif', serif; margin: 0; padding: 0; background-color: white; color: black; }
-        .header-controls { text-align: center; padding: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
-        .header-controls a, .header-controls button { padding: 10px 16px; font-size: 0.95em; background-color: white; color: #114b76; border: 1px solid #114b76; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; margin: 0 10px; font-family: inherit; transition: background-color 0.2s, color 0.2s; }
-        .header-controls a i, .header-controls button i { margin-right: 8px; }
-        .header-controls a:hover, .header-controls button:hover { background-color: #114b76; color: white; }
-        .doc-container { max-width: 800px; margin: 40px auto; padding: 0 40px; }
-        .doc-title { font-size: 1.5em; font-weight: bold; text-align: center; }
-        .doc-subtitle { font-style: italic; text-align: center; margin-top: 10px; margin-bottom: 20px; }
-        hr { border: 0; border-top: 1px solid #ccc; margin-bottom: 30px; }
-        .doc-content { white-space: pre-wrap; line-height: 1.6; }
-        @media print { .header-controls { display: none !important; } .doc-container { margin: 0; padding: 0; max-width: 100%; } }
+        body {
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+        }
+        .header-controls {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .header-controls a, .header-controls button {
+            padding: 10px 16px;
+            font-size: 0.95em;
+            background-color: white;
+            color: #114b76;
+            border: 1px solid #114b76;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin: 0 10px;
+            font-family: inherit;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .header-controls a i, .header-controls button i {
+            margin-right: 8px;
+        }
+        .header-controls a:hover, .header-controls button:hover {
+            background-color: #114b76;
+            color: white;
+        }
+        .doc-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 40px;
+            }
+        .doc-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+        .doc-subtitle {
+            font-style: italic;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+        .doc-content {
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        @media print {
+            .header-controls { display: none !important; }
+            .doc-container {
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -449,9 +505,8 @@
                 
                 const urlParams = new URLSearchParams(window.location.search);
                 const currentRef = urlParams.get('ref') || '';
-                const searchQuery = urlParams.get('q') || '';
                 
-                renderPage(fullData, currentRef, searchQuery);
+                renderPage(fullData, currentRef);
             } catch (error) {
                 document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
                 document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
@@ -461,34 +516,17 @@
         function getAllItemPaths(node, currentPath = '') {
             let paths = [];
             if (node && typeof node === 'object') {
-                if ('category' in node || 'title' in node || 'description' in node) {
+                if ('category' in node || 'title' in node) {
                     paths.push(currentPath);
                 } else {
                     for (const [key, value] of Object.entries(node)) {
-                        if (key === 'folder_title' || key === 'category' || key === 'ref' || key === 'description') continue;
+                        if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
                         const nextPath = currentPath ? `${currentPath}/${key}` : key;
                         paths = paths.concat(getAllItemPaths(value, nextPath));
                     }
                 }
             }
             return paths;
-        }
-
-        // Deeply structures and extracts only functional file records, skipping structural folders 
-        function getAllRecords(node, currentPath = '') {
-            let records = [];
-            if (node && typeof node === 'object') {
-                if ('category' in node || 'title' in node || 'description' in node) {
-                    records.push({ path: currentPath, details: node });
-                } else {
-                    for (const [key, value] of Object.entries(node)) {
-                        if (key === 'folder_title' || key === 'category' || key === 'ref' || key === 'description') continue;
-                        const nextPath = currentPath ? `${currentPath}/${key}` : key;
-                        records = records.concat(getAllRecords(value, nextPath));
-                    }
-                }
-            }
-            return records;
         }
 
         function goToRandomRecord() {
@@ -502,20 +540,16 @@
             const inputField = document.getElementById('directRefInput');
             if (inputField && inputField.value.trim() !== "") {
                 let path = inputField.value.trim();
+                
                 if (!path.startsWith('Browse/') && path !== 'Browse') {
                     path = 'Browse/' + path;
                 }
+                
                 window.location.href = `?ref=${encodeURIComponent(path)}`;
             }
         }
 
-        function renderPage(fullData, ref, searchQuery = '') {
-            if (ref.toLowerCase() === 'search') {
-                renderBreadcrumbs(['Search']);
-                renderSearchPage(fullData, searchQuery);
-                return;
-            }
-
+        function renderPage(fullData, ref) {
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
@@ -540,124 +574,37 @@
             
             for (let i = 0; i < path.length; i++) {
                 accumulatedPath += (i === 0 ? '' : '/') + path[i];
+                
                 if (path[i] === 'Browse') continue;
+
                 let displayName = path[i];
+
                 html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${displayName}</a>`;
             }
+            
             nav.innerHTML = html;
         }
 
         function copyToClipboard(text, btnElement) {
             navigator.clipboard.writeText(text).then(() => {
                 const originalHtml = btnElement.innerHTML;
+                
                 btnElement.innerHTML = '<i class="fa fa-check"></i> Link copied!';
                 btnElement.classList.add('success-state');
+                
                 setTimeout(() => {
                     btnElement.innerHTML = originalHtml;
                     btnElement.classList.remove('success-state');
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
-            });
-        }
-
-        function renderSearchPage(fullData, query) {
-            document.title = "Search Catalogue - 1st Lagham (Godstone) Scout Group Archives";
-            const content = document.getElementById('content');
-            
-            let html = `<h1><i class="fa fa-search"></i> Search Catalogue</h1>`;
-            html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Search for archive records by title, description, reference number, date, or transcription terms.</p>`;
-            
-            html += `
-                <div class="ref-search-container no-print">
-                    <input type="text" id="catalogueSearchInput" placeholder="Enter search terms..." value="${query.replace(/"/g, '&quot;')}" onkeydown="if(event.key === 'Enter') { event.preventDefault(); triggerCatalogueSearch(); }">
-                    <button onclick="triggerCatalogueSearch()">Search <i class="fa fa-arrow-right" style="margin-left: 5px;"></i></button>
-                </div>
-                <div id="searchResultsContainer"></div>
-            `;
-            
-            content.innerHTML = html;
-
-            // Instant Client-side Search Runner
-            window.triggerCatalogueSearch = function() {
-                const inputVal = document.getElementById('catalogueSearchInput').value.trim();
+                const originalHtml = btnElement.innerHTML;
                 
-                // Update URL parameter instantly without breaking the execution flow
-                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + `?ref=Search&q=${encodeURIComponent(inputVal)}`;
-                window.history.pushState({ path: cleanUrl }, '', cleanUrl);
-                
-                performCatalogueSearch(fullData, inputVal);
-            };
-
-            if (query.trim() !== "") {
-                performCatalogueSearch(fullData, query.trim());
-            }
-        }
-
-        function performCatalogueSearch(fullData, query) {
-            const container = document.getElementById('searchResultsContainer');
-            if (!query || query.trim() === "") {
-                container.innerHTML = "";
-                return;
-            }
-
-            const records = getAllRecords(fullData);
-            const lowerQuery = query.toLowerCase();
-
-            const matches = records.filter(item => {
-                const title = (item.details.title || item.details.category || '').toLowerCase();
-                const description = (item.details.description || '').toLowerCase();
-                const refNum = (item.details.ref || item.path || '').toLowerCase();
-                const date = (item.details.date || '').toLowerCase();
-                const location = (item.details.location || '').toLowerCase();
-                const transcription = String(item.details.transcription || '').toLowerCase();
-
-                return title.includes(lowerQuery) || 
-                       description.includes(lowerQuery) || 
-                       refNum.includes(lowerQuery) || 
-                       date.includes(lowerQuery) ||
-                       location.includes(lowerQuery) ||
-                       transcription.includes(lowerQuery);
+                btnElement.innerHTML = '<i class="fa fa-times"></i> Failed';
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHtml;
+                }, 2000);
             });
-
-            if (matches.length === 0) {
-                container.innerHTML = `<p style="margin-top: 20px;">No records found matching "<strong>${query}</strong>".</p>`;
-                return;
-            }
-
-            let html = `
-                <h3 style="margin-top: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Results Found (${matches.length})</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 50px; text-align: center;"></th>
-                            <th style="width: 250px;">Reference Number</th>
-                            <th>Title</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-
-            matches.forEach(item => {
-                const displayTitle = item.details.title || item.details.category || item.path.split('/').pop();
-                const displayChildPath = item.path.split('/').filter(segment => segment !== 'Browse').join('/');
-
-                html += `
-                    <tr>
-                        <td style="text-align: center;"><i class="fa fa-file-text-o" style="color: black; font-size: 1.4em;"></i></td>
-                        <td class="ref-path-text">${displayChildPath}</td>
-                        <td>
-                            <a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">
-                                <strong>${displayTitle}</strong>
-                            </a>
-                            ${item.details.description ? `<br><span style="font-size: 0.9em; color: #444;">${item.details.description}</span>` : ''}
-                        </td>
-                    </tr>
-                `;
-            });
-
-            html += `</tbody></table>`;
-            container.innerHTML = html;
         }
 
         function renderLayer(data, path) {
@@ -668,6 +615,7 @@
                 document.title = "1st Lagham (Godstone) Scout Group Archives";
                 let html = `<h1>Welcome to 1st Lagham (Godstone) Scout Group Archives</h1>`;
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">The archives cover the activities of the Scout Association at local, District and County levels, as well as news and events in the wider village of South Godstone, since the local Scout Group was founded in 1936.</p>`;
+                
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">If you know the reference of the record you’re looking for, enter it below to go directly to it.</p>`;
                 
                 html += `
@@ -677,7 +625,8 @@
                     </div>
                 `;
 
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=Search" style="color: var(--link-color); font-weight: 500; font-style: italic;">search</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
+
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time.</p>`;
                 
                 content.innerHTML = html;
@@ -699,30 +648,55 @@
                 `;
             };
 
-            const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data || 'description' in data);
+            const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
             
             if (isArchiveItem) {
                 const title = data.title || data.category || 'Untitled Document';
-                const refNumber = data.ref || currentPathString.split('/').filter(s => s !== 'Browse').join('/');
+                const refNumber = data.ref || currentPathString;
 
+                // Update document tab title for record entries
                 document.title = `${title} (${refNumber}) - 1st Lagham (Godstone) Scout Group Archives`;
 
                 let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
+                
                 html += `
                 <table>
                     <tbody>
-                        <tr><td style="width: 200px;"><b>Reference Number</b></td><td class="ref-path-text">${refNumber}</td></tr>
-                        <tr><td><b>Location</b></td><td>${data.location || ''}</td></tr>
-                        <tr><td><b>Description</b></td><td>${data.description || ''}</td></tr>
-                        <tr><td><b>Date</b></td><td>${data.date || ''}</td></tr>
-                        <tr><td><b>Format</b></td><td>${data.format || ''}</td></tr>
-                        <tr><td><b>Extent</b></td><td>${data.extent || ''}</td></tr>
-                        <tr><td><b>Condition</b></td><td>${data.condition || ''}</td></tr>`;
+                        <tr>
+                            <td style="width: 200px;"><b>Reference Number</b></td>
+                            <td class="ref-path-text">${refNumber}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Location</b></td>
+                            <td>${data.location || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td>${data.description || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Date</b></td>
+                            <td>${data.date || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Format</b></td>
+                            <td>${data.format || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Extent</b></td>
+                            <td>${data.extent || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Condition</b></td>
+                            <td>${data.condition || ''}</td>
+                        </tr>`;
 
                 if (data.transcription !== undefined && data.transcription !== null && data.transcription !== 0 && data.transcription !== "0") {
+                    
                     const encodedText = safeEncode(data.transcription);
                     const encodedTitle = safeEncode(title);
                     const encodedRef = safeEncode(refNumber);
+                    
                     html += `
                         <tr>
                             <td><b>Transcription</b></td>
@@ -752,8 +726,11 @@
                         </tr>`;
                 }
 
-                html += `</tbody></table>`;
+                html += `
+                    </tbody>
+                </table>`;
                 
+                // Formulate target mailto reference dynamic link
                 const improvementMailto = `mailto:?subject=${encodeURIComponent("Suggested improvement to record " + refNumber)}`;
                 html += `
                     <div style="margin-top: 15px; margin-bottom: 25px;" class="no-print">
@@ -762,6 +739,7 @@
                 `;
                 
                 html += getActionButtonsHtml(title);
+                
                 content.innerHTML = html;
                 return;
             }
@@ -774,10 +752,14 @@
                 headerIcon = 'fa-folder-open-o';
             }
 
+            // Calculate clean folder reference matching layout logic
             const folderRef = currentPathString.split('/').filter(segment => segment !== 'Browse').join('/') || 'Browse';
+            
+            // Update document tab title for folders
             document.title = `Folder: ${displayHeader} (${folderRef}) - 1st Lagham (Godstone) Scout Group Archives`;
 
             let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
+
             html += `
             <table>
                 <thead>
@@ -790,14 +772,15 @@
                 <tbody>`;
 
             for (const [key, childNode] of Object.entries(data)) {
-                if (key === 'folder_title' || key === 'category' || key === 'ref' || key === 'description') continue;
+                if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
 
                 const childPath = currentPathString ? `${currentPathString}/${key}` : key;
+                
                 let icon = '<i class="fa fa-folder" style="color: black; font-size: 1.4em;"></i>';
                 let displayTitle = key; 
 
                 if (childNode && typeof childNode === 'object') {
-                    if ('category' in childNode || 'title' in childNode || 'description' in childNode) {
+                    if ('category' in data || 'title' in childNode) {
                         icon = '<i class="fa fa-file-text-o" style="color: black; font-size: 1.4em;"></i>';
                         displayTitle = childNode.title || childNode.category || key;
                     } 
@@ -823,7 +806,9 @@
             }
 
             html += `</tbody></table>`;
+            
             html += getActionButtonsHtml(displayHeader);
+
             content.innerHTML = html;
         }
 
