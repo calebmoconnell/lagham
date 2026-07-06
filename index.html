@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1st Lagham (Godstone) Scout Group Archives</title>
     
-    <link rel="icon" type="image/png" href="https://calebmoconnell.github.io/lagham/files/images/site-images/favicon.png">
+    <link rel="icon" type="image/png" href="/files/images/site-images/favicon.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -361,13 +361,11 @@
                 <li><a href="?ref=">Home</a></li>
                 <li><a href="?ref=Browse">Browse Catalogue</a></li>
                 <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
-                <li><a href="?ref=Changelog">Changelog</a></li>
             </ul>
             
             <h3 style="margin-top: 25px;">1st Lagham Scout Group</h3>
             <p>1st Lagham (Godstone) Scout Group was founded in 1936 in the village of South Godstone, Surrey, which was known before the arrival of the railways as Lagham. Initially known as 2nd Godstone, the Group's name was changed to assert its independence from Godstone. This is reflected in the Group motto: <i>Nulli Secundus</i>.</p>
             <p>This page was set up to catalogue the records and archives of the Group, which cover the scouting County (Surrey) and District (East Surrey), the Group itself and the village of South Godstone.</p>
-            <p>Records are being gradually added; please see the <i>Changelog</i> section for further information.</p>
             
             <h3 style="margin-top: 25px;">Group Website</h3>
             <p>For further information about the Group's current activities, please see the main website:</p>
@@ -552,13 +550,6 @@
         }
 
         function renderPage(fullData, ref) {
-            if (ref === 'Changelog') {
-                document.title = "Changelog - 1st Lagham (Godstone) Scout Group Archives";
-                renderBreadcrumbs(['Changelog']);
-                renderChangelog();
-                return;
-            }
-
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
@@ -586,7 +577,7 @@
                 
                 if (path[i] === 'Browse') continue;
 
-                let displayName = path[i] === 'Changelog' ? 'Changelog' : path[i];
+                let displayName = path[i];
 
                 html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${displayName}</a>`;
             }
@@ -616,48 +607,6 @@
             });
         }
 
-        function renderChangelog() {
-            const content = document.getElementById('content');
-            
-            let html = `<h1>Changelog</h1>`;
-            
-            html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; font-style: italic;">Whenever new records are added or updates are made to the site, a note will be placed here.</p>`;
-            
-            html += `
-                <div style="margin-top: 30px;">
-                    <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; color: black;">6th July 2026</h3>
-                    <ul style="line-height: 1.6; color: black; font-size: 1.05em;">
-                        <li style="margin-bottom: 8px;">Added favicon. The icon is adapted from Sc/G/Misc/NOT ( 1st Lagham Notepaper.)</li>
-                        <li style="margin-bottom: 8px;">Added PDF scan for <span title="click for list of altered records" onclick="const list = document.getElementById('scanned-items-list-2'); list.style.display = list.style.display === 'none' ? 'block' : 'none';" style="cursor: pointer; color: var(--link-color); font-weight: bold; text-decoration: underline;">2</span> items.
-                            <ul id="scanned-items-list-2" style="display: none; margin-top: 5px; list-style-type: circle;">
-                                <li>Sc/G/Misc/NOT (1st Lagham Notepaper)</li>
-                                <li>Sc/G/News/1981/APR ( Lagham News [April 1981])</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="margin-top: 30px;">
-                    <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; color: black;">5th July 2026</h3>
-                    <ul style="line-height: 1.6; color: black; font-size: 1.05em;">
-                        <li style="margin-bottom: 8px;">Added transcription view logic</li>
-                        <li style="margin-bottom: 8px;">Added transcription for <span title="click for list of altered records" onclick="const list = document.getElementById('transcription-items-list-1'); list.style.display = list.style.display === 'none' ? 'block' : 'none';" style="cursor: pointer; color: var(--link-color); font-weight: bold; text-decoration: underline;">1</span> item.
-                            <ul id="transcription-items-list-1" style="display: none; margin-top: 5px; list-style-type: circle;">
-                                <li>Sc/G/News/1981/MAY (Lagham News [May 1981])</li>
-                            </ul>
-                        </li>
-                        <li style="margin-bottom: 8px;">Added PDF mapping logic for scanned items</li>
-                        <li style="margin-bottom: 8px;">Added PDF scan for <span title="click for list of altered records" onclick="const list = document.getElementById('scanned-items-list-1'); list.style.display = list.style.display === 'none' ? 'block' : 'none';" style="cursor: pointer; color: var(--link-color); font-weight: bold; text-decoration: underline;">1</span> item.
-                            <ul id="scanned-items-list-1" style="display: none; margin-top: 5px; list-style-type: circle;">
-                                <li>Sc/G/News/1981/MAY (Lagham News [May 1981])</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            `;
-            
-            content.innerHTML = html;
-        }
-
         function renderLayer(data, path) {
             const content = document.getElementById('content');
             const currentPathString = path.join('/');
@@ -678,7 +627,7 @@
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
 
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time; to see a list of updates and additions to the site please see the <a href="?ref=Changelog" style="color: var(--link-color); font-weight: 500; font-style: italic;">Changelog</a>.</p>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time.</p>`;
                 
                 content.innerHTML = html;
                 return;
