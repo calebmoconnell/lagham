@@ -615,14 +615,14 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1980/APR",
               "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "condition": "Water damaged; hole-punched; fragile paper; minor tears",
               "date": "04/1980",
               "title": "East Surrey District Newsletter - April 1980",
               "description": "East Surrey District Newsletter for April 1980.",
-              "extent": "2 pages",
+              "extent": "4 pages",
               "format": "Document",
               "transcription": 0,
-              "scan": 0
+              "scan": "Sc_D_NEWS_1980_APR.pdf"
             },
             "MAY": {
               "subject": "District",
@@ -636,21 +636,21 @@
               "extent": "2 pages",
               "format": "Document",
               "transcription": 0,
-              "scan": 0
+              "scan": "Sc_D_NEWS_1980_MAY.pdf"
             },
             "JUN": {
               "subject": "District",
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1980/JUN",
               "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "condition": "Water damaged; hole-punched; fragile paper; minor tears",
               "date": "06/1980",
               "title": "East Surrey District Newsletter - June 1980",
               "description": "East Surrey District Newsletter for June 1980.",
               "extent": "2 pages",
               "format": "Document",
               "transcription": 0,
-              "scan": 0
+              "scan": "Sc_D_NEWS_1980_JUN.pdf"
             },
             "JUL": {
               "subject": "District",
@@ -664,21 +664,21 @@
               "extent": "2 pages",
               "format": "Document",
               "transcription": 0,
-              "scan": 0
+              "scan": "Sc_D_NEWS_1980_JUL.pdf"
             },
             "SEP": {
               "subject": "District",
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1980/SEP",
               "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "condition": "Water damaged; hole-punched; fragile paper; page nearly split by tear",
               "date": "09/1980",
               "title": "East Surrey District Newsletter - September 1980",
               "description": "East Surrey District Newsletter for September 1980.",
               "extent": "2 pages",
               "format": "Document",
               "transcription": 0,
-              "scan": 0
+              "scan": "Sc_D_NEWS_1980_SEP.pdf"
             },
             "OCT": {
               "subject": "District",
@@ -692,7 +692,7 @@
               "extent": "2 pages",
               "format": "Document",
               "transcription": 0,
-              "scan": 0
+              "scan": "Sc_D_NEWS_1980_OCT.pdf"
             },
             "NOV": {
               "subject": "District",
@@ -706,7 +706,7 @@
               "extent": "2 pages",
               "format": "Document",
               "transcription": 0,
-              "scan": 0
+              "scan": "Sc_D_NEWS_1980_NOV.pdf"
             }
           },
           "folder_title": "District Newsletters",
