@@ -157,14 +157,14 @@
               "category": "Newsletter",
               "ref": "Sc/G/News/1982/JAN",
               "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled; torn",
+              "condition": "Water damaged; stapled; minor tear through all pages",
               "date": "01/1982",
               "title": "Lagham News [January 1982]",
               "description": "1st Lagham Newsletter for January 1982. No. 4.",
               "transcription": 0,
               "extent": "4 Pages",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_G_News_1982_JAN.pdf"
             },
             "APR": {
               "subject": "Lagham",
@@ -178,7 +178,7 @@
               "transcription": 0,
               "extent": "4 Pages",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_G_News_1982_APR.pdf"
             },
             "OCT": {
               "subject": "Lagham",
@@ -227,9 +227,9 @@
             "title": "A 1987 Programme",
             "description": "A badly damaged programme entitled 19th [illegible] 1987.",
             "transcription": 0,
-            "extent": "2 Pages",
+            "extent": "6 Pages",
             "format": "Document",
-            "scan": 0
+            "scan": "Sc_G_Prog_1987.pdf"
           },
           "folder_title": "Group and Section Activity Programmes",
           "ref": "Sc/G/Prog"
@@ -337,14 +337,14 @@
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1977/APR",
               "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
+              "condition": "Water damaged; hole-punched; fragile paper; torn section of paper missing",
               "date": "04/1977",
               "title": "East Surrey District Newsletter - April 1977",
               "description": "East Surrey District Newsletter for April 1977.",
               "transcription": 0,
               "extent": "2 pages",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_D_NEWS_1977_APR.pdf"
             },
             "JUN": {
               "subject": "District",
@@ -358,7 +358,7 @@
               "transcription": 0,
               "extent": "2 pages",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_D_NEWS_1977_JUN.pdf"
             },
             "DEC": {
               "subject": "District",
@@ -372,7 +372,7 @@
               "transcription": 0,
               "extent": "2 pages",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_D_NEWS_1977_DEC.pdf"
             }
           },
           "1978": {
@@ -390,7 +390,7 @@
               "transcription": 0,
               "extent": "2 pages",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_D_NEWS_1978_JAN.pdf"
             },
             "FEB": {
               "subject": "District",
@@ -404,7 +404,7 @@
               "transcription": 0,
               "extent": "2 pages",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_D_NEWS_1978_FEB.pdf"
             },
             "NOV": {
               "subject": "District",
@@ -711,6 +711,28 @@
           },
           "folder_title": "District Newsletters",
           "ref": "Sc/D/NEWS"
+        },
+        "Misc": {
+          "folder_title": "Miscellaneous Records",
+          "ref": "Sc/D/Misc",
+          "CUT": {
+            "folder_title": "Newspaper Cuttings",
+            "ref": "Sc/D/Misc/CUT",
+            "MAY17": {
+              "subject": "District",
+              "category": "Newspaper Cutting",
+              "ref": "Sc/D/Misc/CUT/MAY17",
+              "location": "Lagham H.Q.",
+              "condition": "Minor damage to top of paper.",
+              "date": "05/2017",
+              "title": "Report on the District St. Goerge's Day Parade",
+              "description": "A report in the County Border News of the East Surrey District St. George's Day Parade in Oxted.",
+              "transcription": 0,
+              "extent": "1 cutting",
+              "format": "Document",
+              "scan": "Sc_D_Misc_CUT_MAY17.pdf"
+            }
+          }
         }
       },
       "C": {
