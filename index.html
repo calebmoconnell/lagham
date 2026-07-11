@@ -300,14 +300,14 @@
 
         /* Chronological Filter UI */
         .chrono-filter-container {
-            margin-bottom: 25px;
-            padding: 15px 20px;
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            border-radius: 6px;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            background: none;
         }
 
         .filter-btn {
@@ -356,82 +356,36 @@
             min-width: 150px;
         }
 
-        /* Chronological Accordions */
-        .chrono-accordion {
-            background-color: white;
+        /* Chronological Headings */
+        .chrono-heading-year {
+            font-size: 1.5em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
             color: black;
-            cursor: pointer;
-            padding: 15px 20px;
-            width: 100%;
-            text-align: left;
-            border: 1px solid #ddd;
-            outline: none;
-            transition: 0.2s;
-            font-size: 1.05em;
-            font-family: inherit;
-            margin-top: -1px;
-            font-weight: bold;
-        }
-
-        .chrono-accordion:hover {
-            background-color: #f9f9f9;
-        }
-
-        .chrono-accordion.active {
-            background-color: #f5f5f5;
-            border-left: 4px solid var(--link-color);
-        }
-
-        .chrono-accordion i {
-            margin-right: 10px;
-            color: var(--link-color);
-            width: 15px;
-            text-align: center;
-        }
-
-        .chrono-accordion.sub-acc {
-            padding-left: 45px;
-            font-weight: normal;
-            background-color: #fcfcfc;
-        }
-
-        .chrono-accordion.sub-sub-acc {
-            padding-left: 70px;
-            font-weight: normal;
-            font-size: 0.95em;
-        }
-
-        .chrono-panel {
-            padding: 0 20px;
-            background-color: white;
-            display: none;
-            overflow: hidden;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
-        }
-
-        .chrono-list {
-            list-style-type: none;
-            padding: 15px 20px 15px 30px;
-            margin: 0;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
         }
         
-        .chrono-panel > .chrono-list {
-            border: none;
-            padding-left: 20px;
-        }
+        .chrono-heading-year i { color: var(--link-color); margin-right: 8px; }
 
-        .chrono-list li {
-            margin-bottom: 12px;
-            line-height: 1.4;
+        .chrono-heading-month {
+            font-size: 1.25em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: black;
         }
+        
+        .chrono-heading-month i { color: #666; margin-right: 8px; }
 
-        .chrono-list li:last-child {
-            margin-bottom: 0;
+        .chrono-heading-day {
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-style: italic;
+            color: black;
         }
+        
+        .chrono-heading-day i { color: #888; margin-right: 8px; }
 
         /* Responsive */
         @media (max-width: 850px) {
@@ -457,8 +411,6 @@
             }
             aside.sidebar { border: none; }
             #breadcrumbs { display: none; }
-            .chrono-panel { display: block !important; border: none !important; padding-left: 20px; }
-            .chrono-accordion { border: none !important; margin-top: 10px; padding: 5px 0; border-bottom: 1px solid #eee !important; }
         }
     </style>
 </head>
@@ -1030,62 +982,68 @@
             let html = '';
             
             const yearKeys = Object.keys(tree).sort((a, b) => {
-                if (a === "Unknown Year") return 1;
-                if (b === "Unknown Year") return -1;
+                if (a === "Unknown Year" || a === "Undated") return 1;
+                if (b === "Unknown Year" || b === "Undated") return -1;
                 return parseInt(a) - parseInt(b);
             });
 
             yearKeys.forEach(y => {
-                html += `<button class="chrono-accordion"><i class="fa fa-calendar"></i> ${y}</button><div class="chrono-panel">`;
+                html += `<h2 class="chrono-heading-year"><i class="fa fa-calendar"></i> ${y}</h2>`;
                 
                 if (tree[y].items.length > 0) {
-                    html += buildChronoList(tree[y].items);
+                    html += buildChronoTable(tree[y].items);
                 }
 
                 const mKeys = Object.keys(tree[y].months).sort((a, b) => MONTH_NAMES.indexOf(a) - MONTH_NAMES.indexOf(b));
                 mKeys.forEach(m => {
-                    html += `<button class="chrono-accordion sub-acc"><i class="fa fa-calendar-o"></i> ${m}</button><div class="chrono-panel">`;
+                    html += `<h3 class="chrono-heading-month"><i class="fa fa-calendar-o"></i> ${m} ${y !== 'Undated' ? y : ''}</h3>`;
                     
                     if (tree[y].months[m].items.length > 0) {
-                        html += buildChronoList(tree[y].months[m].items);
+                        html += buildChronoTable(tree[y].months[m].items);
                     }
 
                     const dKeys = Object.keys(tree[y].months[m].days).sort((a, b) => parseInt(a) - parseInt(b));
                     dKeys.forEach(d => {
                         const dayLabel = `${d}${getOrdinal(d)}`;
-                        html += `<button class="chrono-accordion sub-sub-acc"><i class="fa fa-clock-o"></i> ${dayLabel}</button><div class="chrono-panel" style="border:none;">`;
-                        html += buildChronoList(tree[y].months[m].days[d]);
-                        html += `</div>`;
+                        html += `<h4 class="chrono-heading-day"><i class="fa fa-clock-o"></i> ${dayLabel} ${m} ${y !== 'Undated' ? y : ''}</h4>`;
+                        html += buildChronoTable(tree[y].months[m].days[d]);
                     });
-                    html += `</div>`;
                 });
-                html += `</div>`;
             });
 
             container.innerHTML = html;
-
-            const accordions = container.getElementsByClassName("chrono-accordion");
-            for (let i = 0; i < accordions.length; i++) {
-                accordions[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    const panel = this.nextElementSibling;
-                    if (panel.style.display === "block") {
-                        panel.style.display = "none";
-                    } else {
-                        panel.style.display = "block";
-                    }
-                });
-            }
         }
 
-        function buildChronoList(itemsArray) {
-            let html = '<ul class="chrono-list">';
+        function buildChronoTable(itemsArray) {
+            let html = `
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50px; text-align: center;"></th>
+                        <th style="width: 250px;">Reference Number</th>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+                
             itemsArray.forEach(item => {
                 const title = item.data.title || item.data.category || 'Untitled Document';
                 const ref = item.data.ref || item.path.replace('Browse/', '');
-                html += `<li><a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">${title} <span style="color:#666; font-size: 0.9em;">(${ref})</span></a></li>`;
+                const displayPath = item.path.split('/').filter(segment => segment !== 'Browse').join('/');
+                
+                html += `
+                    <tr>
+                        <td style="text-align: center;"><i class="fa fa-file-text-o" style="color: black; font-size: 1.4em;"></i></td>
+                        <td class="ref-path-text">${displayPath}</td>
+                        <td>
+                            <a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">
+                                <strong>${title}</strong>
+                            </a>
+                        </td>
+                    </tr>
+                `;
             });
-            html += '</ul>';
+            html += '</tbody></table>';
             return html;
         }
 
