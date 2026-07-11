@@ -1008,7 +1008,7 @@
 
             const tree = {};
             items.forEach(item => {
-                const y = item.dateInfo.year === 9999 ? "Unknown Year" : item.dateInfo.year.toString();
+                const y = item.dateInfo.year === 9999 ? "Undated" : item.dateInfo.year.toString();
                 const m = item.dateInfo.month && item.dateInfo.month >= 1 && item.dateInfo.month <= 12 ? MONTH_NAMES[item.dateInfo.month] : null;
                 const d = item.dateInfo.day ? item.dateInfo.day.toString() : null;
 
