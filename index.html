@@ -685,32 +685,57 @@
 
         function parseDateString(dateStr) {
             if (!dateStr) return { year: 9999, month: null, day: null, str: "" }; 
-            const str = dateStr.toString().trim();
+            let str = dateStr.toString().trim();
             
+            // Handle explicit string splits for clean ranges ("to" or " - ")
+            if (str.toLowerCase().includes(' to ')) {
+                str = str.toLowerCase().split(' to ')[0].trim();
+            } else if (str.includes(' - ')) {
+                str = str.split(' - ')[0].trim();
+            }
+
             // Split by any common delimiter: dot, slash, dash, space, or comma
             const rawParts = str.split(/[\.\/\- ,]+/);
-            // Keep only parts that contain numbers to gracefully handle messy dates
+            // Grab only parts containing numbers and filter out empty strings
             const parts = rawParts.map(p => p.replace(/\D/g, '')).filter(p => p.length > 0);
             
+            // Dynamically collect only the digits belonging to the FIRST date
+            let firstDateParts = [];
+            for (let i = 0; i < parts.length; i++) {
+                firstDateParts.push(parts[i]);
+                
+                // If we've gathered 3 segments, we have a full date
+                if (firstDateParts.length === 3) break;
+                
+                // If a 4-digit year is appended as the 2nd or 3rd part, it's the end of a date
+                if (parts[i].length === 4 && firstDateParts.length > 1) break;
+                
+                // If we started with a 4-digit year, and the NEXT part is also a 4-digit year (e.g., 1936-1945)
+                if (firstDateParts.length === 1 && parts[i].length === 4) {
+                    if (i + 1 < parts.length && parts[i+1].length === 4) {
+                        break;
+                    }
+                }
+            }
+
             let year = 9999, month = null, day = null;
 
-            if (parts.length >= 3) {
-                // Check if it's yyyy-mm-dd
-                if (parts[0].length === 4) {
-                    year = parseInt(parts[0], 10);
-                    month = parseInt(parts[1], 10);
-                    day = parseInt(parts[2], 10);
+            if (firstDateParts.length === 3) {
+                // Determine layout based on where the 4-digit year is
+                if (firstDateParts[0].length === 4) {
+                    year = parseInt(firstDateParts[0], 10);
+                    month = parseInt(firstDateParts[1], 10);
+                    day = parseInt(firstDateParts[2], 10);
                 } else {
-                    // standard d m y
-                    day = parseInt(parts[0], 10);
-                    month = parseInt(parts[1], 10);
-                    year = parseInt(parts[2], 10);
+                    day = parseInt(firstDateParts[0], 10);
+                    month = parseInt(firstDateParts[1], 10);
+                    year = parseInt(firstDateParts[2], 10);
                 }
-            } else if (parts.length === 2) {
-                month = parseInt(parts[0], 10);
-                year = parseInt(parts[1], 10);
-            } else if (parts.length === 1) {
-                year = parseInt(parts[0], 10);
+            } else if (firstDateParts.length === 2) {
+                month = parseInt(firstDateParts[0], 10);
+                year = parseInt(firstDateParts[1], 10);
+            } else if (firstDateParts.length === 1) {
+                year = parseInt(firstDateParts[0], 10);
             }
 
             // Fix 2-digit years. Since Group was founded in 1936, assume 19xx for > 25 and 20xx for <= 25
@@ -722,7 +747,7 @@
             if (month < 1 || month > 12) month = null;
             if (day < 1 || day > 31) day = null;
 
-            return { year, month, day, str: str };
+            return { year, month, day, str: dateStr };
         }
 
         function getOrdinal(n) {
