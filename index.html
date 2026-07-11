@@ -1,906 +1,1297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1st Lagham (Godstone) Scout Group Archives</title>
-    
-    <link rel="icon" type="image/png" href="https://calebmoconnell.github.io/lagham/files/images/site-images/favicon.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Lagham (Godstone) Scout Group Archives</title>
+    
+    <link rel="icon" type="image/png" href="https://calebmoconnell.github.io/lagham/files/images/site-images/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: black;
-            --link-color: #114b76;
-            --header-footer-bg: #ffffff;
-        }
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: black;
+            --link-color: #114b76;
+            --header-footer-bg: #ffffff;
+        }
 
-        body {
-            font-family: 'PT Serif', serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        body {
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-        /* Header Styling */
-        header {
-            background-color: var(--header-footer-bg);
-            color: var(--text-color);
-            padding: 20px 30px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
+        /* Header Styling */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--text-color);
+            padding: 20px 30px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
 
-        header .site-title {
-            margin: 0;
-            font-size: 1.5em;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
+        header .site-title {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
 
-        /* Layout Container for Main and Sidebar */
-        .page-container {
-            display: flex;
-            width: 100%;
-            max-width: 1200px;
-            margin: 30px auto;
-            gap: 25px;
-            padding: 0 20px;
-            box-sizing: border-box;
-            flex: 1;
-        }
+        /* Layout Container for Main and Sidebar */
+        .page-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto;
+            gap: 25px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            flex: 1;
+        }
 
-        /* Main Content Container */
-        main.main-content {
-            flex: 1;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-sizing: border-box;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
+        /* Main Content Container */
+        main.main-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
 
-        /* Sidebar Styling */
-        aside.sidebar {
-            width: 320px;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-sizing: border-box;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            height: fit-content;
-        }
+        /* Sidebar Styling */
+        aside.sidebar {
+            width: 320px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            height: fit-content;
+        }
 
-        .sidebar h3 {
-            margin-top: 0;
-            color: black;
-            font-size: 1.2em;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
+        .sidebar h3 {
+            margin-top: 0;
+            color: black;
+            font-size: 1.2em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
 
-        .sidebar p {
-            font-size: 0.95em;
-            line-height: 1.5;
-            color: black;
-        }
+        .sidebar p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: black;
+        }
 
-        .sidebar ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
 
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
 
-        .sidebar ul li a {
-            color: var(--link-color);
-            text-decoration: none;
-            font-size: 0.95em;
-        }
+        .sidebar ul li a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 0.95em;
+        }
 
-        .sidebar ul li a:hover {
-            text-decoration: underline;
-        }
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
 
-        /* Footer Styling */
-        footer {
-            background-color: var(--header-footer-bg);
-            color: black;
-            text-align: center;
-            padding: 15px 30px;
-            font-size: 0.9em;
-            margin-top: auto;
-            border-top: 1px solid #eee;
-        }
+        /* Footer Styling */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: black;
+            text-align: center;
+            padding: 15px 30px;
+            font-size: 0.9em;
+            margin-top: auto;
+            border-top: 1px solid #eee;
+        }
 
-        /* Breadcrumb Text Links */
-        #breadcrumbs {
-            margin-bottom: 25px;
-            font-size: 0.95em;
-            color: black;
-        }
+        /* Breadcrumb Text Links */
+        #breadcrumbs {
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            color: black;
+        }
 
-        #breadcrumbs a {
-            color: var(--link-color);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+        #breadcrumbs a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
 
-        #breadcrumbs a:hover {
-            text-decoration: underline;
-            color: var(--link-color);
-        }
+        #breadcrumbs a:hover {
+            text-decoration: underline;
+            color: var(--link-color);
+        }
 
-        #breadcrumbs .separator {
-            margin: 0 8px;
-            color: black;
-            font-size: 0.9em;
-        }
+        #breadcrumbs .separator {
+            margin: 0 8px;
+            color: black;
+            font-size: 0.9em;
+        }
 
-        /* Headers */
-        h1 {
-            color: black;
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 25px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        h1 i {
-            color: black;
-            margin-right: 10px;
-        }
+        /* Headers */
+        h1 {
+            color: black;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 i {
+            color: black;
+            margin-right: 10px;
+        }
 
-        /* Table Layouts */
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 30px;
-        }
+        /* Table Layouts */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 30px;
+        }
 
-        td, th {
-            border: 0px solid white;
-            text-align: left;
-            padding: 12px 8px;
-            border-bottom: 1px solid black;
-            vertical-align: top;
-            color: black;
-        }
+        td, th {
+            border: 0px solid white;
+            text-align: left;
+            padding: 12px 8px;
+            border-bottom: 1px solid black;
+            vertical-align: top;
+            color: black;
+        }
 
-        th {
-            font-weight: 700;
-            font-size: 1em;
-        }
+        th {
+            font-weight: 700;
+            font-size: 1em;
+        }
 
-        /* Links and text styling */
-        .item-title-link {
-            text-decoration: none;
-            color: var(--link-color);
-            font-size: 1em;
-        }
+        /* Links and text styling */
+        .item-title-link {
+            text-decoration: none;
+            color: var(--link-color);
+            font-size: 1em;
+        }
 
-        .item-title-link:hover {
-            text-decoration: underline;
-        }
+        .item-title-link:hover {
+            text-decoration: underline;
+        }
 
-        .ref-path-text {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            color: black;
-            font-size: 0.95em;
-        }
+        .ref-path-text {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: black;
+            font-size: 0.95em;
+        }
 
-        .error {
-            color: #e74c3c;
-            background: #fdf0ed;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #fadbd8;
-        }
+        .error {
+            color: #e74c3c;
+            background: #fdf0ed;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #fadbd8;
+        }
 
-        /* Search Box styling */
-        .ref-search-container {
-            display: flex;
-            gap: 10px;
-            margin: 15px 0 25px 0;
-        }
+        /* Search Box styling */
+        .ref-search-container {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0 25px 0;
+        }
 
-        .ref-search-container input {
-            padding: 10px 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            flex: 1;
-            max-width: 300px;
-            font-size: 1em;
-            font-family: inherit;
-            color: black;
-        }
+        .ref-search-container input {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+            max-width: 300px;
+            font-size: 1em;
+            font-family: inherit;
+            color: black;
+        }
 
-        .ref-search-container button {
-            padding: 10px 20px;
-            background-color: white;
-            color: var(--link-color);
-            border: 1px solid var(--link-color);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.2s, color 0.2s;
-            font-family: inherit;
-        }
+        .ref-search-container button {
+            padding: 10px 20px;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s, color 0.2s;
+            font-family: inherit;
+        }
 
-        .ref-search-container button:hover {
-            background-color: var(--link-color);
-            color: white;
-        }
+        .ref-search-container button:hover {
+            background-color: var(--link-color);
+            color: white;
+        }
 
-        /* Action Buttons Styling */
-        .action-buttons {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+        /* Action Buttons Styling */
+        .action-buttons {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-        .action-buttons button {
-            padding: 10px 16px;
-            font-size: 0.95em;
-            background-color: white;
-            color: var(--link-color);
-            border: 1px solid var(--link-color);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            min-width: 160px;
-            justify-content: center;
-        }
+        .action-buttons button {
+            padding: 10px 16px;
+            font-size: 0.95em;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            min-width: 160px;
+            justify-content: center;
+        }
 
-        .action-buttons button i {
-            margin-right: 8px;
-            color: inherit;
-            transition: color 0.2s;
-        }
+        .action-buttons button i {
+            margin-right: 8px;
+            color: inherit;
+            transition: color 0.2s;
+        }
 
-        .action-buttons button:hover {
-            background-color: var(--link-color);
-            color: white;
-        }
-        
-        .action-buttons button.success-state {
-            background-color: var(--link-color);
-            border-color: var(--link-color);
-            color: white;
-        }
-        
-        .action-buttons button.success-state i {
-            color: white;
-        }
+        .action-buttons button:hover {
+            background-color: var(--link-color);
+            color: white;
+        }
+        
+        .action-buttons button.success-state {
+            background-color: var(--link-color);
+            border-color: var(--link-color);
+            color: white;
+        }
+        
+        .action-buttons button.success-state i {
+            color: white;
+        }
 
-        /* Print visibility defaults */
-        .print-only {
-            display: none;
-        }
+        /* Print visibility defaults */
+        .print-only {
+            display: none;
+        }
 
-        /* Chronological Filter UI */
-        .chrono-filter-container {
-            margin-bottom: 25px;
-            padding: 15px 20px;
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
+        /* Chronological Filter UI */
+        .chrono-filter-container {
+            margin-bottom: 25px;
+            padding: 15px 20px;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-        .filter-btn {
-            padding: 8px 16px;
-            background-color: white;
-            color: var(--link-color);
-            border: 1px solid var(--link-color);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.2s;
-            font-family: inherit;
-        }
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
 
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--link-color);
-            color: white;
-        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--link-color);
+            color: white;
+        }
 
-        .checkbox-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.95em;
-            cursor: pointer;
-        }
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.95em;
+            cursor: pointer;
+        }
 
-        .adv-filter-row {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
+        .adv-filter-row {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
 
-        .adv-filter-item {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+        .adv-filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-        .adv-filter-item select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 0.95em;
-            min-width: 150px;
-        }
+        .adv-filter-item select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95em;
+            min-width: 150px;
+        }
 
-        /* Chronological Accordions */
-        .chrono-accordion {
-            background-color: white;
-            color: black;
-            cursor: pointer;
-            padding: 15px 20px;
-            width: 100%;
-            text-align: left;
-            border: 1px solid #ddd;
-            outline: none;
-            transition: 0.2s;
-            font-size: 1.05em;
-            font-family: inherit;
-            margin-top: -1px;
-            font-weight: bold;
-        }
+        /* Chronological Accordions */
+        .chrono-accordion {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: left;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: 0.2s;
+            font-size: 1.05em;
+            font-family: inherit;
+            margin-top: -1px;
+            font-weight: bold;
+        }
 
-        .chrono-accordion:hover {
-            background-color: #f9f9f9;
-        }
+        .chrono-accordion:hover {
+            background-color: #f9f9f9;
+        }
 
-        .chrono-accordion.active {
-            background-color: #f5f5f5;
-            border-left: 4px solid var(--link-color);
-        }
+        .chrono-accordion.active {
+            background-color: #f5f5f5;
+            border-left: 4px solid var(--link-color);
+        }
 
-        .chrono-accordion i {
-            margin-right: 10px;
-            color: var(--link-color);
-            width: 15px;
-            text-align: center;
-        }
+        .chrono-accordion i {
+            margin-right: 10px;
+            color: var(--link-color);
+            width: 15px;
+            text-align: center;
+        }
 
-        .chrono-accordion.sub-acc {
-            padding-left: 45px;
-            font-weight: normal;
-            background-color: #fcfcfc;
-        }
+        .chrono-accordion.sub-acc {
+            padding-left: 45px;
+            font-weight: normal;
+            background-color: #fcfcfc;
+        }
 
-        .chrono-accordion.sub-sub-acc {
-            padding-left: 70px;
-            font-weight: normal;
-            font-size: 0.95em;
-        }
+        .chrono-accordion.sub-sub-acc {
+            padding-left: 70px;
+            font-weight: normal;
+            font-size: 0.95em;
+        }
 
-        .chrono-panel {
-            padding: 0 20px;
-            background-color: white;
-            display: none;
-            overflow: hidden;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
-        }
+        .chrono-panel {
+            padding: 0 20px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
 
-        .chrono-list {
-            list-style-type: none;
-            padding: 15px 20px 15px 30px;
-            margin: 0;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .chrono-panel > .chrono-list {
-            border: none;
-            padding-left: 20px;
-        }
+        .chrono-list {
+            list-style-type: none;
+            padding: 15px 20px 15px 30px;
+            margin: 0;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .chrono-panel > .chrono-list {
+            border: none;
+            padding-left: 20px;
+        }
 
-        .chrono-list li {
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
+        .chrono-list li {
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
 
-        .chrono-list li:last-child {
-            margin-bottom: 0;
-        }
+        .chrono-list li:last-child {
+            margin-bottom: 0;
+        }
 
-        /* Responsive */
-        @media (max-width: 850px) {
-            .page-container {
-                flex-direction: column;
-            }
-            aside.sidebar {
-                width: 100%;
-            }
-        }
+        /* Responsive */
+        @media (max-width: 850px) {
+            .page-container {
+                flex-direction: column;
+            }
+            aside.sidebar {
+                width: 100%;
+            }
+        }
 
-        /* Print Styles */
-        @media print {
-            .no-print { display: none !important; }
-            .screen-only { display: none !important; }
-            .print-only { display: inline !important; }
-            body { background-color: white; }
-            .page-container {
-                display: block; margin: 0; padding: 0; max-width: 100%;
-            }
-            main.main-content {
-                box-shadow: none; margin: 0; padding: 0; border: none;
-            }
-            aside.sidebar { border: none; }
-            #breadcrumbs { display: none; }
-            .chrono-panel { display: block !important; border: none !important; padding-left: 20px; }
-            .chrono-accordion { border: none !important; margin-top: 10px; padding: 5px 0; border-bottom: 1px solid #eee !important; }
-        }
-    </style>
+        /* Print Styles */
+        @media print {
+            .no-print { display: none !important; }
+            .screen-only { display: none !important; }
+            .print-only { display: inline !important; }
+            body { background-color: white; }
+            .page-container {
+                display: block; margin: 0; padding: 0; max-width: 100%;
+            }
+            main.main-content {
+                box-shadow: none; margin: 0; padding: 0; border: none;
+            }
+            aside.sidebar { border: none; }
+            #breadcrumbs { display: none; }
+            .chrono-panel { display: block !important; border: none !important; padding-left: 20px; }
+            .chrono-accordion { border: none !important; margin-top: 10px; padding: 5px 0; border-bottom: 1px solid #eee !important; }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="no-print">
-        <div class="site-title">1st Lagham (Godstone) Scout Group Archives</div>
-    </header>
+    <header class="no-print">
+        <div class="site-title">1st Lagham (Godstone) Scout Group Archives</div>
+    </header>
 
-    <div class="page-container">
-        <main class="main-content">
-            <div id="breadcrumbs">Loading navigation...</div>
-            <div id="content">Loading data...</div>
-        </main>
+    <div class="page-container">
+        <main class="main-content">
+            <div id="breadcrumbs">Loading navigation...</div>
+            <div id="content">Loading data...</div>
+        </main>
 
-        <aside class="sidebar no-print">
-            <h3>Navigation</h3>
-            <ul>
-                <li><a href="?ref=">Home</a></li>
-                <li><a href="?ref=Browse">Browse Catalogue</a></li>
-                <li><a href="?ref=chrono">Chronological view</a></li>
-                <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
-                <li><a href="mailto:calebmoconnell@icloud.com">Contact</a></li>
-            </ul>
-            
-            <h3 style="margin-top: 25px;">1st Lagham Scout Group</h3>
-            <p>1st Lagham (Godstone) Scout Group was founded in 1936 in the village of South Godstone, Surrey, which was known before the arrival of the railways as Lagham. Initially known as 2nd Godstone, the Group's name was changed to assert its independence from Godstone. This is reflected in the Group motto: <i>Nulli Secundus</i>.</p>
-            <p>This page was set up to catalogue the records and archives of the Group, which cover the scouting County (Surrey) and District (East Surrey), the Group itself and the village of South Godstone.</p>
-            
-            <h3 style="margin-top: 25px;">Group Website</h3>
-            <p>For further information about the Group's current activities, please see the main website:</p>
-            <p style="margin-bottom: 0;"><a href="https://www.1stlaghamscouts.org.uk/" target="_blank" style="word-break: break-all;">https://www.1stlaghamscouts.org.uk/</a></p>
-        </aside>
-    </div>
+        <aside class="sidebar no-print">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="?ref=">Home</a></li>
+                <li><a href="?ref=Browse">Browse Catalogue</a></li>
+                <li><a href="?ref=chrono">Chronological view</a></li>
+                <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
+                <li><a href="mailto:calebmoconnell@icloud.com">Contact</a></li>
+            </ul>
+            
+            <h3 style="margin-top: 25px;">1st Lagham Scout Group</h3>
+            <p>1st Lagham (Godstone) Scout Group was founded in 1936 in the village of South Godstone, Surrey, which was known before the arrival of the railways as Lagham. Initially known as 2nd Godstone, the Group's name was changed to assert its independence from Godstone. This is reflected in the Group motto: <i>Nulli Secundus</i>.</p>
+            <p>This page was set up to catalogue the records and archives of the Group, which cover the scouting County (Surrey) and District (East Surrey), the Group itself and the village of South Godstone.</p>
+            
+            <h3 style="margin-top: 25px;">Group Website</h3>
+            <p>For further information about the Group's current activities, please see the main website:</p>
+            <p style="margin-bottom: 0;"><a href="https://www.1stlaghamscouts.org.uk/" target="_blank" style="word-break: break-all;">https://www.1stlaghamscouts.org.uk/</a></p>
+        </aside>
+    </div>
 
-    <footer class="no-print">
-        <p>Created by Caleb O'Connell; last updated 6th July ᴀ.ᴅ. 2026</p>
-    </footer>
+    <footer class="no-print">
+        <p>Created by Caleb O'Connell; last updated 6th July ᴀ.ᴅ. 2026</p>
+    </footer>
 
-    <script>
-        const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
-        let allItemPaths = []; 
-        let fullDataCache = null;
-        let chronoItemsCache = [];
+    <script>
+        const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
+        let allItemPaths = []; 
+        let fullDataCache = null;
+        let chronoItemsCache = [];
 
-        function safeEncode(str) {
-            if (!str) return "";
-            return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
-                return '%' + c.charCodeAt(0).toString(16);
-            });
-        }
+        function safeEncode(str) {
+            if (!str) return "";
+            return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
+                return '%' + c.charCodeAt(0).toString(16);
+            });
+        }
 
-        function openTranscription(encodedTitle, encodedRef, encodedText) {
-            const title = decodeURIComponent(encodedTitle);
-            const ref = decodeURIComponent(encodedRef);
-            const text = decodeURIComponent(encodedText);
+        function openTranscription(encodedTitle, encodedRef, encodedText) {
+            const title = decodeURIComponent(encodedTitle);
+            const ref = decodeURIComponent(encodedRef);
+            const text = decodeURIComponent(encodedText);
 
-            const win = window.open('', '_blank');
-            if (!win) {
-                alert('Please allow popups for this website to view transcriptions.');
-                return;
-            }
+            const win = window.open('', '_blank');
+            if (!win) {
+                alert('Please allow popups for this website to view transcriptions.');
+                return;
+            }
 
-            const docHtml = `<!DOCTYPE html>
+            const docHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Transcription - ${ref}</title>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        body {
-            font-family: 'PT Serif', serif;
-            margin: 0;
-            padding: 0;
-            background-color: white;
-            color: black;
-        }
-        .header-controls {
-            text-align: center;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 20px;
-        }
-        .header-controls a, .header-controls button {
-            padding: 10px 16px;
-            font-size: 0.95em;
-            background-color: white;
-            color: #114b76;
-            border: 1px solid #114b76;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            margin: 0 10px;
-            font-family: inherit;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        .header-controls a i, .header-controls button i { margin-right: 8px; }
-        .header-controls a:hover, .header-controls button:hover { background-color: #114b76; color: white; }
-        .doc-container {
-            max-width: 800px; margin: 40px auto; padding: 0 40px;
-        }
-        .doc-title { font-size: 1.5em; font-weight: bold; text-align: center; }
-        .doc-subtitle { font-style: italic; text-align: center; margin-top: 10px; margin-bottom: 20px; }
-        hr { border: 0; border-top: 1px solid #ccc; margin-bottom: 30px; }
-        .doc-content { white-space: pre-wrap; line-height: 1.6; }
-        @media print {
-            .header-controls { display: none !important; }
-            .doc-container { margin: 0; padding: 0; max-width: 100%; }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Transcription - ${ref}</title>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+        }
+        .header-controls {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .header-controls a, .header-controls button {
+            padding: 10px 16px;
+            font-size: 0.95em;
+            background-color: white;
+            color: #114b76;
+            border: 1px solid #114b76;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin: 0 10px;
+            font-family: inherit;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .header-controls a i, .header-controls button i { margin-right: 8px; }
+        .header-controls a:hover, .header-controls button:hover { background-color: #114b76; color: white; }
+        .doc-container {
+            max-width: 800px; margin: 40px auto; padding: 0 40px;
+        }
+        .doc-title { font-size: 1.5em; font-weight: bold; text-align: center; }
+        .doc-subtitle { font-style: italic; text-align: center; margin-top: 10px; margin-bottom: 20px; }
+        hr { border: 0; border-top: 1px solid #ccc; margin-bottom: 30px; }
+        .doc-content { white-space: pre-wrap; line-height: 1.6; }
+        @media print {
+            .header-controls { display: none !important; }
+            .doc-container { margin: 0; padding: 0; max-width: 100%; }
+        }
+    </style>
 </head>
 <body>
-    <div class="header-controls no-print">
-        <a href="javascript:void(0)" onclick="window.close()"><i class="fa fa-arrow-left"></i>Back to record</a>
-        <button onclick="window.print()"><i class="fa fa-print"></i>Print transcription</button>
-    </div>
-    <div class="doc-container">
-        <div class="doc-title">Transcription of ${title} (${ref})</div>
-        <div class="doc-subtitle">Obvious typographical errors have been corrected and page breaks have been removed; poor punctuation has been retained.</div>
-        <hr>
-        <div class="doc-content">${text}</div>
-    </div>
+    <div class="header-controls no-print">
+        <a href="javascript:void(0)" onclick="window.close()"><i class="fa fa-arrow-left"></i>Back to record</a>
+        <button onclick="window.print()"><i class="fa fa-print"></i>Print transcription</button>
+    </div>
+    <div class="doc-container">
+        <div class="doc-title">Transcription of ${title} (${ref})</div>
+        <div class="doc-subtitle">Obvious typographical errors have been corrected and page breaks have been removed; poor punctuation has been retained.</div>
+        <hr>
+        <div class="doc-content">${text}</div>
+    </div>
 </body>
 </html>`;
-            win.document.open();
-            win.document.write(docHtml);
-            win.document.close();
-        }
+            win.document.open();
+            win.document.write(docHtml);
+            win.document.close();
+        }
 
-        async function init() {
-            try {
-                const response = await fetch(DATA_URL);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const fullData = await response.json();
-                fullDataCache = fullData;
-                
-                allItemPaths = getAllItemPaths(fullData);
-                
-                const urlParams = new URLSearchParams(window.location.search);
-                const currentRef = urlParams.get('ref') || '';
-                
-                renderPage(fullData, currentRef);
-            } catch (error) {
-                document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
-                document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
-            }
-        }
+        async function init() {
+            try {
+                const response = await fetch(DATA_URL);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const fullData = await response.json();
+                fullDataCache = fullData;
+                
+                allItemPaths = getAllItemPaths(fullData);
+                
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentRef = urlParams.get('ref') || '';
+                
+                renderPage(fullData, currentRef);
+            } catch (error) {
+                document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
+                document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
+            }
+        }
 
-        function getAllItemPaths(node, currentPath = '') {
-            let paths = [];
-            if (node && typeof node === 'object') {
-                if ('category' in node || 'title' in node) {
-                    paths.push(currentPath);
-                } else {
-                    for (const [key, value] of Object.entries(node)) {
-                        if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
-                        const nextPath = currentPath ? `${currentPath}/${key}` : key;
-                        paths = paths.concat(getAllItemPaths(value, nextPath));
-                    }
-                }
-            }
-            return paths;
-        }
-        
-        function getRecordDataByPath(fullData, pathStr) {
-            const parts = pathStr.split('/');
-            let current = fullData;
-            for (let p of parts) {
-                if (current && current[p]) {
-                    current = current[p];
-                } else {
-                    return null;
-                }
-            }
-            return current;
-        }
+        function getAllItemPaths(node, currentPath = '') {
+            let paths = [];
+            if (node && typeof node === 'object') {
+                if ('category' in node || 'title' in node) {
+                    paths.push(currentPath);
+                } else {
+                    for (const [key, value] of Object.entries(node)) {
+                        if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+                        const nextPath = currentPath ? `${currentPath}/${key}` : key;
+                        paths = paths.concat(getAllItemPaths(value, nextPath));
+                    }
+                }
+            }
+            return paths;
+        }
+        
+        function getRecordDataByPath(fullData, pathStr) {
+            const parts = pathStr.split('/');
+            let current = fullData;
+            for (let p of parts) {
+                if (current && current[p]) {
+                    current = current[p];
+                } else {
+                    return null;
+                }
+            }
+            return current;
+        }
 
-        function goToRandomRecord() {
-            if (allItemPaths.length > 0) {
-                const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
-                window.location.href = `?ref=${encodeURIComponent(randomPath)}`;
-            }
-        }
+        function goToRandomRecord() {
+            if (allItemPaths.length > 0) {
+                const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
+                window.location.href = `?ref=${encodeURIComponent(randomPath)}`;
+            }
+        }
 
-        function goToDirectRef() {
-            const inputField = document.getElementById('directRefInput');
-            if (inputField && inputField.value.trim() !== "") {
-                let path = inputField.value.trim();
-                
-                if (!path.startsWith('Browse/') && path !== 'Browse') {
-                    path = 'Browse/' + path;
-                }
-                
-                window.location.href = `?ref=${encodeURIComponent(path)}`;
-            }
-        }
+        function goToDirectRef() {
+            const inputField = document.getElementById('directRefInput');
+            if (inputField && inputField.value.trim() !== "") {
+                let path = inputField.value.trim();
+                
+                if (!path.startsWith('Browse/') && path !== 'Browse') {
+                    path = 'Browse/' + path;
+                }
+                
+                window.location.href = `?ref=${encodeURIComponent(path)}`;
+            }
+        }
 
-        function renderPage(fullData, ref) {
-            if (ref === 'chrono') {
-                renderChronologicalPage(fullData);
-                return;
-            }
+        function renderPage(fullData, ref) {
+            if (ref === 'chrono') {
+                renderChronologicalPage(fullData);
+                return;
+            }
 
-            const path = ref.split('/').filter(Boolean);
-            let currentData = fullData;
-            
-            for (let key of path) {
-                if (currentData && typeof currentData === 'object' && key in currentData) {
-                    currentData = currentData[key];
-                } else {
-                    document.getElementById('content').innerHTML = `<p class="error">Data path not found: <strong>${ref}</strong></p>`;
-                    renderBreadcrumbs(path);
-                    return;
-                }
-            }
-            
-            renderBreadcrumbs(path);
-            renderLayer(currentData, path);
-        }
+            const path = ref.split('/').filter(Boolean);
+            let currentData = fullData;
+            
+            for (let key of path) {
+                if (currentData && typeof currentData === 'object' && key in currentData) {
+                    currentData = currentData[key];
+                } else {
+                    document.getElementById('content').innerHTML = `<p class="error">Data path not found: <strong>${ref}</strong></p>`;
+                    renderBreadcrumbs(path);
+                    return;
+                }
+            }
+            
+            renderBreadcrumbs(path);
+            renderLayer(currentData, path);
+        }
 
-        function renderBreadcrumbs(path) {
-            const nav = document.getElementById('breadcrumbs');
-            let html = `<a href="?ref=">Home</a>`;
-            let accumulatedPath = '';
-            
-            for (let i = 0; i < path.length; i++) {
-                accumulatedPath += (i === 0 ? '' : '/') + path[i];
-                if (path[i] === 'Browse') continue;
+        function renderBreadcrumbs(path) {
+            const nav = document.getElementById('breadcrumbs');
+            let html = `<a href="?ref=">Home</a>`;
+            let accumulatedPath = '';
+            
+            for (let i = 0; i < path.length; i++) {
+                accumulatedPath += (i === 0 ? '' : '/') + path[i];
+                if (path[i] === 'Browse') continue;
 
-                let displayName = path[i];
-                html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${displayName}</a>`;
-            }
-            
-            nav.innerHTML = html;
-        }
+                let displayName = path[i];
+                html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${displayName}</a>`;
+            }
+            
+            nav.innerHTML = html;
+        }
 
-        function copyToClipboard(text, btnElement) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalHtml = btnElement.innerHTML;
-                
-                btnElement.innerHTML = '<i class="fa fa-check"></i> Link copied!';
-                btnElement.classList.add('success-state');
-                
-                setTimeout(() => {
-                    btnElement.innerHTML = originalHtml;
-                    btnElement.classList.remove('success-state');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-                const originalHtml = btnElement.innerHTML;
-                
-                btnElement.innerHTML = '<i class="fa fa-times"></i> Failed';
-                setTimeout(() => {
-                    btnElement.innerHTML = originalHtml;
-                }, 2000);
-            });
-        }
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalHtml = btnElement.innerHTML;
+                
+                btnElement.innerHTML = '<i class="fa fa-check"></i> Link copied!';
+                btnElement.classList.add('success-state');
+                
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHtml;
+                    btnElement.classList.remove('success-state');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                const originalHtml = btnElement.innerHTML;
+                
+                btnElement.innerHTML = '<i class="fa fa-times"></i> Failed';
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHtml;
+                }, 2000);
+            });
+        }
 
-        // ---------- Chronological View Logic ---------- //
+        // ---------- Chronological View Logic ---------- //
 
-        function parseSingleDate(str) {
-            if (!str) return { year: 9999, month: null, day: null };
-            
-            const rawParts = str.split(/[\.\/\- ,]+/);
-            const parts = rawParts.map(p => p.replace(/\D/g, '')).filter(p => p.length > 0);
-            
-            let year = 9999, month = null, day = null;
+        function parseSingleDate(str) {
+            if (!str) return { year: 9999, month: null, day: null };
+            
+            const rawParts = str.split(/[\.\/\- ,]+/);
+            const parts = rawParts.map(p => p.replace(/\D/g, '')).filter(p => p.length > 0);
+            
+            let year = 9999, month = null, day = null;
 
-            if (parts.length >= 3) {
-                if (parts[0].length === 4) {
-                    year = parseInt(parts[0], 10); month = parseInt(parts[1], 10); day = parseInt(parts[2], 10);
-                } else {
-                    day = parseInt(parts[0], 10); month = parseInt(parts[1], 10); year = parseInt(parts[2], 10);
-                }
-            } else if (parts.length === 2) {
-                month = parseInt(parts[0], 10); year = parseInt(parts[1], 10);
-            } else if (parts.length === 1) {
-                year = parseInt(parts[0], 10);
-            }
+            if (parts.length >= 3) {
+                if (parts[0].length === 4) {
+                    year = parseInt(parts[0], 10); month = parseInt(parts[1], 10); day = parseInt(parts[2], 10);
+                } else {
+                    day = parseInt(parts[0], 10); month = parseInt(parts[1], 10); year = parseInt(parts[2], 10);
+                }
+            } else if (parts.length === 2) {
+                month = parseInt(parts[0], 10); year = parseInt(parts[1], 10);
+            } else if (parts.length === 1) {
+                year = parseInt(parts[0], 10);
+            }
 
-            if (year < 100 && year > 0) year += (year > 25 ? 1900 : 2000); 
-            
-            if (month < 1 || month > 12) month = null;
-            if (day < 1 || day > 31) day = null;
+            if (year < 100 && year > 0) year += (year > 25 ? 1900 : 2000); 
+            
+            if (month < 1 || month > 12) month = null;
+            if (day < 1 || day > 31) day = null;
 
-            return { year, month, day };
-        }
+            return { year, month, day };
+        }
 
-        function expandDateString(dateStr) {
-            if (!dateStr) return [{ year: 9999, month: null, day: null, str: "" }];
-            
-            let str = dateStr.toString().trim().toLowerCase();
-            let parts = [];
-            
-            if (str.includes(' to ')) {
-                parts = str.split(' to ');
-            } else if (str.includes(' - ')) {
-                parts = str.split(' - ');
-            } else {
-                const yearRangeMatch = str.match(/^(\d{4})-(\d{4})$/);
-                if (yearRangeMatch) {
-                    parts = [yearRangeMatch[1], yearRangeMatch[2]];
-                } else {
-                    parts = [str];
-                }
-            }
+        function expandDateString(dateStr) {
+            if (!dateStr) return [{ year: 9999, month: null, day: null, str: "" }];
+            
+            let str = dateStr.toString().trim().toLowerCase();
+            let parts = [];
+            
+            if (str.includes(' to ')) {
+                parts = str.split(' to ');
+            } else if (str.includes(' - ')) {
+                parts = str.split(' - ');
+            } else {
+                const yearRangeMatch = str.match(/^(\d{4})-(\d{4})$/);
+                if (yearRangeMatch) {
+                    parts = [yearRangeMatch[1], yearRangeMatch[2]];
+                } else {
+                    parts = [str];
+                }
+            }
 
-            if (parts.length === 1) {
-                const d = parseSingleDate(parts[0]);
-                d.str = dateStr;
-                return [d];
-            }
+            if (parts.length === 1) {
+                const d = parseSingleDate(parts[0]);
+                d.str = dateStr;
+                return [d];
+            }
 
-            const start = parseSingleDate(parts[0]);
-            const end = parseSingleDate(parts[1]);
+            const start = parseSingleDate(parts[0]);
+            const end = parseSingleDate(parts[1]);
 
-            if (start.year === 9999 || end.year === 9999 || start.year > end.year) {
-                start.str = dateStr;
-                return [start];
-            }
+            if (start.year === 9999 || end.year === 9999 || start.year > end.year) {
+                start.str = dateStr;
+                return [start];
+            }
 
-            let expandedDates = [];
-            
-            for (let y = start.year; y <= end.year; y++) {
-                let startM = (y === start.year && start.month) ? start.month : 1;
-                let endM = (y === end.year && end.month) ? end.month : 12;
+            let expandedDates = [];
+            
+            for (let y = start.year; y <= end.year; y++) {
+                let startM = (y === start.year && start.month) ? start.month : 1;
+                let endM = (y === end.year && end.month) ? end.month : 12;
 
-                if (!start.month && !end.month) {
-                    expandedDates.push({ year: y, month: null, day: null, str: dateStr });
-                    continue;
-                }
+                if (!start.month && !end.month) {
+                    expandedDates.push({ year: y, month: null, day: null, str: dateStr });
+                    continue;
+                }
 
-                for (let m = startM; m <= endM; m++) {
-                    expandedDates.push({ year: y, month: m, day: null, str: dateStr });
-                }
-            }
-            
-            if (expandedDates.length === 0) {
-                start.str = dateStr;
-                return [start];
-            }
-            
-            return expandedDates;
-        }
+                for (let m = startM; m <= endM; m++) {
+                    expandedDates.push({ year: y, month: m, day: null, str: dateStr });
+                }
+            }
+            
+            if (expandedDates.length === 0) {
+                start.str = dateStr;
+                return [start];
+            }
+            
+            return expandedDates;
+        }
 
-        function getOrdinal(n) {
-            let s = ["th", "st", "nd", "rd"], v = n % 100;
-            return (s[(v - 20) % 10] || s[v] || s[0]);
-        }
+        function getOrdinal(n) {
+            let s = ["th", "st", "nd", "rd"], v = n % 100;
+            return (s[(v - 20) % 10] || s[v] || s[0]);
+        }
 
-        const MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-        function renderChronologicalPage(fullData) {
-            document.title = "Chronological View - 1st Lagham (Godstone) Scout Group Archives";
-            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Chronological View</a>`;
+        function renderChronologicalPage(fullData) {
+            document.title = "Chronological View - 1st Lagham (Godstone) Scout Group Archives";
+            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Chronological View</a>`;
 
-            const uniqueCats = new Set();
-            const uniqueFormats = new Set();
+            const uniqueCats = new Set();
+            const uniqueFormats = new Set();
 
-            if (chronoItemsCache.length === 0) {
-                allItemPaths.forEach(path => {
-                    const data = getRecordDataByPath(fullData, path);
-                    if (data) {
-                        const topCategory = path.startsWith('Browse/') ? path.split('/')[1] : null;
-                        const dateInfos = expandDateString(data.date);
-                        
-                        dateInfos.forEach(dateInfo => {
-                            chronoItemsCache.push({ path, data, topCategory, dateInfo });
-                        });
-                    }
-                });
-                
-                chronoItemsCache.sort((a, b) => {
-                    if (a.dateInfo.year !== b.dateInfo.year) return a.dateInfo.year - b.dateInfo.year;
-                    
-                    let m1 = a.dateInfo.month || 0;
-                    let m2 = b.dateInfo.month || 0;
-                    if (m1 !== m2) return m1 - m2;
-                    
-                    let d1 = a.dateInfo.day || 0;
-                    let d2 = b.dateInfo.day || 0;
-                    if (d1 !== d2) return d1 - d2;
-                    
-                    let t1 = a.data.title || a.data.category || "";
-                    let t2 = b.data.title || b.data.category || "";
-                    return t1.localeCompare(t2);
-                });
-            }
+            if (chronoItemsCache.length === 0) {
+                allItemPaths.forEach(path => {
+                    const data = getRecordDataByPath(fullData, path);
+                    if (data) {
+                        const topCategory = path.startsWith('Browse/') ? path.split('/')[1] : null;
+                        const dateInfos = expandDateString(data.date);
+                        
+                        dateInfos.forEach(dateInfo => {
+                            chronoItemsCache.push({ path, data, topCategory, dateInfo });
+                        });
+                    }
+                });
+                
+                chronoItemsCache.sort((a, b) => {
+                    if (a.dateInfo.year !== b.dateInfo.year) return a.dateInfo.year - b.dateInfo.year;
+                    
+                    let m1 = a.dateInfo.month || 0;
+                    let m2 = b.dateInfo.month || 0;
+                    if (m1 !== m2) return m1 - m2;
+                    
+                    let d1 = a.dateInfo.day || 0;
+                    let d2 = b.dateInfo.day || 0;
+                    if (d1 !== d2) return d1 - d2;
+                    
+                    let t1 = a.data.title || a.data.category || "";
+                    let t2 = b.data.title || b.data.category || "";
+                    return t1.localeCompare(t2);
+                });
+            }
 
-            // Extract unique categories & formats from the cache for the dropdowns
-            chronoItemsCache.forEach(item => {
-                if (item.data.category) uniqueCats.add(item.data.category.trim());
-                if (item.data.format) uniqueFormats.add(item.data.format.trim());
-            });
+            // Extract unique categories & formats from the cache for the dropdowns
+            chronoItemsCache.forEach(item => {
+                if (item.data.category) uniqueCats.add(item.data.category.trim());
+                if (item.data.format) uniqueFormats.add(item.data.format.trim());
+            });
 
-            // Build Group Checkboxes
-            const browseKeys = fullData.Browse ? Object.keys(fullData.Browse).filter(k => k !== 'folder_title' && k !== 'category' && k !== 'ref') : [];
-            let groupCbHtml = '';
-            browseKeys.forEach(k => {
-                const label = fullData.Browse[k].folder_title || k;
-                groupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="group-cb" value="${k}" checked> ${label}</label>`;
-            });
+            // Build Group Checkboxes
+            const browseKeys = fullData.Browse ? Object.keys(fullData.Browse).filter(k => k !== 'folder_title' && k !== 'category' && k !== 'ref') : [];
+            let groupCbHtml = '';
+            browseKeys.forEach(k => {
+                const label = fullData.Browse[k].folder_title || k;
+                groupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="group-cb" value="${k}" checked> ${label}</label>`;
+            });
 
-            // Build Dropdown Options
-            let catOptions = '<option value="">All Categories</option>';
-            Array.from(uniqueCats).sort().forEach(cat => catOptions += `<option value="${cat}">${cat}</option>`);
+            // Build Dropdown Options
+            let catOptions = '<option value="">All Categories</option>';
+            Array.from(uniqueCats).sort().forEach(cat => catOptions += `<option value="${cat}">${cat}</option>`);
 
-            let formatOptions = '<option value="">All Formats</option>';
-            Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
+            let formatOptions = '<option value="">All Formats</option>';
+            Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
 
-            let html = `<h1><i class='fa fa-clock-o'></i> Chronological View</h1>`;
-            
-            // Build the Filter UI
-            html += `<div class="chrono-filter-container no-print">
-                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
-                            <button id="btnAllGroups" class="filter-btn active">All</button>
-                            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
-                                <strong>Select record groups:</strong>
-                                ${groupCbHtml}
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 15px;">
-                            <a href="javascript:void(0)" id="toggleAdvFilters" style="text-decoration: none; color: var(--link-color); font-size: 0.95em; font-weight: bold;">
-                                <i class="fa fa-caret-right" id="advFilterIcon"></i> Advanced filters
-                            </a>
-                        </div>
+            let html = `<h1><i class='fa fa-clock-o'></i> Chronological View</h1>`;
+            
+            // Build the Filter UI
+            html += `<div class="chrono-filter-container no-print">
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
+                            <button id="btnAllGroups" class="filter-btn active">All</button>
+                            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                                <strong>Select record groups:</strong>
+                                ${groupCbHtml}
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <a href="javascript:void(0)" id="toggleAdvFilters" style="text-decoration: none; color: var(--link-color); font-size: 0.95em; font-weight: bold;">
+                                <i class="fa fa-caret-right" id="advFilterIcon"></i> Advanced filters
+                            </a>
+                        </div>
 
-                        <div id="advFiltersPanel" style="display: none; width: 100%; border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
-                            <div class="adv-filter-row">
-                                <div class="adv-filter-item">
-                                    <label><strong>Filter by Category</strong></label>
-                                    <select id="advCategoryFilter">${catOptions}</select>
-                                </div>
-                                <div class="adv-filter-item">
-                                    <label><strong>Filter by Format</strong></label>
-                                    <select id="advFormatFilter">${formatOptions}</select>
-                                </div>
-                                <div class="adv-filter-item">
-                                    <label><strong>Filter by Scope</strong></label>
-                                    <div style="display: flex; gap: 12px; padding-top: 6px;">
-                                    
+                        <div id="advFiltersPanel" style="display: none; width: 100%; border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                            <div class="adv-filter-row">
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Category</strong></label>
+                                    <select id="advCategoryFilter">${catOptions}</select>
+                                </div>
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Format</strong></label>
+                                    <select id="advFormatFilter">${formatOptions}</select>
+                                </div>
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Scope</strong></label>
+                                    <div style="display: flex; gap: 12px; padding-top: 6px;">
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="Group"> Group</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="District"> District</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="County"> County</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>`;
+                     
+            html += `<div id="chronoTreeContainer"></div>`;
+            document.getElementById('content').innerHTML = html;
+            
+            // Event Listeners for UI
+            document.getElementById('toggleAdvFilters').addEventListener('click', function() {
+                const panel = document.getElementById('advFiltersPanel');
+                const icon = document.getElementById('advFilterIcon');
+                if (panel.style.display === 'none') {
+                    panel.style.display = 'block';
+                    icon.className = 'fa fa-caret-down';
+                } else {
+                    panel.style.display = 'none';
+                    icon.className = 'fa fa-caret-right';
+                }
+            });
+
+            const btnAll = document.getElementById('btnAllGroups');
+            const groupCbs = document.querySelectorAll('.group-cb');
+            
+            btnAll.addEventListener('click', () => {
+                groupCbs.forEach(cb => cb.checked = true);
+                btnAll.classList.add('active');
+                applyChronoFilters();
+            });
+
+            groupCbs.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const allChecked = Array.from(groupCbs).every(c => c.checked);
+                    if (allChecked) {
+                        btnAll.classList.add('active');
+                    } else {
+                        btnAll.classList.remove('active');
+                    }
+                    applyChronoFilters();
+                });
+            });
+
+            // Bind advanced filters
+            document.getElementById('advCategoryFilter').addEventListener('change', applyChronoFilters);
+            document.getElementById('advFormatFilter').addEventListener('change', applyChronoFilters);
+            document.querySelectorAll('.level-cb').forEach(cb => cb.addEventListener('change', applyChronoFilters));
+
+            applyChronoFilters();
+        }
+
+        function applyChronoFilters() {
+            // Read UI states
+            const groupCbs = document.querySelectorAll('.group-cb');
+            const selectedGroups = Array.from(groupCbs).filter(cb => cb.checked).map(cb => cb.value);
+
+            const advCat = document.getElementById('advCategoryFilter').value;
+            const advFormat = document.getElementById('advFormatFilter').value;
+
+            const levelCbs = document.querySelectorAll('.level-cb');
+            const selectedLevels = Array.from(levelCbs).filter(cb => cb.checked).map(cb => cb.value.toLowerCase());
+
+            // Filter the cache
+            const filteredItems = chronoItemsCache.filter(item => {
+                // 1. Group check
+                if (selectedGroups.length > 0 && !selectedGroups.includes(item.topCategory)) return false;
+                if (selectedGroups.length === 0) return false; // Hide all if nothing selected
+
+                // 2. Category check
+                if (advCat && item.data.category !== advCat) return false;
+
+                // 3. Format check
+                if (advFormat && item.data.format !== advFormat) return false;
+
+                // 4. Level/Scope check (Group/District/County) based on JSON "subject"
+                if (selectedLevels.length > 0) {
+                    const subjectText = (item.data.subject || '').toLowerCase();
+                    const matchesLevel = selectedLevels.some(level => {
+                        if (level === 'group') {
+                            return subjectText.includes('lagham');
+                        } else {
+                            return subjectText.includes(level);
+                        }
+                    });
+                    if (!matchesLevel) return false;
+                }
+
+                return true;
+            });
+
+            renderChronoTree(filteredItems);
+        }
+
+        function renderChronoTree(items) {
+            const container = document.getElementById('chronoTreeContainer');
+            if (items.length === 0) {
+                container.innerHTML = "<p>No records found matching your filters.</p>";
+                return;
+            }
+
+            const tree = {};
+            items.forEach(item => {
+                const y = item.dateInfo.year === 9999 ? "Unknown Year" : item.dateInfo.year.toString();
+                const m = item.dateInfo.month && item.dateInfo.month >= 1 && item.dateInfo.month <= 12 ? MONTH_NAMES[item.dateInfo.month] : null;
+                const d = item.dateInfo.day ? item.dateInfo.day.toString() : null;
+
+                if (!tree[y]) tree[y] = { items: [], months: {} };
+
+                if (m) {
+                    if (!tree[y].months[m]) tree[y].months[m] = { items: [], days: {} };
+                    if (d) {
+                        if (!tree[y].months[m].days[d]) tree[y].months[m].days[d] = [];
+                        tree[y].months[m].days[d].push(item);
+                    } else {
+                        tree[y].months[m].items.push(item);
+                    }
+                } else {
+                    tree[y].items.push(item);
+                }
+            });
+
+            let html = '';
+            
+            const yearKeys = Object.keys(tree).sort((a, b) => {
+                if (a === "Unknown Year") return 1;
+                if (b === "Unknown Year") return -1;
+                return parseInt(a) - parseInt(b);
+            });
+
+            yearKeys.forEach(y => {
+                html += `<button class="chrono-accordion"><i class="fa fa-calendar"></i> ${y}</button><div class="chrono-panel">`;
+                
+                if (tree[y].items.length > 0) {
+                    html += buildChronoList(tree[y].items);
+                }
+
+                const mKeys = Object.keys(tree[y].months).sort((a, b) => MONTH_NAMES.indexOf(a) - MONTH_NAMES.indexOf(b));
+                mKeys.forEach(m => {
+                    html += `<button class="chrono-accordion sub-acc"><i class="fa fa-calendar-o"></i> ${m}</button><div class="chrono-panel">`;
+                    
+                    if (tree[y].months[m].items.length > 0) {
+                        html += buildChronoList(tree[y].months[m].items);
+                    }
+
+                    const dKeys = Object.keys(tree[y].months[m].days).sort((a, b) => parseInt(a) - parseInt(b));
+                    dKeys.forEach(d => {
+                        const dayLabel = `${d}${getOrdinal(d)}`;
+                        html += `<button class="chrono-accordion sub-sub-acc"><i class="fa fa-clock-o"></i> ${dayLabel}</button><div class="chrono-panel" style="border:none;">`;
+                        html += buildChronoList(tree[y].months[m].days[d]);
+                        html += `</div>`;
+                    });
+                    html += `</div>`;
+                });
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+
+            const accordions = container.getElementsByClassName("chrono-accordion");
+            for (let i = 0; i < accordions.length; i++) {
+                accordions[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        }
+
+        function buildChronoList(itemsArray) {
+            let html = '<ul class="chrono-list">';
+            itemsArray.forEach(item => {
+                const title = item.data.title || item.data.category || 'Untitled Document';
+                const ref = item.data.ref || item.path.replace('Browse/', '');
+                html += `<li><a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">${title} <span style="color:#666; font-size: 0.9em;">(${ref})</span></a></li>`;
+            });
+            html += '</ul>';
+            return html;
+        }
+
+        // ---------- Standard View Logic ---------- //
+
+        function renderLayer(data, path) {
+            const content = document.getElementById('content');
+            const currentPathString = path.join('/');
+
+            if (currentPathString === '') {
+                document.title = "1st Lagham (Godstone) Scout Group Archives";
+                let html = `<h1>Welcome to 1st Lagham (Godstone) Scout Group Archives</h1>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">The archives cover the activities of the Scout Association at local, District and County levels, as well as news and events in the wider village of South Godstone, since the local Scout Group was founded in 1936.</p>`;
+                
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">If you know the reference of the record you’re looking for, enter it below to go directly to it.</p>`;
+                
+                html += `
+                    <div class="ref-search-container no-print">
+                        <input type="text" id="directRefInput" placeholder="e.g. Sc/G/HIS/1/Hist" onkeydown="if(event.key === 'Enter') goToDirectRef()">
+                        <button onclick="goToDirectRef()">Go <i class="fa fa-arrow-right" style="margin-left: 5px;"></i></button>
+                    </div>
+                `;
+
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=chrono" style="color: var(--link-color); font-weight: 500; font-style: italic;">view all records chronologically</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
+
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time; if you cannot find what you're looking for, please <a href="mailto:calebmoconnell@icloud.com" style="color: var(--link-color); text-decoration: underline;">contact me</a>.</p>`;
+                
+                content.innerHTML = html;
+                return;
+            }
+            
+            let referenceParam = data.ref ? `Browse/${data.ref}` : currentPathString;
+            referenceParam = referenceParam.replace('Browse/Browse/', 'Browse/'); 
+            const permalink = `https://calebmoconnell.github.io/lagham/?ref=${referenceParam}`;
+
+            const getActionButtonsHtml = (title) => {
+                const mailtoHref = `mailto:?subject=${encodeURIComponent("Catalogue Entry: " + title)}&body=${encodeURIComponent("View this catalogue entry: " + permalink)}`;
+                return `
+                    <div class="action-buttons no-print">
+                        <button onclick="window.print()"><i class="fa fa-print"></i> Print catalogue entry</button>
+                        <button onclick="window.location.href='${mailtoHref}'"><i class="fa fa-envelope"></i> Email catalogue entry</button>
+                        <button onclick="copyToClipboard('${permalink}', this)"><i class="fa fa-link"></i> Copy permalink</button>
+                    </div>
+                `;
+            };
+
+            const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
+            
+            if (isArchiveItem) {
+                const title = data.title || data.category || 'Untitled Document';
+                const refNumber = data.ref || currentPathString;
+
+                document.title = `${title} (${refNumber}) - 1st Lagham (Godstone) Scout Group Archives`;
+
+                let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
+                
+                html += `
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="width: 200px;"><b>Reference Number</b></td>
+                            <td class="ref-path-text">${refNumber}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Location</b></td>
+                            <td>${data.location || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td>${data.description || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Date</b></td>
+                            <td>${data.date || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Format</b></td>
+                            <td>${data.format || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Extent</b></td>
+                            <td>${data.extent || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Condition</b></td>
+                            <td>${data.condition || ''}</td>
+                        </tr>`;
+
+                if (data.transcription !== undefined && data.transcription !== null && data.transcription !== 0 && data.transcription !== "0") {
+                    
+                    const encodedText = safeEncode(data.transcription);
+                    const encodedTitle = safeEncode(title);
+                    const encodedRef = safeEncode(refNumber);
+                    
+                    html += `
+                        <tr>
+                            <td><b>Transcription</b></td>
+                            <td>
+                                <span class="screen-only">
+                                    <a href="javascript:void(0)" onclick="openTranscription('${encodedTitle}', '${encodedRef}', '${encodedText}')" class="item-title-link">
+                                        view transcription <i class="fa fa-external-link"></i>
+                                    </a>
+                                </span>
+                                <span class="print-only">Transcription available</span>
+                            </td>
+                        </tr>`;
+                }
+
+                if (data.scan !== undefined && data.scan !== null && data.scan !== 0 && data.scan !== "0") {
+                    html += `
+                        <tr>
+                            <td><b>Scan</b></td>
+                            <td>
+                                <span class="screen-only">
+                                    <a href="/lagham/files/documents/${data.scan}" target="_blank" class="item-title-link">
+                                        view PDF <i class="fa fa-external-link"></i>
+                                    </a>
+                                </span>
+                                <span class="print-only">PDF available</span>
+                            </td>
+                        </tr>`;
+                }
+
+                html += `
+                    </tbody>
+                </table>`;
+                
+                const improvementMailto = `mailto:calebmoconnell@icloud.com?subject=${encodeURIComponent("Suggested improvement to record " + refNumber)}`;
+                html += `
+                    <div style="margin-top: 15px; margin-bottom: 25px;" class="no-print">
+                        <a href="${improvementMailto}" class="item-title-link">Suggest an improvement to this record</a>
+                    </div>
+                `;
+                
+                html += getActionButtonsHtml(title);
+                
+                content.innerHTML = html;
+                return;
+            }
+
+            let displayHeader = 'Archive Root';
+            let headerIcon = 'fa-archive';
+
+            if (currentPathString !== '') {
+                displayHeader = data.folder_title || path[path.length - 1];
+                headerIcon = 'fa-folder-open-o';
+            }
+
+            const folderRef = currentPathString.split('/').filter(segment => segment !== 'Browse').join('/') || 'Browse';
+            
+            document.title = `Folder: ${displayHeader} (${folderRef}) - 1st Lagham (Godstone) Scout Group Archives`;
+
+            let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
+
+            html += `
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50px; text-align: center;"></th>
+                        <th style="width: 250px;">Reference Number</th>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            for (const [key, childNode] of Object.entries(data)) {
+                if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+
+                const childPath = currentPathString ? `${currentPathString}/${key}` : key;
+                
+                let icon = '<i class="fa fa-folder" style="color: black; font-size: 1.4em;"></i>';
+                let displayTitle = key; 
+
+                if (childNode && typeof childNode === 'object') {
+                    if ('category' in data || 'title' in childNode) {
+                        icon = '<i class="fa fa-file-text-o" style="color: black; font-size: 1.4em;"></i>';
+                        displayTitle = childNode.title || childNode.category || key;
+                    } 
+                    else if ('folder_title' in childNode) {
+                        icon = '<i class="fa fa-folder" style="color: black; font-size: 1.4em;"></i>';
+                        displayTitle = childNode.folder_title;
+                    }
+                }
+                
+                const displayChildPath = childPath.split('/').filter(segment => segment !== 'Browse').join('/');
+
+                html += `
+                    <tr>
+                        <td style="text-align: center;">${icon}</td>
+                        <td class="ref-path-text">${displayChildPath}</td>
+                        <td>
+                            <a href="?ref=${encodeURIComponent(childPath)}" class="item-title-link">
+                                <strong>${displayTitle}</strong>
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            html += `</tbody></table>`;
+            html += getActionButtonsHtml(displayHeader);
+
+            content.innerHTML = html;
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
