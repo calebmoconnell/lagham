@@ -370,6 +370,12 @@
             margin-top: -1px;
             font-weight: bold;
         }
+        
+        /* Removed side borders from top-level accordions specifically */
+        .chrono-accordion.top-acc {
+            border-left: none;
+            border-right: none;
+        }
 
         .chrono-accordion:hover {
             background-color: #f9f9f9;
@@ -377,6 +383,11 @@
 
         .chrono-accordion.active {
             background-color: #f5f5f5;
+            border-left: 4px solid var(--link-color);
+        }
+        
+        /* Preserve the active style for top-level accordions */
+        .chrono-accordion.top-acc.active {
             border-left: 4px solid var(--link-color);
         }
 
@@ -407,6 +418,12 @@
             border-left: 1px solid #ddd;
             border-right: 1px solid #ddd;
         }
+        
+        /* Top-level panel removes side borders to match */
+        .chrono-panel.top-panel {
+            border-left: none;
+            border-right: none;
+        }
 
         .chrono-list {
             list-style-type: none;
@@ -422,13 +439,11 @@
             padding-left: 20px;
         }
 
+        /* Updated Spacing */
         .chrono-list li {
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .chrono-list li:last-child {
+            padding: 12px 8px; /* Matched table spacing */
             margin-bottom: 0;
+            line-height: 1.4;
         }
 
         /* Responsive */
@@ -872,6 +887,9 @@
 
             let html = `<h1>Browse records by date</h1>`;
             
+            // Text added between title and filters
+            html += `<p style="font-style: italic; margin-top: -15px; margin-bottom: 25px;">Records are sorted by date of creation.</p>`;
+            
             // Build the Filter UI
             html += `<div class="chrono-filter-container no-print">
                         <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
@@ -1034,7 +1052,8 @@
             });
 
             yearKeys.forEach(y => {
-                html += `<button class="chrono-accordion">${y}</button><div class="chrono-panel">`;
+                // Notice the addition of the "top-acc" and "top-panel" classes
+                html += `<button class="chrono-accordion top-acc">${y}</button><div class="chrono-panel top-panel">`;
                 
                 if (tree[y].items.length > 0) {
                     html += buildChronoList(tree[y].items);
