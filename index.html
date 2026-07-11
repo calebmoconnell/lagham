@@ -293,6 +293,58 @@
             color: white;
         }
 
+        /* Accordions */
+        .accordion {
+            background-color: white;
+            color: var(--link-color);
+            cursor: pointer;
+            padding: 12px 15px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: left;
+            outline: none;
+            font-size: 1.05em;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+        }
+        .accordion:hover {
+            background-color: #f9f9f9;
+        }
+        .accordion.active {
+            background-color: #f0f4f8;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .sub-accordion {
+            font-size: 0.95em;
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            margin-top: 5px;
+        }
+        .sub-accordion.active {
+            background-color: #f7f9fa;
+        }
+        .panel {
+            padding: 0 15px 15px 15px;
+            display: none;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .sub-panel {
+            border: 1px solid #eee;
+            border-top: none;
+            background-color: #fafafa;
+        }
+
         /* Print visibility defaults */
         .print-only {
             display: none;
@@ -360,6 +412,7 @@
             <ul>
                 <li><a href="?ref=">Home</a></li>
                 <li><a href="?ref=Browse">Browse Catalogue</a></li>
+                <li><a href="?ref=chrono">Chronological view</a></li>
                 <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
                 <li><a href="mailto:calebmoconnell@icloud.com">Contact</a></li>
             </ul>
@@ -381,6 +434,7 @@
     <script>
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
         let allItemPaths = []; 
+        let globalData = null; // Store fetched JSON so we can filter chronologically without refetching
 
         function safeEncode(str) {
             if (!str) return "";
@@ -408,73 +462,19 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        body {
-            font-family: 'PT Serif', serif;
-            margin: 0;
-            padding: 0;
-            background-color: white;
-            color: black;
-        }
-        .header-controls {
-            text-align: center;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 20px;
-        }
-        .header-controls a, .header-controls button {
-            padding: 10px 16px;
-            font-size: 0.95em;
-            background-color: white;
-            color: #114b76;
-            border: 1px solid #114b76;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            margin: 0 10px;
-            font-family: inherit;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        .header-controls a i, .header-controls button i {
-            margin-right: 8px;
-        }
-        .header-controls a:hover, .header-controls button:hover {
-            background-color: #114b76;
-            color: white;
-        }
-        .doc-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 40px;
-            }
-        .doc-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
-        }
-        .doc-subtitle {
-            font-style: italic;
-            text-align: center;
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-        hr {
-            border: 0;
-            border-top: 1px solid #ccc;
-            margin-bottom: 30px;
-        }
-        .doc-content {
-            white-space: pre-wrap;
-            line-height: 1.6;
-        }
+        body { font-family: 'PT Serif', serif; margin: 0; padding: 0; background-color: white; color: black; }
+        .header-controls { text-align: center; padding: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+        .header-controls a, .header-controls button { padding: 10px 16px; font-size: 0.95em; background-color: white; color: #114b76; border: 1px solid #114b76; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; margin: 0 10px; font-family: inherit; transition: background-color 0.2s, color 0.2s; }
+        .header-controls a i, .header-controls button i { margin-right: 8px; }
+        .header-controls a:hover, .header-controls button:hover { background-color: #114b76; color: white; }
+        .doc-container { max-width: 800px; margin: 40px auto; padding: 0 40px; }
+        .doc-title { font-size: 1.5em; font-weight: bold; text-align: center; }
+        .doc-subtitle { font-style: italic; text-align: center; margin-top: 10px; margin-bottom: 20px; }
+        hr { border: 0; border-top: 1px solid #ccc; margin-bottom: 30px; }
+        .doc-content { white-space: pre-wrap; line-height: 1.6; }
         @media print {
             .header-controls { display: none !important; }
-            .doc-container {
-                margin: 0;
-                padding: 0;
-                max-width: 100%;
-            }
+            .doc-container { margin: 0; padding: 0; max-width: 100%; }
         }
     </style>
 </head>
@@ -502,6 +502,7 @@
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const fullData = await response.json();
                 
+                globalData = fullData;
                 allItemPaths = getAllItemPaths(fullData);
                 
                 const urlParams = new URLSearchParams(window.location.search);
@@ -530,6 +531,212 @@
             return paths;
         }
 
+        function extractAllRecordsWithData(node, currentPath = '', topLevelGroup = 'Unknown', records = []) {
+            if (node && typeof node === 'object') {
+                if (('category' in node || 'title' in node) && currentPath !== '') {
+                    records.push({
+                        title: node.title || node.category || 'Untitled Document',
+                        ref: node.ref || currentPath,
+                        dateStr: node.date || '',
+                        path: currentPath,
+                        topLevelGroup: topLevelGroup
+                    });
+                } else {
+                    for (const [key, value] of Object.entries(node)) {
+                        if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+                        const nextPath = currentPath ? `${currentPath}/${key}` : key;
+                        
+                        let newTopLevel = topLevelGroup;
+                        if (currentPath === 'Browse') {
+                            newTopLevel = key;
+                        } else if (currentPath === '' && key !== 'Browse') {
+                            newTopLevel = key; 
+                        }
+                        
+                        extractAllRecordsWithData(value, nextPath, newTopLevel, records);
+                    }
+                }
+            }
+            return records;
+        }
+
+        function parseArchiveDate(dateStr) {
+            if (!dateStr || typeof dateStr !== 'string') return { year: 'Undated', month: 'Unknown', day: 'Unknown', sortVal: 99999999 };
+            
+            let dStr = dateStr.trim();
+            let year = 'Undated';
+            let month = 'Unknown';
+            let day = 'Unknown';
+            let sortVal = 99999999;
+
+            const yearMatch = dStr.match(/\b(18|19|20)\d{2}\b/);
+            if (yearMatch) {
+                year = yearMatch[0];
+            } else {
+                return { year, month, day, sortVal };
+            }
+
+            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            const monthShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            let monthIdx = 0;
+            
+            for (let i = 0; i < months.length; i++) {
+                if (dStr.toLowerCase().includes(months[i].toLowerCase()) || dStr.toLowerCase().includes(monthShort[i].toLowerCase())) {
+                    month = months[i];
+                    monthIdx = i + 1;
+                    break;
+                }
+            }
+
+            const dayRegex = /\b([1-9]|[12][0-9]|3[01])(?:st|nd|rd|th)?\s*(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\b/i;
+            const dayMatch = dStr.match(dayRegex);
+            if (dayMatch) {
+                day = dayMatch[1];
+            } else {
+                const dayRegex2 = /\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s*([1-9]|[12][0-9]|3[01])\b/i;
+                const dayMatch2 = dStr.match(dayRegex2);
+                if (dayMatch2) {
+                    day = dayMatch2[1];
+                }
+            }
+
+            sortVal = parseInt(year) * 10000 + (monthIdx * 100) + (day !== 'Unknown' ? parseInt(day) : 0);
+            return { year, month, day, sortVal };
+        }
+
+        function setupAccordions() {
+            const acc = document.getElementsByClassName("accordion");
+            for (let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const icon = this.querySelector('.fa');
+                    if (icon) {
+                        if (this.classList.contains("active")) {
+                            icon.classList.remove("fa-chevron-right");
+                            icon.classList.add("fa-chevron-down");
+                        } else {
+                            icon.classList.remove("fa-chevron-down");
+                            icon.classList.add("fa-chevron-right");
+                        }
+                    }
+                    
+                    const panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        }
+
+        function renderChronoView(fullData, filter = 'All') {
+            document.title = "Chronological View - 1st Lagham (Godstone) Scout Group Archives";
+            const nav = document.getElementById('breadcrumbs');
+            nav.innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Chronological View</a>`;
+            const content = document.getElementById('content');
+            
+            let html = `<h1><i class='fa fa-calendar'></i> Chronological View</h1>`;
+            
+            let topGroups = [];
+            if (fullData.Browse) {
+                topGroups = Object.keys(fullData.Browse).filter(k => k !== 'folder_title' && k !== 'category' && k !== 'ref');
+            }
+            
+            html += `<div style="margin-bottom: 25px; padding: 15px; background: #f9f9f9; border: 1px solid #eee; border-radius: 4px;" class="no-print">
+                <label for="chronoFilter" style="font-weight: bold; margin-right: 10px;">Filter by category:</label>
+                <select id="chronoFilter" style="padding: 8px 12px; font-size: 1em; font-family: inherit; border: 1px solid #ccc; border-radius: 4px; min-width: 200px;" onchange="updateChronoFilter(this.value)">
+                    <option value="All" ${filter === 'All' ? 'selected' : ''}>All</option>`;
+            
+            topGroups.forEach(group => {
+                html += `<option value="${group}" ${filter === group ? 'selected' : ''}>${group}</option>`;
+            });
+            html += `</select></div>`;
+            
+            let records = extractAllRecordsWithData(fullData);
+            if (filter !== 'All') {
+                records = records.filter(r => r.topLevelGroup === filter);
+            }
+            
+            records.forEach(r => {
+                const parsed = parseArchiveDate(r.dateStr);
+                r.year = parsed.year;
+                r.month = parsed.month;
+                r.day = parsed.day;
+                r.sortVal = parsed.sortVal;
+            });
+            records.sort((a, b) => a.sortVal - b.sortVal);
+            
+            const grouped = {};
+            records.forEach(r => {
+                if (!grouped[r.year]) grouped[r.year] = {};
+                if (!grouped[r.year][r.month]) grouped[r.year][r.month] = {};
+                if (!grouped[r.year][r.month][r.day]) grouped[r.year][r.month][r.day] = [];
+                grouped[r.year][r.month][r.day].push(r);
+            });
+            
+            if (records.length === 0) {
+                html += `<p>No records found for this selection.</p>`;
+            } else {
+                const years = Object.keys(grouped).sort((a, b) => {
+                    if (a === 'Undated') return 1;
+                    if (b === 'Undated') return -1;
+                    return parseInt(a) - parseInt(b);
+                });
+                
+                years.forEach(year => {
+                    html += `<h2 style="border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-top: 30px;">${year}</h2>`;
+                    
+                    const months = Object.keys(grouped[year]).sort((a, b) => {
+                        if (a === 'Unknown') return 1;
+                        if (b === 'Unknown') return -1;
+                        const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                        return monthNames.indexOf(a) - monthNames.indexOf(b);
+                    });
+                    
+                    months.forEach(month => {
+                        html += `<button class="accordion"><i class="fa fa-chevron-right" style="font-size: 0.8em; margin-right: 8px;"></i>${month === 'Unknown' ? 'Month Unknown' : month}</button>`;
+                        html += `<div class="panel">`;
+                        
+                        const days = Object.keys(grouped[year][month]).sort((a, b) => {
+                            if (a === 'Unknown') return 1;
+                            if (b === 'Unknown') return -1;
+                            return parseInt(a) - parseInt(b);
+                        });
+                        
+                        days.forEach(day => {
+                            if (day !== 'Unknown') {
+                                html += `<button class="accordion sub-accordion"><i class="fa fa-chevron-right" style="font-size: 0.8em; margin-right: 8px;"></i>Day: ${day}</button>`;
+                                html += `<div class="panel sub-panel" style="margin-top: 0;">`;
+                            }
+                            
+                            html += `<ul style="list-style-type: none; padding-left: ${day !== 'Unknown' ? '0' : '10px'}; margin-top: 15px; margin-bottom: 5px;">`;
+                            grouped[year][month][day].forEach(record => {
+                                html += `<li style="margin-bottom: 12px; line-height: 1.4;">
+                                    <a href="?ref=${encodeURIComponent(record.path)}" class="item-title-link"><strong>${record.title}</strong></a>
+                                    <div style="font-size: 0.9em; color: #555; margin-top: 2px;">Ref: <span class="ref-path-text">${record.ref}</span> ${record.dateStr ? ' | ' + record.dateStr : ''}</div>
+                                </li>`;
+                            });
+                            html += `</ul>`;
+                            
+                            if (day !== 'Unknown') {
+                                html += `</div>`; 
+                            }
+                        });
+                        html += `</div>`;
+                    });
+                });
+            }
+            content.innerHTML = html;
+            setupAccordions();
+        }
+
+        window.updateChronoFilter = function(val) {
+            if (globalData) {
+                renderChronoView(globalData, val);
+            }
+        };
+
         function goToRandomRecord() {
             if (allItemPaths.length > 0) {
                 const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
@@ -551,6 +758,11 @@
         }
 
         function renderPage(fullData, ref) {
+            if (ref === 'chrono') {
+                renderChronoView(fullData, 'All');
+                return;
+            }
+
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
@@ -626,7 +838,7 @@
                     </div>
                 `;
 
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=chrono" style="color: var(--link-color); font-weight: 500; font-style: italic;">view all records chronologically</a>, or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time; if you cannot find what you're looking for, please <a href="mailto:calebmoconnell@icloud.com" style="color: var(--link-color); text-decoration: underline;">contact me</a>.</p>`;
                 
@@ -655,7 +867,6 @@
                 const title = data.title || data.category || 'Untitled Document';
                 const refNumber = data.ref || currentPathString;
 
-                // Update document tab title for record entries
                 document.title = `${title} (${refNumber}) - 1st Lagham (Godstone) Scout Group Archives`;
 
                 let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
@@ -731,7 +942,6 @@
                     </tbody>
                 </table>`;
                 
-                // Formulate target mailto reference dynamic link addressed to you
                 const improvementMailto = `mailto:calebmoconnell@icloud.com?subject=${encodeURIComponent("Suggested improvement to record " + refNumber)}`;
                 html += `
                     <div style="margin-top: 15px; margin-bottom: 25px;" class="no-print">
@@ -753,10 +963,8 @@
                 headerIcon = 'fa-folder-open-o';
             }
 
-            // Calculate clean folder reference matching layout logic
             const folderRef = currentPathString.split('/').filter(segment => segment !== 'Browse').join('/') || 'Browse';
             
-            // Update document tab title for folders
             document.title = `Folder: ${displayHeader} (${folderRef}) - 1st Lagham (Godstone) Scout Group Archives`;
 
             let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
