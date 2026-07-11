@@ -980,10 +980,16 @@
                 // 3. Format check
                 if (advFormat && item.data.format !== advFormat) return false;
 
-                // 4. Level/Scope check (Group/District/County)
+                // 4. Level/Scope check (Group/District/County) based on JSON "subject"
                 if (selectedLevels.length > 0) {
-                    const textToSearch = ((item.data.title || '') + ' ' + (item.data.category || '')).toLowerCase();
-                    const matchesLevel = selectedLevels.some(level => textToSearch.includes(level));
+                    const subjectText = (item.data.subject || '').toLowerCase();
+                    const matchesLevel = selectedLevels.some(level => {
+                        if (level === 'group') {
+                            return subjectText.includes('lagham');
+                        } else {
+                            return subjectText.includes(level);
+                        }
+                    });
                     if (!matchesLevel) return false;
                 }
 
