@@ -218,7 +218,7 @@
             margin: 15px 0 25px 0;
         }
 
-        .ref-search-container input, .ref-search-container select {
+        .ref-search-container input {
             padding: 10px 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -244,6 +244,66 @@
         .ref-search-container button:hover {
             background-color: var(--link-color);
             color: white;
+        }
+
+        /* Chronological View Styles */
+        .chrono-filter-container {
+            margin: 15px 0 25px 0;
+        }
+
+        .chrono-filter-container select {
+            padding: 8px 12px;
+            font-size: 1em;
+            font-family: inherit;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: black;
+            background: white;
+            cursor: pointer;
+        }
+
+        details.chrono-year, details.chrono-month, details.chrono-day {
+            margin-bottom: 8px;
+            background: #fafafa;
+            border: 1px solid #eaeaea;
+            border-radius: 4px;
+            padding: 5px 15px;
+        }
+
+        details.chrono-year > summary, details.chrono-month > summary, details.chrono-day > summary {
+            font-weight: 700;
+            cursor: pointer;
+            padding: 8px 0;
+            outline: none;
+            color: var(--link-color);
+            user-select: none;
+        }
+
+        details.chrono-year > summary {
+            font-size: 1.1em;
+            color: black;
+        }
+
+        details.chrono-month {
+            margin-left: 15px;
+            background: #fff;
+            margin-top: 8px;
+        }
+
+        details.chrono-day {
+            margin-left: 15px;
+            background: #fff;
+            margin-top: 8px;
+        }
+
+        .chrono-record {
+            margin-left: 20px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .chrono-record:last-child {
+            border-bottom: none;
         }
 
         /* Action Buttons Styling */
@@ -296,21 +356,6 @@
         /* Print visibility defaults */
         .print-only {
             display: none;
-        }
-        
-        /* Chronological list specific styles */
-        details.chrono-details > summary {
-            font-weight: bold;
-            cursor: pointer;
-            color: var(--link-color);
-            user-select: none;
-        }
-        details.chrono-details > summary:hover {
-            text-decoration: underline;
-        }
-        .chrono-record {
-            margin-bottom: 8px;
-            line-height: 1.4;
         }
 
         /* Responsive */
@@ -396,10 +441,11 @@
 
     <script>
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
+        
+        let globalArchiveData = null;
         let allItemPaths = []; 
-        let chronoRecords = [];
-        let chronoGroups = new Set();
-        const monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let allChronoRecords = [];
+        let uniqueGroups = new Set();
 
         function safeEncode(str) {
             if (!str) return "";
@@ -407,165 +453,6 @@
                 return '%' + c.charCodeAt(0).toString(16);
             });
         }
-
-        // --- Chronological Logic ---
-        function parseDate(dateStr) {
-            if (!dateStr) return null;
-            const parts = dateStr.toString().trim().split('.');
-            
-            // Verify parts are valid integers
-            if (!parts.every(p => !isNaN(parseInt(p, 10)))) return null;
-            
-            if (parts.length === 1) return { y: parseInt(parts[0], 10), m: 0, d: 0 };
-            if (parts.length === 2) return { y: parseInt(parts[1], 10), m: parseInt(parts[0], 10), d: 0 };
-            if (parts.length === 3) return { y: parseInt(parts[2], 10), m: parseInt(parts[1], 10), d: parseInt(parts[0], 10) };
-            
-            return null;
-        }
-
-        function getOrdinal(n) {
-            const s = ["th", "st", "nd", "rd"];
-            const v = n % 100;
-            return n + (s[(v - 20) % 10] || s[v] || s[0]);
-        }
-
-        function buildChronoData(node, currentPath = '', topGroup = '') {
-            if (node && typeof node === 'object') {
-                if (('category' in node || 'title' in node) && node.date) {
-                    const parsed = parseDate(node.date);
-                    if (parsed) {
-                        chronoRecords.push({
-                            title: node.title || node.category || 'Untitled Document',
-                            ref: node.ref || currentPath,
-                            path: currentPath,
-                            group: topGroup,
-                            dateObj: parsed
-                        });
-                        if (topGroup) chronoGroups.add(topGroup);
-                    }
-                } else {
-                    for (const [key, value] of Object.entries(node)) {
-                        if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
-                        const nextPath = currentPath ? `${currentPath}/${key}` : key;
-                        
-                        let nextTopGroup = topGroup;
-                        // Identify top-level group directly under Browse
-                        if (currentPath === 'Browse') {
-                            nextTopGroup = key;
-                        }
-
-                        buildChronoData(value, nextPath, nextTopGroup);
-                    }
-                }
-            }
-        }
-
-        function renderChronoTimeline(filterGroup) {
-            let filtered = chronoRecords;
-            if (filterGroup && filterGroup !== 'All') {
-                filtered = chronoRecords.filter(r => r.group === filterGroup);
-            }
-
-            // Build structural tree: tree[year][month][day] -> array of records
-            const tree = {};
-            filtered.forEach(r => {
-                const { y, m, d } = r.dateObj;
-                if (!tree[y]) tree[y] = { records: [], months: {} };
-                
-                if (m === 0) {
-                    tree[y].records.push(r); // Year only
-                } else {
-                    if (!tree[y].months[m]) tree[y].months[m] = { records: [], days: {} };
-                    
-                    if (d === 0) {
-                        tree[y].months[m].records.push(r); // Month+Year only
-                    } else {
-                        if (!tree[y].months[m].days[d]) tree[y].months[m].days[d] = [];
-                        tree[y].months[m].days[d].push(r); // Day+Month+Year
-                    }
-                }
-            });
-
-            let html = '';
-            const years = Object.keys(tree).sort((a,b) => parseInt(a) - parseInt(b));
-            
-            years.forEach(y => {
-                html += `<h2 style="border-bottom: 2px solid #f0f0f0; margin-top: 35px; padding-bottom: 5px;">${y}</h2>`;
-                
-                // Display records matching the year exactly
-                tree[y].records.forEach(r => {
-                    html += `<div class="chrono-record">&bull; <a href="?ref=${encodeURIComponent(r.path)}" class="item-title-link"><strong>${r.title}</strong></a> <span class="ref-path-text" style="color:#666;">(${r.ref})</span></div>`;
-                });
-
-                const months = Object.keys(tree[y].months).sort((a,b) => parseInt(a) - parseInt(b));
-                months.forEach(m => {
-                    const monthName = monthNames[parseInt(m)];
-                    html += `
-                        <details class="chrono-details" style="margin-top: 12px; margin-left: 10px;">
-                            <summary>${monthName}</summary>
-                            <div style="margin-left: 18px; margin-top: 8px; margin-bottom: 15px;">`;
-                    
-                    // Display records matching the month+year exactly
-                    tree[y].months[m].records.forEach(r => {
-                        html += `<div class="chrono-record">&bull; <a href="?ref=${encodeURIComponent(r.path)}" class="item-title-link"><strong>${r.title}</strong></a> <span class="ref-path-text" style="color:#666;">(${r.ref})</span></div>`;
-                    });
-
-                    const days = Object.keys(tree[y].months[m].days).sort((a,b) => parseInt(a) - parseInt(b));
-                    days.forEach(d => {
-                        const dayName = getOrdinal(parseInt(d));
-                        html += `
-                            <details class="chrono-details" style="margin-top: 8px;">
-                                <summary style="font-weight: normal;">${dayName}</summary>
-                                <div style="margin-left: 18px; margin-top: 8px; margin-bottom: 10px;">`;
-                        
-                        tree[y].months[m].days[d].forEach(r => {
-                            html += `<div class="chrono-record">&bull; <a href="?ref=${encodeURIComponent(r.path)}" class="item-title-link"><strong>${r.title}</strong></a> <span class="ref-path-text" style="color:#666;">(${r.ref})</span></div>`;
-                        });
-
-                        html += `</div></details>`;
-                    });
-
-                    html += `</div></details>`;
-                });
-            });
-
-            if (years.length === 0) {
-                html = '<p>No dated records found for this filter.</p>';
-            }
-
-            document.getElementById('chrono-timeline').innerHTML = html;
-        }
-
-        function renderChronoPage() {
-            document.title = "Chronological View - 1st Lagham (Godstone) Scout Group Archives";
-            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Chronological view</a>`;
-            
-            // Build filter options based on discovered root groups
-            let optionsHtml = `<option value="All">All Groups</option>`;
-            const sortedGroups = Array.from(chronoGroups).sort();
-            sortedGroups.forEach(g => {
-                optionsHtml += `<option value="${g}">${g}</option>`;
-            });
-
-            let html = `
-                <h1><i class='fa fa-clock-o'></i> Chronological View</h1>
-                <p style="line-height: 1.6; font-size: 1.05em;">Explore the dated records in chronological order. Expand the years below to view records by month and specific days.</p>
-                
-                <div class="ref-search-container no-print" style="align-items: center; margin-top: 25px;">
-                    <label for="chrono-filter-select" style="font-weight: 700;">Filter by Group:</label>
-                    <select id="chrono-filter-select" onchange="renderChronoTimeline(this.value)">
-                        ${optionsHtml}
-                    </select>
-                </div>
-                
-                <div id="chrono-timeline">
-                    </div>
-            `;
-            
-            document.getElementById('content').innerHTML = html;
-            renderChronoTimeline('All'); 
-        }
-        // -----------------------------
 
         function openTranscription(encodedTitle, encodedRef, encodedText) {
             const title = decodeURIComponent(encodedTitle);
@@ -680,24 +567,12 @@
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const fullData = await response.json();
                 
+                globalArchiveData = fullData;
                 allItemPaths = getAllItemPaths(fullData);
                 
                 const urlParams = new URLSearchParams(window.location.search);
                 const currentRef = urlParams.get('ref') || '';
                 
-                if (currentRef === 'chrono') {
-                    buildChronoData(fullData);
-                    
-                    chronoRecords.sort((a, b) => {
-                        if (a.dateObj.y !== b.dateObj.y) return a.dateObj.y - b.dateObj.y;
-                        if (a.dateObj.m !== b.dateObj.m) return a.dateObj.m - b.dateObj.m;
-                        return a.dateObj.d - b.dateObj.d;
-                    });
-
-                    renderChronoPage();
-                    return;
-                }
-
                 renderPage(fullData, currentRef);
             } catch (error) {
                 document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
@@ -721,6 +596,153 @@
             return paths;
         }
 
+        function buildChronoData(node) {
+            function traverse(n, path) {
+                if (n && typeof n === 'object') {
+                    if ('category' in n || 'title' in n) {
+                        if (n.date) {
+                            const parts = String(n.date).split('.');
+                            let y = 0, m = 0, d = 0;
+                            
+                            // Handling dates formatted as d.m.y, m.y or y
+                            if (parts.length === 3) {
+                                d = parseInt(parts[0], 10);
+                                m = parseInt(parts[1], 10);
+                                y = parseInt(parts[2], 10);
+                            } else if (parts.length === 2) {
+                                m = parseInt(parts[0], 10);
+                                y = parseInt(parts[1], 10);
+                            } else if (parts.length === 1) {
+                                y = parseInt(parts[0], 10);
+                            }
+                            
+                            let tGroup = 'Unknown';
+                            const pathParts = path.split('/');
+                            if (pathParts[0] === 'Browse' && pathParts.length > 1) {
+                                tGroup = pathParts[1];
+                                uniqueGroups.add(tGroup);
+                            }
+                            
+                            allChronoRecords.push({
+                                ...n,
+                                path: path,
+                                topGroup: tGroup,
+                                originalDate: n.date,
+                                parsedDate: { y: y || 9999, m: m || 0, d: d || 0 }
+                            });
+                        }
+                    } else {
+                        for (const [key, value] of Object.entries(n)) {
+                            if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+                            const nextPath = path ? `${path}/${key}` : key;
+                            traverse(value, nextPath);
+                        }
+                    }
+                }
+            }
+            traverse(node, '');
+        }
+
+        window.applyChronoFilter = function(group) {
+            renderChronologicalView(globalArchiveData, group);
+        };
+
+        function renderChronologicalView(fullData, filterGroup = 'all') {
+            document.title = "Chronological View - 1st Lagham (Godstone) Scout Group Archives";
+            const content = document.getElementById('content');
+            
+            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Chronological view</a>`;
+            
+            if (allChronoRecords.length === 0) {
+                buildChronoData(fullData);
+            }
+            
+            let filteredRecords = allChronoRecords;
+            if (filterGroup !== 'all') {
+                filteredRecords = allChronoRecords.filter(r => r.topGroup === filterGroup);
+            }
+            
+            let html = `<h1><i class="fa fa-calendar"></i> Chronological View</h1>`;
+            
+            html += `<div class="chrono-filter-container no-print">
+                <label for="chrono-filter"><strong>Filter by Group:</strong> </label>
+                <select id="chrono-filter" onchange="applyChronoFilter(this.value)">
+                    <option value="all" ${filterGroup === 'all' ? 'selected' : ''}>All</option>`;
+            
+            Array.from(uniqueGroups).sort().forEach(group => {
+                html += `<option value="${group}" ${filterGroup === group ? 'selected' : ''}>${group}</option>`;
+            });
+            html += `</select></div>`;
+            
+            if (filteredRecords.length === 0) {
+                html += `<p>No records found with dates in this category.</p>`;
+                content.innerHTML = html;
+                return;
+            }
+            
+            // Build nested associative array dynamically grouped by [Year][Month][Day]
+            const tree = {};
+            for (const rec of filteredRecords) {
+                const y = rec.parsedDate.y;
+                const m = rec.parsedDate.m;
+                const d = rec.parsedDate.d;
+                if (!tree[y]) tree[y] = {};
+                if (!tree[y][m]) tree[y][m] = {};
+                if (!tree[y][m][d]) tree[y][m][d] = [];
+                tree[y][m][d].push(rec);
+            }
+            
+            const monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            
+            const years = Object.keys(tree).sort((a,b) => parseInt(a) - parseInt(b));
+            
+            years.forEach(y => {
+                const yearDisplay = y === "9999" ? "Unknown Year" : y;
+                html += `<details class="chrono-year"><summary><i class="fa fa-calendar-o"></i> ${yearDisplay}</summary>`;
+                
+                const months = Object.keys(tree[y]).sort((a,b) => parseInt(a) - parseInt(b));
+                months.forEach(m => {
+                    const mInt = parseInt(m);
+                    if (mInt === 0) {
+                        // Month omitted, output directly under Year level
+                        const days = Object.keys(tree[y][m]).sort((a,b) => parseInt(a) - parseInt(b));
+                        days.forEach(d => {
+                            tree[y][m][d].forEach(rec => {
+                                html += `<div class="chrono-record"><a href="?ref=${encodeURIComponent(rec.path)}" class="item-title-link"><strong>${rec.title || rec.category || 'Untitled Document'}</strong></a> <span class="ref-path-text" style="margin-left:8px; font-size:0.85em; color:#666;">(${rec.originalDate})</span></div>`;
+                            });
+                        });
+                    } else {
+                        // Month exists, spawn nested accordion
+                        const monthName = monthNames[mInt] || mInt;
+                        html += `<details class="chrono-month"><summary><i class="fa fa-calendar-minus-o"></i> ${monthName}</summary>`;
+                        
+                        const days = Object.keys(tree[y][m]).sort((a,b) => parseInt(a) - parseInt(b));
+                        days.forEach(d => {
+                            const dInt = parseInt(d);
+                            if (dInt === 0) {
+                                // Day omitted, output directly under Month level
+                                tree[y][m][d].forEach(rec => {
+                                    html += `<div class="chrono-record"><a href="?ref=${encodeURIComponent(rec.path)}" class="item-title-link"><strong>${rec.title || rec.category || 'Untitled Document'}</strong></a> <span class="ref-path-text" style="margin-left:8px; font-size:0.85em; color:#666;">(${rec.originalDate})</span></div>`;
+                                });
+                            } else {
+                                // Day exists, spawn nested day accordion
+                                html += `<details class="chrono-day"><summary><i class="fa fa-calendar-check-o"></i> ${dInt}</summary>`;
+                                tree[y][m][d].forEach(rec => {
+                                    html += `<div class="chrono-record"><a href="?ref=${encodeURIComponent(rec.path)}" class="item-title-link"><strong>${rec.title || rec.category || 'Untitled Document'}</strong></a> <span class="ref-path-text" style="margin-left:8px; font-size:0.85em; color:#666;">(${rec.originalDate})</span></div>`;
+                                });
+                                html += `</details>`;
+                            }
+                        });
+                        html += `</details>`;
+                    }
+                });
+                
+                html += `</details>`;
+            });
+            
+            content.innerHTML = html;
+        }
+
         function goToRandomRecord() {
             if (allItemPaths.length > 0) {
                 const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
@@ -742,6 +764,11 @@
         }
 
         function renderPage(fullData, ref) {
+            if (ref === 'chrono') {
+                renderChronologicalView(fullData);
+                return;
+            }
+
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
@@ -922,6 +949,7 @@
                     </tbody>
                 </table>`;
                 
+                // Formulate target mailto reference dynamic link addressed to you
                 const improvementMailto = `mailto:calebmoconnell@icloud.com?subject=${encodeURIComponent("Suggested improvement to record " + refNumber)}`;
                 html += `
                     <div style="margin-top: 15px; margin-bottom: 25px;" class="no-print">
@@ -943,8 +971,10 @@
                 headerIcon = 'fa-folder-open-o';
             }
 
+            // Calculate clean folder reference matching layout logic
             const folderRef = currentPathString.split('/').filter(segment => segment !== 'Browse').join('/') || 'Browse';
             
+            // Update document tab title for folders
             document.title = `Folder: ${displayHeader} (${folderRef}) - 1st Lagham (Godstone) Scout Group Archives`;
 
             let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
