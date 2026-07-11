@@ -246,66 +246,6 @@
             color: white;
         }
 
-        /* Chronological View Styles */
-        .chrono-filter-container {
-            margin: 15px 0 25px 0;
-        }
-
-        .chrono-filter-container select {
-            padding: 8px 12px;
-            font-size: 1em;
-            font-family: inherit;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            color: black;
-            background: white;
-            cursor: pointer;
-        }
-
-        details.chrono-year, details.chrono-month, details.chrono-day {
-            margin-bottom: 8px;
-            background: #fafafa;
-            border: 1px solid #eaeaea;
-            border-radius: 4px;
-            padding: 5px 15px;
-        }
-
-        details.chrono-year > summary, details.chrono-month > summary, details.chrono-day > summary {
-            font-weight: 700;
-            cursor: pointer;
-            padding: 8px 0;
-            outline: none;
-            color: var(--link-color);
-            user-select: none;
-        }
-
-        details.chrono-year > summary {
-            font-size: 1.1em;
-            color: black;
-        }
-
-        details.chrono-month {
-            margin-left: 15px;
-            background: #fff;
-            margin-top: 8px;
-        }
-
-        details.chrono-day {
-            margin-left: 15px;
-            background: #fff;
-            margin-top: 8px;
-        }
-
-        .chrono-record {
-            margin-left: 20px;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .chrono-record:last-child {
-            border-bottom: none;
-        }
-
         /* Action Buttons Styling */
         .action-buttons {
             margin-top: 40px;
@@ -351,6 +291,55 @@
         
         .action-buttons button.success-state i {
             color: white;
+        }
+
+        /* Chronological Accordions and Filters */
+        .chrono-accordion {
+            background-color: #fcfcfc;
+            color: #222;
+            cursor: pointer;
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.3s;
+            font-size: 1.05em;
+            font-family: inherit;
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chrono-accordion:hover, .chrono-accordion.active {
+            background-color: #f1f1f1;
+        }
+
+        .chrono-panel {
+            padding: 0 15px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .chrono-filter {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .chrono-filter select {
+            padding: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            margin-left: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-width: 200px;
         }
 
         /* Print visibility defaults */
@@ -400,6 +389,9 @@
             #breadcrumbs {
                 display: none;
             }
+            .chrono-panel {
+                display: block !important;
+            }
         }
     </style>
 </head>
@@ -441,11 +433,9 @@
 
     <script>
         const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
-        
-        let globalArchiveData = null;
         let allItemPaths = []; 
-        let allChronoRecords = [];
-        let uniqueGroups = new Set();
+        window.archiveData = null; // Store globally for filters
+        window.currentChronoFilter = 'all'; 
 
         function safeEncode(str) {
             if (!str) return "";
@@ -567,13 +557,17 @@
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const fullData = await response.json();
                 
-                globalArchiveData = fullData;
+                window.archiveData = fullData;
                 allItemPaths = getAllItemPaths(fullData);
                 
                 const urlParams = new URLSearchParams(window.location.search);
                 const currentRef = urlParams.get('ref') || '';
                 
-                renderPage(fullData, currentRef);
+                if (currentRef === 'chrono') {
+                    renderChronologicalView(fullData);
+                } else {
+                    renderPage(fullData, currentRef);
+                }
             } catch (error) {
                 document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
                 document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
@@ -596,153 +590,6 @@
             return paths;
         }
 
-        function buildChronoData(node) {
-            function traverse(n, path) {
-                if (n && typeof n === 'object') {
-                    if ('category' in n || 'title' in n) {
-                        if (n.date) {
-                            const parts = String(n.date).split('.');
-                            let y = 0, m = 0, d = 0;
-                            
-                            // Handling dates formatted as d.m.y, m.y or y
-                            if (parts.length === 3) {
-                                d = parseInt(parts[0], 10);
-                                m = parseInt(parts[1], 10);
-                                y = parseInt(parts[2], 10);
-                            } else if (parts.length === 2) {
-                                m = parseInt(parts[0], 10);
-                                y = parseInt(parts[1], 10);
-                            } else if (parts.length === 1) {
-                                y = parseInt(parts[0], 10);
-                            }
-                            
-                            let tGroup = 'Unknown';
-                            const pathParts = path.split('/');
-                            if (pathParts[0] === 'Browse' && pathParts.length > 1) {
-                                tGroup = pathParts[1];
-                                uniqueGroups.add(tGroup);
-                            }
-                            
-                            allChronoRecords.push({
-                                ...n,
-                                path: path,
-                                topGroup: tGroup,
-                                originalDate: n.date,
-                                parsedDate: { y: y || 9999, m: m || 0, d: d || 0 }
-                            });
-                        }
-                    } else {
-                        for (const [key, value] of Object.entries(n)) {
-                            if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
-                            const nextPath = path ? `${path}/${key}` : key;
-                            traverse(value, nextPath);
-                        }
-                    }
-                }
-            }
-            traverse(node, '');
-        }
-
-        window.applyChronoFilter = function(group) {
-            renderChronologicalView(globalArchiveData, group);
-        };
-
-        function renderChronologicalView(fullData, filterGroup = 'all') {
-            document.title = "Chronological View - 1st Lagham (Godstone) Scout Group Archives";
-            const content = document.getElementById('content');
-            
-            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Chronological view</a>`;
-            
-            if (allChronoRecords.length === 0) {
-                buildChronoData(fullData);
-            }
-            
-            let filteredRecords = allChronoRecords;
-            if (filterGroup !== 'all') {
-                filteredRecords = allChronoRecords.filter(r => r.topGroup === filterGroup);
-            }
-            
-            let html = `<h1><i class="fa fa-calendar"></i> Chronological View</h1>`;
-            
-            html += `<div class="chrono-filter-container no-print">
-                <label for="chrono-filter"><strong>Filter by Group:</strong> </label>
-                <select id="chrono-filter" onchange="applyChronoFilter(this.value)">
-                    <option value="all" ${filterGroup === 'all' ? 'selected' : ''}>All</option>`;
-            
-            Array.from(uniqueGroups).sort().forEach(group => {
-                html += `<option value="${group}" ${filterGroup === group ? 'selected' : ''}>${group}</option>`;
-            });
-            html += `</select></div>`;
-            
-            if (filteredRecords.length === 0) {
-                html += `<p>No records found with dates in this category.</p>`;
-                content.innerHTML = html;
-                return;
-            }
-            
-            // Build nested associative array dynamically grouped by [Year][Month][Day]
-            const tree = {};
-            for (const rec of filteredRecords) {
-                const y = rec.parsedDate.y;
-                const m = rec.parsedDate.m;
-                const d = rec.parsedDate.d;
-                if (!tree[y]) tree[y] = {};
-                if (!tree[y][m]) tree[y][m] = {};
-                if (!tree[y][m][d]) tree[y][m][d] = [];
-                tree[y][m][d].push(rec);
-            }
-            
-            const monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            
-            const years = Object.keys(tree).sort((a,b) => parseInt(a) - parseInt(b));
-            
-            years.forEach(y => {
-                const yearDisplay = y === "9999" ? "Unknown Year" : y;
-                html += `<details class="chrono-year"><summary><i class="fa fa-calendar-o"></i> ${yearDisplay}</summary>`;
-                
-                const months = Object.keys(tree[y]).sort((a,b) => parseInt(a) - parseInt(b));
-                months.forEach(m => {
-                    const mInt = parseInt(m);
-                    if (mInt === 0) {
-                        // Month omitted, output directly under Year level
-                        const days = Object.keys(tree[y][m]).sort((a,b) => parseInt(a) - parseInt(b));
-                        days.forEach(d => {
-                            tree[y][m][d].forEach(rec => {
-                                html += `<div class="chrono-record"><a href="?ref=${encodeURIComponent(rec.path)}" class="item-title-link"><strong>${rec.title || rec.category || 'Untitled Document'}</strong></a> <span class="ref-path-text" style="margin-left:8px; font-size:0.85em; color:#666;">(${rec.originalDate})</span></div>`;
-                            });
-                        });
-                    } else {
-                        // Month exists, spawn nested accordion
-                        const monthName = monthNames[mInt] || mInt;
-                        html += `<details class="chrono-month"><summary><i class="fa fa-calendar-minus-o"></i> ${monthName}</summary>`;
-                        
-                        const days = Object.keys(tree[y][m]).sort((a,b) => parseInt(a) - parseInt(b));
-                        days.forEach(d => {
-                            const dInt = parseInt(d);
-                            if (dInt === 0) {
-                                // Day omitted, output directly under Month level
-                                tree[y][m][d].forEach(rec => {
-                                    html += `<div class="chrono-record"><a href="?ref=${encodeURIComponent(rec.path)}" class="item-title-link"><strong>${rec.title || rec.category || 'Untitled Document'}</strong></a> <span class="ref-path-text" style="margin-left:8px; font-size:0.85em; color:#666;">(${rec.originalDate})</span></div>`;
-                                });
-                            } else {
-                                // Day exists, spawn nested day accordion
-                                html += `<details class="chrono-day"><summary><i class="fa fa-calendar-check-o"></i> ${dInt}</summary>`;
-                                tree[y][m][d].forEach(rec => {
-                                    html += `<div class="chrono-record"><a href="?ref=${encodeURIComponent(rec.path)}" class="item-title-link"><strong>${rec.title || rec.category || 'Untitled Document'}</strong></a> <span class="ref-path-text" style="margin-left:8px; font-size:0.85em; color:#666;">(${rec.originalDate})</span></div>`;
-                                });
-                                html += `</details>`;
-                            }
-                        });
-                        html += `</details>`;
-                    }
-                });
-                
-                html += `</details>`;
-            });
-            
-            content.innerHTML = html;
-        }
-
         function goToRandomRecord() {
             if (allItemPaths.length > 0) {
                 const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
@@ -763,12 +610,199 @@
             }
         }
 
-        function renderPage(fullData, ref) {
-            if (ref === 'chrono') {
-                renderChronologicalView(fullData);
-                return;
+        /* --------------------------
+           Chronological View Logic
+           -------------------------- */
+        
+        function toggleAccordion(element) {
+            element.classList.toggle("active");
+            var panel = element.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+                element.querySelector('.fa-chevron-up').style.display = 'none';
+                element.querySelector('.fa-chevron-down').style.display = 'inline-block';
+            } else {
+                panel.style.display = "block";
+                element.querySelector('.fa-chevron-up').style.display = 'inline-block';
+                element.querySelector('.fa-chevron-down').style.display = 'none';
             }
+        }
 
+        function parseDateString(dateStr) {
+            if (!dateStr) return { year: 9999, month: 99, day: 99, original: 'Undated' };
+            const parts = String(dateStr).split('.').map(Number);
+            if (parts.length === 3) return { year: parts[2], month: parts[1], day: parts[0], original: dateStr };
+            if (parts.length === 2) return { year: parts[1], month: parts[0], day: null, original: dateStr };
+            if (parts.length === 1) return { year: parts[0], month: null, day: null, original: dateStr };
+            return { year: 9999, month: 99, day: 99, original: dateStr };
+        }
+
+        function getChronoRecords(fullData) {
+            let records = [];
+            let groups = new Set();
+
+            function traverse(node, currentPath, currentGroup) {
+                if (node && typeof node === 'object') {
+                    if ('category' in node || 'title' in node) {
+                        records.push({
+                            path: currentPath,
+                            data: node,
+                            dateInfo: parseDateString(node.date),
+                            group: currentGroup
+                        });
+                    } else {
+                        for (const [key, value] of Object.entries(node)) {
+                            if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+                            const nextPath = currentPath ? `${currentPath}/${key}` : key;
+                            
+                            let nextGroup = currentGroup;
+                            if (currentPath === 'Browse') {
+                                nextGroup = key;
+                                groups.add(key);
+                            }
+                            
+                            traverse(value, nextPath, nextGroup);
+                        }
+                    }
+                }
+            }
+            
+            traverse(fullData, '', 'Unknown');
+            return { records, groups: Array.from(groups) };
+        }
+
+        function buildChronoHTML(records) {
+            const monthNames = ["", "January", "February", "March", "April", "May", "June",
+                                "July", "August", "September", "October", "November", "December"];
+            let html = '';
+            const grouped = {};
+            
+            // Group the sorted records
+            records.forEach(r => {
+                const y = r.dateInfo.year === 9999 ? 'Undated' : r.dateInfo.year;
+                const m = (r.dateInfo.month === 99 || r.dateInfo.month === null) ? 'Unknown Month' : (monthNames[r.dateInfo.month] || r.dateInfo.month);
+                const d = (r.dateInfo.day === 99 || r.dateInfo.day === null) ? 'Unknown Day' : r.dateInfo.day;
+                
+                if (!grouped[y]) grouped[y] = {};
+                if (!grouped[y][m]) grouped[y][m] = {};
+                if (!grouped[y][m][d]) grouped[y][m][d] = [];
+                
+                grouped[y][m][d].push(r);
+            });
+            
+            // Generate nested accordion HTML
+            const sortedYears = Object.keys(grouped).sort((a, b) => a === 'Undated' ? 1 : (a - b));
+            
+            for (const year of sortedYears) {
+                html += `<button class="chrono-accordion" onclick="toggleAccordion(this)">
+                            <strong>${year}</strong>
+                            <span><i class="fa fa-chevron-down"></i><i class="fa fa-chevron-up" style="display:none;"></i></span>
+                         </button>
+                         <div class="chrono-panel" style="border-left: 3px solid var(--link-color);">`;
+                
+                const sortedMonths = Object.keys(grouped[year]).sort((a, b) => {
+                    if (a === 'Unknown Month') return 1;
+                    if (b === 'Unknown Month') return -1;
+                    return monthNames.indexOf(a) - monthNames.indexOf(b);
+                });
+
+                for (const month of sortedMonths) {
+                    html += `<button class="chrono-accordion" style="background:#fff; font-size: 1em;" onclick="toggleAccordion(this)">
+                                ${month}
+                                <span><i class="fa fa-chevron-down"></i><i class="fa fa-chevron-up" style="display:none;"></i></span>
+                             </button>
+                             <div class="chrono-panel" style="border-left: 2px solid #ddd; margin-left: 10px;">`;
+                    
+                    const sortedDays = Object.keys(grouped[year][month]).sort((a, b) => {
+                         if (a === 'Unknown Day') return -1;
+                         if (b === 'Unknown Day') return 1;
+                         return Number(a) - Number(b);
+                    });
+
+                    for (const day of sortedDays) {
+                        if (day !== 'Unknown Day') {
+                            html += `<button class="chrono-accordion" style="background:#fff; border-bottom:1px dashed #eee; font-size: 0.95em;" onclick="toggleAccordion(this)">
+                                        Day ${day}
+                                        <span><i class="fa fa-chevron-down"></i><i class="fa fa-chevron-up" style="display:none;"></i></span>
+                                     </button>
+                                     <div class="chrono-panel" style="border-left: 1px solid #eee; margin-left: 10px;">`;
+                        } else {
+                            html += `<div style="padding-top: 10px;">`;
+                        }
+                        
+                        html += `<ul style="list-style-type: disc; padding-left: 20px;">`;
+                        for (const rec of grouped[year][month][day]) {
+                            const title = rec.data.title || rec.data.category || 'Untitled';
+                            const ref = rec.data.ref || rec.path;
+                            html += `<li>
+                                        <a href="?ref=${encodeURIComponent(rec.path)}" class="item-title-link">${title}</a> 
+                                        <span style="font-size:0.85em; color:#777;">(${ref})</span>
+                                     </li>`;
+                        }
+                        html += `</ul></div>`; 
+                    }
+                    html += `</div>`; 
+                }
+                html += `</div>`; 
+            }
+            return html;
+        }
+
+        function renderChronologicalView(fullData) {
+            document.title = "Chronological View - 1st Lagham (Godstone) Scout Group Archives";
+            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a> <span class="separator">/</span> Chronological View`;
+
+            const { records, groups } = getChronoRecords(fullData);
+            
+            let filteredRecords = records;
+            if (window.currentChronoFilter !== 'all') {
+                filteredRecords = records.filter(r => r.group === window.currentChronoFilter);
+            }
+            
+            // Sort remaining flat records sequentially
+            filteredRecords.sort((a, b) => {
+                if (a.dateInfo.year !== b.dateInfo.year) return a.dateInfo.year - b.dateInfo.year;
+                if (a.dateInfo.month !== b.dateInfo.month) {
+                    if (a.dateInfo.month === null) return 1;
+                    if (b.dateInfo.month === null) return -1;
+                    return a.dateInfo.month - b.dateInfo.month;
+                }
+                if (a.dateInfo.day !== b.dateInfo.day) {
+                    if (a.dateInfo.day === null) return 1;
+                    if (b.dateInfo.day === null) return -1;
+                    return a.dateInfo.day - b.dateInfo.day;
+                }
+                return 0;
+            });
+
+            let html = `<h1><i class='fa fa-clock-o'></i> Chronological Timeline</h1>`;
+            
+            // Create Filter Dropdown Interface
+            html += `<div class="chrono-filter no-print">
+                        <label for="chronoGroupFilter"><strong>Filter by Group:</strong></label>
+                        <select id="chronoGroupFilter" onchange="window.currentChronoFilter = this.value; renderChronologicalView(window.archiveData)">
+                            <option value="all" ${window.currentChronoFilter === 'all' ? 'selected' : ''}>All Groups</option>`;
+            
+            groups.sort().forEach(g => {
+                html += `<option value="${g}" ${window.currentChronoFilter === g ? 'selected' : ''}>${g}</option>`;
+            });
+            html += `   </select>
+                     </div>`;
+
+            if (filteredRecords.length === 0) {
+                html += `<p>No records found matching this criteria.</p>`;
+            } else {
+                html += buildChronoHTML(filteredRecords);
+            }
+            
+            document.getElementById('content').innerHTML = html;
+        }
+
+        /* --------------------------
+           Main Page Layout Logic
+           -------------------------- */
+
+        function renderPage(fullData, ref) {
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
@@ -873,7 +907,6 @@
                 const title = data.title || data.category || 'Untitled Document';
                 const refNumber = data.ref || currentPathString;
 
-                // Update document tab title for record entries
                 document.title = `${title} (${refNumber}) - 1st Lagham (Godstone) Scout Group Archives`;
 
                 let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
@@ -949,7 +982,6 @@
                     </tbody>
                 </table>`;
                 
-                // Formulate target mailto reference dynamic link addressed to you
                 const improvementMailto = `mailto:calebmoconnell@icloud.com?subject=${encodeURIComponent("Suggested improvement to record " + refNumber)}`;
                 html += `
                     <div style="margin-top: 15px; margin-bottom: 25px;" class="no-print">
@@ -971,10 +1003,8 @@
                 headerIcon = 'fa-folder-open-o';
             }
 
-            // Calculate clean folder reference matching layout logic
             const folderRef = currentPathString.split('/').filter(segment => segment !== 'Browse').join('/') || 'Browse';
             
-            // Update document tab title for folders
             document.title = `Folder: ${displayHeader} (${folderRef}) - 1st Lagham (Godstone) Scout Group Archives`;
 
             let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
