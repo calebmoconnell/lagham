@@ -479,7 +479,7 @@
             <ul>
                 <li><a href="?ref=">Home</a></li>
                 <li><a href="?ref=Browse">Browse Catalogue</a></li>
-                <li><a href="?ref=chrono">Chronological view</a></li>
+                <li><a href="?ref=chrono">Browse by date</a></li>
                 <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
                 <li><a href="mailto:calebmoconnell@icloud.com">Contact</a></li>
             </ul>
@@ -872,12 +872,12 @@
             let formatOptions = '<option value="">All Formats</option>';
             Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
 
-            let html = `<h1><i class='fa fa-clock-o'></i> Chronological View</h1>`;
+            let html = `<h1>Browse records by date</h1>`;
             
             // Build the Filter UI
             html += `<div class="chrono-filter-container no-print">
                         <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
-                            <button id="btnAllGroups" class="filter-btn active">All</button>
+                            <button id="btnAllGroups" class="filter-btn active">View All</button>
                             <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                                 <strong>Select record groups:</strong>
                                 ${groupCbHtml}
@@ -1109,7 +1109,7 @@
                     </div>
                 `;
 
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=chrono" style="color: var(--link-color); font-weight: 500; font-style: italic;">view all records chronologically</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=chrono" style="color: var(--link-color); font-weight: 500; font-style: italic;">view all records by date</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time; if you cannot find what you're looking for, please <a href="mailto:calebmoconnell@icloud.com" style="color: var(--link-color); text-decoration: underline;">contact me</a>.</p>`;
                 
