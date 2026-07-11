@@ -298,7 +298,7 @@
             display: none;
         }
 
-        /* Chronological Accordions */
+        /* Chronological Filter UI */
         .chrono-filter-container {
             margin-bottom: 25px;
             padding: 15px 20px;
@@ -306,18 +306,57 @@
             border: 1px solid #eee;
             border-radius: 6px;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-direction: column;
+            align-items: flex-start;
         }
-        
-        .chrono-filter-container select {
-            padding: 8px 12px;
-            font-size: 1em;
-            border: 1px solid #ccc;
+
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
             border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
             font-family: inherit;
         }
 
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--link-color);
+            color: white;
+        }
+
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.95em;
+            cursor: pointer;
+        }
+
+        .adv-filter-row {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .adv-filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .adv-filter-item select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95em;
+            min-width: 150px;
+        }
+
+        /* Chronological Accordions */
         .chrono-accordion {
             background-color: white;
             color: black;
@@ -683,7 +722,6 @@
 
         // ---------- Chronological View Logic ---------- //
 
-        // Helper to parse individual chunks of date strings
         function parseSingleDate(str) {
             if (!str) return { year: 9999, month: null, day: null };
             
@@ -704,30 +742,25 @@
                 year = parseInt(parts[0], 10);
             }
 
-            // Fix 2-digit years. Since Group was founded in 1936, assume 19xx for > 25 and 20xx for <= 25
             if (year < 100 && year > 0) year += (year > 25 ? 1900 : 2000); 
             
-            // Validate limits
             if (month < 1 || month > 12) month = null;
             if (day < 1 || day > 31) day = null;
 
             return { year, month, day };
         }
 
-        // Parses date strings and expands date ranges so documents appear in every covered month/year
         function expandDateString(dateStr) {
             if (!dateStr) return [{ year: 9999, month: null, day: null, str: "" }];
             
             let str = dateStr.toString().trim().toLowerCase();
             let parts = [];
             
-            // Explicitly look for splitters indicating a range
             if (str.includes(' to ')) {
                 parts = str.split(' to ');
             } else if (str.includes(' - ')) {
                 parts = str.split(' - ');
             } else {
-                // Look for condensed year ranges (e.g. "1936-1945") without falsely triggering on "1980-05-12"
                 const yearRangeMatch = str.match(/^(\d{4})-(\d{4})$/);
                 if (yearRangeMatch) {
                     parts = [yearRangeMatch[1], yearRangeMatch[2]];
@@ -736,18 +769,15 @@
                 }
             }
 
-            // If it's a single date, parse and return
             if (parts.length === 1) {
                 const d = parseSingleDate(parts[0]);
                 d.str = dateStr;
                 return [d];
             }
 
-            // It's a range - parse start and end dates
             const start = parseSingleDate(parts[0]);
             const end = parseSingleDate(parts[1]);
 
-            // Fallback if parsing goes wrong or the range is invalid
             if (start.year === 9999 || end.year === 9999 || start.year > end.year) {
                 start.str = dateStr;
                 return [start];
@@ -755,24 +785,20 @@
 
             let expandedDates = [];
             
-            // Generate entries for all covered timespans
             for (let y = start.year; y <= end.year; y++) {
                 let startM = (y === start.year && start.month) ? start.month : 1;
                 let endM = (y === end.year && end.month) ? end.month : 12;
 
-                // If only years are provided in the range, just create one entry per year
                 if (!start.month && !end.month) {
                     expandedDates.push({ year: y, month: null, day: null, str: dateStr });
                     continue;
                 }
 
-                // If months are involved, generate an entry for every month covered
                 for (let m = startM; m <= endM; m++) {
                     expandedDates.push({ year: y, month: m, day: null, str: dateStr });
                 }
             }
             
-            // Safety net
             if (expandedDates.length === 0) {
                 start.str = dateStr;
                 return [start];
@@ -792,8 +818,10 @@
             document.title = "Chronological View - 1st Lagham (Godstone) Scout Group Archives";
             document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Chronological View</a>`;
 
+            const uniqueCats = new Set();
+            const uniqueFormats = new Set();
+
             if (chronoItemsCache.length === 0) {
-                // Populate the cache by parsing each document's date, expanding ranges, and inserting an object for every date generated
                 allItemPaths.forEach(path => {
                     const data = getRecordDataByPath(fullData, path);
                     if (data) {
@@ -806,7 +834,6 @@
                     }
                 });
                 
-                // Sort the expanded cache chronologically
                 chronoItemsCache.sort((a, b) => {
                     if (a.dateInfo.year !== b.dateInfo.year) return a.dateInfo.year - b.dateInfo.year;
                     
@@ -818,42 +845,158 @@
                     let d2 = b.dateInfo.day || 0;
                     if (d1 !== d2) return d1 - d2;
                     
-                    // Secondary sorting by title
                     let t1 = a.data.title || a.data.category || "";
                     let t2 = b.data.title || b.data.category || "";
                     return t1.localeCompare(t2);
                 });
             }
 
+            // Extract unique categories & formats from the cache for the dropdowns
+            chronoItemsCache.forEach(item => {
+                if (item.data.category) uniqueCats.add(item.data.category.trim());
+                if (item.data.format) uniqueFormats.add(item.data.format.trim());
+            });
+
+            // Build Group Checkboxes
             const browseKeys = fullData.Browse ? Object.keys(fullData.Browse).filter(k => k !== 'folder_title' && k !== 'category' && k !== 'ref') : [];
-            let filterOptionsHtml = `<option value="all">All Groups</option>`;
+            let groupCbHtml = '';
             browseKeys.forEach(k => {
                 const label = fullData.Browse[k].folder_title || k;
-                filterOptionsHtml += `<option value="${k}">${label}</option>`;
+                groupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="group-cb" value="${k}" checked> ${label}</label>`;
             });
+
+            // Build Dropdown Options
+            let catOptions = '<option value="">All Categories</option>';
+            Array.from(uniqueCats).sort().forEach(cat => catOptions += `<option value="${cat}">${cat}</option>`);
+
+            let formatOptions = '<option value="">All Formats</option>';
+            Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
 
             let html = `<h1><i class='fa fa-clock-o'></i> Chronological View</h1>`;
+            
+            // Build the Filter UI
             html += `<div class="chrono-filter-container no-print">
-                        <label for="chronoSelectFilter"><strong>Filter by Group:</strong></label>
-                        <select id="chronoSelectFilter">${filterOptionsHtml}</select>
-                     </div>`;
-            html += `<div id="chronoTreeContainer"></div>`;
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
+                            <button id="btnAllGroups" class="filter-btn active">All</button>
+                            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                                <strong>Select record groups:</strong>
+                                ${groupCbHtml}
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <a href="javascript:void(0)" id="toggleAdvFilters" style="text-decoration: none; color: var(--link-color); font-size: 0.95em; font-weight: bold;">
+                                <i class="fa fa-caret-right" id="advFilterIcon"></i> Advanced filters
+                            </a>
+                        </div>
 
+                        <div id="advFiltersPanel" style="display: none; width: 100%; border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                            <div class="adv-filter-row">
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Category</strong></label>
+                                    <select id="advCategoryFilter">${catOptions}</select>
+                                </div>
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Format</strong></label>
+                                    <select id="advFormatFilter">${formatOptions}</select>
+                                </div>
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Scope</strong></label>
+                                    <div style="display: flex; gap: 12px; padding-top: 6px;">
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="Group"> Group</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="District"> District</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="County"> County</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>`;
+                     
+            html += `<div id="chronoTreeContainer"></div>`;
             document.getElementById('content').innerHTML = html;
             
-            document.getElementById('chronoSelectFilter').addEventListener('change', (e) => {
-                applyChronoFilter(e.target.value);
+            // Event Listeners for UI
+            document.getElementById('toggleAdvFilters').addEventListener('click', function() {
+                const panel = document.getElementById('advFiltersPanel');
+                const icon = document.getElementById('advFilterIcon');
+                if (panel.style.display === 'none') {
+                    panel.style.display = 'block';
+                    icon.className = 'fa fa-caret-down';
+                } else {
+                    panel.style.display = 'none';
+                    icon.className = 'fa fa-caret-right';
+                }
             });
 
-            applyChronoFilter('all');
+            const btnAll = document.getElementById('btnAllGroups');
+            const groupCbs = document.querySelectorAll('.group-cb');
+            
+            btnAll.addEventListener('click', () => {
+                groupCbs.forEach(cb => cb.checked = true);
+                btnAll.classList.add('active');
+                applyChronoFilters();
+            });
+
+            groupCbs.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const allChecked = Array.from(groupCbs).every(c => c.checked);
+                    if (allChecked) {
+                        btnAll.classList.add('active');
+                    } else {
+                        btnAll.classList.remove('active');
+                    }
+                    applyChronoFilters();
+                });
+            });
+
+            // Bind advanced filters
+            document.getElementById('advCategoryFilter').addEventListener('change', applyChronoFilters);
+            document.getElementById('advFormatFilter').addEventListener('change', applyChronoFilters);
+            document.querySelectorAll('.level-cb').forEach(cb => cb.addEventListener('change', applyChronoFilters));
+
+            applyChronoFilters();
         }
 
-        function applyChronoFilter(filterVal) {
-            const container = document.getElementById('chronoTreeContainer');
-            const items = chronoItemsCache.filter(item => filterVal === 'all' || item.topCategory === filterVal);
+        function applyChronoFilters() {
+            // Read UI states
+            const groupCbs = document.querySelectorAll('.group-cb');
+            const selectedGroups = Array.from(groupCbs).filter(cb => cb.checked).map(cb => cb.value);
 
+            const advCat = document.getElementById('advCategoryFilter').value;
+            const advFormat = document.getElementById('advFormatFilter').value;
+
+            const levelCbs = document.querySelectorAll('.level-cb');
+            const selectedLevels = Array.from(levelCbs).filter(cb => cb.checked).map(cb => cb.value.toLowerCase());
+
+            // Filter the cache
+            const filteredItems = chronoItemsCache.filter(item => {
+                // 1. Group check
+                if (selectedGroups.length > 0 && !selectedGroups.includes(item.topCategory)) return false;
+                if (selectedGroups.length === 0) return false; // Hide all if nothing selected
+
+                // 2. Category check
+                if (advCat && item.data.category !== advCat) return false;
+
+                // 3. Format check
+                if (advFormat && item.data.format !== advFormat) return false;
+
+                // 4. Level/Scope check (Group/District/County)
+                if (selectedLevels.length > 0) {
+                    const textToSearch = ((item.data.title || '') + ' ' + (item.data.category || '')).toLowerCase();
+                    const matchesLevel = selectedLevels.some(level => textToSearch.includes(level));
+                    if (!matchesLevel) return false;
+                }
+
+                return true;
+            });
+
+            renderChronoTree(filteredItems);
+        }
+
+        function renderChronoTree(items) {
+            const container = document.getElementById('chronoTreeContainer');
             if (items.length === 0) {
-                container.innerHTML = "<p>No records found.</p>";
+                container.innerHTML = "<p>No records found matching your filters.</p>";
                 return;
             }
 
@@ -934,7 +1077,6 @@
             itemsArray.forEach(item => {
                 const title = item.data.title || item.data.category || 'Untitled Document';
                 const ref = item.data.ref || item.path.replace('Browse/', '');
-                // De-duplicate if needed, though this shouldn't happen within the same month accordion
                 html += `<li><a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">${title} <span style="color:#666; font-size: 0.9em;">(${ref})</span></a></li>`;
             });
             html += '</ul>';
