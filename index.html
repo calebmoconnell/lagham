@@ -481,6 +481,7 @@
                 <li><a href="?ref=">Home</a></li>
                 <li><a href="?ref=Browse">Browse Catalogue</a></li>
                 <li><a href="?ref=chrono">Browse by date</a></li>
+                <li><a href="?ref=search">Search</a></li>
                 <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
                 <li><a href="mailto:calebmoconnell@icloud.com">Contact</a></li>
             </ul>
@@ -666,6 +667,11 @@
                 return;
             }
 
+            if (ref === 'search') {
+                renderSearchPage();
+                return;
+            }
+
             const path = ref.split('/').filter(Boolean);
             let currentData = fullData;
             
@@ -719,6 +725,99 @@
                     btnElement.innerHTML = originalHtml;
                 }, 2000);
             });
+        }
+
+        // ---------- Search View Logic ---------- //
+
+        function renderSearchPage() {
+            document.title = "Search - 1st Lagham (Godstone) Scout Group Archives";
+            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=search">Search</a>`;
+
+            let html = `<h1>Search Archives</h1>`;
+            
+            html += `
+                <div class="ref-search-container no-print">
+                    <input type="text" id="searchInput" placeholder="Enter search term..." onkeydown="if(event.key === 'Enter') executeSearch()">
+                    <button onclick="executeSearch()">Search</button>
+                </div>
+            `;
+            
+            html += `<div id="searchResultsContainer"></div>`;
+            document.getElementById('content').innerHTML = html;
+            
+            setTimeout(() => document.getElementById('searchInput').focus(), 50);
+        }
+
+        function executeSearch() {
+            const input = document.getElementById('searchInput');
+            const query = input.value.trim().toLowerCase();
+            const container = document.getElementById('searchResultsContainer');
+
+            if (!query) {
+                container.innerHTML = `<p class="error">Please enter a search term.</p>`;
+                return;
+            }
+
+            container.innerHTML = "<p>Searching...</p>";
+
+            setTimeout(() => {
+                const results = [];
+                
+                allItemPaths.forEach(path => {
+                    const data = getRecordDataByPath(fullDataCache, path);
+                    if (data) {
+                        const title = (data.title || data.category || "").toLowerCase();
+                        const desc = (data.description || "").toLowerCase();
+                        const trans = (data.transcription || "").toString().toLowerCase();
+
+                        if (title.includes(query) || desc.includes(query) || trans.includes(query)) {
+                            results.push({ path, data });
+                        }
+                    }
+                });
+
+                renderSearchResults(results, query);
+            }, 10);
+        }
+
+        function renderSearchResults(results, query) {
+            const container = document.getElementById('searchResultsContainer');
+            
+            if (results.length === 0) {
+                container.innerHTML = `<p>No records found matching "<strong>${query}</strong>".</p>`;
+                return;
+            }
+
+            let html = `<p>Found <strong>${results.length}</strong> record(s) matching "<strong>${query}</strong>":</p>`;
+            
+            html += `
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 250px;">Reference Number</th>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            results.forEach(item => {
+                const title = item.data.title || item.data.category || 'Untitled Document';
+                const ref = item.data.ref || item.path.replace('Browse/', '');
+                
+                html += `
+                    <tr>
+                        <td class="ref-path-text">${ref}</td>
+                        <td>
+                            <a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">
+                                <strong>${title}</strong>
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
         }
 
         // ---------- Chronological View Logic ---------- //
@@ -1112,6 +1211,8 @@
                         <button onclick="goToDirectRef()">Go <i class="fa fa-arrow-right" style="margin-left: 5px;"></i></button>
                     </div>
                 `;
+
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">If you know a particular word or phrase, then <a href="?ref=search" style="color: var(--link-color); font-style: italic; font-weight: 500;">search across all records</a>.</p>`;
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=chrono" style="color: var(--link-color); font-weight: 500; font-style: italic;">view all records by date</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
 
