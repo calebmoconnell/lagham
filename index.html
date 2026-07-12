@@ -752,7 +752,7 @@
 
         function extractSearchSnippet(text, query) {
             if (!text) return "";
-            const str = text.toString().replace(/[\r\n]+/g, ' ').trim();
+            const str = text.toString();
             const lowerStr = str.toLowerCase();
             const queryIdx = lowerStr.indexOf(query);
             if (queryIdx === -1) return "";
@@ -762,23 +762,30 @@
             let rawStart = Math.max(0, queryIdx - contextLength);
             let rawEnd = Math.min(str.length, queryIdx + query.length + contextLength);
             
-            // Adjust start to beginning of a word
-            if (rawStart > 0) {
+            // Adjust start to a line break if one exists in the window, otherwise a word break
+            const lastNewLine = str.lastIndexOf('\n', queryIdx);
+            if (lastNewLine !== -1 && lastNewLine >= rawStart) {
+                rawStart = lastNewLine + 1;
+            } else if (rawStart > 0) {
                 const nextSpace = str.indexOf(' ', rawStart);
                 if (nextSpace !== -1 && nextSpace < queryIdx) {
                     rawStart = nextSpace + 1;
                 }
             }
             
-            // Adjust end to end of a word
-            if (rawEnd < str.length) {
+            // Adjust end to a line break if one exists in the window, otherwise a word break
+            const nextNewLine = str.indexOf('\n', queryIdx + query.length);
+            if (nextNewLine !== -1 && nextNewLine <= rawEnd) {
+                rawEnd = nextNewLine;
+            } else if (rawEnd < str.length) {
                 const prevSpace = str.lastIndexOf(' ', rawEnd);
                 if (prevSpace !== -1 && prevSpace > (queryIdx + query.length)) {
                     rawEnd = prevSpace;
                 }
             }
             
-            let snippet = str.substring(rawStart, rawEnd).trim();
+            // Clean any remaining internal line breaks into spaces and trim
+            let snippet = str.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
             
             // Highlight the query (case insensitive)
             const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
@@ -787,6 +794,7 @@
             
             if (rawStart > 0) snippet = "..." + snippet;
             if (rawEnd < str.length) snippet = snippet + "...";
+            
             return snippet;
         }
 
