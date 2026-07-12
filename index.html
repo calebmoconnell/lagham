@@ -755,7 +755,8 @@
 
             let subjectCbHtml = '';
             Array.from(uniqueSubjects).sort().forEach(subj => {
-                subjectCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-subject-cb" value="${subj}" checked> ${subj}</label>`;
+                let displaySubj = subj === "Lagham" ? "Group" : subj;
+                subjectCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-subject-cb" value="${subj}" checked> ${displaySubj}</label>`;
             });
 
             let html = `<h1>Search Archives</h1>`;
@@ -787,7 +788,7 @@
                             </div>
 
                             <div class="adv-filter-item">
-                                <label><strong>Filter by Record Group (Subject)</strong></label>
+                                <label><strong>Filter by Record Group</strong></label>
                                 <div style="display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px;">
                                     ${subjectCbHtml}
                                 </div>
@@ -805,7 +806,7 @@
                                 </div>
 
                                 <div class="adv-filter-item">
-                                    <label><strong>Date Range (Years)</strong></label>
+                                    <label><strong>Date Range</strong></label>
                                     <div style="display: flex; gap: 10px; align-items: center;">
                                         <input type="number" id="advSearchYearFrom" placeholder="YYYY" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
                                         <span>to</span>
@@ -839,6 +840,26 @@
                         }
                     });
                 }
+
+                // Add event listeners for automatic update when filters are modified
+                const searchAdvInputs = document.querySelectorAll('#searchAdvFiltersPanel input, #searchAdvFiltersPanel select');
+                searchAdvInputs.forEach(el => {
+                    el.addEventListener('change', () => {
+                        if (document.getElementById('searchInput').value.trim() !== '') {
+                            executeSearch();
+                        }
+                    });
+                    
+                    // For number inputs, listen to typing as well
+                    if (el.type === 'number') {
+                        el.addEventListener('keyup', () => {
+                            if (document.getElementById('searchInput').value.trim() !== '') {
+                                executeSearch();
+                            }
+                        });
+                    }
+                });
+
             }, 50);
         }
 
@@ -985,7 +1006,7 @@
             const container = document.getElementById('searchResultsContainer');
             
             if (results.length === 0) {
-                container.innerHTML = `<p>No records found matching "<strong>${query}</strong>".</p>`;
+                container.innerHTML = `<p>No records found matching "<strong>${query}</strong>" with the current filters.</p>`;
                 return;
             }
 
