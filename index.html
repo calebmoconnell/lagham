@@ -1115,9 +1115,11 @@
                         if (matchesQuery) {
                             let snippet = "";
                             if (descMatch) {
-                                snippet = extractSearchSnippet(data.description, query);
-                            } else if (transMatch) {
-                                snippet = extractSearchSnippet(data.transcription, query);
+                                snippet += extractSearchSnippet(data.description, query);
+                            } 
+                            if (transMatch) {
+                                if (snippet !== "") snippet += "<br>";
+                                snippet += extractSearchSnippet(data.transcription, query);
                             }
                             
                             results.push({ path, data, snippet });
