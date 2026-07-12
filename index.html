@@ -741,7 +741,7 @@
                 const originalHtml = btnElement.innerHTML;
                 const isShare = originalHtml.includes('Share');
                 
-                btnElement.innerHTML = `<i class="fa fa-check"></i> ${isShare ? 'Link shared!' : 'Link copied!'}`;
+                btnElement.innerHTML = `<i class="fa fa-check"></i> ${isShare ? 'Link copied!' : 'Link copied!'}`;
                 btnElement.classList.add('success-state');
                 
                 setTimeout(() => {
