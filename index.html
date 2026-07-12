@@ -329,31 +329,22 @@
         }
 
         .filter-btn {
-            padding: 8px 16px;
+            padding: 10px 20px;
             background-color: white;
             color: var(--link-color);
             border: 1px solid var(--link-color);
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.2s;
+            font-size: 1em;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
             font-family: inherit;
+            display: inline-flex;
+            align-items: center;
         }
 
         .filter-btn:hover, .filter-btn.active {
             background-color: var(--link-color);
             color: white;
-        }
-        
-        .filter-btn.clear-btn {
-            background-color: #f5f5f5;
-            color: #555;
-            border-color: #ccc;
-        }
-        
-        .filter-btn.clear-btn:hover {
-            background-color: #e0e0e0;
-            color: #333;
         }
 
         .checkbox-label {
@@ -496,7 +487,7 @@
 <body>
 
     <header class="no-print">
-        <div class="site-title">1st Lagham (Godstone) Scout Group Archives</div>
+        <div class="site-title"><a href="?ref=" style="color: inherit; text-decoration: none;">1st Lagham (Godstone) Scout Group Archives</a></div>
     </header>
 
     <div class="page-container">
@@ -527,7 +518,7 @@
     </div>
 
     <footer class="no-print">
-        <p>Created by Caleb O'Connell; last updated 6th July ᴀ.ᴅ. 2026</p>
+        <p>Created by Caleb O'Connell; last updated 12th July ᴀ.ᴅ. 2026</p>
     </footer>
 
     <script>
@@ -1343,7 +1334,7 @@
             html += `<div class="chrono-filter-container no-print">
                         <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; width: 100%;">
                             <button id="btnAllGroups" class="filter-btn ${initG === null ? 'active' : ''}">View All</button>
-                            <button onclick="clearChronoFilters()" class="filter-btn clear-btn">Clear filters</button>
+                            <button onclick="clearChronoFilters()" class="filter-btn">Clear filters</button>
                             <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                                 <strong>Select record groups:</strong>
                                 ${groupCbHtml}
