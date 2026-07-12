@@ -733,6 +733,31 @@
             document.title = "Search - 1st Lagham (Godstone) Scout Group Archives";
             document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=search">Search</a>`;
 
+            const uniqueCats = new Set();
+            const uniqueFormats = new Set();
+            const uniqueSubjects = new Set();
+
+            allItemPaths.forEach(path => {
+                const data = getRecordDataByPath(fullDataCache, path);
+                if (data) {
+                    if (data.category) uniqueCats.add(data.category.trim());
+                    if (data.format) uniqueFormats.add(data.format.trim());
+                    const subj = data.subject ? data.subject.trim() : "Unspecified";
+                    uniqueSubjects.add(subj);
+                }
+            });
+
+            let catOptions = '<option value="">All Categories</option>';
+            Array.from(uniqueCats).sort().forEach(cat => catOptions += `<option value="${cat}">${cat}</option>`);
+
+            let formatOptions = '<option value="">All Formats</option>';
+            Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
+
+            let subjectCbHtml = '';
+            Array.from(uniqueSubjects).sort().forEach(subj => {
+                subjectCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-subject-cb" value="${subj}" checked> ${subj}</label>`;
+            });
+
             let html = `<h1>Search Archives</h1>`;
             
             html += `<p style="font-style: italic; margin-top: -15px; margin-bottom: 25px;">Incomplete records lacking transcriptions may not be returned due to lack of searchable data.</p>`;
@@ -744,10 +769,77 @@
                 </div>
             `;
             
+            html += `
+                <div class="chrono-filter-container no-print" style="margin-top: -15px; margin-bottom: 30px;">
+                    <div style="width: 100%;">
+                        <a href="javascript:void(0)" id="toggleSearchAdvFilters" style="display: block; width: 100%; text-decoration: none; color: var(--link-color); font-size: 0.95em; font-weight: bold;">
+                            <i class="fa fa-caret-right" id="searchAdvFilterIcon"></i> Advanced search
+                        </a>
+                    </div>
+
+                    <div id="searchAdvFiltersPanel" style="display: none; width: 100%; border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                        <div class="adv-filter-row" style="flex-direction: column; gap: 15px;">
+                            
+                            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                <label class="checkbox-label"><input type="checkbox" id="advIgnoreTitles"> Ignore titles</label>
+                                <label class="checkbox-label"><input type="checkbox" id="advHasPdf"> Has PDF scan</label>
+                                <label class="checkbox-label"><input type="checkbox" id="advHasTrans"> Has transcription</label>
+                            </div>
+
+                            <div class="adv-filter-item">
+                                <label><strong>Filter by Record Group (Subject)</strong></label>
+                                <div style="display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px;">
+                                    ${subjectCbHtml}
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 25px; flex-wrap: wrap;">
+                                <div class="adv-filter-item">
+                                    <label><strong>Category</strong></label>
+                                    <select id="advSearchCategory">${catOptions}</select>
+                                </div>
+                                
+                                <div class="adv-filter-item">
+                                    <label><strong>Format</strong></label>
+                                    <select id="advSearchFormat">${formatOptions}</select>
+                                </div>
+
+                                <div class="adv-filter-item">
+                                    <label><strong>Date Range (Years)</strong></label>
+                                    <div style="display: flex; gap: 10px; align-items: center;">
+                                        <input type="number" id="advSearchYearFrom" placeholder="YYYY" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
+                                        <span>to</span>
+                                        <input type="number" id="advSearchYearTo" placeholder="YYYY" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
             html += `<div id="searchResultsContainer"></div>`;
             document.getElementById('content').innerHTML = html;
             
-            setTimeout(() => document.getElementById('searchInput').focus(), 50);
+            setTimeout(() => {
+                const inputField = document.getElementById('searchInput');
+                if (inputField) inputField.focus();
+
+                const toggleBtn = document.getElementById('toggleSearchAdvFilters');
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', function() {
+                        const panel = document.getElementById('searchAdvFiltersPanel');
+                        const icon = document.getElementById('searchAdvFilterIcon');
+                        if (panel.style.display === 'none') {
+                            panel.style.display = 'block';
+                            icon.className = 'fa fa-caret-down';
+                        } else {
+                            panel.style.display = 'none';
+                            icon.className = 'fa fa-caret-right';
+                        }
+                    });
+                }
+            }, 50);
         }
 
         function extractSearchSnippet(text, query) {
@@ -812,21 +904,71 @@
 
             container.innerHTML = "<p>Searching...</p>";
 
+            // Capture Advanced Search States
+            const ignoreTitles = document.getElementById('advIgnoreTitles')?.checked || false;
+            const hasPdf = document.getElementById('advHasPdf')?.checked || false;
+            const hasTrans = document.getElementById('advHasTrans')?.checked || false;
+            
+            const cat = document.getElementById('advSearchCategory')?.value || '';
+            const format = document.getElementById('advSearchFormat')?.value || '';
+            
+            const yearFromVal = document.getElementById('advSearchYearFrom')?.value;
+            const yearToVal = document.getElementById('advSearchYearTo')?.value;
+            const yearFrom = yearFromVal ? parseInt(yearFromVal, 10) : null;
+            const yearTo = yearToVal ? parseInt(yearToVal, 10) : null;
+            
+            const subjectCbs = document.querySelectorAll('.search-subject-cb');
+            const selectedSubjects = Array.from(subjectCbs).filter(cb => cb.checked).map(cb => cb.value);
+
             setTimeout(() => {
                 const results = [];
                 
                 allItemPaths.forEach(path => {
                     const data = getRecordDataByPath(fullDataCache, path);
                     if (data) {
+                        
+                        // --- Apply Advanced Filters ---
+                        if (hasPdf && (!data.scan || data.scan === 0 || data.scan === "0")) return;
+                        if (hasTrans && (!data.transcription || data.transcription === 0 || data.transcription === "0")) return;
+                        
+                        if (cat && data.category !== cat) return;
+                        if (format && data.format !== format) return;
+                        
+                        const subj = data.subject ? data.subject.trim() : "Unspecified";
+                        if (subjectCbs.length > 0 && !selectedSubjects.includes(subj)) return;
+                        
+                        if (yearFrom !== null || yearTo !== null) {
+                            const dates = expandDateString(data.date);
+                            const inRange = dates.some(d => {
+                                if (d.year === 9999) return false; // Undated fails strict range
+                                if (yearFrom !== null && d.year < yearFrom) return false;
+                                if (yearTo !== null && d.year > yearTo) return false;
+                                return true;
+                            });
+                            if (!inRange) return;
+                        }
+
+                        // --- Apply Text Matching ---
                         const title = (data.title || data.category || "").toLowerCase();
                         const desc = (data.description || "").toLowerCase();
                         const trans = (data.transcription || "").toString().toLowerCase();
+                        
+                        const titleMatch = title.includes(query);
+                        const descMatch = desc.includes(query);
+                        const transMatch = trans.includes(query);
 
-                        if (title.includes(query) || desc.includes(query) || trans.includes(query)) {
+                        let matchesQuery = false;
+                        if (ignoreTitles) {
+                            matchesQuery = descMatch || transMatch;
+                        } else {
+                            matchesQuery = titleMatch || descMatch || transMatch;
+                        }
+
+                        if (matchesQuery) {
                             let snippet = "";
-                            if (desc.includes(query)) {
+                            if (descMatch) {
                                 snippet = extractSearchSnippet(data.description, query);
-                            } else if (trans.includes(query)) {
+                            } else if (transMatch) {
                                 snippet = extractSearchSnippet(data.transcription, query);
                             }
                             
