@@ -1,1150 +1,1599 @@
-{
-  "Browse": {
-    "folder_title": "1st Lagham (Godstone) Scout Group Archives",
-    "Sc": {
-      "folder_title": "Scouting Records",
-      "ref": "Sc",
-      "G": {
-        "folder_title": "Group Records",
-        "ref": "Sc/G",
-        "Misc": {
-          "folder_title": "Miscellaneous Records",
-          "ref": "Sc/G/Misc",
-          "NOT": {
-            "subject": "Lagham",
-            "category": "Miscellaneous",
-            "ref": "Sc/G/Misc/NOT",
-            "location": "Lagham H.Q.",
-            "condition": "Water damaged; tears and creases to paper",
-            "date": "n.d.",
-            "title": "1st Lagham Notepaper.",
-            "description": "Group notepaper with header consisting of Scout logo, Group name and HQ address.",
-            "transcription": "0",
-            "extent": "3 copies (3 pages)",
-            "format": "Document",
-            "scan": "Sc_G_Misc_NOT.pdf"
-          }
-        },
-        "News": {
-          "1981": {
-            "folder_title": 1981,
-            "ref": "Sc/G/News/1981",
-            "FEB": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1981/FEB",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "02/1981",
-              "title": "Lagham News No. 1 [February 1981]",
-              "description": "1st Lagham Newsletter for March 1981. Issue No. 1.",
-              "transcription": 0,
-              "extent": "6 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1981_FEB.pdf",
-              "w": ""
-            },
-            "MAR": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1981/MAR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "03/1981",
-              "title": "Lagham News No. 2 [March 1981]",
-              "description": "1st Lagham Newsletter for March 1981. Issue No. 2.",
-              "transcription": 0,
-              "extent": "6 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1981_MAR.pdf",
-              "w": ""
-            },
-            "APR": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1981/APR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "04/1981",
-              "title": "Lagham News No. 3 [April 1981]",
-              "description": "1st Lagham Newsletter for May 1981. Issue No. 3.",
-              "transcription": 0,
-              "extent": "8 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1981_APR.pdf",
-              "w": ""
-            },
-            "MAY": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1981/MAY",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "05/1981",
-              "title": "Lagham News No. 4 [May 1981]",
-              "description": "1st Lagham Newsletter for May 1981. Issue No. 4. Details Cubs' trip to H.M.S. Belfast and the Tower of London; the results of various Cub Scout sporting events; a Patrol Leaders' visit to a Welsh campsite; Troop Camp near Biggin Hill; Venture Scouts' expedition in Dartmoor; comments on past and upcoming theatrical performances by the Scouts; and the upcoming \"Cheese and Wine\" evening (including A.G.M.).",
-              "transcription": "<div style='text-align: center; text-decoration: underline;'><strong>Lagham News</strong></div><br><div style='display: flex; justify-content: space-between;'><span style='text-decoration: underline;'>No.4</span><span style='text-decoration: underline;'>May 1981</span></div><br><div style='text-align: center; text-decoration: underline;'><strong>CUB SECTION</strong></div><br>On Saturday 25th March the Pack was well represented at a Cross Country event at Tatsfield and were placed 4th overall with our under 9 years of age team winning their age group. Good individual performances from Richard White, Gary Dring and Neil Roffey in their respective age groups. On the football field we drew 5-5 with the pack from Bletchingley on 5th April and were well and truly defeated by Lingfield Oak Pack in our last league match on 12th April by 18-1. Our scorers in the first game were Gary Dring (2), Anthony Wiseman, Stephen Nixon and Chris Rebbeck; our solitary goal scorer in the Lingfield match was Anthony with a penalty. Congrats etc to both Wayne McClean and Neil Roffey on being selected for the Cubs District Team.<br>The Pack annual outing was held on 15th April. This year we went to the HMS Belfast and the Tower of London. The weather stayed fine for us, thankfully.<br>Daniel Walker’s cap decided that it liked the look of the Thames more than Daniels head and was last seen floating the way between the Bank and the Belfast. Apart from this minor mishap we all enjoyed the day out.<br>Jeremy Upton has left the Pack having moved to Kent - our very best wishes go with him.<br>Silver Arrows have been awarded to Gary Dring and Stephen Strudwick. Well done both of you and also congrats to Neil Roffey who has inherited the Senior Sixer wiggle. Our four newcomers, Kurt Cormack, Alexander Godden, Nicholas Jones and Karl Wick have been presented with the Cub Scout Badges.<br><div style='text-align: right;'>John Axtell</div><div style='text-align: right;'>CSL.</div><br><br><br><div style='text-align: center; text-decoration: underline;'><strong>VISIT TO THE SCOUT CAMPSITE<br>IN WALES</strong></div><br>On the 1st March a group of P.L.’s plus Nigel King (who was standing in as P.L. for Lions) and Skip, Coxun, Bosun and Akela went to Wales to inspect the campsite for the 1981 Summer camp.<br>We set off at 6 am in Skip’s and Coxun’s car. We made for the M4 which we remained on for almost all the way. We stopped once at Membury for a rest and a ‘Leek’ (St. David’s Day) then our next stop was the campsite.<br>When we arrived we met the owner Mr. Williams who directed us to the campsite which was about a mile away from his home. The campsite was along a narrow winding road.<br>When we looked around the campsite it was raining of course (typical Welsh weather) and Wellies were the order of the day. The campsite was excellent in most ways, it was very flat, well drained, it had a stream running along one side and a canal across the top, suitable for canoeing.<br>The only snag was that the water tap was about ¼ mile away and firewood was rather scarce. The field was perfect for all sports because of its flatness and its short mossy grass.<br>After seeing the campsite and being most impressed we went to see Llangorse Lake. After that we went up a narrow winding mountain road for lunch. We found a grassy clearing to eat lunch and after lunch, Coxun had some difficulties getting off the slippery grass.<br>Eventually he got off and we made our way down into the valley. We rejoined the motorway at about 2pm and at about 4pm we stopped at Membury for a bite to eat and a P.L.’s discussion about various confidential matters. We arrived home at about 7.30pm after and enjoyable St. David’s Day in Wales.<br><div style='text-align: right;'>Richard Goodell</div><div style='text-align: right;'>Scout.</div><br><br><br><div style='text-align: center;'><strong>RETURN VISIT TO THE 38th CROYDON<br><span style='text-decoration: underline;'>TROOP CAMP NEAR BIGGIN HILL</span></strong></div><br>One weekend about two months ago 9 lads from the troop went on a camp (in huts luckily), with two other troops, the 38th and 48th Croydons. The Campsite was at Downe, near Biggin Hill. Everyone was put in patrols which were called, Super Eagles, Specials, Dirty (Dingle) Dans and Yorkies<br>The weekend was enjoyable apart from three things:-<br>1. The weather was awful as it rained all weekend.<br>2. The providore was only open for 20 minutes all weekend.<br>3. A leader called Yo (we nicknamed him Grumpy), who confiscated items off unwary campers eg myself (cards), Gavin Chippinton (Radio).<br>The activities included compass work, Decoding messages, Comando raids, First aid water line and a krazy football competition in 3 feet of mud; there was a golf course at the foot of the hill and a few golf balls were found. At the end of the camp the positions (with members) of the patrols were:-<br>1st - Specials - James Fox, Edgar Forman, George Padelopoulos.<br>2nd - Yorkies - Gavin Chippington, Simon Weaverfalck<br>3rd - Super Eagles - Richard Goodall, Graham Jakes.<br>4th - Dirty Dans - Warren Jakes, Darrell Law.<br>in the end we came to the conclusion that the best part of the camp was going home.<br><div style='text-align: right;'>Warren Jakes.</div><div style='text-align: right;'>Scout.</div><br><br><br><div style='text-align: center; text-decoration: underline;'><strong>FROM THE UNIT</strong></div><br>Most of our programme during April was taken up with training for the Dartmoor Expeditions, sessions included what equipment is necessary and how to use it, dangers of walking in open country and on Exposure. We had 17 Venture Scouts walking and 3 leading as invigilators. Two of the Unit were completing Queens Scout Award Expeditions and the remainder Venture Scout Awards Expeditions. This all took part over the Easter holiday weekend and turned out to be very successful - as did the weather<br>We also took up an invite to cater at a motor cycle meeting in East Grinstead which turned out to be very enlightening - we had a visit by a Public Health Inspector! We didn’t exactly make a profit but had a laugh or two and became wiser for any future event.<br>Next month will be our first weekend sailing on Spirit of Discovery - more about it next time.<br><div style='text-align: right;'>Ray Fox</div><div style='text-align: right;'>Venture Scout Leader</div><br><br><br><div style='text-align: center; text-decoration: underline;'><strong>HMS BELFAST AND THE TOWER<br>OF LONDON</strong></div><br>On the 15th April 1st Lagham Cubs went to see HMS Belfast in London. As we walked down the street from London Bridge Station towards the Belfast, we saw three hot air balloons in the shape of airships. We had to wait a quarter of an hour so we sat on a wall by the River Thames and had something to eat. During this time Daniel Walker’s cap found its way into the River followed by somebody’s apple.<br>Once on the Belfast we went to a cabin and saw a film about the ship. After the film Wayne McClean tried on an helmet and gloves which gunners used to wear. The guide showed us two shells and told us that the ship has six nine inch guns and nine six inch guns. When the guide had finished Akela said we could wander around the ship. I bought an ice cream and looked over the bridge, Captains cabin and then the ships canteen where you could buy a cake for 2d. We also saw the gun room, Doctor’s quarters and the ship cells.<br>Left the Belfast over the river by ferry to see the Tower of London. The first thing we noticed were The Beefeaters and the many cannons laying about. We visited the White Tower and saw over the one hundred pieces of armour with lots of guns and swords. As we came out the guards were changing. Next we saw the Crown Jewels which are protected by six inch steel doors. One of the Gold Orbs was missing, but we were told that the Queen was using it.<br>After a visit to the souvenir shop we caught the underground to Victoria and then by train home via Redhill.<br><div style='text-align: right;'>Anthony Wiseman</div><div style='text-align: right;'>Cub.</div><br><br><br><div style='text-align: center; text-decoration: underline;'><strong>DATES</strong></div><br>1. Our Annual Group Gang Shows have been enjoyed both by audiences and cast. Those cubs, scouts and venture scouts who have enjoyed performing at our Shows, now have an opportunity to appear in next years District Pantomime. Those interested should contact Skip or Mr. Alan Oabourne (Smallfield 3489).<br>2. Congratulations to patrol leader Andrew Duff on winning his age group section of the County Scouts Cyclocross at High Ashurst, Box Hill. He even managed to get his name published in ‘Surrey Scout’ - (see noticeboard!) This year was the inaugural event but in view of its success it has already been decided to hold a county cyclocross in 1982.<br><br><br><div style='text-align: center; text-decoration: underline;'><strong>CHEESE AND WINE<br>12th May</strong></div><br>Don’t forget out Wine and Cheese evening at HQ on Tuesday 12th May. It would be nice to see all parents and friends coming along. Patrol leaders and venture scouts also welcome.<br>The evening starts at 7.30pm and our new extension will be open and on show. During the evening we shall devote about half an hour to our Annual General Meeting.<br>Tickets are not required - just turn up and enjoy yourselves. Please support this social evening - we would love to see you and also all friends of the group. Children are welcome with parents.<br>DON’T FORGET!!<br><div style='text-align: right;'>Skip.</div><br><br><div style='margin-left: 40px;'>If you know of anyone who has a mini bus they would kindly lend us please contact Skip. This will be used for Scout Camp and will be greatly needed.</div><br><br><div style='margin-left: 40px;'>Next edition of Newsletter will be 24th May when the editors would like entries to be handed in.</div>",
-              "extent": "6 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1981_MAY.pdf"
-            },
-            "JUN": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1981/JUN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "06/1981",
-              "title": "Lagham News No. 5 [June 1981]",
-              "description": "1st Lagham Newsletter for June 1981. Issue No. 5 [the document was originally mistakenly printed as \"No. 13.\"].",
-              "transcription": 0,
-              "extent": "4 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1981_JUN.pdf",
-              "w": ""
-            },
-            "JUL": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1981/JUL",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "07/1981",
-              "title": "Lagham News No. 6 [July 1981]",
-              "description": "1st Lagham Newsletter for July 1981. Issue No. 6.",
-              "transcription": 0,
-              "extent": "6 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1981_JUL.pdf",
-              "w": ""
-            },
-            "OCT": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1981/OCT",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "10/1981",
-              "title": "Lagham News No. 9 [October 1981]",
-              "description": "1st Lagham Newsletter for October 1981. Issue No. 9.",
-              "transcription": 0,
-              "extent": "8 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1981_OCT.pdf",
-              "w": ""
-            },
-            "DEC": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1981/DEC",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "12/1981",
-              "title": "Lagham News [December 1981]",
-              "description": "1st Lagham Newsletter for December 1981 [the document was originally mistakenly printed as \"No. 9.\"].",
-              "transcription": 0,
-              "extent": "8 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1981_DEC.pdf",
-              "w": ""
-            }
-          },
-          "1982": {
-            "folder_title": 1982,
-            "ref": "Sc/G/News/1982",
-            "JAN": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1982/JAN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled; minor tear through all pages",
-              "date": "01/1982",
-              "title": "Lagham News [January 1982]",
-              "description": "1st Lagham Newsletter for January 1982. No. 4.",
-              "transcription": 0,
-              "extent": "4 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1982_JAN.pdf"
-            },
-            "APR": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1982/APR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled",
-              "date": "04/1982",
-              "title": "Lagham News [April 1982]",
-              "description": "1st Lagham Newsletter for April 1982.",
-              "transcription": 0,
-              "extent": "4 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1982_APR.pdf"
-            },
-            "OCT": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1982/OCT",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; formerly stapled; severely damaged with large tears",
-              "date": "10/1982",
-              "title": "Lagham News [October 1982]",
-              "description": "1st Lagham Newsletter for October 1982. Includes discussion about starting a Beaver colony. The PDF contains an additional page containing part of the missing text from page 1.",
-              "transcription": 0,
-              "extent": "6 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1982_OCT.pdf"
-            }
-          },
-          "1987": {
-            "folder_title": 1987,
-            "ref": "Sc/G/News/1987",
-            "SEP": {
-              "subject": "Lagham",
-              "category": "Newsletter",
-              "ref": "Sc/G/News/1987/SEP",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; stapled; torn",
-              "date": "09/1987",
-              "title": "Lagham News [September 1987]",
-              "description": "1st Lagham Newsletter for September 1987.",
-              "transcription": 0,
-              "extent": "8 Pages",
-              "format": "Document",
-              "scan": "Sc_G_News_1987_SEP.pdf"
-            }
-          },
-          "folder_title": "1st Lagham newsletters",
-          "ref": "Sc/G/News"
-        },
-        "Prog": {
-          "1987": {
-            "subject": "Lagham",
-            "category": "Programme",
-            "ref": "Sc/G/Prog/1987",
-            "location": "Lagham H.Q.",
-            "condition": "Badly water damaged; tears to paper",
-            "date": 1987,
-            "title": "A 1987 Programme",
-            "description": "A badly damaged programme entitled 19th [illegible] 1987.",
-            "transcription": 0,
-            "extent": "6 Pages",
-            "format": "Document",
-            "scan": "Sc_G_Prog_1987.pdf"
-          },
-          "folder_title": "Group and Section Activity Programmes",
-          "ref": "Sc/G/Prog"
-        },
-        "HIS": {
-          "1": {
-            "folder_title": "Folder containing a history of the Group and associated Jubilee Programme",
-            "ref": "Sc/G/HIS/1",
-            "Hist": {
-              "subject": "Lagham",
-              "category": "History",
-              "ref": "Sc/G/HIS/1/Hist",
-              "location": "Lagham H.Q.",
-              "condition": "Good",
-              "date": 1986,
-              "title": "The Lagham Scout Group: The First Half Century, 1936 - 1986",
-              "description": "A History of the Group's first 50 years, compiled by Gordon F. Bush. File includes a copy of the Jubilee Show (see Sc/G/HIS/1/Prog)",
-              "transcription": "0",
-              "extent": "52 Pages",
-              "format": "Document",
-              "scan": "0"
-            },
-            "Prog": {
-              "subject": "Lagham",
-              "category": "Show programme",
-              "ref": "Sc/G/HIS/1/Prog",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged.",
-              "date": "13/11/1986 - 15/11/1986",
-              "title": "1st Lagham (Godstone) Scout Group Jubilee Gang Show [Programme]",
-              "description": "The programme for a Jubilee Gang Show put on by the Group over three days in November 1986",
-              "transcription": "0",
-              "extent": "4 pages",
-              "format": "Document",
-              "scan": "Sc_G_HIS_1_Prog.pdf"
-            }
-          },
-          "2": {
-            "subject": "Lagham",
-            "category": "History",
-            "ref": "Sc/G/HIS/2",
-            "location": "Lagham H.Q.",
-            "condition": "Some water damage",
-            "date": 1986,
-            "title": "The Lagham Scout Group: The First Half Century, 1936 - 1986 [Master Copy]",
-            "description": "A History of the Group's first 50 years, compiled by Gordon F. Bush. Master Copy.",
-            "transcription": "0",
-            "extent": "52 Pages",
-            "format": "Document",
-            "scan": "0"
-          },
-          "folder_title": "Group History",
-          "ref": "Sc/G/HIS"
-        },
-        "MIN": {
-          "1986": {
-            "folder_title": 1986,
-            "ref": "Sc/G/MIN/1986",
-            "JUN": {
-              "10": {
-                "subject": "Lagham",
-                "category": "Minutes",
-                "ref": "Sc/G/MIN/1986/JUN/10",
-                "location": "Lagham H.Q.",
-                "condition": "Water damaged.",
-                "date": "10/06/1986",
-                "title": "Minutes of 1st Lagham (Godstone) Scout Group Executive Meeting 10th June 1986",
-                "description": "Minutes of a meeting of the 1st Lagham Executive Committee held on 10th June 1986.",
-                "transcription": "[From note stapled to front of document:]<br><br>Would be most grateful if you could let me have a written copy of your report.<br><br><br>[From document:]<br><br><center><b>1st LAGHAM (GODSTONE) SCOUT GROUP EXECUTIVE MEETING</b><br>*************************************************</center><br><br>Minutes of the Executive meeting held at the Headquarters on Monday 10 June 1986 at 2015 hours.<br><br><u><b>PRESENT<br></b></u><br>Mrs C Cryer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mr K Hugget&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mr J Dearmer<br>Mr D Knight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mr R Fox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mrs C Carey<br>Mr D Brown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mr J Axtell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mrs F Fox<br>Mr J Bowers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mrs J Prescott<br><br><u><b>APOLOGIES<br></b></u><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apologies were received from Mr P Bourne, Mrs C Carey and Mrs P Hubery.<br><br>The meeting was held by Mr J Dearmer who deputised for the chairman in his absence.<br><br><u><b>MATTERS ARISING<br></b></u><br>1 A post meeting note was added to the minutes of the last meeting, to inform the committee of a change in the hall letting fee previously advised to Mrs J Ovenden.<br><br>2 The gutter and facia board have not been replaced due to the presence of a nesting bird.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Mr K Huggett)<br><br>3 The heater will be fitted before the winter, Mr R Fox will contact Mr T Hamer about piping for the heater and Mr G Bush will liase with Mr R Fox about the electrics.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Mr K Huggett)<br><br>The secretary read a letter that was received regarding a grant for the heater, Mr J Bowers will contact Mr P Lancaster with reference to the position of the Scout Association to such aid.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Mr J Bowers)<br><br>4 Mr J Axtell has still to contact Mr P Flemming. Mr J Bowers has put out feelers to Orme House School regarding the two buses they have for auction. Mr J Bowers also to contact Mr A Lee. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Mr J Bowers)<br><br>Mr B Gelliot has given us to understand that it is alright to advertise on the bus.<br><br>5 It has been requested that the minutes be presented with an action column.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Mrs F Fox)<br><br>6 Mr J Bowers has written to the D.C. who has approved the requests for Thanks Badges, however it was felt that an omission had been made therefore Mrs M Browns' name has also been proposed and approved this will be presented to her at the Group Camp in August.<br><br>7 No change has occurred with regard the petrol account.<br><br>8 No arrangements have been made with regard the cleaning account.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Mr B Twigg)<br><br><br><u><i><b>REPORTS</b></i></u><br><br><b>TREASURER'S REPORT</b><br><br>Monies held by Group:<br><table style=\"border: 0px solid;\"><tr></tr><tr><td>Deposit Account</td><td> 400.00</td></tr><tr><td>Current Account</td><td> 1587.58</td></tr><tr><td>Petty Cash</td><td style=\"text-decoration:underline;text-decoration-style:dashed; text-decoration-thickness:2px;\"> 117.68</td></tr><tr><td></td><td style=\"text-decoration:underline;text-decoration-style:dashed; text-decoration-thickness:2px;\"> 2105.26</td></tr></table><br><br>This much healthier state of affairs is due to the very successful Golden Gala Day, which netted approximately &pound;1300 and also the jumble sale which made &pound;224. Major expenses paid include a new 160lb tent at &pound;162. Thanks must be expressed to Mrs J Prescott for running the events and her helpers, and also to Mrs J Dearmer who helped with the big count up.<br><br><b>BEAVER'S REPORT<br></b><br>The colony now number 18, but numbers will reduce in September as 2 will leave. The Beavers have enjoyed many activities including swimming, a barbeque and sports evening. They also won the cannon racing at the Golden Gala Day. Future activities include a day at the Group camp, a District Beaver picnic at Knowle Park. Mrs P Hubery has recently been appointed as Assistant Beaver Leader.<br><br><b>CUB SCOUT LEADER'S REPORT.<br></b><br>Since the last meeting the pack has increased in numbers to 22 cubs. The pack has taken part in the District Cub Sports and Canoe racing and have also manned the skittles. Activities have also included an evening hike to Crowhurst Church, swimming at the school, tracking and firelighting. Many of the cubs have gained proficiency badges, these have included 7 cyclists, 5 athletes (stage 1), 1 athlete (stage 2), and 2 athletes (stage 3), 7 swimmer (stage 1), and lastly 2 hobbies badges. Future events include the Cub and Group Camp at Blacklands, there will also be meetings on August 11th and 18th, but meetings will resume in earnest on September 1st. Not to be missed is a show called Rainbow Magic '86 at Notre Dame Convent on 19th and 20th September at 7.30 pm. This is being organised by the District Cubs and stars some of our members. Tickets are &pound;2.00 for adults and &pound;1.00 for children, and can be ordered through Mr J Axtell.<br><br><b>SCOUT LEADER'S REPORT.<br></b><br>The Troop have had an excellent time since the last meeting and have been re-organised into 4 patrols with new patrol leader's. Both discipline and helpfulness of the troop is superb during and out of meetings. Several badges have been presented and currently we are running a mechanics course. Recently at the Golden Gala day we were pleased to win the Chariot racing.<br><br><b>VENTURE SCOUT LEADER'S REPORT.<br></b><br>The Unit has now started to get back to normal with the end of exams. The programme has been busy starting with a weekend sail aboard the yacht Penkin. The unit gained second place in the District Cooking Competition held at Brakey Hill recently. The last couple of months unit meetings have included a ten-pin bowling evening, and Volleyball competition. Many of the Unit completed a windsurfing course at Hove this last weekend, most people were able to sail at the end, though only for about 20 feet. Confirmation of Ian Lea's Queen Scout Award has still not arrived. Neil Roffey completed a week aboard the Sail Training Yacht Donald Searle on her delivery to the Dutch coast to start the Tall Ships Race. The unit enjoyed the Golden Gala Day and wish to extend their thanks to the Fund Raising committee for a successful day. The Tinkers were thanked for their expression of thanks to the unit for helping to clear up after the Golden Gala Day.<br><br><b>GROUP SCOUT LEADER'S REPORT.</b><br><br>It was sadly reported that Kay Poulton has decided to take a break as ASL, but it is hoped that she will return later. She has given good service to the section and the Troop made a small presentation to her. Pauline Hubery has been appointed as ABSL and Rex Holman is to be appointed instructor with the pack. The Leader's would like to acknowledge the tremendous efforts and success of Jennifer Prescott and her Fund Raising committee particularly with regards to the Golden Gala Day which was both profitable and enjoyable. The recent coverage of the Group in the Surrey Mirror has been good and they wish to run a story in their yesteryear section. Margaret Errol has completed the composition of the Group Anniversary song, Lagham Scout March. Mr J Axtell attended the Cub Leader's camp at Gilwell and reported that it was the most enjoyable event that he has attended. The Group History has been completed by Mr G Bush, it is to be copied by Mr R Fox and sent to various leaders who will append their own particular histories.<br><br><b>QUARTERMASTER'S REPORT.</b><br><br>The 160lb tent has been purchased, paving stones have been set into the grass at the back on which to light fires. The Tinkers also prepared and loaded the equipment for the Golden Gala Day and finally cleared up. The remaining pram have been cut up saving the handles and wheels for use on the Chariots. The facia board has been replaced, the gutters and drainpipes have still to be done.<br><br><b>FUND RAISING COMMITTEE'S REPORT.</b><br><br>The Golden Gala Day was a great success and thanks must be expressed to all those who helped. Future events include a Jumble Sale On 27th September at 2.30 and a Barn Dance on 25th October at 7.30.<br><br><i><b>ANY OTHER BUSINESS.</b><br></i><br>MARQUEE.<br><br>A maul is required for the marquee Mr R Fox will investigate the cost<br><br>MINI-BUS.<br><br>If a new bus is to be bought it will need to be put away after use.<br><br>It is with regret that the secretary had to report that Mrs C Carey has resigned her position on the Executive.<br><br><br>Signed ....................................<br><br>Dated .....................................",
-                "extent": "8 pages plus attached note",
-                "format": "Document",
-                "scan": "Sc_G_MIN_1986_JUN_10.pdf"
-              },
-              "23": {
-                "subject": "Lagham",
-                "category": "Minutes",
-                "ref": "Sc/G/MIN/1986/JUN/23",
-                "location": "Lagham H.Q.",
-                "condition": "Water damaged.",
-                "date": "23/06/1986",
-                "title": "Minutes of the Fund Raising Committee meeting held on Monday, 23rd June 1986",
-                "description": "Minutes of the 1st Lagham Fundraising Committee meeting held on Monday, 23rd June 1986.",
-                "transcription": "0",
-                "extent": "4 pages",
-                "format": "Document",
-                "scan": "Sc_G_MIN_1986_JUN_23.pdf"
-              },
-              "folder_title": "June 1986",
-              "ref": "Sc/G/MIN/1986/JUN"
-            }
-          },
-          "folder_title": "Minutes",
-          "ref": "Sc/G/MIN"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Lagham (Godstone) Scout Group Archives</title>
+    
+    <link rel="icon" type="image/png" href="https://calebmoconnell.github.io/lagham/files/images/site-images/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: black;
+            --link-color: #114b76;
+            --header-footer-bg: #ffffff;
         }
-      },
-      "D": {
-        "folder_title": "District Records",
-        "ref": "Sc/D",
-        "NEWS": {
-          "1977": {
-            "folder_title": 1977,
-            "ref": "Sc/D/NEWS/1977",
-            "APR": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1977/APR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; torn section of paper missing",
-              "date": "04/1977",
-              "title": "East Surrey District Newsletter - April 1977",
-              "description": "East Surrey District Newsletter for April 1977.",
-              "transcription": 0,
-              "extent": "2 pages",
-              "format": "Document",
-              "scan": "Sc_D_NEWS_1977_APR.pdf"
-            },
-            "JUN": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1977/JUN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "06/1977",
-              "title": "East Surrey District Newsletter - June 1977",
-              "description": "East Surrey District Newsletter for June 1977.",
-              "transcription": 0,
-              "extent": "2 pages",
-              "format": "Document",
-              "scan": "Sc_D_NEWS_1977_JUN.pdf"
-            },
-            "DEC": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1977/DEC",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper",
-              "date": "12/1977",
-              "title": "East Surrey District Newsletter - December 1977",
-              "description": "East Surrey District Newsletter for December 1977.",
-              "transcription": 0,
-              "extent": "2 pages",
-              "format": "Document",
-              "scan": "Sc_D_NEWS_1977_DEC.pdf"
-            }
-          },
-          "1978": {
-            "folder_title": 1978,
-            "ref": "Sc/D/NEWS/1978",
-            "JAN": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1978/JAN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper",
-              "date": "01/1978",
-              "title": "East Surrey District Newsletter - January 1978",
-              "description": "East Surrey District Newsletter for January 1978.",
-              "transcription": 0,
-              "extent": "2 pages",
-              "format": "Document",
-              "scan": "Sc_D_NEWS_1978_JAN.pdf"
-            },
-            "FEB": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1978/FEB",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper",
-              "date": "02/1978",
-              "title": "East Surrey District Newsletter - February 1978",
-              "description": "East Surrey District Newsletter for February 1978.",
-              "transcription": "<center>EAST SURREY DISTRICT</br>************</br>NEWSLETTER - FEBRUARY 1978<br>****************</center><br><br><u>CONGRATULATIONS</u> to the following Scouts on gaining the Chief Scout's Award. D. Sugden - 1st Lingfield; K. Marten, N. Perrin, P. Champkins - 1st Dormansland;P. Holly, D. Vale, D. Brown, R. Johnson, S. Hughes, L. Holley - Tatsfield.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If there are any further Scouts who are ready for their Interview would they please contact the D. C. without delay as the next County Presentation is on Saturday, 25th February at 7.45 p.m at Oxted County School, Bluehouse Lane, Oxted.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The main arrangements are in the hands of Alan Osborn and the<br>District Scout Fellowship. Mary Osborn and the Cub Scouters are organising the refreshments. I hope that all Scouters in the District will do all they can to assist the organisers in the smooth running of the evening.<br><br><u>RESIGNATIONS</u> Mick Gray has resigned as Scout Leader at Godstone and Cub Scout Leader at Tatsfield. The District is most grateful to Mick for the many hours he has given over the years to give Scouting and Cubbing to many boys in Godstone and Tatsfield.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please amend your District Directory as follows:-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Godstone Scout Troop please refer all queries to Brian Knight<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the G.S.L.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tatsfield Cub Scout Pack insert, C.S.L. Nigel Shaw, 'Primrose Ridge', Greenway, Tatsfield, Nr. Westerham, Kent. (Tatsfield 343)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shelagh Murphy has had to resign as C.S.L. of 2nd Hurst Green<br>(Moor House School) Pack due to studies connected with her work. I am grateful to Douglas Cole and Peter Kaye of the District Scout Fellowship for agreeing to hold the fort for a short time. If there is a Cub Scouter that anyone knows of who would be prepared to work in an Extension Pack would you please tell Mary Osborn.<br><br><u>OPERATION MEATBALL</u> was an event for Scouts and was staged during the night of 7th January at Blackland Farm, East Grinstead. The operation was attended by just short of 70 boys, and was, I think, enjoyed by all who took part. This was the first event of its kind which I have run, and I would like to thank all of the boys who joined in with such good spirit, and the some 40 adults from Troops, Venture Scout Units, Fellowship and Dads who turned out to ensure the success of the evening - John Grossmith.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My congratulations to John Grossmith and his team, but particularly to John for the planning which contributed to this successful event.<br><br><u>CLIMBING/HILLCRAFT EQUIPMENT SURVEY</u> - Scout Leaders should have received a letter and questionnaire from Roger Smith, the District's Mountaineering Adviser. I hope that you will respond to this, and give him the information requested.<br><br><u>NOVICE CANOE SLALOM</u> will be held on Sunday, 19th February. If your Troop or Unit has not received an entry form would you please contact Trevor Monk as soon as possible.<br><br><u>OPEN COURSES FOR WATER SPORTS</u> - Ravens Ait, Surbiton, Surrey.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enclosed, for Troop and Venture Scout Leaders is information<br>concerning courses which are offered at the I.L.E.A. Conference and Water Sports Centre which are open to anyone who wishes to take advantage.<br><br><u>BROADSTONE WARREN ORIENTEERING RALLY</u> - Sunday, 2nd April, 1978. Publicity for this event is enclosed for all Section Leaders.<br><br><u>GROUP SCOUT LEADERS MEETING</u> will be held on Tuesday, 7th March at 8.15 p.m. in 1st Hurst Green H.Q. I hope that every G.S.L./Scouter in Charge will be present.<br><br><u>DISTRICT EXECUTIVE COMMITTEE</u> will meet on Wednesday, 15th February at 8.00 pm. in the Vicarage, Blindley Heath.<br><br><u>DISTRICT CUB SCOUT LEADERS</u> will meet at Lagham H.Q. on Thursday, 16th Feb. at 8.0 p.m.<br><br><u>DISTRICT CUB SCOUT HANDCRAFT COMPETITION</u> takes place on Saturday, 18th Feb. Exhibition will be open from 2.30 to 4.0 p.m. when the prizes will be presented.<br><br><u>DISTRICT BADGE</u> contrary to rumours which I have heard circulating round the District, the District badge has not been dispensed with. The non-availability of the badge at the present time is entirely due to the fact that the existing design of the badge is now being produced in colour and supplies should be available at the end of March or the beginning of April.",
-              "extent": "2 pages",
-              "format": "Document",
-              "scan": "Sc_D_NEWS_1978_FEB.pdf"
-            },
-            "NOV": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1978/NOV",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; tears and hole in paper.",
-              "date": "11/1978",
-              "title": "East Surrey District Newsletter - November 1978",
-              "description": "East Surrey District Newsletter for November 1978.",
-              "transcription": 0,
-              "extent": "2 pages",
-              "format": "Document",
-              "scan": "Sc_D_NEWS_1978_NOV.pdf"
-            }
-          },
-          "1979": {
-            "folder_title": 1979,
-            "ref": "Sc/D/NEWS/1979",
-            "JAN": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/JAN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; tears and hole in paper.",
-              "date": "01/1979",
-              "title": "East Surrey District Newsletter - January 1979",
-              "description": "East Surrey District Newsletter for January 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_JAN.pdf"
-            },
-            "FEB": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/FEB",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; tears and hole in paper.",
-              "date": "02/1979",
-              "title": "East Surrey District Newsletter - February 1979",
-              "description": "East Surrey District Newsletter for February 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_FEB.pdf"
-            },
-            "APR": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/APR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; tears and hole in paper.",
-              "date": "04/1979",
-              "title": "East Surrey District Newsletter - April 1979",
-              "description": "East Surrey District Newsletter for April 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_APR.pdf"
-            },
-            "MAY": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/MAY",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; tears and hole in paper.",
-              "date": "05/1979",
-              "title": "East Surrey District Newsletter - May 1979",
-              "description": "East Surrey District Newsletter for May 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_MAY.pdf"
-            },
-            "JUN": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/JUN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "06/1979",
-              "title": "East Surrey District Newsletter - June 1979",
-              "description": "East Surrey District Newsletter for June 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_JUN.pdf"
-            },
-            "JUL": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/JUL",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "07/1979",
-              "title": "East Surrey District Newsletter - July 1979",
-              "description": "East Surrey District Newsletter for July 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_JUL.pdf"
-            },
-            "SEP": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/SEP",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; minor tears to paper",
-              "date": "09/1979",
-              "title": "East Surrey District Newsletter - September 1979",
-              "description": "East Surrey District Newsletter for September 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_SEP.pdf"
-            },
-            "OCT": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/OCT",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "10/1979",
-              "title": "East Surrey District Newsletter - October 1979",
-              "description": "East Surrey District Newsletter for October 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_OCT.pdf"
-            },
-            "NOV": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/NOV",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "11/1979",
-              "title": "East Surrey District Newsletter - November 1979",
-              "description": "East Surrey District Newsletter for November 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_NOV.pdf"
-            },
-            "DEC": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1979/DEC",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "12/1979",
-              "title": "East Surrey District Newsletter - December 1979",
-              "description": "East Surrey District Newsletter for December 1979.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1979_DEC.pdf"
-            }
-          },
-          "1980": {
-            "folder_title": 1980,
-            "ref": "Sc/D/NEWS/1980",
-            "JAN": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/JAN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; minor tears.",
-              "date": "01/1980",
-              "title": "East Surrey District Newsletter - January 1980",
-              "description": "East Surrey District Newsletter for January 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_JAN.pdf"
-            },
-            "FEB": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/FEB",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "02/1980",
-              "title": "East Surrey District Newsletter - February 1980",
-              "description": "East Surrey District Newsletter for February 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_FEB.pdf"
-            },
-            "MAR": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/MAR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "03/1980",
-              "title": "East Surrey District Newsletter - March 1980",
-              "description": "East Surrey District Newsletter for March 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_MAR.pdf"
-            },
-            "APR": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/APR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; minor tears",
-              "date": "04/1980",
-              "title": "East Surrey District Newsletter - April 1980",
-              "description": "East Surrey District Newsletter for April 1980.",
-              "extent": "4 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_APR.pdf"
-            },
-            "MAY": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/MAY",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "05/1980",
-              "title": "East Surrey District Newsletter - May 1980",
-              "description": "East Surrey District Newsletter for May 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_MAY.pdf"
-            },
-            "JUN": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/JUN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; minor tears",
-              "date": "06/1980",
-              "title": "East Surrey District Newsletter - June 1980",
-              "description": "East Surrey District Newsletter for June 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_JUN.pdf"
-            },
-            "JUL": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/JUL",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "07/1980 - 08/1980",
-              "title": "East Surrey District Newsletter - July/August 1980",
-              "description": "East Surrey District Newsletter for July and August 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_JUL.pdf"
-            },
-            "SEP": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/SEP",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; page nearly split by tear",
-              "date": "09/1980",
-              "title": "East Surrey District Newsletter - September 1980",
-              "description": "East Surrey District Newsletter for September 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_SEP.pdf"
-            },
-            "OCT": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/OCT",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "10/1980",
-              "title": "East Surrey District Newsletter - October 1980",
-              "description": "East Surrey District Newsletter for October 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_OCT.pdf"
-            },
-            "NOV": {
-              "subject": "District",
-              "category": "Newsletter",
-              "ref": "Sc/D/NEWS/1980/NOV",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; damage to paper",
-              "date": "11/1980",
-              "title": "East Surrey District Newsletter - November 1980",
-              "description": "East Surrey District Newsletter for November 1980.",
-              "extent": "2 pages",
-              "format": "Document",
-              "transcription": 0,
-              "scan": "Sc_D_NEWS_1980_NOV.pdf"
-            }
-          },
-          "folder_title": "District Newsletters",
-          "ref": "Sc/D/NEWS"
-        },
-        "Misc": {
-          "folder_title": "Miscellaneous Records",
-          "ref": "Sc/D/Misc",
-          "CUT": {
-            "folder_title": "Newspaper Cuttings",
-            "ref": "Sc/D/Misc/CUT",
-            "MAY17": {
-              "subject": "District",
-              "category": "Newspaper Cutting",
-              "ref": "Sc/D/Misc/CUT/MAY17",
-              "location": "Lagham H.Q.",
-              "condition": "Minor damage to top of paper.",
-              "date": "03/05/2017",
-              "title": "Report on the District St. George's Day Parade",
-              "description": "A report in the County Border News of the East Surrey District St. George's Day Parade in Oxted.",
-              "transcription": "<div style='text-align: center'><strong>County Border News&nbsp;&nbsp;&nbsp;&nbsp;3rd May 2017</strong></div><br><br>East Surrey District Scouts held annual St George’s Day Parade in Oxted with over 300 uniformed Beavers, Cubs, Scouts and Explorers from all over East Surrey, with accompanying uniformed leaders. The parade started at the Tandridge District Council offices, and proceeded up Station Road East into Bluehouse Lane, going up to Oxted School. The St. George’s Day event gave all members, present and past, a chance to reflect on their Scout Promise and their connection to the wider Scout movement.<br>Photos kevin black",
-              "extent": "1 cutting",
-              "format": "Document",
-              "scan": "Sc_D_Misc_CUT_MAY17.pdf"
-            }
-          }
+
+        body {
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-      },
-      "C": {
-        "ref": "Sc/C",
-        "folder_title": "County Records",
-        "NEWS": {
-          "1977": {
-            "folder_title": 1977,
-            "ref": "Sc/C/NEWS/1977",
-            "APR": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1977/APR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "04/1977",
-              "title": "Surrey Scout [April 1977]",
-              "description": "Surrey Scouting newsletter for April 1977. No. 361.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1977_APR.pdf"
-            },
-            "MAY": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1977/MAY",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "05/1977",
-              "title": "Surrey Scout [May 1977]",
-              "description": "Surrey Scouting newsletter for May 1977. No. 362.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1977_MAY.pdf"
-            },
-            "JUN": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1977/JUN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; parts missing",
-              "date": "06/1977",
-              "title": "Surrey Scout [June 1977]",
-              "description": "Surrey Scouting newsletter for June 1977. Includes an article refelcting on the Queen's Silver Jubilee. No. 363.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1977_JUN.pdf"
-            },
-            "DEC": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1977/DEC",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "12/1977",
-              "title": "Surrey Scout [December 1977]",
-              "description": "Surrey Scouting newsletter for December 1977. No. 368.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1977_DEC.pdf"
-            }
-          },
-          "1978": {
-            "folder_title": 1978,
-            "ref": "Sc/C/NEWS/1978",
-            "JAN": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1978/JAN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "01/1978",
-              "title": "Surrey Scout [January 1978]",
-              "description": "Surrey Scouting newsletter for January 1978. No. 369.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1978_JAN.pdf"
-            },
-            "FEB": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1978/FEB",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "02/1978",
-              "title": "Surrey Scout [February 1978]",
-              "description": "Surrey Scouting newsletter for February 1978. No. 370.",
-              "transcription": 0,
-              "extent": "4 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1978_FEB.pdf"
-            },
-            "NOV": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1978/NOV",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "11/1978",
-              "title": "Surrey Scout [November 1978]",
-              "description": "Surrey Scouting newsletter for November 1978. No. 378.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1978_NOV.pdf"
-            }
-          },
-          "1979": {
-            "folder_title": 1979,
-            "ref": "Sc/C/NEWS/1979",
-            "JAN": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/JAN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "01/1979",
-              "title": "Surrey Scout [January 1979]",
-              "description": "Surrey Scouting newsletter for January 1979. No. 380.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_JAN.pdf"
-            },
-            "APR": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/APR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "04/1979",
-              "title": "Surrey Scout [April 1979]",
-              "description": "Surrey Scouting newsletter for April 1979. No. 383.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_APR.pdf"
-            },
-            "MAY": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/MAY",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "05/1979",
-              "title": "Surrey Scout [May 1979]",
-              "description": "Surrey Scouting newsletter for May 1979. No. 384.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_MAY.pdf"
-            },
-            "JUN": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/JUN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "06/1979",
-              "title": "Surrey Scout [June 1979]",
-              "description": "Surrey Scouting newsletter for June 1979. No. 385.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_JUN.pdf"
-            },
-            "JUL": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/JUL",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "07/1979 - 08/1979",
-              "title": "Surrey Scout [July/August 1979]",
-              "description": "Surrey Scouting newsletter for July and August 1979. No. 386.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_JUL.pdf"
-            },
-            "SEP": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/SEP",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "09/1979",
-              "title": "Surrey Scout [September 1979]",
-              "description": "Surrey Scouting newsletter for September 1979. No. 387.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_SEP.pdf"
-            },
-            "OCT": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/OCT",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "10/1979",
-              "title": "Surrey Scout [October 1979]",
-              "description": "Surrey Scouting newsletter for October 1979. No. 388.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_OCT.pdf"
-            },
-            "NOV": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/NOV",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "11/1979",
-              "title": "Surrey Scout [November 1979]",
-              "description": "Surrey Scouting newsletter for November 1979. No. 389.",
-              "transcription": 0,
-              "extent": "4 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_NOV.pdf"
-            },
-            "DEC": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1979/DEC",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "12/1979",
-              "title": "Surrey Scout [December 1979]",
-              "description": "Surrey Scouting newsletter for December 1979. No. 390.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1979_DEC.pdf"
-            }
-          },
-          "1980": {
-            "folder_title": 1980,
-            "ref": "Sc/C/NEWS/1980",
-            "JAN": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/JAN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "01/1980",
-              "title": "Surrey Scout [January 1980]",
-              "description": "Surrey Scouting newsletter for January 1980. No. 391.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_JAN.pdf"
-            },
-            "FEB": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/FEB",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "02/1980",
-              "title": "Surrey Scout [February 1980]",
-              "description": "Surrey Scouting newsletter for February 1980. No. 392.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_FEB.pdf"
-            },
-            "MAR": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/MAR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "03/1980",
-              "title": "Surrey Scout [March 1980]",
-              "description": "Surrey Scouting newsletter for March 1980. No. 393.",
-              "transcription": 0,
-              "extent": "4 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_MAR.pdf"
-            },
-            "APR": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/APR",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "04/1980",
-              "title": "Surrey Scout [April 1980]",
-              "description": "Surrey Scouting newsletter for April 1980. No. 394.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_APR.pdf"
-            },
-            "MAY": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/MAY",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "05/1980",
-              "title": "Surrey Scout [May 1980]",
-              "description": "Surrey Scouting newsletter for May 1980. No. 395.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_MAY.pdf"
-            },
-            "JUN": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/JUN",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "06/1980",
-              "title": "Surrey Scout [June 1980]",
-              "description": "Surrey Scouting newsletter for June 1980; includes the 1980 Census. No. 396.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_JUN.pdf"
-            },
-            "JUL": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/JUL",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "07/1980 - 08/1980",
-              "title": "Surrey Scout [July/August 1980]",
-              "description": "Surrey Scouting newsletter for July and August 1980. No. 397.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_JUL.pdf"
-            },
-            "SEP": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/SEP",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; damage from rusted staples",
-              "date": "09/1980",
-              "title": "Surrey Scout [September 1980]",
-              "description": "Surrey Scouting newsletter for September 1980. No. 398.",
-              "transcription": 0,
-              "extent": "8 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_SEP.pdf"
-            },
-            "OCT": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/OCT",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "10/1980",
-              "title": "Surrey Scout [October 1980]",
-              "description": "Surrey Scouting newsletter for October 1980. No. 399.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_OCT.pdf"
-            },
-            "NOV": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1980/NOV",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched",
-              "date": "11/1980",
-              "title": "Surrey Scout [November 1980]",
-              "description": "Surrey Scouting newsletter for November 1980. No. 400.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1980_NOV.pdf"
-            }
-          },
-          "1986": {
-            "folder_title": 1986,
-            "ref": "Sc/C/NEWS/1986",
-            "SEP": {
-              "subject": "County",
-              "category": "Newsletter",
-              "ref": "Sc/C/NEWS/1986/SEP",
-              "location": "Lagham H.Q.",
-              "condition": "Water damaged",
-              "date": "09/1986",
-              "title": "Surrey Scout [September 1986]",
-              "description": "Surrey Scouting newsletter for September 1986. No. 464.",
-              "transcription": 0,
-              "extent": "6 pages",
-              "format": "Document",
-              "scan": "Sc_C_NEWS_1986_SEP.pdf"
-            }
-          },
-          "folder_title": "County Newsletters",
-          "ref": "Sc/C/NEWS"
+
+        /* Header Styling */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--text-color);
+            padding: 20px 30px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
         }
-      }
-    },
-    "V": {
-      "folder_title": "Village Records",
-      "ref": "V"
-    }
-  }
-}
+
+        header .site-title {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Layout Container for Main and Sidebar */
+        .page-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto;
+            gap: 25px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            flex: 1;
+        }
+
+        /* Main Content Container */
+        main.main-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        /* Sidebar Styling */
+        aside.sidebar {
+            width: 320px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: black;
+            font-size: 1.2em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .sidebar p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: black;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: black;
+            text-align: center;
+            padding: 15px 30px;
+            font-size: 0.9em;
+            margin-top: auto;
+            border-top: 1px solid #eee;
+        }
+
+        /* Breadcrumb Text Links */
+        #breadcrumbs {
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            color: black;
+        }
+
+        #breadcrumbs a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        #breadcrumbs a:hover {
+            text-decoration: underline;
+            color: var(--link-color);
+        }
+
+        #breadcrumbs .separator {
+            margin: 0 8px;
+            color: black;
+            font-size: 0.9em;
+        }
+
+        /* Headers */
+        h1 {
+            color: black;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 i {
+            color: black;
+            margin-right: 10px;
+        }
+
+        /* Table Layouts */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        td, th {
+            border: 0px solid white;
+            text-align: left;
+            padding: 12px 8px;
+            border-bottom: 1px solid black;
+            vertical-align: top;
+            color: black;
+        }
+
+        th {
+            font-weight: 700;
+            font-size: 1em;
+        }
+
+        /* Links and text styling */
+        .item-title-link {
+            text-decoration: none;
+            color: var(--link-color);
+            font-size: 1em;
+        }
+
+        .item-title-link:hover {
+            text-decoration: underline;
+        }
+
+        .ref-path-text {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: black;
+            font-size: 0.95em;
+        }
+
+        .error {
+            color: #e74c3c;
+            background: #fdf0ed;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #fadbd8;
+        }
+
+        /* Search Box styling */
+        .ref-search-container {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0 25px 0;
+        }
+
+        .ref-search-container input {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+            max-width: 300px;
+            font-size: 1em;
+            font-family: inherit;
+            color: black;
+        }
+
+        .ref-search-container button {
+            padding: 10px 20px;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s, color 0.2s;
+            font-family: inherit;
+        }
+
+        .ref-search-container button:hover {
+            background-color: var(--link-color);
+            color: white;
+        }
+
+        /* Action Buttons Styling */
+        .action-buttons {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .action-buttons button {
+            padding: 10px 16px;
+            font-size: 0.95em;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .action-buttons button i {
+            margin-right: 8px;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        .action-buttons button:hover {
+            background-color: var(--link-color);
+            color: white;
+        }
+        
+        .action-buttons button.success-state {
+            background-color: var(--link-color);
+            border-color: var(--link-color);
+            color: white;
+        }
+        
+        .action-buttons button.success-state i {
+            color: white;
+        }
+
+        /* Print visibility defaults */
+        .print-only {
+            display: none;
+        }
+
+        /* Chronological Filter UI */
+        .chrono-filter-container {
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: white;
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--link-color);
+            color: white;
+        }
+
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.95em;
+            cursor: pointer;
+        }
+
+        .adv-filter-row {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .adv-filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .adv-filter-item select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95em;
+            min-width: 150px;
+        }
+
+        /* Chronological Accordions */
+        .chrono-accordion {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            padding: 10px 15px;
+            width: 100%;
+            text-align: left;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            border-left: 4px solid transparent; 
+            border-right: none;
+            outline: none;
+            transition: 0.2s;
+            font-size: 1em;
+            font-family: inherit;
+            margin-top: -1px;
+            font-weight: bold;
+        }
+
+        .chrono-accordion:hover {
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--link-color); 
+        }
+
+        .chrono-accordion.active {
+            background-color: #f5f5f5;
+            border-left: 4px solid var(--link-color);
+        }
+
+        .chrono-accordion i {
+            margin-right: 10px;
+            color: var(--link-color);
+            width: 15px;
+            text-align: center;
+        }
+
+        .chrono-accordion.sub-acc {
+            padding-left: 30px;
+            font-weight: normal;
+            background-color: #fcfcfc;
+        }
+
+        .chrono-accordion.sub-sub-acc {
+            padding-left: 45px;
+            font-weight: normal;
+            font-size: 0.95em;
+        }
+
+        .chrono-panel {
+            padding: 0 20px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+            border-left: none;
+            border-right: none;
+        }
+
+        .chrono-list {
+            list-style-type: none;
+            padding: 15px 20px 15px 30px;
+            margin: 0;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .chrono-panel > .chrono-list {
+            border: none;
+            padding-left: 20px;
+        }
+
+        /* Updated Spacing */
+        .chrono-list li {
+            padding: 12px 8px;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .page-container {
+                flex-direction: column;
+            }
+            aside.sidebar {
+                width: 100%;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print { display: none !important; }
+            .screen-only { display: none !important; }
+            .print-only { display: inline !important; }
+            body { background-color: white; }
+            .page-container {
+                display: block; margin: 0; padding: 0; max-width: 100%;
+            }
+            main.main-content {
+                box-shadow: none; margin: 0; padding: 0; border: none;
+            }
+            aside.sidebar { border: none; }
+            #breadcrumbs { display: none; }
+            .chrono-panel { display: block !important; border: none !important; padding-left: 20px; }
+            .chrono-accordion { border: none !important; margin-top: 10px; padding: 5px 0; border-bottom: 1px solid #eee !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="no-print">
+        <div class="site-title">1st Lagham (Godstone) Scout Group Archives</div>
+    </header>
+
+    <div class="page-container">
+        <main class="main-content">
+            <div id="breadcrumbs">Loading navigation...</div>
+            <div id="content">Loading data...</div>
+        </main>
+
+        <aside class="sidebar no-print">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="?ref=">Home</a></li>
+                <li><a href="?ref=Browse">Browse Catalogue</a></li>
+                <li><a href="?ref=chrono">Browse by date</a></li>
+                <li><a href="?ref=search">Search</a></li>
+                <li><a href="javascript:void(0)" onclick="goToRandomRecord()">Random record</a></li>
+                <li><a href="mailto:calebmoconnell@icloud.com">Contact</a></li>
+            </ul>
+            
+            <h3 style="margin-top: 25px;">1st Lagham Scout Group</h3>
+            <p>1st Lagham (Godstone) Scout Group was founded in 1936 in the village of South Godstone, Surrey, which was known before the arrival of the railways as Lagham. Initially known as 2nd Godstone, the Group's name was changed to assert its independence from Godstone. This is reflected in the Group motto: <i>Nulli Secundus</i>.</p>
+            <p>This page was set up to catalogue the records and archives of the Group, which cover the scouting County (Surrey) and District (East Surrey), the Group itself and the village of South Godstone.</p>
+            
+            <h3 style="margin-top: 25px;">Group Website</h3>
+            <p>For further information about the Group's current activities, please see the main website:</p>
+            <p style="margin-bottom: 0;"><a href="https://www.1stlaghamscouts.org.uk/" target="_blank" style="word-break: break-all;">https://www.1stlaghamscouts.org.uk/</a></p>
+        </aside>
+    </div>
+
+    <footer class="no-print">
+        <p>Created by Caleb O'Connell; last updated 6th July ᴀ.ᴅ. 2026</p>
+    </footer>
+
+    <script>
+        const DATA_URL = 'https://raw.githubusercontent.com/calebmoconnell/lagham/refs/heads/main/archive.json';
+        let allItemPaths = []; 
+        let fullDataCache = null;
+        let chronoItemsCache = [];
+
+        function safeEncode(str) {
+            if (!str) return "";
+            return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
+                return '%' + c.charCodeAt(0).toString(16);
+            });
+        }
+
+        function openTranscription(encodedTitle, encodedRef, encodedText) {
+            const title = decodeURIComponent(encodedTitle);
+            const ref = decodeURIComponent(encodedRef);
+            const text = decodeURIComponent(encodedText);
+
+            const win = window.open('', '_blank');
+            if (!win) {
+                alert('Please allow popups for this website to view transcriptions.');
+                return;
+            }
+
+            const docHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transcription - ${ref}</title>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+        }
+        .header-controls {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .header-controls a, .header-controls button {
+            padding: 10px 16px;
+            font-size: 0.95em;
+            background-color: white;
+            color: #114b76;
+            border: 1px solid #114b76;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin: 0 10px;
+            font-family: inherit;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .header-controls a i, .header-controls button i { margin-right: 8px; }
+        .header-controls a:hover, .header-controls button:hover { background-color: #114b76; color: white; }
+        .doc-container {
+            max-width: 800px; margin: 40px auto; padding: 0 40px;
+        }
+        .doc-title { font-size: 1.5em; font-weight: bold; text-align: center; }
+        .doc-subtitle { font-style: italic; text-align: center; margin-top: 10px; margin-bottom: 20px; }
+        hr { border: 0; border-top: 1px solid #ccc; margin-bottom: 30px; }
+        .doc-content { white-space: pre-wrap; line-height: 1.6; }
+        @media print {
+            .header-controls { display: none !important; }
+            .doc-container { margin: 0; padding: 0; max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-controls no-print">
+        <a href="javascript:void(0)" onclick="window.close()"><i class="fa fa-arrow-left"></i>Back to record</a>
+        <button onclick="window.print()"><i class="fa fa-print"></i>Print transcription</button>
+    </div>
+    <div class="doc-container">
+        <div class="doc-title">Transcription of ${title} (${ref})</div>
+        <div class="doc-subtitle">Obvious typographical errors have been corrected and page breaks have been removed; poor punctuation has been retained.</div>
+        <hr>
+        <div class="doc-content">${text}</div>
+    </div>
+</body>
+</html>`;
+            win.document.open();
+            win.document.write(docHtml);
+            win.document.close();
+        }
+
+        async function init() {
+            try {
+                const response = await fetch(DATA_URL);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const fullData = await response.json();
+                fullDataCache = fullData;
+                
+                allItemPaths = getAllItemPaths(fullData);
+                
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentRef = urlParams.get('ref') || '';
+                
+                renderPage(fullData, currentRef);
+            } catch (error) {
+                document.getElementById('content').innerHTML = `<p class="error">Error loading archive data: ${error.message}</p>`;
+                document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a>`;
+            }
+        }
+
+        function getAllItemPaths(node, currentPath = '') {
+            let paths = [];
+            if (node && typeof node === 'object') {
+                if ('category' in node || 'title' in node) {
+                    paths.push(currentPath);
+                } else {
+                    for (const [key, value] of Object.entries(node)) {
+                        if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+                        const nextPath = currentPath ? `${currentPath}/${key}` : key;
+                        paths = paths.concat(getAllItemPaths(value, nextPath));
+                    }
+                }
+            }
+            return paths;
+        }
+        
+        function getRecordDataByPath(fullData, pathStr) {
+            const parts = pathStr.split('/');
+            let current = fullData;
+            for (let p of parts) {
+                if (current && current[p]) {
+                    current = current[p];
+                } else {
+                    return null;
+                }
+            }
+            return current;
+        }
+
+        function goToRandomRecord() {
+            if (allItemPaths.length > 0) {
+                const randomPath = allItemPaths[Math.floor(Math.random() * allItemPaths.length)];
+                window.location.href = `?ref=${encodeURIComponent(randomPath)}`;
+            }
+        }
+
+        function goToDirectRef() {
+            const inputField = document.getElementById('directRefInput');
+            if (inputField && inputField.value.trim() !== "") {
+                let path = inputField.value.trim();
+                
+                if (!path.startsWith('Browse/') && path !== 'Browse') {
+                    path = 'Browse/' + path;
+                }
+                
+                window.location.href = `?ref=${encodeURIComponent(path)}`;
+            }
+        }
+
+        function renderPage(fullData, ref) {
+            if (ref === 'chrono') {
+                renderChronologicalPage(fullData);
+                return;
+            }
+
+            if (ref === 'search') {
+                renderSearchPage();
+                return;
+            }
+
+            const path = ref.split('/').filter(Boolean);
+            let currentData = fullData;
+            
+            for (let key of path) {
+                if (currentData && typeof currentData === 'object' && key in currentData) {
+                    currentData = currentData[key];
+                } else {
+                    document.getElementById('content').innerHTML = `<p class="error">Data path not found: <strong>${ref}</strong></p>`;
+                    renderBreadcrumbs(path);
+                    return;
+                }
+            }
+            
+            renderBreadcrumbs(path);
+            renderLayer(currentData, path);
+        }
+
+        function renderBreadcrumbs(path) {
+            const nav = document.getElementById('breadcrumbs');
+            let html = `<a href="?ref=">Home</a>`;
+            let accumulatedPath = '';
+            
+            for (let i = 0; i < path.length; i++) {
+                accumulatedPath += (i === 0 ? '' : '/') + path[i];
+                if (path[i] === 'Browse') continue;
+
+                let displayName = path[i];
+                html += `<span class="separator">/</span><a href="?ref=${encodeURIComponent(accumulatedPath)}">${displayName}</a>`;
+            }
+            
+            nav.innerHTML = html;
+        }
+
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalHtml = btnElement.innerHTML;
+                
+                btnElement.innerHTML = '<i class="fa fa-check"></i> Link copied!';
+                btnElement.classList.add('success-state');
+                
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHtml;
+                    btnElement.classList.remove('success-state');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                const originalHtml = btnElement.innerHTML;
+                
+                btnElement.innerHTML = '<i class="fa fa-times"></i> Failed';
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHtml;
+                }, 2000);
+            });
+        }
+
+        // ---------- Search View Logic ---------- //
+
+        function renderSearchPage() {
+            document.title = "Search - 1st Lagham (Godstone) Scout Group Archives";
+            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=search">Search</a>`;
+
+            const uniqueCats = new Set();
+            const uniqueFormats = new Set();
+            const uniqueSubjects = new Set();
+
+            allItemPaths.forEach(path => {
+                const data = getRecordDataByPath(fullDataCache, path);
+                if (data) {
+                    if (data.category) uniqueCats.add(data.category.trim());
+                    if (data.format) uniqueFormats.add(data.format.trim());
+                    const subj = data.subject ? data.subject.trim() : "Unspecified";
+                    uniqueSubjects.add(subj);
+                }
+            });
+
+            let catOptions = '<option value="">All Categories</option>';
+            Array.from(uniqueCats).sort().forEach(cat => catOptions += `<option value="${cat}">${cat}</option>`);
+
+            let formatOptions = '<option value="">All Formats</option>';
+            Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
+
+            let subjectCbHtml = '';
+            Array.from(uniqueSubjects).sort().forEach(subj => {
+                subjectCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-subject-cb" value="${subj}" checked> ${subj}</label>`;
+            });
+
+            let html = `<h1>Search Archives</h1>`;
+            
+            html += `<p style="font-style: italic; margin-top: -15px; margin-bottom: 25px;">Incomplete records lacking transcriptions may not be returned due to lack of searchable data.</p>`;
+            
+            html += `
+                <div class="ref-search-container no-print">
+                    <input type="text" id="searchInput" placeholder="Enter search term..." onkeydown="if(event.key === 'Enter') executeSearch()">
+                    <button onclick="executeSearch()">Search</button>
+                </div>
+            `;
+            
+            html += `
+                <div class="chrono-filter-container no-print" style="margin-top: -15px; margin-bottom: 30px;">
+                    <div style="width: 100%;">
+                        <a href="javascript:void(0)" id="toggleSearchAdvFilters" style="display: block; width: 100%; text-decoration: none; color: var(--link-color); font-size: 0.95em; font-weight: bold;">
+                            <i class="fa fa-caret-right" id="searchAdvFilterIcon"></i> Advanced search
+                        </a>
+                    </div>
+
+                    <div id="searchAdvFiltersPanel" style="display: none; width: 100%; border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                        <div class="adv-filter-row" style="flex-direction: column; gap: 15px;">
+                            
+                            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                <label class="checkbox-label"><input type="checkbox" id="advIgnoreTitles"> Ignore titles</label>
+                                <label class="checkbox-label"><input type="checkbox" id="advHasPdf"> Has PDF scan</label>
+                                <label class="checkbox-label"><input type="checkbox" id="advHasTrans"> Has transcription</label>
+                            </div>
+
+                            <div class="adv-filter-item">
+                                <label><strong>Filter by Record Group (Subject)</strong></label>
+                                <div style="display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px;">
+                                    ${subjectCbHtml}
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 25px; flex-wrap: wrap;">
+                                <div class="adv-filter-item">
+                                    <label><strong>Category</strong></label>
+                                    <select id="advSearchCategory">${catOptions}</select>
+                                </div>
+                                
+                                <div class="adv-filter-item">
+                                    <label><strong>Format</strong></label>
+                                    <select id="advSearchFormat">${formatOptions}</select>
+                                </div>
+
+                                <div class="adv-filter-item">
+                                    <label><strong>Date Range (Years)</strong></label>
+                                    <div style="display: flex; gap: 10px; align-items: center;">
+                                        <input type="number" id="advSearchYearFrom" placeholder="YYYY" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
+                                        <span>to</span>
+                                        <input type="number" id="advSearchYearTo" placeholder="YYYY" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            html += `<div id="searchResultsContainer"></div>`;
+            document.getElementById('content').innerHTML = html;
+            
+            setTimeout(() => {
+                const inputField = document.getElementById('searchInput');
+                if (inputField) inputField.focus();
+
+                const toggleBtn = document.getElementById('toggleSearchAdvFilters');
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', function() {
+                        const panel = document.getElementById('searchAdvFiltersPanel');
+                        const icon = document.getElementById('searchAdvFilterIcon');
+                        if (panel.style.display === 'none') {
+                            panel.style.display = 'block';
+                            icon.className = 'fa fa-caret-down';
+                        } else {
+                            panel.style.display = 'none';
+                            icon.className = 'fa fa-caret-right';
+                        }
+                    });
+                }
+            }, 50);
+        }
+
+        function extractSearchSnippet(text, query) {
+            if (!text) return "";
+            
+            // Convert <br>, <br/>, <br > to \n so they are treated as standard line breaks
+            const str = text.toString().replace(/<br\s*\/?>/gi, '\n');
+            const lowerStr = str.toLowerCase();
+            const queryIdx = lowerStr.indexOf(query);
+            if (queryIdx === -1) return "";
+            
+            const contextLength = 60; // Characters to include on either side
+            
+            let rawStart = Math.max(0, queryIdx - contextLength);
+            let rawEnd = Math.min(str.length, queryIdx + query.length + contextLength);
+            
+            // Adjust start to a line break if one exists in the window, otherwise a word break
+            const lastNewLine = str.lastIndexOf('\n', queryIdx);
+            if (lastNewLine !== -1 && lastNewLine >= rawStart) {
+                rawStart = lastNewLine + 1;
+            } else if (rawStart > 0) {
+                const nextSpace = str.indexOf(' ', rawStart);
+                if (nextSpace !== -1 && nextSpace < queryIdx) {
+                    rawStart = nextSpace + 1;
+                }
+            }
+            
+            // Adjust end to a line break if one exists in the window, otherwise a word break
+            const nextNewLine = str.indexOf('\n', queryIdx + query.length);
+            if (nextNewLine !== -1 && nextNewLine <= rawEnd) {
+                rawEnd = nextNewLine;
+            } else if (rawEnd < str.length) {
+                const prevSpace = str.lastIndexOf(' ', rawEnd);
+                if (prevSpace !== -1 && prevSpace > (queryIdx + query.length)) {
+                    rawEnd = prevSpace;
+                }
+            }
+            
+            // Clean any remaining internal line breaks into spaces and trim
+            let snippet = str.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
+            
+            // Highlight the query (case insensitive)
+            const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const regex = new RegExp(`(${escapedQuery})`, 'gi');
+            snippet = snippet.replace(regex, '<strong>$1</strong>');
+            
+            if (rawStart > 0) snippet = "..." + snippet;
+            if (rawEnd < str.length) snippet = snippet + "...";
+            
+            return snippet;
+        }
+
+        function executeSearch() {
+            const input = document.getElementById('searchInput');
+            const query = input.value.trim().toLowerCase();
+            const container = document.getElementById('searchResultsContainer');
+
+            if (!query) {
+                container.innerHTML = `<p class="error">Please enter a search term.</p>`;
+                return;
+            }
+
+            container.innerHTML = "<p>Searching...</p>";
+
+            // Capture Advanced Search States
+            const ignoreTitles = document.getElementById('advIgnoreTitles')?.checked || false;
+            const hasPdf = document.getElementById('advHasPdf')?.checked || false;
+            const hasTrans = document.getElementById('advHasTrans')?.checked || false;
+            
+            const cat = document.getElementById('advSearchCategory')?.value || '';
+            const format = document.getElementById('advSearchFormat')?.value || '';
+            
+            const yearFromVal = document.getElementById('advSearchYearFrom')?.value;
+            const yearToVal = document.getElementById('advSearchYearTo')?.value;
+            const yearFrom = yearFromVal ? parseInt(yearFromVal, 10) : null;
+            const yearTo = yearToVal ? parseInt(yearToVal, 10) : null;
+            
+            const subjectCbs = document.querySelectorAll('.search-subject-cb');
+            const selectedSubjects = Array.from(subjectCbs).filter(cb => cb.checked).map(cb => cb.value);
+
+            setTimeout(() => {
+                const results = [];
+                
+                allItemPaths.forEach(path => {
+                    const data = getRecordDataByPath(fullDataCache, path);
+                    if (data) {
+                        
+                        // --- Apply Advanced Filters ---
+                        if (hasPdf && (!data.scan || data.scan === 0 || data.scan === "0")) return;
+                        if (hasTrans && (!data.transcription || data.transcription === 0 || data.transcription === "0")) return;
+                        
+                        if (cat && data.category !== cat) return;
+                        if (format && data.format !== format) return;
+                        
+                        const subj = data.subject ? data.subject.trim() : "Unspecified";
+                        if (subjectCbs.length > 0 && !selectedSubjects.includes(subj)) return;
+                        
+                        if (yearFrom !== null || yearTo !== null) {
+                            const dates = expandDateString(data.date);
+                            const inRange = dates.some(d => {
+                                if (d.year === 9999) return false; // Undated fails strict range
+                                if (yearFrom !== null && d.year < yearFrom) return false;
+                                if (yearTo !== null && d.year > yearTo) return false;
+                                return true;
+                            });
+                            if (!inRange) return;
+                        }
+
+                        // --- Apply Text Matching ---
+                        const title = (data.title || data.category || "").toLowerCase();
+                        const desc = (data.description || "").toLowerCase();
+                        const trans = (data.transcription || "").toString().toLowerCase();
+                        
+                        const titleMatch = title.includes(query);
+                        const descMatch = desc.includes(query);
+                        const transMatch = trans.includes(query);
+
+                        let matchesQuery = false;
+                        if (ignoreTitles) {
+                            matchesQuery = descMatch || transMatch;
+                        } else {
+                            matchesQuery = titleMatch || descMatch || transMatch;
+                        }
+
+                        if (matchesQuery) {
+                            let snippet = "";
+                            if (descMatch) {
+                                snippet = extractSearchSnippet(data.description, query);
+                            } else if (transMatch) {
+                                snippet = extractSearchSnippet(data.transcription, query);
+                            }
+                            
+                            results.push({ path, data, snippet });
+                        }
+                    }
+                });
+
+                renderSearchResults(results, query);
+            }, 10);
+        }
+
+        function renderSearchResults(results, query) {
+            const container = document.getElementById('searchResultsContainer');
+            
+            if (results.length === 0) {
+                container.innerHTML = `<p>No records found matching "<strong>${query}</strong>".</p>`;
+                return;
+            }
+
+            const recordWord = results.length === 1 ? "record" : "records";
+            let html = `<p>Found <strong>${results.length}</strong> ${recordWord} matching "<strong>${query}</strong>":</p>`;
+            
+            html += `<div style="margin-top: 20px;">`;
+
+            results.forEach(item => {
+                const title = item.data.title || item.data.category || 'Untitled Document';
+                const ref = item.data.ref || item.path.replace('Browse/', '');
+                
+                html += `
+                    <div style="margin-bottom: 25px;">
+                        <div style="font-size: 1.05em;">
+                            <a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">
+                                <strong>${title}</strong>
+                            </a>
+                        </div>
+                        <div class="ref-path-text" style="color: #888; font-size: 0.85em; margin-top: 4px;">
+                            ${ref}
+                        </div>
+                        ${item.snippet ? `<div style="margin-top: 6px; font-size: 0.95em; color: #333;">“${item.snippet}”</div>` : ''}
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        // ---------- Chronological View Logic ---------- //
+
+        function parseSingleDate(str) {
+            if (!str) return { year: 9999, month: null, day: null };
+            
+            const rawParts = str.split(/[\.\/\- ,]+/);
+            const parts = rawParts.map(p => p.replace(/\D/g, '')).filter(p => p.length > 0);
+            
+            let year = 9999, month = null, day = null;
+
+            if (parts.length >= 3) {
+                if (parts[0].length === 4) {
+                    year = parseInt(parts[0], 10); month = parseInt(parts[1], 10); day = parseInt(parts[2], 10);
+                } else {
+                    day = parseInt(parts[0], 10); month = parseInt(parts[1], 10); year = parseInt(parts[2], 10);
+                }
+            } else if (parts.length === 2) {
+                month = parseInt(parts[0], 10); year = parseInt(parts[1], 10);
+            } else if (parts.length === 1) {
+                year = parseInt(parts[0], 10);
+            }
+
+            if (year < 100 && year > 0) year += (year > 25 ? 1900 : 2000); 
+            
+            if (month < 1 || month > 12) month = null;
+            if (day < 1 || day > 31) day = null;
+
+            return { year, month, day };
+        }
+
+        function expandDateString(dateStr) {
+            if (!dateStr) return [{ year: 9999, month: null, day: null, str: "" }];
+            
+            let str = dateStr.toString().trim().toLowerCase();
+            let parts = [];
+            
+            if (str.includes(' to ')) {
+                parts = str.split(' to ');
+            } else if (str.includes(' - ')) {
+                parts = str.split(' - ');
+            } else {
+                const yearRangeMatch = str.match(/^(\d{4})-(\d{4})$/);
+                if (yearRangeMatch) {
+                    parts = [yearRangeMatch[1], yearRangeMatch[2]];
+                } else {
+                    parts = [str];
+                }
+            }
+
+            if (parts.length === 1) {
+                const d = parseSingleDate(parts[0]);
+                d.str = dateStr;
+                return [d];
+            }
+
+            const start = parseSingleDate(parts[0]);
+            const end = parseSingleDate(parts[1]);
+
+            if (start.year === 9999 || end.year === 9999 || start.year > end.year) {
+                start.str = dateStr;
+                return [start];
+            }
+
+            let expandedDates = [];
+            
+            for (let y = start.year; y <= end.year; y++) {
+                let startM = (y === start.year && start.month) ? start.month : 1;
+                let endM = (y === end.year && end.month) ? end.month : 12;
+
+                if (!start.month && !end.month) {
+                    expandedDates.push({ year: y, month: null, day: null, str: dateStr });
+                    continue;
+                }
+
+                for (let m = startM; m <= endM; m++) {
+                    expandedDates.push({ year: y, month: m, day: null, str: dateStr });
+                }
+            }
+            
+            if (expandedDates.length === 0) {
+                start.str = dateStr;
+                return [start];
+            }
+            
+            return expandedDates;
+        }
+
+        function getOrdinal(n) {
+            let s = ["th", "st", "nd", "rd"], v = n % 100;
+            return (s[(v - 20) % 10] || s[v] || s[0]);
+        }
+
+        const MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        function renderChronologicalPage(fullData) {
+            document.title = "Browse by date - 1st Lagham (Godstone) Scout Group Archives";
+            document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Browse by date</a>`;
+
+            const uniqueCats = new Set();
+            const uniqueFormats = new Set();
+
+            if (chronoItemsCache.length === 0) {
+                allItemPaths.forEach(path => {
+                    const data = getRecordDataByPath(fullData, path);
+                    if (data) {
+                        const topCategory = path.startsWith('Browse/') ? path.split('/')[1] : null;
+                        const dateInfos = expandDateString(data.date);
+                        
+                        dateInfos.forEach(dateInfo => {
+                            chronoItemsCache.push({ path, data, topCategory, dateInfo });
+                        });
+                    }
+                });
+                
+                chronoItemsCache.sort((a, b) => {
+                    if (a.dateInfo.year !== b.dateInfo.year) return a.dateInfo.year - b.dateInfo.year;
+                    
+                    let m1 = a.dateInfo.month || 0;
+                    let m2 = b.dateInfo.month || 0;
+                    if (m1 !== m2) return m1 - m2;
+                    
+                    let d1 = a.dateInfo.day || 0;
+                    let d2 = b.dateInfo.day || 0;
+                    if (d1 !== d2) return d1 - d2;
+                    
+                    let t1 = a.data.title || a.data.category || "";
+                    let t2 = b.data.title || b.data.category || "";
+                    return t1.localeCompare(t2);
+                });
+            }
+
+            // Extract unique categories & formats from the cache for the dropdowns
+            chronoItemsCache.forEach(item => {
+                if (item.data.category) uniqueCats.add(item.data.category.trim());
+                if (item.data.format) uniqueFormats.add(item.data.format.trim());
+            });
+
+            // Build Group Checkboxes
+            const browseKeys = fullData.Browse ? Object.keys(fullData.Browse).filter(k => k !== 'folder_title' && k !== 'category' && k !== 'ref') : [];
+            let groupCbHtml = '';
+            browseKeys.forEach(k => {
+                const label = fullData.Browse[k].folder_title || k;
+                groupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="group-cb" value="${k}" checked> ${label}</label>`;
+            });
+
+            // Build Dropdown Options
+            let catOptions = '<option value="">All Categories</option>';
+            Array.from(uniqueCats).sort().forEach(cat => catOptions += `<option value="${cat}">${cat}</option>`);
+
+            let formatOptions = '<option value="">All Formats</option>';
+            Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
+
+            let html = `<h1>Browse records by date</h1>`;
+            
+            // Text added between title and filters
+            html += `<p style="font-style: italic; margin-top: -15px; margin-bottom: 25px;">Records are sorted by date of creation.</p>`;
+            
+            // Build the Filter UI
+            html += `<div class="chrono-filter-container no-print">
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
+                            <button id="btnAllGroups" class="filter-btn active">View All</button>
+                            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                                <strong>Select record groups:</strong>
+                                ${groupCbHtml}
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 15px; width: 100%;">
+                            <a href="javascript:void(0)" id="toggleAdvFilters" style="display: block; width: 100%; text-decoration: none; color: var(--link-color); font-size: 0.95em; font-weight: bold;">
+                                <i class="fa fa-caret-right" id="advFilterIcon"></i> Advanced filters
+                            </a>
+                        </div>
+
+                        <div id="advFiltersPanel" style="display: none; width: 100%; border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                            <div class="adv-filter-row">
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Category</strong></label>
+                                    <select id="advCategoryFilter">${catOptions}</select>
+                                </div>
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Format</strong></label>
+                                    <select id="advFormatFilter">${formatOptions}</select>
+                                </div>
+                                <div class="adv-filter-item">
+                                    <label><strong>Filter by Scouting Organisation</strong></label>
+                                    <div style="display: flex; gap: 12px; padding-top: 6px;">
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="Group"> Group</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="District"> District</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="County"> County</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>`;
+                     
+            html += `<div id="chronoTreeContainer"></div>`;
+            document.getElementById('content').innerHTML = html;
+            
+            // Event Listeners for UI
+            document.getElementById('toggleAdvFilters').addEventListener('click', function() {
+                const panel = document.getElementById('advFiltersPanel');
+                const icon = document.getElementById('advFilterIcon');
+                if (panel.style.display === 'none') {
+                    panel.style.display = 'block';
+                    icon.className = 'fa fa-caret-down';
+                } else {
+                    panel.style.display = 'none';
+                    icon.className = 'fa fa-caret-right';
+                }
+            });
+
+            const btnAll = document.getElementById('btnAllGroups');
+            const groupCbs = document.querySelectorAll('.group-cb');
+            
+            btnAll.addEventListener('click', () => {
+                groupCbs.forEach(cb => cb.checked = true);
+                btnAll.classList.add('active');
+                applyChronoFilters();
+            });
+
+            groupCbs.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const allChecked = Array.from(groupCbs).every(c => c.checked);
+                    if (allChecked) {
+                        btnAll.classList.add('active');
+                    } else {
+                        btnAll.classList.remove('active');
+                    }
+                    applyChronoFilters();
+                });
+            });
+
+            // Bind advanced filters
+            document.getElementById('advCategoryFilter').addEventListener('change', applyChronoFilters);
+            document.getElementById('advFormatFilter').addEventListener('change', applyChronoFilters);
+            document.querySelectorAll('.level-cb').forEach(cb => cb.addEventListener('change', applyChronoFilters));
+
+            applyChronoFilters();
+        }
+
+        function applyChronoFilters() {
+            // Read UI states
+            const groupCbs = document.querySelectorAll('.group-cb');
+            const selectedGroups = Array.from(groupCbs).filter(cb => cb.checked).map(cb => cb.value);
+
+            const advCat = document.getElementById('advCategoryFilter').value;
+            const advFormat = document.getElementById('advFormatFilter').value;
+
+            const levelCbs = document.querySelectorAll('.level-cb');
+            const selectedLevels = Array.from(levelCbs).filter(cb => cb.checked).map(cb => cb.value.toLowerCase());
+
+            // Filter the cache
+            const filteredItems = chronoItemsCache.filter(item => {
+                // 1. Group check
+                if (selectedGroups.length > 0 && !selectedGroups.includes(item.topCategory)) return false;
+                if (selectedGroups.length === 0) return false; // Hide all if nothing selected
+
+                // 2. Category check
+                if (advCat && item.data.category !== advCat) return false;
+
+                // 3. Format check
+                if (advFormat && item.data.format !== advFormat) return false;
+
+                // 4. Level/Scope check (Group/District/County) based on JSON "subject"
+                if (selectedLevels.length > 0) {
+                    const subjectText = (item.data.subject || '').toLowerCase();
+                    const matchesLevel = selectedLevels.some(level => {
+                        if (level === 'group') {
+                            return subjectText.includes('lagham');
+                        } else {
+                            return subjectText.includes(level);
+                        }
+                    });
+                    if (!matchesLevel) return false;
+                }
+
+                return true;
+            });
+
+            renderChronoTree(filteredItems);
+        }
+
+        function renderChronoTree(items) {
+            const container = document.getElementById('chronoTreeContainer');
+            if (items.length === 0) {
+                container.innerHTML = "<p>No records found matching your filters.</p>";
+                return;
+            }
+
+            const tree = {};
+            items.forEach(item => {
+                const y = item.dateInfo.year === 9999 ? "Undated" : item.dateInfo.year.toString();
+                const m = item.dateInfo.month && item.dateInfo.month >= 1 && item.dateInfo.month <= 12 ? MONTH_NAMES[item.dateInfo.month] : null;
+                const d = item.dateInfo.day ? item.dateInfo.day.toString() : null;
+
+                if (!tree[y]) tree[y] = { items: [], months: {} };
+
+                if (m) {
+                    if (!tree[y].months[m]) tree[y].months[m] = { items: [], days: {} };
+                    if (d) {
+                        if (!tree[y].months[m].days[d]) tree[y].months[m].days[d] = [];
+                        tree[y].months[m].days[d].push(item);
+                    } else {
+                        tree[y].months[m].items.push(item);
+                    }
+                } else {
+                    tree[y].items.push(item);
+                }
+            });
+
+            let html = '';
+            
+            const yearKeys = Object.keys(tree).sort((a, b) => {
+                if (a === "Unknown Year") return 1;
+                if (b === "Unknown Year") return -1;
+                return parseInt(a) - parseInt(b);
+            });
+
+            yearKeys.forEach(y => {
+                html += `<button class="chrono-accordion">${y}</button><div class="chrono-panel">`;
+                
+                if (tree[y].items.length > 0) {
+                    html += buildChronoList(tree[y].items);
+                }
+
+                const mKeys = Object.keys(tree[y].months).sort((a, b) => MONTH_NAMES.indexOf(a) - MONTH_NAMES.indexOf(b));
+                mKeys.forEach(m => {
+                    html += `<button class="chrono-accordion sub-acc">${m}</button><div class="chrono-panel">`;
+                    
+                    if (tree[y].months[m].items.length > 0) {
+                        html += buildChronoList(tree[y].months[m].items);
+                    }
+
+                    const dKeys = Object.keys(tree[y].months[m].days).sort((a, b) => parseInt(a) - parseInt(b));
+                    dKeys.forEach(d => {
+                        const dayLabel = `${d}${getOrdinal(d)}`;
+                        html += `<button class="chrono-accordion sub-sub-acc">${dayLabel}</button><div class="chrono-panel">`;
+                        html += buildChronoList(tree[y].months[m].days[d]);
+                        html += `</div>`;
+                    });
+                    html += `</div>`;
+                });
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+
+            const accordions = container.getElementsByClassName("chrono-accordion");
+            for (let i = 0; i < accordions.length; i++) {
+                accordions[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        }
+
+        function buildChronoList(itemsArray) {
+            let html = '<ul class="chrono-list">';
+            itemsArray.forEach(item => {
+                const title = item.data.title || item.data.category || 'Untitled Document';
+                const ref = item.data.ref || item.path.replace('Browse/', '');
+                html += `<li><a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">${title} <span style="color:#666; font-size: 0.9em;">(${ref})</span></a></li>`;
+            });
+            html += '</ul>';
+            return html;
+        }
+
+        // ---------- Standard View Logic ---------- //
+
+        function renderLayer(data, path) {
+            const content = document.getElementById('content');
+            const currentPathString = path.join('/');
+
+            if (currentPathString === '') {
+                document.title = "1st Lagham (Godstone) Scout Group Archives";
+                let html = `<h1>Welcome to 1st Lagham (Godstone) Scout Group Archives</h1>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">The archives cover the activities of the Scout Association at local, District and County levels, as well as news and events in the wider village of South Godstone, since the local Scout Group was founded in 1936.</p>`;
+                
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">If you know the reference of the record you’re looking for, enter it below to go directly to it.</p>`;
+                
+                html += `
+                    <div class="ref-search-container no-print">
+                        <input type="text" id="directRefInput" placeholder="e.g. Sc/G/HIS/1/Hist" onkeydown="if(event.key === 'Enter') goToDirectRef()">
+                        <button onclick="goToDirectRef()">Go <i class="fa fa-arrow-right" style="margin-left: 5px;"></i></button>
+                    </div>
+                `;
+
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">If you know a particular word or phrase, then <a href="?ref=search" style="color: var(--link-color); font-style: italic; font-weight: 500;">search across all records</a>.</p>`;
+
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=chrono" style="color: var(--link-color); font-weight: 500; font-style: italic;">view all records by date</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
+
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black;">Further records are being added from time to time; if you cannot find what you're looking for, please <a href="mailto:calebmoconnell@icloud.com" style="color: var(--link-color); text-decoration: underline;">contact me</a>.</p>`;
+                
+                content.innerHTML = html;
+                return;
+            }
+            
+            let referenceParam = data.ref ? `Browse/${data.ref}` : currentPathString;
+            referenceParam = referenceParam.replace('Browse/Browse/', 'Browse/'); 
+            const permalink = `https://calebmoconnell.github.io/lagham/?ref=${referenceParam}`;
+
+            const getActionButtonsHtml = (title) => {
+                const mailtoHref = `mailto:?subject=${encodeURIComponent("Catalogue Entry: " + title)}&body=${encodeURIComponent("View this catalogue entry: " + permalink)}`;
+                return `
+                    <div class="action-buttons no-print">
+                        <button onclick="window.print()"><i class="fa fa-print"></i> Print catalogue entry</button>
+                        <button onclick="window.location.href='${mailtoHref}'"><i class="fa fa-envelope"></i> Email catalogue entry</button>
+                        <button onclick="copyToClipboard('${permalink}', this)"><i class="fa fa-link"></i> Copy permalink</button>
+                    </div>
+                `;
+            };
+
+            const isArchiveItem = data && typeof data === 'object' && ('category' in data || 'title' in data);
+            
+            if (isArchiveItem) {
+                const title = data.title || data.category || 'Untitled Document';
+                const refNumber = data.ref || currentPathString;
+
+                document.title = `${title} (${refNumber}) - 1st Lagham (Godstone) Scout Group Archives`;
+
+                let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
+                
+                html += `
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="width: 200px;"><b>Reference Number</b></td>
+                            <td class="ref-path-text">${refNumber}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Location</b></td>
+                            <td>${data.location || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td>${data.description || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Date</b></td>
+                            <td>${data.date || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Format</b></td>
+                            <td>${data.format || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Extent</b></td>
+                            <td>${data.extent || ''}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Condition</b></td>
+                            <td>${data.condition || ''}</td>
+                        </tr>`;
+
+                if (data.transcription !== undefined && data.transcription !== null && data.transcription !== 0 && data.transcription !== "0") {
+                    
+                    const encodedText = safeEncode(data.transcription);
+                    const encodedTitle = safeEncode(title);
+                    const encodedRef = safeEncode(refNumber);
+                    
+                    html += `
+                        <tr>
+                            <td><b>Transcription</b></td>
+                            <td>
+                                <span class="screen-only">
+                                    <a href="javascript:void(0)" onclick="openTranscription('${encodedTitle}', '${encodedRef}', '${encodedText}')" class="item-title-link">
+                                        view transcription <i class="fa fa-external-link"></i>
+                                    </a>
+                                </span>
+                                <span class="print-only">Transcription available</span>
+                            </td>
+                        </tr>`;
+                }
+
+                if (data.scan !== undefined && data.scan !== null && data.scan !== 0 && data.scan !== "0") {
+                    html += `
+                        <tr>
+                            <td><b>Scan</b></td>
+                            <td>
+                                <span class="screen-only">
+                                    <a href="/lagham/files/documents/${data.scan}" target="_blank" class="item-title-link">
+                                        view PDF <i class="fa fa-external-link"></i>
+                                    </a>
+                                </span>
+                                <span class="print-only">PDF available</span>
+                            </td>
+                        </tr>`;
+                }
+
+                html += `
+                    </tbody>
+                </table>`;
+                
+                const improvementMailto = `mailto:calebmoconnell@icloud.com?subject=${encodeURIComponent("Suggested improvement to record " + refNumber)}`;
+                html += `
+                    <div style="margin-top: 15px; margin-bottom: 25px;" class="no-print">
+                        <a href="${improvementMailto}" class="item-title-link">Suggest an improvement to this record</a>
+                    </div>
+                `;
+                
+                html += getActionButtonsHtml(title);
+                
+                content.innerHTML = html;
+                return;
+            }
+
+            let displayHeader = 'Archive Root';
+            let headerIcon = 'fa-archive';
+
+            if (currentPathString !== '') {
+                displayHeader = data.folder_title || path[path.length - 1];
+                headerIcon = 'fa-folder-open-o';
+            }
+
+            const folderRef = currentPathString.split('/').filter(segment => segment !== 'Browse').join('/') || 'Browse';
+            
+            document.title = `Folder: ${displayHeader} (${folderRef}) - 1st Lagham (Godstone) Scout Group Archives`;
+
+            let html = `<h1><i class='fa ${headerIcon}'></i> ${displayHeader}</h1>`;
+
+            html += `
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50px; text-align: center;"></th>
+                        <th style="width: 250px;">Reference Number</th>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            for (const [key, childNode] of Object.entries(data)) {
+                if (key === 'folder_title' || key === 'category' || key === 'ref') continue;
+
+                const childPath = currentPathString ? `${currentPathString}/${key}` : key;
+                
+                let icon = '<i class="fa fa-folder" style="color: black; font-size: 1.4em;"></i>';
+                let displayTitle = key; 
+
+                if (childNode && typeof childNode === 'object') {
+                    if ('category' in data || 'title' in childNode) {
+                        icon = '<i class="fa fa-file-text-o" style="color: black; font-size: 1.4em;"></i>';
+                        displayTitle = childNode.title || childNode.category || key;
+                    } 
+                    else if ('folder_title' in childNode) {
+                        icon = '<i class="fa fa-folder" style="color: black; font-size: 1.4em;"></i>';
+                        displayTitle = childNode.folder_title;
+                    }
+                }
+                
+                const displayChildPath = childPath.split('/').filter(segment => segment !== 'Browse').join('/');
+
+                html += `
+                    <tr>
+                        <td style="text-align: center;">${icon}</td>
+                        <td class="ref-path-text">${displayChildPath}</td>
+                        <td>
+                            <a href="?ref=${encodeURIComponent(childPath)}" class="item-title-link">
+                                <strong>${displayTitle}</strong>
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            html += `</tbody></table>`;
+            html += getActionButtonsHtml(displayHeader);
+
+            content.innerHTML = html;
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
