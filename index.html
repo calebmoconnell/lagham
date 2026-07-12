@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -217,6 +216,7 @@
             display: flex;
             gap: 10px;
             margin: 15px 0 25px 0;
+            flex-wrap: wrap;
         }
 
         .ref-search-container input {
@@ -238,13 +238,30 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 1em;
-            transition: background-color 0.2s, color 0.2s;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
             font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .ref-search-container button i {
+            margin-right: 6px;
         }
 
         .ref-search-container button:hover {
             background-color: var(--link-color);
             color: white;
+        }
+        
+        .ref-search-container button.clear-btn {
+            background-color: #f5f5f5;
+            color: #555;
+            border-color: #ccc;
+        }
+        
+        .ref-search-container button.clear-btn:hover {
+            background-color: #e0e0e0;
+            color: #333;
         }
 
         /* Action Buttons Styling */
@@ -284,13 +301,15 @@
             color: white;
         }
         
-        .action-buttons button.success-state {
+        .action-buttons button.success-state,
+        .ref-search-container button.success-state {
             background-color: var(--link-color);
             border-color: var(--link-color);
             color: white;
         }
         
-        .action-buttons button.success-state i {
+        .action-buttons button.success-state i,
+        .ref-search-container button.success-state i {
             color: white;
         }
 
@@ -324,6 +343,17 @@
         .filter-btn:hover, .filter-btn.active {
             background-color: var(--link-color);
             color: white;
+        }
+        
+        .filter-btn.clear-btn {
+            background-color: #f5f5f5;
+            color: #555;
+            border-color: #ccc;
+        }
+        
+        .filter-btn.clear-btn:hover {
+            background-color: #e0e0e0;
+            color: #333;
         }
 
         .checkbox-label {
@@ -428,7 +458,6 @@
             padding-left: 20px;
         }
 
-        /* Updated Spacing */
         .chrono-list li {
             padding: 12px 8px;
             margin-bottom: 0;
@@ -512,6 +541,16 @@
             return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
                 return '%' + c.charCodeAt(0).toString(16);
             });
+        }
+
+        function clearSearch() {
+            window.history.replaceState(null, '', window.location.pathname + '?ref=search');
+            renderSearchPage();
+        }
+
+        function clearChronoFilters() {
+            window.history.replaceState(null, '', window.location.pathname + '?ref=chrono');
+            renderChronologicalPage(fullDataCache);
         }
 
         function openTranscription(encodedTitle, encodedRef, encodedText) {
@@ -709,8 +748,9 @@
         function copyToClipboard(text, btnElement) {
             navigator.clipboard.writeText(text).then(() => {
                 const originalHtml = btnElement.innerHTML;
+                const isShare = originalHtml.includes('Share');
                 
-                btnElement.innerHTML = '<i class="fa fa-check"></i> Link copied!';
+                btnElement.innerHTML = `<i class="fa fa-check"></i> ${isShare ? 'Link shared!' : 'Link copied!'}`;
                 btnElement.classList.add('success-state');
                 
                 setTimeout(() => {
@@ -734,19 +774,30 @@
             document.title = "Search - 1st Lagham (Godstone) Scout Group Archives";
             document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=search">Search</a>`;
 
+            const urlParams = new URLSearchParams(window.location.search);
+            const initQ = urlParams.get('q') || '';
+            const initIt = urlParams.get('it') === '1';
+            const initPdf = urlParams.get('pdf') === '1';
+            const initTr = urlParams.get('tr') === '1';
+            const initC = urlParams.get('c') || '';
+            const initF = urlParams.get('f') || '';
+            const initYf = urlParams.get('yf') || '';
+            const initYt = urlParams.get('yt') || '';
+            const initG = urlParams.get('g') ? urlParams.get('g').split(',') : null; 
+            const initSo = urlParams.get('so') ? urlParams.get('so').split(',') : null; 
+
             const uniqueCats = new Set();
             const uniqueFormats = new Set();
             const uniqueSubjects = new Set();
 
-            // Populate top-level groups from the Browse folder
             const browseKeys = fullDataCache.Browse ? Object.keys(fullDataCache.Browse).filter(k => k !== 'folder_title' && k !== 'category' && k !== 'ref') : [];
             let topGroupCbHtml = '';
             browseKeys.forEach(k => {
                 const label = fullDataCache.Browse[k].folder_title || k;
-                topGroupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-top-group-cb" value="${k}" data-label="${label}" checked> ${label}</label>`;
+                const isChecked = (initG === null || initG.includes(k)) ? 'checked' : '';
+                topGroupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-top-group-cb" value="${k}" data-label="${label}" ${isChecked}> ${label}</label>`;
             });
 
-            // Populate remaining filter variables
             allItemPaths.forEach(path => {
                 const data = getRecordDataByPath(fullDataCache, path);
                 if (data) {
@@ -758,15 +809,22 @@
             });
 
             let catOptions = '<option value="">All Categories</option>';
-            Array.from(uniqueCats).sort().forEach(cat => catOptions += `<option value="${cat}">${cat}</option>`);
+            Array.from(uniqueCats).sort().forEach(cat => {
+                const sel = (cat === initC) ? 'selected' : '';
+                catOptions += `<option value="${cat}" ${sel}>${cat}</option>`;
+            });
 
             let formatOptions = '<option value="">All Formats</option>';
-            Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
+            Array.from(uniqueFormats).sort().forEach(fmt => {
+                const sel = (fmt === initF) ? 'selected' : '';
+                formatOptions += `<option value="${fmt}" ${sel}>${fmt}</option>`;
+            });
 
             let subjectCbHtml = '';
             Array.from(uniqueSubjects).sort().forEach(subj => {
                 let displaySubj = subj === "Lagham" ? "Group" : subj;
-                subjectCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-subject-cb" value="${subj}" checked> ${displaySubj}</label>`;
+                const isChecked = (initSo === null || initSo.includes(subj)) ? 'checked' : '';
+                subjectCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-subject-cb" value="${subj}" ${isChecked}> ${displaySubj}</label>`;
             });
 
             let html = `<h1>Search Archives</h1>`;
@@ -777,6 +835,8 @@
                 <div class="ref-search-container no-print">
                     <input type="text" id="searchInput" placeholder="Enter search term..." onkeydown="if(event.key === 'Enter') executeSearch()">
                     <button onclick="executeSearch()">Search</button>
+                    <button class="clear-btn" onclick="clearSearch()">Clear search</button>
+                    <button onclick="copyToClipboard(window.location.href, this)"><i class="fa fa-share-alt"></i> Share search</button>
                 </div>
             `;
             
@@ -792,9 +852,9 @@
                         <div class="adv-filter-row" style="flex-direction: column; gap: 15px;">
                             
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                                <label class="checkbox-label"><input type="checkbox" id="advIgnoreTitles"> Ignore titles</label>
-                                <label class="checkbox-label"><input type="checkbox" id="advHasPdf"> Has PDF scan</label>
-                                <label class="checkbox-label"><input type="checkbox" id="advHasTrans"> Has transcription</label>
+                                <label class="checkbox-label"><input type="checkbox" id="advIgnoreTitles" ${initIt ? 'checked' : ''}> Ignore titles</label>
+                                <label class="checkbox-label"><input type="checkbox" id="advHasPdf" ${initPdf ? 'checked' : ''}> Has PDF scan</label>
+                                <label class="checkbox-label"><input type="checkbox" id="advHasTrans" ${initTr ? 'checked' : ''}> Has transcription</label>
                             </div>
 
                             <div class="adv-filter-item">
@@ -805,7 +865,7 @@
                             </div>
                             
                             <div class="adv-filter-item" id="advSearchSubjectsContainer" style="display: none;">
-                                <label><strong>Scouting Subjects</strong></label>
+                                <label><strong>Scouting Organisations</strong></label>
                                 <div style="display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px;">
                                     ${subjectCbHtml}
                                 </div>
@@ -825,9 +885,9 @@
                                 <div class="adv-filter-item">
                                     <label><strong>Date Range</strong></label>
                                     <div style="display: flex; gap: 10px; align-items: center;">
-                                        <input type="number" id="advSearchYearFrom" placeholder="YYYY" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
+                                        <input type="number" id="advSearchYearFrom" placeholder="YYYY" value="${initYf}" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
                                         <span>to</span>
-                                        <input type="number" id="advSearchYearTo" placeholder="YYYY" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
+                                        <input type="number" id="advSearchYearTo" placeholder="YYYY" value="${initYt}" style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;">
                                     </div>
                                 </div>
                             </div>
@@ -841,7 +901,15 @@
             
             setTimeout(() => {
                 const inputField = document.getElementById('searchInput');
-                if (inputField) inputField.focus();
+                if (inputField) {
+                    inputField.value = initQ;
+                    inputField.focus();
+                }
+
+                if(initIt || initPdf || initTr || initC || initF || initYf || initYt || initG !== null || initSo !== null) {
+                    document.getElementById('searchAdvFiltersPanel').style.display = 'block';
+                    document.getElementById('searchAdvFilterIcon').className = 'fa fa-caret-down';
+                }
 
                 const toggleBtn = document.getElementById('toggleSearchAdvFilters');
                 if (toggleBtn) {
@@ -858,7 +926,6 @@
                     });
                 }
 
-                // Handle Sub-Subject Visibility
                 const topGroupCbs = document.querySelectorAll('.search-top-group-cb');
                 const subjectsContainer = document.getElementById('advSearchSubjectsContainer');
 
@@ -883,9 +950,8 @@
                     });
                 });
 
-                updateSubjectVisibility(); // Initialize
+                updateSubjectVisibility(); 
 
-                // Automate executing search when filter parameters are altered
                 const searchAdvInputs = document.querySelectorAll('#searchAdvFiltersPanel input:not(.search-top-group-cb), #searchAdvFiltersPanel select');
                 searchAdvInputs.forEach(el => {
                     el.addEventListener('change', () => {
@@ -903,24 +969,26 @@
                     }
                 });
 
+                if (initQ || urlParams.toString().length > 5) {
+                    executeSearch();
+                }
+
             }, 50);
         }
 
         function extractSearchSnippet(text, query) {
             if (!text) return "";
             
-            // Convert <br>, <br/>, <br > to \n so they are treated as standard line breaks
             const str = text.toString().replace(/<br\s*\/?>/gi, '\n');
             const lowerStr = str.toLowerCase();
             const queryIdx = lowerStr.indexOf(query);
             if (queryIdx === -1) return "";
             
-            const contextLength = 60; // Characters to include on either side
+            const contextLength = 60; 
             
             let rawStart = Math.max(0, queryIdx - contextLength);
             let rawEnd = Math.min(str.length, queryIdx + query.length + contextLength);
             
-            // Adjust start to a line break if one exists in the window, otherwise a word break
             const lastNewLine = str.lastIndexOf('\n', queryIdx);
             if (lastNewLine !== -1 && lastNewLine >= rawStart) {
                 rawStart = lastNewLine + 1;
@@ -931,7 +999,6 @@
                 }
             }
             
-            // Adjust end to a line break if one exists in the window, otherwise a word break
             const nextNewLine = str.indexOf('\n', queryIdx + query.length);
             if (nextNewLine !== -1 && nextNewLine <= rawEnd) {
                 rawEnd = nextNewLine;
@@ -942,10 +1009,8 @@
                 }
             }
             
-            // Clean any remaining internal line breaks into spaces and trim
             let snippet = str.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
             
-            // Highlight the query (case insensitive)
             const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
             const regex = new RegExp(`(${escapedQuery})`, 'gi');
             snippet = snippet.replace(regex, '<strong>$1</strong>');
@@ -959,16 +1024,7 @@
         function executeSearch() {
             const input = document.getElementById('searchInput');
             const query = input.value.trim().toLowerCase();
-            const container = document.getElementById('searchResultsContainer');
-
-            if (!query) {
-                container.innerHTML = `<p class="error">Please enter a search term.</p>`;
-                return;
-            }
-
-            container.innerHTML = "<p>Searching...</p>";
-
-            // Capture Advanced Search States
+            
             const ignoreTitles = document.getElementById('advIgnoreTitles')?.checked || false;
             const hasPdf = document.getElementById('advHasPdf')?.checked || false;
             const hasTrans = document.getElementById('advHasTrans')?.checked || false;
@@ -988,6 +1044,37 @@
             const subjectCbs = document.querySelectorAll('.search-subject-cb');
             const selectedSubjects = Array.from(subjectCbs).filter(cb => cb.checked).map(cb => cb.value);
 
+            // Dynamically update the URL with the search and filter state
+            const newParams = new URLSearchParams();
+            newParams.set('ref', 'search');
+            if (query) newParams.set('q', query);
+            if (ignoreTitles) newParams.set('it', '1');
+            if (hasPdf) newParams.set('pdf', '1');
+            if (hasTrans) newParams.set('tr', '1');
+            if (cat) newParams.set('c', cat);
+            if (format) newParams.set('f', format);
+            if (yearFromVal) newParams.set('yf', yearFromVal);
+            if (yearToVal) newParams.set('yt', yearToVal);
+            
+            if (selectedTopGroups.length !== topGroupCbs.length) {
+                newParams.set('g', selectedTopGroups.join(','));
+            }
+            if (selectedSubjects.length !== subjectCbs.length) {
+                newParams.set('so', selectedSubjects.join(','));
+            }
+
+            const newUrl = window.location.pathname + '?' + newParams.toString();
+            window.history.replaceState(null, '', newUrl);
+
+            const container = document.getElementById('searchResultsContainer');
+
+            if (!query) {
+                container.innerHTML = `<p class="error">Please enter a search term.</p>`;
+                return;
+            }
+
+            container.innerHTML = "<p>Searching...</p>";
+
             setTimeout(() => {
                 const results = [];
                 
@@ -995,7 +1082,6 @@
                     const data = getRecordDataByPath(fullDataCache, path);
                     if (data) {
                         
-                        // --- Apply Advanced Filters ---
                         if (hasPdf && (!data.scan || data.scan === 0 || data.scan === "0")) return;
                         if (hasTrans && (!data.transcription || data.transcription === 0 || data.transcription === "0")) return;
                         
@@ -1014,7 +1100,7 @@
                         if (yearFrom !== null || yearTo !== null) {
                             const dates = expandDateString(data.date);
                             const inRange = dates.some(d => {
-                                if (d.year === 9999) return false; // Undated fails strict range
+                                if (d.year === 9999) return false; 
                                 if (yearFrom !== null && d.year < yearFrom) return false;
                                 if (yearTo !== null && d.year > yearTo) return false;
                                 return true;
@@ -1022,7 +1108,6 @@
                             if (!inRange) return;
                         }
 
-                        // --- Apply Text Matching ---
                         const title = (data.title || data.category || "").toLowerCase();
                         const desc = (data.description || "").toLowerCase();
                         const trans = (data.transcription || "").toString().toLowerCase();
@@ -1189,6 +1274,12 @@
             document.title = "Browse by date - 1st Lagham (Godstone) Scout Group Archives";
             document.getElementById('breadcrumbs').innerHTML = `<a href="?ref=">Home</a><span class="separator">/</span><a href="?ref=chrono">Browse by date</a>`;
 
+            const urlParams = new URLSearchParams(window.location.search);
+            const initG = urlParams.get('g') ? urlParams.get('g').split(',') : null;
+            const initC = urlParams.get('c') || '';
+            const initF = urlParams.get('f') || '';
+            const initLvl = urlParams.get('lvl') ? urlParams.get('lvl').split(',') : [];
+
             const uniqueCats = new Set();
             const uniqueFormats = new Set();
 
@@ -1222,36 +1313,39 @@
                 });
             }
 
-            // Extract unique categories & formats from the cache for the dropdowns
             chronoItemsCache.forEach(item => {
                 if (item.data.category) uniqueCats.add(item.data.category.trim());
                 if (item.data.format) uniqueFormats.add(item.data.format.trim());
             });
 
-            // Build Group Checkboxes
             const browseKeys = fullData.Browse ? Object.keys(fullData.Browse).filter(k => k !== 'folder_title' && k !== 'category' && k !== 'ref') : [];
             let groupCbHtml = '';
             browseKeys.forEach(k => {
                 const label = fullData.Browse[k].folder_title || k;
-                groupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="group-cb" value="${k}" checked> ${label}</label>`;
+                const isChecked = (initG === null || initG.includes(k)) ? 'checked' : '';
+                groupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="group-cb" value="${k}" ${isChecked}> ${label}</label>`;
             });
 
-            // Build Dropdown Options
             let catOptions = '<option value="">All Categories</option>';
-            Array.from(uniqueCats).sort().forEach(cat => catOptions += `<option value="${cat}">${cat}</option>`);
+            Array.from(uniqueCats).sort().forEach(cat => {
+                const sel = (cat === initC) ? 'selected' : '';
+                catOptions += `<option value="${cat}" ${sel}>${cat}</option>`;
+            });
 
             let formatOptions = '<option value="">All Formats</option>';
-            Array.from(uniqueFormats).sort().forEach(fmt => formatOptions += `<option value="${fmt}">${fmt}</option>`);
+            Array.from(uniqueFormats).sort().forEach(fmt => {
+                const sel = (fmt === initF) ? 'selected' : '';
+                formatOptions += `<option value="${fmt}" ${sel}>${fmt}</option>`;
+            });
 
             let html = `<h1>Browse records by date</h1>`;
             
-            // Text added between title and filters
             html += `<p style="font-style: italic; margin-top: -15px; margin-bottom: 25px;">Records are sorted by date of creation.</p>`;
             
-            // Build the Filter UI
             html += `<div class="chrono-filter-container no-print">
-                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
-                            <button id="btnAllGroups" class="filter-btn active">View All</button>
+                        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; width: 100%;">
+                            <button id="btnAllGroups" class="filter-btn ${initG === null ? 'active' : ''}">View All</button>
+                            <button onclick="clearChronoFilters()" class="filter-btn clear-btn">Clear filters</button>
                             <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                                 <strong>Select record groups:</strong>
                                 ${groupCbHtml}
@@ -1277,9 +1371,9 @@
                                 <div class="adv-filter-item">
                                     <label><strong>Filter by Scouting Organisation</strong></label>
                                     <div style="display: flex; gap: 12px; padding-top: 6px;">
-                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="Group"> Group</label>
-                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="District"> District</label>
-                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="County"> County</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="Group" ${initLvl.includes('group') ? 'checked' : ''}> Group</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="District" ${initLvl.includes('district') ? 'checked' : ''}> District</label>
+                                        <label class="checkbox-label"><input type="checkbox" class="level-cb" value="County" ${initLvl.includes('county') ? 'checked' : ''}> County</label>
                                     </div>
                                 </div>
                             </div>
@@ -1289,50 +1383,54 @@
             html += `<div id="chronoTreeContainer"></div>`;
             document.getElementById('content').innerHTML = html;
             
-            // Event Listeners for UI
-            document.getElementById('toggleAdvFilters').addEventListener('click', function() {
-                const panel = document.getElementById('advFiltersPanel');
-                const icon = document.getElementById('advFilterIcon');
-                if (panel.style.display === 'none') {
-                    panel.style.display = 'block';
-                    icon.className = 'fa fa-caret-down';
-                } else {
-                    panel.style.display = 'none';
-                    icon.className = 'fa fa-caret-right';
+            setTimeout(() => {
+                if(initC || initF || initLvl.length > 0) {
+                    document.getElementById('advFiltersPanel').style.display = 'block';
+                    document.getElementById('advFilterIcon').className = 'fa fa-caret-down';
                 }
-            });
 
-            const btnAll = document.getElementById('btnAllGroups');
-            const groupCbs = document.querySelectorAll('.group-cb');
-            
-            btnAll.addEventListener('click', () => {
-                groupCbs.forEach(cb => cb.checked = true);
-                btnAll.classList.add('active');
-                applyChronoFilters();
-            });
-
-            groupCbs.forEach(cb => {
-                cb.addEventListener('change', () => {
-                    const allChecked = Array.from(groupCbs).every(c => c.checked);
-                    if (allChecked) {
-                        btnAll.classList.add('active');
+                document.getElementById('toggleAdvFilters').addEventListener('click', function() {
+                    const panel = document.getElementById('advFiltersPanel');
+                    const icon = document.getElementById('advFilterIcon');
+                    if (panel.style.display === 'none') {
+                        panel.style.display = 'block';
+                        icon.className = 'fa fa-caret-down';
                     } else {
-                        btnAll.classList.remove('active');
+                        panel.style.display = 'none';
+                        icon.className = 'fa fa-caret-right';
                     }
+                });
+
+                const btnAll = document.getElementById('btnAllGroups');
+                const groupCbs = document.querySelectorAll('.group-cb');
+                
+                btnAll.addEventListener('click', () => {
+                    groupCbs.forEach(cb => cb.checked = true);
+                    btnAll.classList.add('active');
                     applyChronoFilters();
                 });
-            });
 
-            // Bind advanced filters
-            document.getElementById('advCategoryFilter').addEventListener('change', applyChronoFilters);
-            document.getElementById('advFormatFilter').addEventListener('change', applyChronoFilters);
-            document.querySelectorAll('.level-cb').forEach(cb => cb.addEventListener('change', applyChronoFilters));
+                groupCbs.forEach(cb => {
+                    cb.addEventListener('change', () => {
+                        const allChecked = Array.from(groupCbs).every(c => c.checked);
+                        if (allChecked) {
+                            btnAll.classList.add('active');
+                        } else {
+                            btnAll.classList.remove('active');
+                        }
+                        applyChronoFilters();
+                    });
+                });
 
-            applyChronoFilters();
+                document.getElementById('advCategoryFilter').addEventListener('change', applyChronoFilters);
+                document.getElementById('advFormatFilter').addEventListener('change', applyChronoFilters);
+                document.querySelectorAll('.level-cb').forEach(cb => cb.addEventListener('change', applyChronoFilters));
+
+                applyChronoFilters();
+            }, 50);
         }
 
         function applyChronoFilters() {
-            // Read UI states
             const groupCbs = document.querySelectorAll('.group-cb');
             const selectedGroups = Array.from(groupCbs).filter(cb => cb.checked).map(cb => cb.value);
 
@@ -1342,19 +1440,27 @@
             const levelCbs = document.querySelectorAll('.level-cb');
             const selectedLevels = Array.from(levelCbs).filter(cb => cb.checked).map(cb => cb.value.toLowerCase());
 
-            // Filter the cache
+            const newParams = new URLSearchParams();
+            newParams.set('ref', 'chrono');
+            if (selectedGroups.length !== groupCbs.length) {
+                newParams.set('g', selectedGroups.join(','));
+            }
+            if (advCat) newParams.set('c', advCat);
+            if (advFormat) newParams.set('f', advFormat);
+            if (selectedLevels.length > 0) {
+                newParams.set('lvl', selectedLevels.join(','));
+            }
+            
+            const newUrl = window.location.pathname + '?' + newParams.toString();
+            window.history.replaceState(null, '', newUrl);
+
             const filteredItems = chronoItemsCache.filter(item => {
-                // 1. Group check
                 if (selectedGroups.length > 0 && !selectedGroups.includes(item.topCategory)) return false;
-                if (selectedGroups.length === 0) return false; // Hide all if nothing selected
+                if (selectedGroups.length === 0) return false;
 
-                // 2. Category check
                 if (advCat && item.data.category !== advCat) return false;
-
-                // 3. Format check
                 if (advFormat && item.data.format !== advFormat) return false;
 
-                // 4. Level/Scope check (Group/District/County) based on JSON "subject"
                 if (selectedLevels.length > 0) {
                     const subjectText = (item.data.subject || '').toLowerCase();
                     const matchesLevel = selectedLevels.some(level => {
