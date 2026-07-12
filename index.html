@@ -829,13 +829,11 @@
 
             let html = `<h1>Search Archives</h1>`;
             
-            html += `<p style="font-style: italic; margin-top: -15px; margin-bottom: 25px;">Incomplete records lacking transcriptions may not be returned due to lack of searchable data.</p>`;
-            
             html += `
                 <div class="ref-search-container no-print">
                     <input type="text" id="searchInput" placeholder="Enter search term..." onkeydown="if(event.key === 'Enter') executeSearch()">
                     <button onclick="executeSearch()">Search</button>
-                    <button class="clear-btn" onclick="clearSearch()">Clear search</button>
+                    <button onclick="clearSearch()">Clear search</button>
                     <button onclick="copyToClipboard(window.location.href, this)"><i class="fa fa-share-alt"></i> Share search</button>
                 </div>
             `;
@@ -1069,7 +1067,7 @@
             const container = document.getElementById('searchResultsContainer');
 
             if (!query) {
-                container.innerHTML = `<p class="error">Please enter a search term.</p>`;
+                container.innerHTML = `<p style="color: black; font-style: italic; background: none; border: none; padding: 0;">Please enter a search term.</p>`;
                 return;
             }
 
@@ -1589,7 +1587,7 @@
                     </div>
                 `;
 
-                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">If you know a particular word or phrase, then <a href="?ref=search" style="color: var(--link-color); font-style: italic; font-weight: 500;">search across all records</a>.</p>`;
+                html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">You may wish to <a href="?ref=search" style="color: var(--link-color); font-style: italic; font-weight: 500;">search across all records</a> for a particular word or phrase.</p>`;
 
                 html += `<p style="line-height: 1.6; font-size: 1.05em; color: black; margin-top: 25px;">Otherwise, <a href="?ref=Browse" style="color: var(--link-color); font-weight: 500; font-style: italic;">browse the archives</a>, <a href="?ref=chrono" style="color: var(--link-color); font-weight: 500; font-style: italic;">view all records by date</a> or <a href="javascript:void(0)" onclick="goToRandomRecord()" style="color: var(--link-color); font-weight: 500; font-style: italic;">go to a random record</a>.</p>`;
 
