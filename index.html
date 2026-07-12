@@ -364,7 +364,7 @@
             text-align: left;
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
-            border-left: 4px solid transparent; /* Transparent left border prevents jumping on hover/active */
+            border-left: 4px solid transparent; 
             border-right: none;
             outline: none;
             transition: 0.2s;
@@ -376,7 +376,7 @@
 
         .chrono-accordion:hover {
             background-color: #f9f9f9;
-            border-left: 4px solid var(--link-color); /* Blue border on hover */
+            border-left: 4px solid var(--link-color); 
         }
 
         .chrono-accordion.active {
@@ -429,7 +429,7 @@
 
         /* Updated Spacing */
         .chrono-list li {
-            padding: 12px 8px; /* Matched table spacing */
+            padding: 12px 8px;
             margin-bottom: 0;
             line-height: 1.4;
         }
@@ -735,6 +735,8 @@
 
             let html = `<h1>Search Archives</h1>`;
             
+            html += `<p style="font-style: italic; margin-top: -15px; margin-bottom: 25px;">Incomplete records lacking transcriptions may not be returned due to lack of searchable data.</p>`;
+            
             html += `
                 <div class="ref-search-container no-print">
                     <input type="text" id="searchInput" placeholder="Enter search term..." onkeydown="if(event.key === 'Enter') executeSearch()">
@@ -746,6 +748,46 @@
             document.getElementById('content').innerHTML = html;
             
             setTimeout(() => document.getElementById('searchInput').focus(), 50);
+        }
+
+        function extractSearchSnippet(text, query) {
+            if (!text) return "";
+            const str = text.toString().replace(/[\r\n]+/g, ' ').trim();
+            const lowerStr = str.toLowerCase();
+            const queryIdx = lowerStr.indexOf(query);
+            if (queryIdx === -1) return "";
+            
+            const contextLength = 60; // Characters to include on either side
+            
+            let rawStart = Math.max(0, queryIdx - contextLength);
+            let rawEnd = Math.min(str.length, queryIdx + query.length + contextLength);
+            
+            // Adjust start to beginning of a word
+            if (rawStart > 0) {
+                const nextSpace = str.indexOf(' ', rawStart);
+                if (nextSpace !== -1 && nextSpace < queryIdx) {
+                    rawStart = nextSpace + 1;
+                }
+            }
+            
+            // Adjust end to end of a word
+            if (rawEnd < str.length) {
+                const prevSpace = str.lastIndexOf(' ', rawEnd);
+                if (prevSpace !== -1 && prevSpace > (queryIdx + query.length)) {
+                    rawEnd = prevSpace;
+                }
+            }
+            
+            let snippet = str.substring(rawStart, rawEnd).trim();
+            
+            // Highlight the query (case insensitive)
+            const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const regex = new RegExp(`(${escapedQuery})`, 'gi');
+            snippet = snippet.replace(regex, '<strong>$1</strong>');
+            
+            if (rawStart > 0) snippet = "..." + snippet;
+            if (rawEnd < str.length) snippet = snippet + "...";
+            return snippet;
         }
 
         function executeSearch() {
@@ -771,7 +813,14 @@
                         const trans = (data.transcription || "").toString().toLowerCase();
 
                         if (title.includes(query) || desc.includes(query) || trans.includes(query)) {
-                            results.push({ path, data });
+                            let snippet = "";
+                            if (desc.includes(query)) {
+                                snippet = extractSearchSnippet(data.description, query);
+                            } else if (trans.includes(query)) {
+                                snippet = extractSearchSnippet(data.transcription, query);
+                            }
+                            
+                            results.push({ path, data, snippet });
                         }
                     }
                 });
@@ -788,35 +837,31 @@
                 return;
             }
 
-            let html = `<p>Found <strong>${results.length}</strong> record(s) matching "<strong>${query}</strong>":</p>`;
+            const recordWord = results.length === 1 ? "record" : "records";
+            let html = `<p>Found <strong>${results.length}</strong> ${recordWord} matching "<strong>${query}</strong>":</p>`;
             
-            html += `
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 250px;">Reference Number</th>
-                        <th>Title</th>
-                    </tr>
-                </thead>
-                <tbody>`;
+            html += `<div style="margin-top: 20px;">`;
 
             results.forEach(item => {
                 const title = item.data.title || item.data.category || 'Untitled Document';
                 const ref = item.data.ref || item.path.replace('Browse/', '');
                 
                 html += `
-                    <tr>
-                        <td class="ref-path-text">${ref}</td>
-                        <td>
+                    <div style="margin-bottom: 25px;">
+                        <div style="font-size: 1.05em;">
                             <a href="?ref=${encodeURIComponent(item.path)}" class="item-title-link">
                                 <strong>${title}</strong>
                             </a>
-                        </td>
-                    </tr>
+                        </div>
+                        <div class="ref-path-text" style="color: #888; font-size: 0.85em; margin-top: 4px;">
+                            ${ref}
+                        </div>
+                        ${item.snippet ? `<div style="margin-top: 6px; font-size: 0.95em; color: #333;">“${item.snippet}”</div>` : ''}
+                    </div>
                 `;
             });
 
-            html += `</tbody></table>`;
+            html += `</div>`;
             container.innerHTML = html;
         }
 
