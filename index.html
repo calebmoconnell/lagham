@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -737,6 +738,15 @@
             const uniqueFormats = new Set();
             const uniqueSubjects = new Set();
 
+            // Populate top-level groups from the Browse folder
+            const browseKeys = fullDataCache.Browse ? Object.keys(fullDataCache.Browse).filter(k => k !== 'folder_title' && k !== 'category' && k !== 'ref') : [];
+            let topGroupCbHtml = '';
+            browseKeys.forEach(k => {
+                const label = fullDataCache.Browse[k].folder_title || k;
+                topGroupCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-top-group-cb" value="${k}" data-label="${label}" checked> ${label}</label>`;
+            });
+
+            // Populate remaining filter variables
             allItemPaths.forEach(path => {
                 const data = getRecordDataByPath(fullDataCache, path);
                 if (data) {
@@ -790,6 +800,13 @@
                             <div class="adv-filter-item">
                                 <label><strong>Filter by Record Group</strong></label>
                                 <div style="display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px;">
+                                    ${topGroupCbHtml}
+                                </div>
+                            </div>
+                            
+                            <div class="adv-filter-item" id="advSearchSubjectsContainer" style="display: none;">
+                                <label><strong>Scouting Subjects</strong></label>
+                                <div style="display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px;">
                                     ${subjectCbHtml}
                                 </div>
                             </div>
@@ -841,8 +858,35 @@
                     });
                 }
 
-                // Add event listeners for automatic update when filters are modified
-                const searchAdvInputs = document.querySelectorAll('#searchAdvFiltersPanel input, #searchAdvFiltersPanel select');
+                // Handle Sub-Subject Visibility
+                const topGroupCbs = document.querySelectorAll('.search-top-group-cb');
+                const subjectsContainer = document.getElementById('advSearchSubjectsContainer');
+
+                function updateSubjectVisibility() {
+                    let show = false;
+                    topGroupCbs.forEach(cb => {
+                        if (cb.checked && cb.dataset.label.toLowerCase().includes('scout')) {
+                            show = true;
+                        }
+                    });
+                    if (subjectsContainer) {
+                        subjectsContainer.style.display = show ? 'block' : 'none';
+                    }
+                }
+
+                topGroupCbs.forEach(cb => {
+                    cb.addEventListener('change', () => {
+                        updateSubjectVisibility();
+                        if (document.getElementById('searchInput').value.trim() !== '') {
+                            executeSearch();
+                        }
+                    });
+                });
+
+                updateSubjectVisibility(); // Initialize
+
+                // Automate executing search when filter parameters are altered
+                const searchAdvInputs = document.querySelectorAll('#searchAdvFiltersPanel input:not(.search-top-group-cb), #searchAdvFiltersPanel select');
                 searchAdvInputs.forEach(el => {
                     el.addEventListener('change', () => {
                         if (document.getElementById('searchInput').value.trim() !== '') {
@@ -850,7 +894,6 @@
                         }
                     });
                     
-                    // For number inputs, listen to typing as well
                     if (el.type === 'number') {
                         el.addEventListener('keyup', () => {
                             if (document.getElementById('searchInput').value.trim() !== '') {
@@ -938,6 +981,10 @@
             const yearFrom = yearFromVal ? parseInt(yearFromVal, 10) : null;
             const yearTo = yearToVal ? parseInt(yearToVal, 10) : null;
             
+            const topGroupCbs = document.querySelectorAll('.search-top-group-cb');
+            const selectedTopGroups = Array.from(topGroupCbs).filter(cb => cb.checked).map(cb => cb.value);
+            const scoutingTopKeys = Array.from(topGroupCbs).filter(cb => cb.dataset.label.toLowerCase().includes('scout')).map(cb => cb.value);
+
             const subjectCbs = document.querySelectorAll('.search-subject-cb');
             const selectedSubjects = Array.from(subjectCbs).filter(cb => cb.checked).map(cb => cb.value);
 
@@ -955,8 +1002,14 @@
                         if (cat && data.category !== cat) return;
                         if (format && data.format !== format) return;
                         
-                        const subj = data.subject ? data.subject.trim() : "Unspecified";
-                        if (subjectCbs.length > 0 && !selectedSubjects.includes(subj)) return;
+                        const topCategory = path.startsWith('Browse/') ? path.split('/')[1] : null;
+                        
+                        if (topCategory && !selectedTopGroups.includes(topCategory)) return;
+
+                        if (topCategory && scoutingTopKeys.includes(topCategory)) {
+                            const subj = data.subject ? data.subject.trim() : "Unspecified";
+                            if (subjectCbs.length > 0 && !selectedSubjects.includes(subj)) return;
+                        }
                         
                         if (yearFrom !== null || yearTo !== null) {
                             const dates = expandDateString(data.date);
