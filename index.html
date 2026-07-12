@@ -752,7 +752,9 @@
 
         function extractSearchSnippet(text, query) {
             if (!text) return "";
-            const str = text.toString();
+            
+            // Convert <br>, <br/>, <br > to \n so they are treated as standard line breaks
+            const str = text.toString().replace(/<br\s*\/?>/gi, '\n');
             const lowerStr = str.toLowerCase();
             const queryIdx = lowerStr.indexOf(query);
             if (queryIdx === -1) return "";
