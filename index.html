@@ -965,69 +965,50 @@
             }, 50);
         }
 
-        // Updated helper to fetch ALL distinct occurrence snippets for the searched query in the text
-        function getAllSearchSnippets(text, query) {
-            if (!text) return [];
+        function extractSearchSnippet(text, query) {
+            if (!text) return "";
             
-            const str = text.toString().replace(/<br\s*\/?>/gi, '\n');
-            const lowerStr = str.toLowerCase();
-            let snippets = [];
-            let startIndex = 0;
-            let queryIdx;
-            let lastRawEnd = -1;
-
-            while ((queryIdx = lowerStr.indexOf(query, startIndex)) !== -1) {
-                // If this match is already covered by the boundaries of the last extracted snippet, 
-                // it is naturally included and bolded there; just advance index and continue.
-                if (queryIdx < lastRawEnd) {
-                    startIndex = queryIdx + query.length;
-                    continue;
+            // Remove HTML tags and CSS formatting to ensure they are ignored in the snippet calculation
+            const cleanStr = text.toString().replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]*>/g, '');
+            const lowerStr = cleanStr.toLowerCase();
+            const queryIdx = lowerStr.indexOf(query);
+            if (queryIdx === -1) return "";
+            
+            const contextLength = 60; 
+            
+            let rawStart = Math.max(0, queryIdx - contextLength);
+            let rawEnd = Math.min(cleanStr.length, queryIdx + query.length + contextLength);
+            
+            const lastNewLine = cleanStr.lastIndexOf('\n', queryIdx);
+            if (lastNewLine !== -1 && lastNewLine >= rawStart) {
+                rawStart = lastNewLine + 1;
+            } else if (rawStart > 0) {
+                const nextSpace = cleanStr.indexOf(' ', rawStart);
+                if (nextSpace !== -1 && nextSpace < queryIdx) {
+                    rawStart = nextSpace + 1;
                 }
-
-                const contextLength = 60; 
-                
-                let rawStart = Math.max(0, queryIdx - contextLength);
-                let rawEnd = Math.min(str.length, queryIdx + query.length + contextLength);
-                
-                const lastNewLine = str.lastIndexOf('\n', queryIdx);
-                if (lastNewLine !== -1 && lastNewLine >= rawStart) {
-                    rawStart = lastNewLine + 1;
-                } else if (rawStart > 0) {
-                    const nextSpace = str.indexOf(' ', rawStart);
-                    if (nextSpace !== -1 && nextSpace < queryIdx) {
-                        rawStart = nextSpace + 1;
-                    }
-                }
-                
-                const nextNewLine = str.indexOf('\n', queryIdx + query.length);
-                if (nextNewLine !== -1 && nextNewLine <= rawEnd) {
-                    rawEnd = nextNewLine;
-                } else if (rawEnd < str.length) {
-                    const prevSpace = str.lastIndexOf(' ', rawEnd);
-                    if (prevSpace !== -1 && prevSpace > (queryIdx + query.length)) {
-                        rawEnd = prevSpace;
-                    }
-                }
-                
-                lastRawEnd = rawEnd;
-                startIndex = queryIdx + query.length;
-                
-                let snippet = str.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
-                
-                const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                const regex = new RegExp(`(${escapedQuery})`, 'gi');
-                
-                // Count occurrences inside this particular extracted chunk
-                const matchCount = (snippet.match(regex) || []).length;
-                snippet = snippet.replace(regex, '<strong>$1</strong>');
-                
-                if (rawStart > 0) snippet = "..." + snippet;
-                if (rawEnd < str.length) snippet = snippet + "...";
-                
-                snippets.push({ html: snippet, count: matchCount });
             }
             
-            return snippets;
+            const nextNewLine = cleanStr.indexOf('\n', queryIdx + query.length);
+            if (nextNewLine !== -1 && nextNewLine <= rawEnd) {
+                rawEnd = nextNewLine;
+            } else if (rawEnd < cleanStr.length) {
+                const prevSpace = cleanStr.lastIndexOf(' ', rawEnd);
+                if (prevSpace !== -1 && prevSpace > (queryIdx + query.length)) {
+                    rawEnd = prevSpace;
+                }
+            }
+            
+            let snippet = cleanStr.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
+            
+            const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const regex = new RegExp(`(${escapedQuery})`, 'gi');
+            snippet = snippet.replace(regex, '<strong>$1</strong>');
+            
+            if (rawStart > 0) snippet = "..." + snippet;
+            if (rawEnd < cleanStr.length) snippet = snippet + "...";
+            
+            return snippet;
         }
 
         function executeSearch() {
@@ -1118,8 +1099,9 @@
                         }
 
                         const title = (data.title || data.category || "").toLowerCase();
-                        const desc = (data.description || "").toLowerCase();
-                        const trans = (data.transcription || "").toString().toLowerCase();
+                        // Ignore HTML formatting/tags during evaluation matches
+                        const desc = (data.description || "").replace(/<[^>]*>/g, "").toLowerCase();
+                        const trans = (data.transcription || "").toString().replace(/<[^>]*>/g, "").toLowerCase();
                         
                         const titleMatch = title.includes(query);
                         const descMatch = desc.includes(query);
@@ -1133,35 +1115,16 @@
                         }
 
                         if (matchesQuery) {
-                            let allSnippets = [];
-                            
+                            let snippet = "";
                             if (descMatch) {
-                                allSnippets.push(...getAllSearchSnippets(data.description, query));
+                                snippet += extractSearchSnippet(data.description, query);
                             } 
                             if (transMatch) {
-                                allSnippets.push(...getAllSearchSnippets(data.transcription, query));
+                                if (snippet !== "") snippet += "<br>";
+                                snippet += extractSearchSnippet(data.transcription, query);
                             }
                             
-                            let displaySnippets = [];
-                            let instancesDisplayed = 0;
-                            let totalInstances = allSnippets.reduce((sum, s) => sum + s.count, 0);
-
-                            // We only push snippets until at least 3 instances are shown
-                            for (let s of allSnippets) {
-                                if (instancesDisplayed < 3) {
-                                    displaySnippets.push(`“${s.html}”`);
-                                    instancesDisplayed += s.count;
-                                }
-                            }
-
-                            let snippetHtml = displaySnippets.join('<br><br>');
-                            let remaining = totalInstances - instancesDisplayed;
-                            
-                            if (remaining > 0) {
-                                snippetHtml += `<br><br><span style="color: #666; font-size: 0.9em; font-style: italic;">+${remaining} more result${remaining > 1 ? 's' : ''} in this record</span>`;
-                            }
-                            
-                            results.push({ path, data, snippet: snippetHtml });
+                            results.push({ path, data, snippet });
                         }
                     }
                 });
@@ -1197,7 +1160,7 @@
                         <div class="ref-path-text" style="color: #888; font-size: 0.85em; margin-top: 4px;">
                             ${ref}
                         </div>
-                        ${item.snippet ? `<div style="margin-top: 6px; font-size: 0.95em; color: #333;">${item.snippet}</div>` : ''}
+                        ${item.snippet ? `<div style="margin-top: 6px; font-size: 0.95em; color: #333;">“${item.snippet}”</div>` : ''}
                     </div>
                 `;
             });
@@ -1365,7 +1328,7 @@
             let formatOptions = '<option value="">All Formats</option>';
             Array.from(uniqueFormats).sort().forEach(fmt => {
                 const sel = (fmt === initF) ? 'selected' : '';
-                formatOptions += `<option value="${fmt}" ${sel}>${fmt}</option>`;
+                formatOptions += `<option value="${fmt}" ${sel}>${fmt}</option>';
             });
 
             let html = `<h1>Browse records by date</h1>`;
