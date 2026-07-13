@@ -768,7 +768,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const initQ = urlParams.get('q') || '';
             const initIt = urlParams.get('it') === '1';
-            const initId = urlParams.get('id') === '1';
+            const initId = urlParams.get('ids') === '1';
             const initPdf = urlParams.get('pdf') === '1';
             const initTr = urlParams.get('tr') === '1';
             const initC = urlParams.get('c') || '';
@@ -967,49 +967,66 @@
             }, 50);
         }
 
-        function extractSearchSnippet(text, query) {
-            if (!text) return "";
+        function getAllSearchSnippets(text, query) {
+            if (!text) return [];
             
-            const str = text.toString().replace(/<br\s*\/?>/gi, '\n');
+            // Remove all HTML tags and convert formatting/breaks to clean spaces
+            let str = text.toString().replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]*>/g, '');
             const lowerStr = str.toLowerCase();
-            const queryIdx = lowerStr.indexOf(query);
-            if (queryIdx === -1) return "";
-            
-            const contextLength = 60; 
-            
-            let rawStart = Math.max(0, queryIdx - contextLength);
-            let rawEnd = Math.min(str.length, queryIdx + query.length + contextLength);
-            
-            const lastNewLine = str.lastIndexOf('\n', queryIdx);
-            if (lastNewLine !== -1 && lastNewLine >= rawStart) {
-                rawStart = lastNewLine + 1;
-            } else if (rawStart > 0) {
-                const nextSpace = str.indexOf(' ', rawStart);
-                if (nextSpace !== -1 && nextSpace < queryIdx) {
-                    rawStart = nextSpace + 1;
+            let snippets = [];
+            let startIndex = 0;
+            let queryIdx;
+            let lastRawEnd = -1;
+
+            while ((queryIdx = lowerStr.indexOf(query, startIndex)) !== -1) {
+                if (queryIdx < lastRawEnd) {
+                    startIndex = queryIdx + query.length;
+                    continue;
                 }
+
+                const contextLength = 60; 
+                
+                let rawStart = Math.max(0, queryIdx - contextLength);
+                let rawEnd = Math.min(str.length, queryIdx + query.length + contextLength);
+                
+                const lastNewLine = str.lastIndexOf('\n', queryIdx);
+                if (lastNewLine !== -1 && lastNewLine >= rawStart) {
+                    rawStart = lastNewLine + 1;
+                } else if (rawStart > 0) {
+                    const nextSpace = str.indexOf(' ', rawStart);
+                    if (nextSpace !== -1 && nextSpace < queryIdx) {
+                        rawStart = nextSpace + 1;
+                    }
+                }
+                
+                const nextNewLine = str.indexOf('\n', queryIdx + query.length);
+                if (nextNewLine !== -1 && nextNewLine <= rawEnd) {
+                    rawEnd = nextNewLine;
+                } else if (rawEnd < str.length) {
+                    const prevSpace = str.lastIndexOf(' ', rawEnd);
+                    if (prevSpace !== -1 && prevSpace > (queryIdx + query.length)) {
+                        rawEnd = prevSpace;
+                    }
+                }
+                
+                lastRawEnd = rawEnd;
+                startIndex = queryIdx + query.length;
+                
+                let snippet = str.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
+                
+                const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                const regex = new RegExp(`(${escapedQuery})`, 'gi');
+                
+                const matchCount = (snippet.match(regex) || []).length;
+                snippet = snippet.replace(regex, '<strong>$1</strong>');
+                
+                if (rawStart > 0) snippet = "..." + snippet;
+                if (rawEnd < str.length) snippet = snippet + "...";
+                
+                snippets.push({ html: snippet, count: matchCount });
             }
             
-            const nextNewLine = str.indexOf('\n', queryIdx + query.length);
-            if (nextNewLine !== -1 && nextNewLine <= rawEnd) {
-                rawEnd = nextNewLine;
-            } else if (rawEnd < str.length) {
-                const prevSpace = str.lastIndexOf(' ', rawEnd);
-                if (prevSpace !== -1 && prevSpace > (queryIdx + query.length)) {
-                    rawEnd = prevSpace;
-                }
-            }
-            
-            let snippet = str.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
-            
-            const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-            const regex = new RegExp(`(${escapedQuery})`, 'gi');
-            snippet = snippet.replace(regex, '<strong>$1</strong>');
-            
-            if (rawStart > 0) snippet = "..." + snippet;
-            if (rawEnd < str.length) snippet = snippet + "...";
-            
-            return snippet;
+            return snippets;
         }
 
         function executeSearch() {
@@ -1036,12 +1053,11 @@
             const subjectCbs = document.querySelectorAll('.search-subject-cb');
             const selectedSubjects = Array.from(subjectCbs).filter(cb => cb.checked).map(cb => cb.value);
 
-            // Dynamically update the URL with the search and filter state
             const newParams = new URLSearchParams();
             newParams.set('ref', 'search');
             if (query) newParams.set('q', query);
             if (ignoreTitles) newParams.set('it', '1');
-            if (ignoreDescriptions) newParams.set('id', '1');
+            if (ignoreDescriptions) newParams.set('ids', '1');
             if (hasPdf) newParams.set('pdf', '1');
             if (hasTrans) newParams.set('tr', '1');
             if (cat) newParams.set('c', cat);
@@ -1105,23 +1121,41 @@
                         const desc = (data.description || "").toLowerCase();
                         const trans = (data.transcription || "").toString().toLowerCase();
                         
-                        const titleMatch = title.includes(query);
-                        const descMatch = desc.includes(query);
+                        const titleMatch = !ignoreTitles && title.includes(query);
+                        const descMatch = !ignoreDescriptions && desc.includes(query);
                         const transMatch = trans.includes(query);
 
-                        let matchesQuery = ((!ignoreTitles && titleMatch) || (!ignoreDescriptions && descMatch) || transMatch);
+                        let matchesQuery = titleMatch || descMatch || transMatch;
 
                         if (matchesQuery) {
-                            let snippet = "";
+                            let allSnippets = [];
+                            
                             if (descMatch) {
-                                snippet += extractSearchSnippet(data.description, query);
+                                allSnippets.push(...getAllSearchSnippets(data.description, query));
                             } 
                             if (transMatch) {
-                                if (snippet !== "") snippet += "<br>";
-                                snippet += extractSearchSnippet(data.transcription, query);
+                                allSnippets.push(...getAllSearchSnippets(data.transcription, query));
                             }
                             
-                            results.push({ path, data, snippet });
+                            let displaySnippets = [];
+                            let instancesDisplayed = 0;
+                            let totalInstances = allSnippets.reduce((sum, s) => sum + s.count, 0);
+
+                            for (let s of allSnippets) {
+                                if (instancesDisplayed < 3) {
+                                    displaySnippets.push(`“${s.html}”`);
+                                    instancesDisplayed += s.count;
+                                }
+                            }
+
+                            let snippetHtml = displaySnippets.join('<br><br>');
+                            let remaining = totalInstances - instancesDisplayed;
+                            
+                            if (remaining > 0) {
+                                snippetHtml += `<br><br><span style="color: #666; font-size: 0.9em; font-style: italic;">+${remaining} more result${remaining > 1 ? 's' : ''} in this record</span>`;
+                            }
+                            
+                            results.push({ path, data, snippet: snippetHtml });
                         }
                     }
                 });
@@ -1157,7 +1191,7 @@
                         <div class="ref-path-text" style="color: #888; font-size: 0.85em; margin-top: 4px;">
                             ${ref}
                         </div>
-                        ${item.snippet ? `<div style="margin-top: 6px; font-size: 0.95em; color: #333;">“${item.snippet}”</div>` : ''}
+                        ${item.snippet ? `<div style="margin-top: 6px; font-size: 0.95em; color: #333;">${item.snippet}</div>` : ''}
                     </div>
                 `;
             });
