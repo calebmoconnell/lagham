@@ -768,6 +768,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const initQ = urlParams.get('q') || '';
             const initIt = urlParams.get('it') === '1';
+            const initId = urlParams.get('id') === '1';
             const initPdf = urlParams.get('pdf') === '1';
             const initTr = urlParams.get('tr') === '1';
             const initC = urlParams.get('c') || '';
@@ -842,6 +843,7 @@
                             
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                                 <label class="checkbox-label"><input type="checkbox" id="advIgnoreTitles" ${initIt ? 'checked' : ''}> Ignore titles</label>
+                                <label class="checkbox-label"><input type="checkbox" id="advIgnoreDescriptions" ${initId ? 'checked' : ''}> Ignore descriptions</label>
                                 <label class="checkbox-label"><input type="checkbox" id="advHasPdf" ${initPdf ? 'checked' : ''}> Has PDF scan</label>
                                 <label class="checkbox-label"><input type="checkbox" id="advHasTrans" ${initTr ? 'checked' : ''}> Has transcription</label>
                             </div>
@@ -895,7 +897,7 @@
                     inputField.focus();
                 }
 
-                if(initIt || initPdf || initTr || initC || initF || initYf || initYt || initG !== null || initSo !== null) {
+                if(initIt || initId || initPdf || initTr || initC || initF || initYf || initYt || initG !== null || initSo !== null) {
                     document.getElementById('searchAdvFiltersPanel').style.display = 'block';
                     document.getElementById('searchAdvFilterIcon').className = 'fa fa-caret-down';
                 }
@@ -968,45 +970,44 @@
         function extractSearchSnippet(text, query) {
             if (!text) return "";
             
-            // Remove HTML tags and CSS formatting to ensure they are ignored in the snippet calculation
-            const cleanStr = text.toString().replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]*>/g, '');
-            const lowerStr = cleanStr.toLowerCase();
+            const str = text.toString().replace(/<br\s*\/?>/gi, '\n');
+            const lowerStr = str.toLowerCase();
             const queryIdx = lowerStr.indexOf(query);
             if (queryIdx === -1) return "";
             
             const contextLength = 60; 
             
             let rawStart = Math.max(0, queryIdx - contextLength);
-            let rawEnd = Math.min(cleanStr.length, queryIdx + query.length + contextLength);
+            let rawEnd = Math.min(str.length, queryIdx + query.length + contextLength);
             
-            const lastNewLine = cleanStr.lastIndexOf('\n', queryIdx);
+            const lastNewLine = str.lastIndexOf('\n', queryIdx);
             if (lastNewLine !== -1 && lastNewLine >= rawStart) {
                 rawStart = lastNewLine + 1;
             } else if (rawStart > 0) {
-                const nextSpace = cleanStr.indexOf(' ', rawStart);
+                const nextSpace = str.indexOf(' ', rawStart);
                 if (nextSpace !== -1 && nextSpace < queryIdx) {
                     rawStart = nextSpace + 1;
                 }
             }
             
-            const nextNewLine = cleanStr.indexOf('\n', queryIdx + query.length);
+            const nextNewLine = str.indexOf('\n', queryIdx + query.length);
             if (nextNewLine !== -1 && nextNewLine <= rawEnd) {
                 rawEnd = nextNewLine;
-            } else if (rawEnd < cleanStr.length) {
-                const prevSpace = cleanStr.lastIndexOf(' ', rawEnd);
+            } else if (rawEnd < str.length) {
+                const prevSpace = str.lastIndexOf(' ', rawEnd);
                 if (prevSpace !== -1 && prevSpace > (queryIdx + query.length)) {
                     rawEnd = prevSpace;
                 }
             }
             
-            let snippet = cleanStr.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
+            let snippet = str.substring(rawStart, rawEnd).replace(/[\r\n]+/g, ' ').trim();
             
             const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
             const regex = new RegExp(`(${escapedQuery})`, 'gi');
             snippet = snippet.replace(regex, '<strong>$1</strong>');
             
             if (rawStart > 0) snippet = "..." + snippet;
-            if (rawEnd < cleanStr.length) snippet = snippet + "...";
+            if (rawEnd < str.length) snippet = snippet + "...";
             
             return snippet;
         }
@@ -1016,6 +1017,7 @@
             const query = input.value.trim().toLowerCase();
             
             const ignoreTitles = document.getElementById('advIgnoreTitles')?.checked || false;
+            const ignoreDescriptions = document.getElementById('advIgnoreDescriptions')?.checked || false;
             const hasPdf = document.getElementById('advHasPdf')?.checked || false;
             const hasTrans = document.getElementById('advHasTrans')?.checked || false;
             
@@ -1039,6 +1041,7 @@
             newParams.set('ref', 'search');
             if (query) newParams.set('q', query);
             if (ignoreTitles) newParams.set('it', '1');
+            if (ignoreDescriptions) newParams.set('id', '1');
             if (hasPdf) newParams.set('pdf', '1');
             if (hasTrans) newParams.set('tr', '1');
             if (cat) newParams.set('c', cat);
@@ -1099,20 +1102,14 @@
                         }
 
                         const title = (data.title || data.category || "").toLowerCase();
-                        // Ignore HTML formatting/tags during evaluation matches
-                        const desc = (data.description || "").replace(/<[^>]*>/g, "").toLowerCase();
-                        const trans = (data.transcription || "").toString().replace(/<[^>]*>/g, "").toLowerCase();
+                        const desc = (data.description || "").toLowerCase();
+                        const trans = (data.transcription || "").toString().toLowerCase();
                         
                         const titleMatch = title.includes(query);
                         const descMatch = desc.includes(query);
                         const transMatch = trans.includes(query);
 
-                        let matchesQuery = false;
-                        if (ignoreTitles) {
-                            matchesQuery = descMatch || transMatch;
-                        } else {
-                            matchesQuery = titleMatch || descMatch || transMatch;
-                        }
+                        let matchesQuery = ((!ignoreTitles && titleMatch) || (!ignoreDescriptions && descMatch) || transMatch);
 
                         if (matchesQuery) {
                             let snippet = "";
@@ -1328,7 +1325,7 @@
             let formatOptions = '<option value="">All Formats</option>';
             Array.from(uniqueFormats).sort().forEach(fmt => {
                 const sel = (fmt === initF) ? 'selected' : '';
-                formatOptions += `<option value="${fmt}" ${sel}>${fmt}</option>';
+                formatOptions += `<option value="${fmt}" ${sel}>${fmt}</option>`;
             });
 
             let html = `<h1>Browse records by date</h1>`;
