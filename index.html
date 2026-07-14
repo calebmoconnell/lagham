@@ -518,7 +518,7 @@
     </div>
 
     <footer class="no-print">
-        <p>Created by Caleb O'Connell; last updated 14th July ᴀ.ᴅ. 2026</p>
+        <p>Created by Caleb O'Connell; last updated 12th July ᴀ.ᴅ. 2026</p>
     </footer>
 
     <script>
@@ -1646,7 +1646,10 @@
 
                 document.title = `${title} (${refNumber}) - 1st Lagham (Godstone) Scout Group Archives`;
 
-                let html = `<h1><i class='fa fa-file-text-o'></i> ${title}</h1>`;
+                const isPhoto = data.format && String(data.format).toLowerCase() === 'photograph';
+                const pageIcon = isPhoto ? 'fa-picture-o' : 'fa-file-text-o';
+
+                let html = `<h1><i class='fa ${pageIcon}'></i> ${title}</h1>`;
                 
                 html += `
                 <table>
@@ -1701,15 +1704,13 @@
                 }
 
                 if (data.scan !== undefined && data.scan !== null && data.scan !== 0 && data.scan !== "0") {
-                    const isPhoto = data.format && String(data.format).toLowerCase() === 'photograph';
-                    
                     let linkHref = `/lagham/files/documents/${data.scan}`;
                     let linkText = `view PDF <i class="fa fa-external-link"></i>`;
                     let printText = `PDF available`;
                     
                     if (isPhoto) {
                         const subjectFolder = data.subject ? data.subject.toLowerCase() : 'unspecified';
-                        linkHref = `https://calebmoconnell.github.io/lagham/images/photos/${subjectFolder}/${data.scan}`;
+                        linkHref = `https://calebmoconnell.github.io/lagham/files/images/photos/${subjectFolder}/${data.scan}`;
                         linkText = `view photograph <i class="fa fa-external-link"></i>`;
                         printText = `Photograph available`;
                     }
