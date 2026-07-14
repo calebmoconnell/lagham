@@ -1701,16 +1701,29 @@
                 }
 
                 if (data.scan !== undefined && data.scan !== null && data.scan !== 0 && data.scan !== "0") {
+                    const isPhoto = data.format && String(data.format).toLowerCase() === 'photograph';
+                    
+                    let linkHref = `/lagham/files/documents/${data.scan}`;
+                    let linkText = `view PDF <i class="fa fa-external-link"></i>`;
+                    let printText = `PDF available`;
+                    
+                    if (isPhoto) {
+                        const subjectFolder = data.subject ? data.subject.toLowerCase() : 'unspecified';
+                        linkHref = `https://calebmoconnell.github.io/lagham/images/photos/${subjectFolder}/${data.scan}`;
+                        linkText = `view photograph <i class="fa fa-external-link"></i>`;
+                        printText = `Photograph available`;
+                    }
+
                     html += `
                         <tr>
                             <td><b>Scan</b></td>
                             <td>
                                 <span class="screen-only">
-                                    <a href="/lagham/files/documents/${data.scan}" target="_blank" class="item-title-link">
-                                        view PDF <i class="fa fa-external-link"></i>
+                                    <a href="${linkHref}" target="_blank" class="item-title-link">
+                                        ${linkText}
                                     </a>
                                 </span>
-                                <span class="print-only">PDF available</span>
+                                <span class="print-only">${printText}</span>
                             </td>
                         </tr>`;
                 }
@@ -1768,6 +1781,11 @@
                 if (childNode && typeof childNode === 'object') {
                     if ('category' in data || 'title' in childNode) {
                         icon = '<i class="fa fa-file-text-o" style="color: black; font-size: 1.4em;"></i>';
+                        
+                        if (childNode.format && String(childNode.format).toLowerCase() === 'photograph') {
+                            icon = '<i class="fa fa-picture-o" style="color: black; font-size: 1.4em;"></i>';
+                        }
+                        
                         displayTitle = childNode.title || childNode.category || key;
                     } 
                     else if ('folder_title' in childNode) {
