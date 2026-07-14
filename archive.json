@@ -1144,7 +1144,29 @@
     },
     "V": {
       "folder_title": "Village Records",
-      "ref": "V"
+      "ref": "V",
+      "Ph": {
+        "folder_title": "Photographs",
+        "ref": "V/Ph",
+        "Misc": {
+          "folder_title": "Miscellaneous Photographs",
+          "ref": "V/Ph/Misc",
+          "HAR": {
+            "subject": "Village",
+            "category": "Photograph",
+            "ref": "V/Ph/Misc/HAR",
+            "location": "Lagham H.Q.",
+            "condition": "good",
+            "date": "n.d.",
+            "title": "Photograph of harvest scene",
+            "description": "A photograph of a group of people alongside a horse and cart loaded with hay at harvest. Assumed to be South Godstone. On reverse: \"SMITH & Co., CLARENDON STUDIO, REDHILL\" and handwritten text \"5228\". The photo is set correctly within the frame, which is crooked.",
+            "transcription": "0",
+            "extent": "1 photograph with text on reverse",
+            "format": "Photograph",
+            "scan": 0
+          }
+        }
+      }
     }
   }
 }
