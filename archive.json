@@ -54,7 +54,35 @@
               "extent": "1 page certificate",
               "format": "Document",
               "scan": "Sc_G_Misc_CERT_Cyc.pdf"
+            },
+            "Cri": {
+              "subject": "Lagham",
+              "category": "Certificates",
+              "ref": "Sc/G/Misc/CERT/Cri",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; badly torn - parts missing",
+              "date": 1985,
+              "title": "1984 Cricket Camp certificate",
+              "description": "A \"Highly Commended\" certificate awarded to Kestrels Patrol (Neil Roffey, Gary Greenstreet, Stephen Nixon and Mark Hathaway) at the Cricket Camp held in 1984. The location is given as \"River Hamble\".",
+              "transcription": "0",
+              "extent": "1 page certificate",
+              "format": "Document",
+              "scan": "Sc_G_Misc_CERT_Cri.pdf"
             }
+          },
+          "FR": {
+            "subject": "Lagham",
+            "category": "Miscellaneous",
+            "ref": "Sc/G/Misc/FR",
+            "location": "Lagham H.Q.",
+            "condition": "good; hole-punched",
+            "date": "n.d.",
+            "title": "Note relating to a trip to France",
+            "description": "A handwritten note detailing the participants, timings, cost, packing list and rules for a trip to France.",
+            "transcription": "0",
+            "extent": "2 page",
+            "format": "Document",
+            "scan": "Sc_G_Misc_FR.pdf"
           }
         },
         "News": {
@@ -249,6 +277,38 @@
           "ref": "Sc/G/News"
         },
         "Prog": {
+          "1986": {
+            "folder_title": 1986,
+            "ref": "Sc/G/Prog/1986",
+            "JUL": {
+              "subject": "Lagham",
+              "category": "Programme",
+              "ref": "Sc/G/Prog/1986/JUL",
+              "location": "Lagham H.Q.",
+              "condition": "Good. Stapled.",
+              "date": "29/07/1986 - 03/08/1986",
+              "title": "Programme for the Lagham Cub Scout Summer Camp 1986",
+              "description": "A leader's programme for a six day Cub camp at Blacklands Farm, East Grinstead with the theme \"colours of the rainbow\". The Beaver colony, and those cubs not on the camp, visited the camp for  the fourth day.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": "Sc_G_Prog_1986_JUL.pdf"
+            },
+            "ANN": {
+              "subject": "Lagham",
+              "category": "Programme",
+              "ref": "Sc/G/Prog/1986/ANN",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "07/1986 - 08/1986",
+              "title": "Lagham 50th Anniversary Year draft celebrations programme",
+              "description": "A draft programme of planned events to mark the 50th anniversary of the founding of 1st Lagham (Godstone) Scout Group.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": "Sc_G_Prog_1986_ANN.pdf"
+            }
+          },
           "1987": {
             "subject": "Lagham",
             "category": "Programme",
@@ -355,6 +415,56 @@
           },
           "folder_title": "Minutes",
           "ref": "Sc/G/MIN"
+        },
+        "Admin": {
+          "folder_title": "Administrative Documents",
+          "ref": "Sc/G/Admin",
+          "SUB": {
+            "1984A": {
+              "subject": "Lagham",
+              "category": "Administrative Document",
+              "ref": "Sc/G/Admin/SUB/1984A",
+              "location": "Lagham H.Q.",
+              "condition": "Good. Hole-punched.",
+              "date": "09/03/1984 - 07/06/1984",
+              "title": "Subscription Record (March - July 1984)",
+              "description": "Record of weekly subs paid between March and July 1984.",
+              "transcription": 0,
+              "extent": "1 page",
+              "format": "Document",
+              "scan": 0
+            },
+            "1984B": {
+              "subject": "Lagham",
+              "category": "Administrative Document",
+              "ref": "Sc/G/Admin/SUB/1984B",
+              "location": "Lagham H.Q.",
+              "condition": "Good. Hole-punched.",
+              "date": "24/08/1984 - 23/11/1984",
+              "title": "Subscription Record (August - November 1984)",
+              "description": "Record of weekly subs paid between August and November 1984.",
+              "transcription": 0,
+              "extent": "1 page",
+              "format": "Document",
+              "scan": 0
+            },
+            "1984C": {
+              "subject": "Lagham",
+              "category": "Administrative Document",
+              "ref": "Sc/G/Admin/SUB/1984C",
+              "location": "Lagham H.Q.",
+              "condition": "Good. Hole-punched and sellotaped.",
+              "date": "30/11/1984 - 01/03/1985",
+              "title": "Subscription Record (November 1984 - March 1985)",
+              "description": "Record of weekly subs paid between November 1984 and March 1985.",
+              "transcription": 0,
+              "extent": "1 page",
+              "format": "Document",
+              "scan": 0
+            },
+            "folder_title": "Subscription Records",
+            "ref": "Sc/G/Admin/SUB"
+          }
         }
       },
       "D": {
@@ -741,8 +851,48 @@
               "scan": "Sc_D_NEWS_1980_NOV.pdf"
             }
           },
+          "1986": {
+            "folder_title": 1986,
+            "ref": "Sc/D/NEWS/1986",
+            "JUL": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1986/JUL",
+              "location": "Lagham H.Q.",
+              "condition": "Water damaged; hole-punched; fragile paper; minor tears.",
+              "date": "07/1986",
+              "title": "East Surrey Scouting - District News July 1986",
+              "description": "East Surrey District Newsletter for July 1986.",
+              "extent": "2 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": "Sc_D_NEWS_1986_JUL.pdf"
+            }
+          },
           "folder_title": "District Newsletters",
           "ref": "Sc/D/NEWS"
+        },
+        "MIN": {
+          "1986": {
+            "folder_title": 1986,
+            "ref": "Sc/D/MIN/1986",
+            "APR": {
+              "subject": "District",
+              "category": "Minutes",
+              "ref": "Sc/D/MIN/1986/APR",
+              "location": "Lagham H.Q.",
+              "condition": "Good. Stapled.",
+              "date": "14/04/1986",
+              "title": "District Executive Minutes April 1986",
+              "description": "Minutes of the meeting of the District Executive held on 14th April 1986.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": "Sc_D_MIN_1986_APR.pdf"
+            }
+          },
+          "folder_title": "Minutes",
+          "ref": "Sc/D/MIN"
         },
         "Misc": {
           "folder_title": "Miscellaneous Records",
@@ -764,6 +914,34 @@
               "format": "Document",
               "scan": "Sc_D_Misc_CUT_MAY17.pdf"
             }
+          },
+          "GEO": {
+            "subject": "District",
+            "category": "Newspaper Cutting",
+            "ref": "Sc/D/Misc/GEO",
+            "location": "Lagham H.Q.",
+            "condition": "Good.",
+            "date": "20/04/1986",
+            "title": "St. George's Day Service Order",
+            "description": "An Order of Service for the District St. George's Day Service, held at Lingfield Parish Church.",
+            "transcription": 0,
+            "extent": "8 pages",
+            "format": "Document",
+            "scan": "Sc_D_Misc_GEO.pdf"
+          },
+          "GIL": {
+            "subject": "District",
+            "category": "Newspaper Cutting",
+            "ref": "Sc/D/Misc/GIL",
+            "location": "Lagham H.Q.",
+            "condition": "Good.",
+            "date": "n.d.",
+            "title": "Instructions to those attending Wood Badge Part II Courses at Gilwell Park",
+            "description": "Instructions to those attending Wood Badge Part II Courses at Gilwell Park, and an application form for the same.",
+            "transcription": 0,
+            "extent": "2 pages",
+            "format": "Document",
+            "scan": 0
           }
         }
       },
@@ -1154,6 +1332,34 @@
           "1986": {
             "folder_title": 1986,
             "ref": "Sc/C/NEWS/1986",
+            "MAR": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1986/MAR",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "03/1986",
+              "title": "Surrey Scout [March 1986]",
+              "description": "Surrey Scouting newsletter for March 1986. No. 459.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": "Sc_C_NEWS_1986_MAR.pdf"
+            },
+            "APR": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1986/APR",
+              "location": "Lagham H.Q.",
+              "condition": "good",
+              "date": "04/1986",
+              "title": "Surrey Scout [April 1986]",
+              "description": "Surrey Scouting newsletter for April 1986. No. 460. Includes details of the St. George's Day Awards 1986.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": "Sc_C_NEWS_1986_APR.pdf"
+            },
             "SEP": {
               "subject": "County",
               "category": "Newsletter",
