@@ -518,7 +518,7 @@
     </div>
 
     <footer class="no-print">
-        <p>Created by Caleb O'Connell; last updated 12th July ᴀ.ᴅ. 2026</p>
+        <p>Created by Caleb O'Connell; last updated 18th July ᴀ.ᴅ. 2026</p>
     </footer>
 
     <script>
@@ -814,6 +814,7 @@
 
             let subjectCbHtml = '';
             Array.from(uniqueSubjects).sort().forEach(subj => {
+                if (subj.toLowerCase() === 'village') return;
                 let displaySubj = subj === "Lagham" ? "Group" : subj;
                 const isChecked = (initSo === null || initSo.includes(subj)) ? 'checked' : '';
                 subjectCbHtml += `<label class="checkbox-label"><input type="checkbox" class="search-subject-cb" value="${subj}" ${isChecked}> ${displaySubj}</label>`;
@@ -1103,7 +1104,7 @@
 
                         if (topCategory && scoutingTopKeys.includes(topCategory)) {
                             const subj = data.subject ? data.subject.trim() : "Unspecified";
-                            if (subjectCbs.length > 0 && !selectedSubjects.includes(subj)) return;
+                            if (subj.toLowerCase() !== 'village' && subjectCbs.length > 0 && !selectedSubjects.includes(subj)) return;
                         }
                         
                         if (yearFrom !== null || yearTo !== null) {
