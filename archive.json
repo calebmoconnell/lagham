@@ -10,20 +10,6 @@
         "Misc": {
           "folder_title": "Miscellaneous Records",
           "ref": "Sc/G/Misc",
-          "NOT": {
-            "subject": "Lagham",
-            "category": "Miscellaneous",
-            "ref": "Sc/G/Misc/NOT",
-            "location": "Lagham H.Q.",
-            "condition": "Water damaged; tears and creases to paper",
-            "date": "n.d.",
-            "title": "1st Lagham Notepaper.",
-            "description": "Group notepaper with header consisting of Scout logo, Group name and HQ address.",
-            "transcription": "0",
-            "extent": "3 copies (3 pages)",
-            "format": "Document",
-            "scan": "Sc_G_Misc_NOT.pdf"
-          },
           "CERT": {
             "folder_title": "Certificates",
             "ref": "Sc/G/Misc/CERT",
@@ -69,6 +55,20 @@
               "format": "Document",
               "scan": "Sc_G_Misc_CERT_Cri.pdf"
             }
+          },
+          "NOT": {
+            "subject": "Lagham",
+            "category": "Miscellaneous",
+            "ref": "Sc/G/Misc/NOT",
+            "location": "Lagham H.Q.",
+            "condition": "Water damaged; tears and creases to paper",
+            "date": "n.d.",
+            "title": "1st Lagham Notepaper.",
+            "description": "Group notepaper with header consisting of Scout logo, Group name and HQ address.",
+            "transcription": "0",
+            "extent": "3 copies (3 pages)",
+            "format": "Document",
+            "scan": "Sc_G_Misc_NOT.pdf"
           },
           "FR": {
             "subject": "Lagham",
@@ -125,6 +125,20 @@
             "extent": "1 page",
             "format": "Document",
             "scan": "Sc_G_Misc_SO.pdf"
+          },
+          "FOX": {
+            "subject": "Lagham",
+            "category": "Miscellaneous",
+            "ref": "Sc/G/Misc/FOX",
+            "location": "Lagham H.Q.",
+            "condition": "Good.",
+            "date": "n.d.",
+            "title": "Foxgrove Camp Site (Wembury, Devon) brochure",
+            "description": "Brochure for the scout camp at Foxgrove, Wembury, Devon, which is administered by Plymstock Scout District. The brochure was produced by the City of Plymouth Scout Council.",
+            "transcription": "0",
+            "extent": "4 pages",
+            "format": "Document",
+            "scan": "Sc_G_Misc_FOX.pdf"
           }
         },
         "News": {
@@ -907,9 +921,41 @@
               "scan": "Sc_D_NEWS_1980_NOV.pdf"
             }
           },
+          "1985": {
+            "folder_title": 1985,
+            "ref": "Sc/D/NEWS/1985",
+            "DEC": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1985/DEC",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "12/1985",
+              "title": "East Surrey Scouting - District News December 1985",
+              "description": "East Surrey District Newsletter for December 1985.",
+              "extent": "2 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": "Sc_D_NEWS_1985_DEC.pdf"
+            }
+          },
           "1986": {
             "folder_title": 1986,
             "ref": "Sc/D/NEWS/1986",
+            "FEB": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1986/FEB",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "02/1986",
+              "title": "East Surrey Scouting - District News February 1986",
+              "description": "East Surrey District Newsletter for February 1986.",
+              "extent": "2 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": "Sc_D_NEWS_1986_FEB.pdf"
+            },
             "MAY": {
               "subject": "District",
               "category": "Newsletter",
@@ -1090,7 +1136,7 @@
               "condition": "Water damaged; hole-punched; parts missing",
               "date": "06/1977",
               "title": "Surrey Scout [June 1977]",
-              "description": "Surrey Scouting newsletter for June 1977. Includes an article refelcting on the Queen's Silver Jubilee. No. 363.",
+              "description": "Surrey Scouting newsletter for June 1977. Includes an article reflecting on the Queen's Silver Jubilee. No. 363.",
               "transcription": 0,
               "extent": "6 pages",
               "format": "Document",
@@ -1434,6 +1480,20 @@
           "1986": {
             "folder_title": 1986,
             "ref": "Sc/C/NEWS/1986",
+            "JAN": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1986/JAN",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "01/1986",
+              "title": "Surrey Scout [January 1986]",
+              "description": "Surrey Scouting newsletter for January 1986. No. 457.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": "Sc_C_NEWS_1986_JAN.pdf"
+            },
             "MAR": {
               "subject": "County",
               "category": "Newsletter",
