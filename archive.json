@@ -56,6 +56,38 @@
               "scan": "Sc_G_Misc_CERT_Cri.pdf"
             }
           },
+          "COR": {
+            "1": {
+              "subject": "Lagham",
+              "category": "Letter",
+              "ref": "Sc/G/Misc/COR/1",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "n.d.",
+              "title": "Note re. grant for new heating",
+              "description": "Note regarding the response of S.V.S.C. to the Scout Group on the subject of obtaining a grant for new heating for the H.Q.",
+              "transcription": "0",
+              "extent": "1 page",
+              "format": "Document",
+              "scan": "Sc_G_Misc_COR_1.pdf"
+            },
+            "2": {
+              "subject": "Lagham",
+              "category": "Letter",
+              "ref": "Sc/G/Misc/COR/2",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "04/04/1986",
+              "title": "Correspondence re. group photo",
+              "description": "Correspondence arranging a photographer's services for the group photo.",
+              "transcription": "0",
+              "extent": "2 pages plus attached note",
+              "format": "Document",
+              "scan": "Sc_G_Misc_COR_2.pdf"
+            },
+            "folder_title": "Miscellaneous Correspondance",
+            "ref": "Sc/G/Misc/COR"
+          },
           "NOT": {
             "subject": "Lagham",
             "category": "Miscellaneous",
@@ -98,23 +130,9 @@
             "format": "Document",
             "scan": "Sc_G_Misc_DIN.pdf"
           },
-          "PH": {
-            "subject": "Lagham",
-            "category": "Miscellaneous",
-            "ref": "Sc/G/Misc/PH",
-            "location": "Lagham H.Q.",
-            "condition": "Good.",
-            "date": "04/04/1986",
-            "title": "Correspondence re. group photo",
-            "description": "Correspondence arranging a photographer's services for the group photo.",
-            "transcription": "0",
-            "extent": "2 pages plus attached note",
-            "format": "Document",
-            "scan": "Sc_G_Misc_PH.pdf"
-          },
           "SO": {
             "subject": "Lagham",
-            "category": "Miscellaneous",
+            "category": "Letter",
             "ref": "Sc/G/Misc/SO",
             "location": "Lagham H.Q.",
             "condition": "Good.",
@@ -128,7 +146,7 @@
           },
           "FOX": {
             "subject": "Lagham",
-            "category": "Miscellaneous",
+            "category": "Brochure",
             "ref": "Sc/G/Misc/FOX",
             "location": "Lagham H.Q.",
             "condition": "Good.",
@@ -488,7 +506,7 @@
               "transcription": 0,
               "extent": "1 page",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_G_Admin_SUB_1984A.pdf"
             },
             "1984B": {
               "subject": "Lagham",
@@ -502,7 +520,7 @@
               "transcription": 0,
               "extent": "1 page",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_G_Admin_SUB_1984B.pdf"
             },
             "1984C": {
               "subject": "Lagham",
@@ -516,7 +534,7 @@
               "transcription": 0,
               "extent": "1 page",
               "format": "Document",
-              "scan": 0
+              "scan": "Sc_G_Admin_SUB_1984C.pdf"
             },
             "folder_title": "Subscription Records",
             "ref": "Sc/G/Admin/SUB"
@@ -533,7 +551,7 @@
             "transcription": 0,
             "extent": "1 page",
             "format": "Document",
-            "scan": 0
+            "scan": "Sc_G_Admin_FD.pdf"
           }
         }
       },
@@ -1078,8 +1096,8 @@
             }
           },
           "GIL": {
-            "subject": "District",
-            "category": "Newspaper Cutting",
+            "subject": "National",
+            "category": "Brochure",
             "ref": "Sc/D/Misc/GIL",
             "location": "Lagham H.Q.",
             "condition": "Good.",
@@ -1089,7 +1107,7 @@
             "transcription": 0,
             "extent": "2 pages",
             "format": "Document",
-            "scan": 0
+            "scan": "Sc_D_Misc_GIL.pdf"
           }
         }
       },
