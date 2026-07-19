@@ -80,9 +80,51 @@
             "title": "Note relating to a trip to France",
             "description": "A handwritten note detailing the participants, timings, cost, packing list and rules for a trip to France.",
             "transcription": "0",
-            "extent": "2 page",
+            "extent": "2 pages",
             "format": "Document",
             "scan": "Sc_G_Misc_FR.pdf"
+          },
+          "DIN": {
+            "subject": "Lagham",
+            "category": "Miscellaneous",
+            "ref": "Sc/G/Misc/DIN",
+            "location": "Lagham H.Q.",
+            "condition": "Good.",
+            "date": "13/12/1986",
+            "title": "Invitation to the Golden Anniversary Dinner",
+            "description": "An invitation to a dinner at Lingfield Park Racecourse to celebrate the 50th anniversary of the founding of 1st Lagham Scouts.",
+            "transcription": "0",
+            "extent": "2 pages",
+            "format": "Document",
+            "scan": "Sc_G_Misc_DIN.pdf"
+          },
+          "PH": {
+            "subject": "Lagham",
+            "category": "Miscellaneous",
+            "ref": "Sc/G/Misc/PH",
+            "location": "Lagham H.Q.",
+            "condition": "Good.",
+            "date": "04/04/1986",
+            "title": "Correspondence re. group photo",
+            "description": "Correspondence arranging a photographer's services for the group photo.",
+            "transcription": "0",
+            "extent": "2 pages plus attached note",
+            "format": "Document",
+            "scan": "Sc_G_Misc_PH.pdf"
+          },
+          "SO": {
+            "subject": "Lagham",
+            "category": "Miscellaneous",
+            "ref": "Sc/G/Misc/SO",
+            "location": "Lagham H.Q.",
+            "condition": "Good.",
+            "date": "08/07/1986",
+            "title": "Letter from GSL re. upcoming events",
+            "description": "Letter from John Bowers, Lagham G.S.L. to \"parents of all sections, committee members, leaders and tinkers\" detailing upcoming events the Scout Group would be holding.",
+            "transcription": "0",
+            "extent": "1 page",
+            "format": "Document",
+            "scan": "Sc_G_Misc_SO.pdf"
           }
         },
         "News": {
@@ -464,6 +506,20 @@
             },
             "folder_title": "Subscription Records",
             "ref": "Sc/G/Admin/SUB"
+          },
+          "FD": {
+            "subject": "Lagham",
+            "category": "Administrative Document",
+            "ref": "Sc/G/Admin/FD",
+            "location": "Lagham H.Q.",
+            "condition": "Good. Hole-punched.",
+            "date": "28/10/1983",
+            "title": "A 1980s financial document",
+            "description": "Handwritten list of names of members, with varying costs/amounts of money assigned to each. ",
+            "transcription": 0,
+            "extent": "1 page",
+            "format": "Document",
+            "scan": 0
           }
         }
       },
@@ -854,12 +910,26 @@
           "1986": {
             "folder_title": 1986,
             "ref": "Sc/D/NEWS/1986",
+            "MAY": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1986/MAY",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "05/1986",
+              "title": "East Surrey Scouting - District News July 1986",
+              "description": "East Surrey District Newsletter for May 1986.",
+              "extent": "2 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": "Sc_D_NEWS_1986_MAY.pdf"
+            },
             "JUL": {
               "subject": "District",
               "category": "Newsletter",
               "ref": "Sc/D/NEWS/1986/JUL",
               "location": "Lagham H.Q.",
-              "condition": "Water damaged; hole-punched; fragile paper; minor tears.",
+              "condition": "Good.",
               "date": "07/1986",
               "title": "East Surrey Scouting - District News July 1986",
               "description": "East Surrey District Newsletter for July 1986.",
@@ -867,6 +937,20 @@
               "format": "Document",
               "transcription": 0,
               "scan": "Sc_D_NEWS_1986_JUL.pdf"
+            },
+            "OCT": {
+              "subject": "District",
+              "category": "Newsletter",
+              "ref": "Sc/D/NEWS/1986/OCT",
+              "location": "Lagham H.Q.",
+              "condition": "Good. Stapled.",
+              "date": "10/1986",
+              "title": "East Surrey Scouting - District News October 1986",
+              "description": "East Surrey District Newsletter for October 1986. Includes attached autumn programme of Tandridge PHAB Club (Physically Handicapped and Able Bodied), a charity \"which exists to further the integration of the physically handicapped into the community.\"",
+              "extent": "4 pages",
+              "format": "Document",
+              "transcription": 0,
+              "scan": "Sc_D_NEWS_1986_OCT.pdf"
             }
           },
           "folder_title": "District Newsletters",
@@ -916,18 +1000,36 @@
             }
           },
           "GEO": {
-            "subject": "District",
-            "category": "Newspaper Cutting",
+            "folder_title": "Items relating to District St. George's Day celebrations",
             "ref": "Sc/D/Misc/GEO",
-            "location": "Lagham H.Q.",
-            "condition": "Good.",
-            "date": "20/04/1986",
-            "title": "St. George's Day Service Order",
-            "description": "An Order of Service for the District St. George's Day Service, held at Lingfield Parish Church.",
-            "transcription": 0,
-            "extent": "8 pages",
-            "format": "Document",
-            "scan": "Sc_D_Misc_GEO.pdf"
+            "Ord": {
+              "subject": "District",
+              "category": "Order of Service",
+              "ref": "Sc/D/Misc/GEO/Ord",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "20/04/1986",
+              "title": "St. George's Day Service Order",
+              "description": "An Order of Service for the District St. George's Day Service, held at Lingfield Parish Church.",
+              "transcription": 0,
+              "extent": "8 pages",
+              "format": "Document",
+              "scan": "Sc_D_Misc_GEO_Ord.pdf"
+            },
+            "Det": {
+              "subject": "District",
+              "category": "Order of Service",
+              "ref": "Sc/D/Misc/GEO/Det",
+              "location": "Lagham H.Q.",
+              "condition": "Good. Stapled.",
+              "date": "20/04/1986",
+              "title": "Details of the proceedings for the 1986 St. George's Day celebrations",
+              "description": "A document detailing the format and proceedings of the 1986 St. George's Day parade, as well as the servie at Lingfield Parish Church.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": "Sc_D_Misc_GEO_Det.pdf"
+            }
           },
           "GIL": {
             "subject": "District",
@@ -1373,6 +1475,38 @@
               "extent": "6 pages",
               "format": "Document",
               "scan": "Sc_C_NEWS_1986_SEP.pdf"
+            }
+          },
+          "1987": {
+            "folder_title": 1987,
+            "ref": "Sc/C/NEWS/1987",
+            "JAN": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1987/JAN",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "01/1987",
+              "title": "Surrey Scout [January 1987]",
+              "description": "Surrey Scouting newsletter for January 1987. No. 468.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": "Sc_C_NEWS_1987_JAN.pdf"
+            },
+            "FEB": {
+              "subject": "County",
+              "category": "Newsletter",
+              "ref": "Sc/C/NEWS/1987/FEB",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "02/1987",
+              "title": "Surrey Scout [February 1987]",
+              "description": "Surrey Scouting newsletter for February 1987. No. 469.",
+              "transcription": 0,
+              "extent": "6 pages",
+              "format": "Document",
+              "scan": "Sc_C_NEWS_1987_FEB.pdf"
             }
           },
           "folder_title": "County Newsletters",
