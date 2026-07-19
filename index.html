@@ -518,7 +518,7 @@
     </div>
 
     <footer class="no-print">
-        <p>Created by Caleb O'Connell; last updated 18th July ᴀ.ᴅ. 2026</p>
+        <p>Created by Caleb O'Connell;</p>
     </footer>
 
     <script>
@@ -1316,7 +1316,10 @@
                         const dateInfos = expandDateString(data.date);
                         
                         dateInfos.forEach(dateInfo => {
-                            chronoItemsCache.push({ path, data, topCategory, dateInfo });
+                            // Exclude records that are undated ("n.d." or missing date logic returns year 9999)
+                            if (dateInfo.year !== 9999) {
+                                chronoItemsCache.push({ path, data, topCategory, dateInfo });
+                            }
                         });
                     }
                 });
