@@ -85,6 +85,20 @@
               "format": "Document",
               "scan": "Sc_G_Misc_COR_2.pdf"
             },
+            "3": {
+              "subject": "Lagham",
+              "category": "Letter",
+              "ref": "Sc/G/Misc/COR/3",
+              "location": "Lagham H.Q.",
+              "condition": "Good.",
+              "date": "03/12/1986",
+              "title": "Resignation note of Eileen Walter as A.C.S.L.",
+              "description": "Note of Eileen Walter's formal resignation as Assistant Cub Scout Leader of 1st Lagham.",
+              "transcription": "0",
+              "extent": "1 page",
+              "format": "Document",
+              "scan": "Sc_G_Misc_COR_3.pdf"
+            },
             "folder_title": "Miscellaneous Correspondance",
             "ref": "Sc/G/Misc/COR"
           },
@@ -454,6 +468,24 @@
           "1986": {
             "folder_title": 1986,
             "ref": "Sc/G/MIN/1986",
+            "JAN": {
+              "20": {
+                "subject": "Lagham",
+                "category": "Minutes",
+                "ref": "Sc/G/MIN/1986/JAN/20",
+                "location": "Lagham H.Q.",
+                "condition": "Good.",
+                "date": "20/01/1986",
+                "title": "Minutes of the Fund Raising Committee meeting held on Monday, 20th January 1986",
+                "description": "Minutes of a meeting of the 1st Lagham Fundraising Committee held on 20th January 1986.",
+                "transcription": 0,
+                "extent": "3 pages",
+                "format": "Document",
+                "scan": "Sc_G_MIN_1986_JAN_20.pdf"
+              },
+              "folder_title": "January 1986",
+              "ref": "Sc/G/MIN/1986/JAN"
+            },
             "JUN": {
               "10": {
                 "subject": "Lagham",
@@ -538,6 +570,24 @@
             },
             "folder_title": "Subscription Records",
             "ref": "Sc/G/Admin/SUB"
+          },
+          "MP": {
+            "1": {
+              "subject": "Lagham",
+              "category": "Administrative Document",
+              "ref": "Sc/G/Admin/MP/1",
+              "location": "Lagham H.Q.",
+              "condition": "Good. Hole-punched.",
+              "date": "11/01/1985",
+              "title": "Scout meeting plan for 11th January 1985",
+              "description": "Record detailing activities and equipemnt required for a scout meeting.",
+              "transcription": 0,
+              "extent": "2 pages",
+              "format": "Document",
+              "scan": "Sc_G_Admin_MP_1.pdf"
+            },
+            "folder_title": "Meeting Plans",
+            "ref": "Sc/G/Admin/MP"
           },
           "FD": {
             "subject": "Lagham",
